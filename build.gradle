@@ -22,7 +22,7 @@ repositories {
 dependencies {
     // This dependency is found on compile classpath of this component and consumers.
     compile 'com.google.guava:guava:21.0'
-
+    compile "com.sparkjava:spark-core:2.6.0"
     // Use JUnit test framework
     testCompile 'junit:junit:4.12'
 }
