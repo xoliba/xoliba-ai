@@ -1,0 +1,19 @@
+{
+  "name": "xoliba",
+  "homepage": "https://github.com/xoliba-ai/xoliba",
+  "authors": [
+    "Jussi Aalto <jussi.aalto@cs.helsinki.fi>"
+  ],
+  "description": "web implementation of xoliba",
+  "main": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "pixi.js": "~4.5.1"
+  }
+}

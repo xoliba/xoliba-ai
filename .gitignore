@@ -3,3 +3,4 @@
 .idea
 xoliba.iml
 /.nb-gradle/
+bower_components/
