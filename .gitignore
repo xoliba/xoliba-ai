@@ -2,3 +2,4 @@
 /build/
 .idea
 xoliba.iml
+/.nb-gradle/
