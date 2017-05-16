@@ -1,1 +1,0 @@
-heroku config:set GRADLE_TASK="build"

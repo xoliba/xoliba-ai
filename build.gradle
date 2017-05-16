@@ -5,6 +5,10 @@ plugins {
 apply plugin: 'java'
 apply plugin: 'application'
 
+//Heroku can be changed to run build instead of stage.
+task stage(dependsOn: ['build', 'clean'])
+build.mustRunAfter clean
+
 repositories {
     jcenter()
 }
@@ -24,4 +28,3 @@ clientDependencies {
 build.dependsOn clientInstall
 
 mainClassName = 'App'
-
