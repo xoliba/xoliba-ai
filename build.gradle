@@ -1,3 +1,7 @@
+plugins {
+    id 'com.craigburke.client-dependencies' version '1.4.0'
+}
+
 apply plugin: 'java'
 apply plugin: 'application'
 
@@ -10,6 +14,14 @@ dependencies {
     compile "com.sparkjava:spark-core:2.6.0"
     testCompile 'junit:junit:4.12'
 }
+
+clientDependencies {
+    npm {
+        'pixi.js'('4.5.1')
+    }
+}
+
+build.dependsOn clientInstall
 
 mainClassName = 'App'
 
