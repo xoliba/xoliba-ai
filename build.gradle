@@ -40,3 +40,4 @@ jar {
     }
 }
 mainClassName = 'App'
+
