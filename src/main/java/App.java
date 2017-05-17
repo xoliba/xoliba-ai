@@ -12,6 +12,9 @@ import java.util.HashMap;
 public class App {
 	
     public static void main(String[] args) {
+        if (System.getenv("PORT") != null) {
+            port(Integer.valueOf(System.getenv("PORT")));
+        }
 		staticFileLocation("/public");
 		
         get("/", (req, res) -> IOUtils.toString(Spark.class.getResourceAsStream("public/index.html")));
