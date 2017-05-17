@@ -17,6 +17,21 @@ public class App {
         }
 		staticFileLocation("/public");
 		
+		options("/*", (request,response)->{
+
+    	   String accessControlRequestHeaders = request.headers("Access-Control-Request-Headers");
+    	   if (accessControlRequestHeaders != null) {
+    	       response.header("Access-Control-Allow-Headers", accessControlRequestHeaders);
+    	   }
+
+    	   String accessControlRequestMethod = request.headers("Access-Control-Request-Method");
+    	   if(accessControlRequestMethod != null){
+    		response.header("Access-Control-Allow-Methods", accessControlRequestMethod);
+    	   }
+
+    	   return "OK";
+    	});
+		
         get("/", (req, res) -> IOUtils.toString(Spark.class.getResourceAsStream("public/index.html")));
     }
 }
