@@ -1,11 +1,24 @@
 <!doctype html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <title>Xoliba</title>
-</head>
-<body>
-<script src="../pixi.js/bin/pixi.js"></script>
-</body>
-Hellou
+    <head>
+        <meta charset="utf-8">
+        <title>Xoliba</title>
+    </head>
+     
+    <body>
+      <script src="../pixi.js/bin/pixi.js"></script>
+        <script>
+
+            var renderer = PIXI.autoDetectRenderer(256, 256);
+            
+
+            document.body.appendChild(renderer.view);
+
+            var stage = new PIXI.Container();
+
+            renderer.render(stage);
+        </script>
+
+    </body>
+    Hellou!
 </html>
