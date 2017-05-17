@@ -15,7 +15,8 @@ build.mustRunAfter clean
 repositories {
     jcenter()
 }
-assemble.dependsOn clientInstall,shadowJar
+assemble.dependsOn shadowJar
+shadowJar.dependsOn clientInstall
 
 dependencies {
     compile 'com.google.guava:guava:21.0'
