@@ -4,3 +4,4 @@
 xoliba.iml
 /.nb-gradle/
 src/assets/vendor
+src/main/resources/public/clientdeps

@@ -8,7 +8,7 @@ apply plugin: 'java'
 apply plugin: 'application'
 
 //Heroku can be changed to run build instead of stage.
-task stage(dependsOn: ['build', 'clean'])
+task stage(dependsOn: ['shadowJar', 'clean'])
 build.mustRunAfter clean
 
 
@@ -19,14 +19,15 @@ assemble.dependsOn shadowJar
 
 dependencies {
     compile 'com.google.guava:guava:21.0'
-    compile "com.sparkjava:spark-core:2.6.0"
+    compile 'com.sparkjava:spark-core:2.6.0'
     
-    compile "org.slf4j:slf4j-api:1.6.1"
-    compile "org.slf4j:slf4j-simple:1.6.1"
+    compile 'org.slf4j:slf4j-api:1.6.1'
+    compile 'org.slf4j:slf4j-simple:1.6.1'
     testCompile 'junit:junit:4.12'
 }
 
 clientDependencies {
+    installDir = 'src/main/resources/public/clientdeps'
     npm {
         'pixi.js'('4.5.1')
     }
