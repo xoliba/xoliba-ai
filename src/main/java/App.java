@@ -15,23 +15,8 @@ public class App {
         if (System.getenv("PORT") != null) {
             port(Integer.valueOf(System.getenv("PORT")));
         }
-		staticFileLocation("/public/clientdeps/pixi.js");
-		staticFileLocation("/public");
 		
-		options("/*", (request,response)->{
-
-    	   String accessControlRequestHeaders = request.headers("Access-Control-Request-Headers");
-    	   if (accessControlRequestHeaders != null) {
-    	       response.header("Access-Control-Allow-Headers", accessControlRequestHeaders);
-    	   }
-
-    	   String accessControlRequestMethod = request.headers("Access-Control-Request-Method");
-    	   if(accessControlRequestMethod != null){
-    		response.header("Access-Control-Allow-Methods", accessControlRequestMethod);
-    	   }
-
-    	   return "OK";
-    	});
+		staticFileLocation("/public/*");
 		
         get("/", (req, res) -> IOUtils.toString(Spark.class.getResourceAsStream("public/index.html")));
     }
