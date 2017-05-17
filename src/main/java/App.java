@@ -15,7 +15,8 @@ public class App {
         if (System.getenv("PORT") != null) {
             port(Integer.valueOf(System.getenv("PORT")));
         }
-		staticFileLocation("/public/*");
+		staticFileLocation("/public");
+		staticFileLocation("/public/clientdeps/pixi.js");
 		
 		options("/*", (request,response)->{
 
