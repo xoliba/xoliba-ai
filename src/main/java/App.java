@@ -16,6 +16,7 @@ public class App {
             port(Integer.valueOf(System.getenv("PORT")));
         }
 		staticFileLocation("/public");
+		staticFileLocation("/public/clientdeps");
 		
 		options("/*", (request,response)->{
 
