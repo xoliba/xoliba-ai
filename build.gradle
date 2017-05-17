@@ -1,5 +1,4 @@
 plugins {
-    id 'com.craigburke.client-dependencies' version '1.4.0'
     id 'com.github.johnrengelman.shadow' version '2.0.0'
 }
 
@@ -16,7 +15,6 @@ repositories {
     jcenter()
 }
 assemble.dependsOn shadowJar
-shadowJar.dependsOn clientInstall
 
 dependencies {
     compile 'com.google.guava:guava:21.0'
@@ -26,15 +24,6 @@ dependencies {
     compile 'org.slf4j:slf4j-simple:1.6.1'
     testCompile 'junit:junit:4.12'
 }
-
-clientDependencies {
-    installDir = 'src/main/resources/public/clientdeps'
-    npm {
-        'pixi.js'('4.5.1')
-    }
-}
-
-build.dependsOn clientInstall
 
 jar {
     manifest {
