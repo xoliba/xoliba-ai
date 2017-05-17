@@ -28,3 +28,11 @@ clientDependencies {
 build.dependsOn clientInstall
 
 mainClassName = 'App'
+
+jar {
+    manifest {
+        attributes(
+	    'Main-Class': 'App'
+	)
+    }
+}
