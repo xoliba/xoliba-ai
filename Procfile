@@ -1,1 +1,1 @@
-java -Dserver.port=$PORT -jar build/libs/xoliba-all.jar
+web: java -Dserver.port=$PORT $JAVA_OPTS -jar build/libs/xoliba-all.jar
