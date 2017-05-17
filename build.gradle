@@ -1,6 +1,8 @@
 plugins {
     id 'com.craigburke.client-dependencies' version '1.4.0'
+    id 'com.github.johnrengelman.shadow' version '2.0.0'
 }
+
 
 apply plugin: 'java'
 apply plugin: 'application'
@@ -9,13 +11,18 @@ apply plugin: 'application'
 task stage(dependsOn: ['build', 'clean'])
 build.mustRunAfter clean
 
+
 repositories {
     jcenter()
 }
+assemble.dependsOn shadowJar
 
 dependencies {
     compile 'com.google.guava:guava:21.0'
     compile "com.sparkjava:spark-core:2.6.0"
+    
+    compile "org.slf4j:slf4j-api:1.6.1"
+    compile "org.slf4j:slf4j-simple:1.6.1"
     testCompile 'junit:junit:4.12'
 }
 
@@ -27,4 +34,9 @@ clientDependencies {
 
 build.dependsOn clientInstall
 
+jar {
+    manifest {
+        attributes 'Main-Class': 'App'
+    }
+}
 mainClassName = 'App'
