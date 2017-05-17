@@ -16,6 +16,7 @@ repositories {
     jcenter()
 }
 assemble.dependsOn shadowJar
+shadowJar.dependsOn clientInstall
 
 dependencies {
     compile 'com.google.guava:guava:21.0'
