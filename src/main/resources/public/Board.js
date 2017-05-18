@@ -1,16 +1,36 @@
+const ROWS = 7;
 
 
-const rows = 7;
+class Board {
 
-function create2DArray() {
-    var arr = new Array(rows);
+    constructor() {
+        this.boardTable = new Array(ROWS);
+        this.create2DArray();
+        this.generateStartingBoard();
+    }
 
-    for (var i=0;i<rows;i++) {
-        arr[i] = new Array(rows);
-        for (var j=0;j<rows;j++) {
-            arr[i][j]=0;
+    create2DArray() {
+        for (let i = 0; i < ROWS; i++) {
+            this.boardTable[i] = new Array(ROWS);
+            for (let j = 0; j < ROWS; j++) {
+                this.boardTable[i][j] = 0;
+            }
         }
     }
 
-    return arr;
+    generateStartingBoard() {
+        //for now this is enough
+        for (let i = 0; i < this.boardTable.length; i++) {
+            for (let j = 0; j < this.boardTable.length; j++) {
+                this.boardTable[i][j] = Math.floor(Math.random() * (2 + 1) ) -1;;
+            }
+        }
+    }
+
+    get gameBoard() {
+        return this.boardTable;
+    }
+
+
+
 }
