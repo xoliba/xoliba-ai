@@ -8,7 +8,7 @@ function start() {
 
 //Create a container object called the `stage`
     var stage = new PIXI.Container();
-
+    drawTable(stage, [[0,0,0,0,0,0,0],[1,1,1,1,1,1,1],[-1,-1,-1,-1,-1,-1,-1],[0,0,0,0,0,0,0],[1,1,1,1,1,1,1],[-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1]])
 //Tell the `renderer` to `render` the `stage`
     renderer.render(stage);
 
