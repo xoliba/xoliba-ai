@@ -2,10 +2,9 @@
 
 function start() {
     var size = scale()
-    var renderer = new PIXI.CanvasRenderer(2048, 2048);
+    var renderer = PIXI.autoDetectRenderer(size, size, {view: document.getElementById("gameboard")});
     renderer.backgroundColor = 0xE5E3DF;
 //Add the canvas to the HTML document
-    document.body.appendChild(renderer.view);
 
 //Create a container object called the `stage`
     var stage = new PIXI.Container();

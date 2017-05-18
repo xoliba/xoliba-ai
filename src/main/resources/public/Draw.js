@@ -46,6 +46,8 @@ function scale() {
 }
 
 function drawLines(stage, size, graphics) {
+    //Line width.
+    var lineWidth = size / 120;
 
     //Dont touch these :)
     var padding = 200;
@@ -70,59 +72,4 @@ function drawLines(stage, size, graphics) {
 
     graphics.lineStyle(lineWidth, 0x000000).moveTo(center + 2 * rectSideLength, center + 2 * rectSideLength).lineTo(center - 2 * rectSideLength, center - 2 * rectSideLength);
     graphics.lineStyle(lineWidth, 0x000000).moveTo(center - 2 * rectSideLength, center + 2 * rectSideLength).lineTo(center + 2 * rectSideLength, center - 2 * rectSideLength);
-
-
-    //Do you believe in magic?
-
-    /*graphics.beginFill(0x000000);
-
-    for (i = 1; i < 6; i++) {
-        graphics.drawRect(padding + i * rectSideLength, padding, lineWidth, size - 2 * padding);
-		graphics.drawRect(padding, padding + i * rectSideLength, size - 2 * padding, lineWidth);
-    }
-
-    graphics.drawRect(size - padding, rectSideLength + padding, lineWidth, 5 * rectSideLength);
-	graphics.drawRect(rectSideLength + padding, size - padding, 5 * rectSideLength, lineWidth);
-	graphics.drawRect(rectSideLength + padding, padding, 5 * rectSideLength, lineWidth);
-	graphics.drawRect(padding, rectSideLength + padding, lineWidth, 5 * rectSideLength);
-
-    graphics.endFill();
-
-	graphics.lineStyle(lineWidth, 0x000000).moveTo(padding, rectSideLength + padding).lineTo(rectSideLength + padding, padding);
-	graphics.lineStyle(lineWidth, 0x000000).moveTo(6 * rectSideLength + padding, padding).lineTo(size - padding, rectSideLength + padding);
-	graphics.lineStyle(lineWidth, 0x000000).moveTo(padding, 6 * rectSideLength + padding).lineTo(rectSideLength + padding, size - padding);
-	graphics.lineStyle(lineWidth, 0x000000).moveTo(6 * rectSideLength + padding, size - padding).lineTo(size - padding, 6 * rectSideLength + padding);
-	
-
-    var i = 6;
-
-	for (j = 1; j <= 5; j++) {
-		graphics.lineStyle(0.8 * lineWidth, 0x000000).moveTo(padding, j * rectSideLength + padding).lineTo(i * rectSideLength + padding, size - padding);
-		i--;
-	}
-
-	i = 1;
-
-	for (j = 6; j >= 2; j--) {
-		graphics.lineStyle(0.8 * lineWidth, 0x000000).moveTo(i * rectSideLength + padding, padding).lineTo(size - padding, j * rectSideLength + padding);
-		i++;
-	}
-
-	i = 2;
-
-	for (j = 2; j <= 6; j++) {
-		graphics.lineStyle(0.8 *lineWidth, 0x00000).moveTo(padding, j * rectSideLength + padding).lineTo(i * rectSideLength + padding, padding);
-		i++;
-	}
-
-	i = 1;
-
-	for (j = 1; j <= 5; j++) {
-		graphics.lineStyle(0.8 * lineWidth, 0x000000).moveTo(i * rectSideLength + padding, size - padding).lineTo(size - padding, j * rectSideLength + padding);
-		i++;
-	}
-
-	graphics.lineStyle(0.8 * lineWidth, 0x000000).moveTo(rectSideLength + padding, rectSideLength + padding).lineTo(6 * rectSideLength + padding, 6 * rectSideLength + padding);
-	graphics.lineStyle(0.8 * lineWidth, 0x000000).moveTo(rectSideLength + padding, 6 * rectSideLength + padding).lineTo(6 * rectSideLength + padding, rectSideLength + padding);
-    */
 }
