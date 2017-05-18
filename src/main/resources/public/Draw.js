@@ -24,11 +24,13 @@ function drawButton(stage, x, y, color, size, graphics) {
     radius = px / 4;
     if (color == 1) {
         graphics.beginFill(0xe74c3c);
+        graphics.lineStyle(1, 0x000000);
     } else if (color == 0) {
         graphics.beginFill(0xffffff);
         graphics.lineStyle(1, 0x000000);
     } else if (color == -1) {
         graphics.beginFill(0x0000ff);
+        graphics.lineStyle(1, 0x000000);
     }
     graphics.drawCircle(px + x * px, px + y * px, radius);
     graphics.endFill();
