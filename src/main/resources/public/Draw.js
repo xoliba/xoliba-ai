@@ -16,21 +16,23 @@ function drawTable(stage, t) {
 }
 
 function drawButton(stage, x, y, color, size, graphics) {
-    //X and Y is anyway the same?
-    xpx = size / 10;
-    ypx = size / 10;
-    radius = xpx / 4;
-    if (color == 1) {
-        graphics.beginFill(0xe74c3c);
-    } else if (color == 0) {
-        graphics.beginFill(0xffffff);
-        graphics.lineStyle(1, 0x000000);
-    } else if (color == -1) {
-        graphics.beginFill(0x0000ff);
+    if(color >= -1) {
+        //X and Y is anyway the same?
+        xpx = size / 10;
+        ypx = size / 10;
+        radius = xpx / 4;
+        if (color == 1) {
+            graphics.beginFill(0xe74c3c);
+        } else if (color == 0) {
+            graphics.beginFill(0xffffff);
+            graphics.lineStyle(1, 0x000000);
+        } else if (color == -1) {
+            graphics.beginFill(0x0000ff);
+        }
+        graphics.drawCircle(xpx + x * xpx, ypx + y * ypx, radius);
+        graphics.endFill();
+        stage.addChild(graphics);
     }
-    graphics.drawCircle(xpx + x * xpx, ypx + y * ypx, radius);
-    graphics.endFill();
-    stage.addChild(graphics);
 }
 
 function scale() {
@@ -42,7 +44,6 @@ function scale() {
 }
 
 function drawLines(stage, size, graphics) {
-
     //Line width.
     var lineWidth = size / 120;
 
@@ -51,7 +52,7 @@ function drawLines(stage, size, graphics) {
         {transparent: true}
     );
 
-    //Dont touch these
+    //Dont touch these :)
     var rectSideLength = size / 7;
     size -= size / 120;
 
