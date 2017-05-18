@@ -16,23 +16,23 @@ function drawTable(stage, t) {
 }
 
 function drawButton(stage, x, y, color, size, graphics) {
-    if(color >= -1) {
-        //X and Y is anyway the same?
-        xpx = size / 10;
-        ypx = size / 10;
-        radius = xpx / 4;
-        if (color == 1) {
-            graphics.beginFill(0xe74c3c);
-        } else if (color == 0) {
-            graphics.beginFill(0xffffff);
-            graphics.lineStyle(1, 0x000000);
-        } else if (color == -1) {
-            graphics.beginFill(0x0000ff);
-        }
-        graphics.drawCircle(xpx + x * xpx, ypx + y * ypx, radius);
-        graphics.endFill();
-        stage.addChild(graphics);
+    if(color < -1) {
+        return
     }
+    
+    px = size / 8;
+    radius = px / 4;
+    if (color == 1) {
+        graphics.beginFill(0xe74c3c);
+    } else if (color == 0) {
+        graphics.beginFill(0xffffff);
+        graphics.lineStyle(1, 0x000000);
+    } else if (color == -1) {
+        graphics.beginFill(0x0000ff);
+    }
+    graphics.drawCircle(px + x * px, px + y * px, radius);
+    graphics.endFill();
+    stage.addChild(graphics);
 }
 
 function scale() {
