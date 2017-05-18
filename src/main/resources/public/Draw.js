@@ -21,7 +21,7 @@ function drawButton(stage, x, y, color) {
     } else if (color == 0) {
         graphics.beginFill(0xffffff);
         graphics.lineStyle(1, 0x000000);
-    } else {
+    } else if (color == -1) {
         graphics.beginFill(0x0000ff);
     }
     graphics.drawCircle(xpx + x * xpx, ypx + y * ypx, radius);

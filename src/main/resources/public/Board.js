@@ -19,10 +19,27 @@ class Board {
     }
 
     generateStartingBoard() {
-        //for now this is enough
+        
+        let reds = 17;
+        let blues = 17;
+        let whites = 11;
+        
         for (let i = 0; i < this.boardTable.length; i++) {
-            for (let j = 0; j < this.boardTable.length; j++) {
-                this.boardTable[i][j] = Math.floor(Math.random() * (2 + 1) ) -1;;
+            for (let j = 0; j < this.boardTable.length; j++) {                
+                let sum = reds + blues + whites;
+                let value = Math.floor(Math.random() * sum + 1);
+                if((i == 0 || i == 6) && (j == 0 || j == 6)){
+                    this.boardTable[i][j] = -2;
+                } else if(value <= reds){
+                    this.boardTable[i][j] = 1;
+                    reds--;
+                } else if (value <= reds + blues){
+                    this.boardTable[i][j] = -1;
+                    blues--;
+                } else {
+                    this.boardTable[i][j] = 0;
+                    whites--;
+                }
             }
         }
     }
@@ -30,7 +47,5 @@ class Board {
     get gameBoard() {
         return this.boardTable;
     }
-
-
 
 }
