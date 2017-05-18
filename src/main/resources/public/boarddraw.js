@@ -44,4 +44,32 @@ function drawLines(vres, vres, graphics) {
 
 	//graphics.lineStyle(lineWidth, 0x000000).moveTo(rectSideLength, rectSideLength).lineTo(6 * rectSideLength, 6 * rectSideLength);
 	//graphics.lineStyle(lineWidth, 0x000000).moveTo(0, rectSideLength).lineTo(6 * rectSideLength, vres);
+	
+	var i = 6;
+
+	for (j = 1; j <= 5; j++) {
+		graphics.lineStyle(lineWidth, 0x000000).moveTo(0, j * rectSideLength).lineTo(i * rectSideLength, vres);
+		i--;
+	}
+
+	i = 1;
+
+	for (j = 6; j >= 1; j--) {
+		graphics.lineStyle(lineWidth, 0x000000).moveTo(i * rectSideLength, 0).lineTo(vres, j * rectSideLength);
+		i++;
+	}
+
+	i = 2;
+
+	for (j = 2; j <= 6; j++) {
+		graphics.lineStyle(lineWidth, 0x00000).moveTo(0, j * rectSideLength).lineTo(i * rectSideLength, 0);
+		i++;
+	}
+
+	i = 1;
+
+	for (j = 1; j <= 5; j++) {
+		graphics.lineStyle(lineWidth, 0x000000).moveTo(i * rectSideLength, vres).lineTo(vres, j * rectSideLength);
+		i++;
+	}
 }
