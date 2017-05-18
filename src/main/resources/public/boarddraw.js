@@ -75,6 +75,6 @@ function drawLines(vres, vres, graphics) {
 		i++;
 	}
 
-	graphics.lineStyle(0.8 * lineWidth, 0x000000).moveTo(rectSideLength / 2, rectSideLength / 2).lineTo(6 * rectSideLength + rectSideLength / 2 + lineWidth / 2, 6 * rectSideLength + rectSideLength / 2 + lineWidth / 2);
-	graphics.lineStyle(0.8 * lineWidth, 0x000000).moveTo(rectSideLength / 2 + lineWidth / 2, 6 * rectSideLength + rectSideLength / 2 + lineWidth / 2).lineTo(6 * rectSideLength + rectSideLength / 2 + lineWidth / 2, rectSideLength / 2 + lineWidth / 2);
+	graphics.lineStyle(0.8 * lineWidth, 0x000000).moveTo(rectSideLength, rectSideLength).lineTo(6 * rectSideLength + lineWidth / 2, 6 * rectSideLength + lineWidth / 2);
+	graphics.lineStyle(0.8 * lineWidth, 0x000000).moveTo(rectSideLength + lineWidth / 2, 6 * rectSideLength + lineWidth / 2).lineTo(6 * rectSideLength + lineWidth / 2, rectSideLength + lineWidth / 2);
 }
