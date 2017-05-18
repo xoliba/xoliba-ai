@@ -15,7 +15,8 @@ public class App {
         if (System.getenv("PORT") != null) {
             port(Integer.valueOf(System.getenv("PORT")));
         }
-		staticFileLocation("/public");
+		
+		staticFiles.location("/public");
 		
         get("/", (req, res) -> IOUtils.toString(Spark.class.getResourceAsStream("public/index.html")));
     }
