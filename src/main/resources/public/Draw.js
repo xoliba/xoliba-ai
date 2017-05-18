@@ -2,20 +2,20 @@
 
 function drawTable(stage, t) {
     for (var i = 0; i < t.length; i++) {
-        var row = t[i];
+        let row = t[i];
         for (var j = 0; j < row.length; j++) {
-            var color = row[j]
+            let color = row[j]
             drawButton(stage, j, i, color)
         }
     }
 }
 
 function drawButton(stage, x, y, color) {
-    var size = scale();
-    var xpx = size / 10;
-    var ypx = size / 10;
-    var radius = xpx / 4;
-    var graphics = new PIXI.Graphics();
+    size = scale();
+    xpx = size / 10;
+    ypx = size / 10;
+    radius = xpx / 4;
+    let graphics = new PIXI.Graphics();
     if (color == 1) {
         graphics.beginFill(0xe74c3c);
     } else if (color == 0) {
@@ -30,5 +30,8 @@ function drawButton(stage, x, y, color) {
 
 function scale() {
     var x = window.innerWidth;
-    return x;
+    var y = window.innerHeight;
+    
+    var result = Math.min(x, y);
+    return result;
 }
