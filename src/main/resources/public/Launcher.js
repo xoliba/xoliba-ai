@@ -1,8 +1,9 @@
 
 
 function start() {
-    var renderer = new PIXI.CanvasRenderer(800, 600);
-    renderer.backgroundColor = 0xffffff;
+    var size = scale()
+    var renderer = new PIXI.CanvasRenderer(size, size);
+    renderer.backgroundColor = 0xE5E3DF;
 //Add the canvas to the HTML document
     document.body.appendChild(renderer.view);
 
