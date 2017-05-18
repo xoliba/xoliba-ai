@@ -6,15 +6,16 @@ plugins {
 apply plugin: 'java'
 apply plugin: 'application'
 
-//Heroku can be changed to run build instead of stage.
-task stage(dependsOn: ['shadowJar', 'clean'])
-build.mustRunAfter clean
-
-
 repositories {
     jcenter()
 }
+
 assemble.dependsOn shadowJar
+distZip.enabled = false
+distTar.enabled = false
+jar.enabled = false
+shadowDistZip.enabled = false
+shadowDistTar.enabled = false
 
 dependencies {
     compile 'com.google.guava:guava:21.0'
