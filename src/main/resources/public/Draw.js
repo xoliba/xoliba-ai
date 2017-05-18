@@ -18,6 +18,7 @@ function drawButton(stage, x, y, color) {
         graphics.beginFill(0xe74c3c);
     } else if (color == 0) {
         graphics.beginFill(0xffffff);
+        graphics.lineStyle(1, 0x000000);
     } else {
         graphics.beginFill(0x0000ff);
     }
