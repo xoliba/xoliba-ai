@@ -6,13 +6,13 @@ function drawTable(stage, t) {
 
     drawLines(stage, size, graphics)
 
-    for (var i = 0; i < t.length; i++) {
+    /*for (var i = 0; i < t.length; i++) {
         let row = t[i];
         for (var j = 0; j < row.length; j++) {
             let color = row[j]
             drawButton(stage, j, i, color, size, graphics)
         }
-    }
+    }*/
 }
 
 function drawButton(stage, x, y, color, size, graphics) {
@@ -46,8 +46,6 @@ function scale() {
 }
 
 function drawLines(stage, size, graphics) {
-    //Line width.
-    var lineWidth = size / 120;
 
     var renderer = PIXI.autoDetectRenderer(
         size, size,
@@ -55,51 +53,61 @@ function drawLines(stage, size, graphics) {
     );
 
     //Dont touch these :)
-    var rectSideLength = size / 7;
-    size -= size / 120;
+    var rectSideLength = size / 8;
+    var lineWidth = size / 120;
+    var padding = rectSizeLength / 2;
+
+    graphics.scale.x = 1;
+    graphics.scale.y = 1;
+
+    size -= rectSideLength;
 
     //Do you believe in magic?
-    graphics.beginFill(0x000000);
+
     for (i = 1; i < 7; i++) {
-        graphics.drawRect(i * rectSideLength, 0, lineWidth, size);
-        graphics.drawRect(0, i * rectSideLength, size, lineWidth);
+        graphics.drawRect(padding + i * rectSideLength, padding, lineWidth, vres - 2 * padding);
+		graphics.drawRect(padding, padding + i * rectSideLength, vres - 2 * padding, lineWidth);
     }
 
-    graphics.drawRect(size, rectSideLength, lineWidth, 5 * rectSideLength + lineWidth);
-    graphics.drawRect(rectSideLength, size, 5 * rectSideLength + lineWidth, lineWidth);
-    graphics.drawRect(rectSideLength, 0, 5 * rectSideLength + lineWidth, lineWidth);
-    graphics.drawRect(0, rectSideLength, lineWidth, 5 * rectSideLength + lineWidth);
+    graphics.drawRect(vres - padding, rectSideLength + padding, lineWidth, 5 * rectSideLength + lineWidth);
+	graphics.drawRect(rectSideLength + padding, vres - padding, 5 * rectSideLength + lineWidth, lineWidth);
+	graphics.drawRect(rectSideLength + padding, padding, 5 * rectSideLength + lineWidth, lineWidth);
+	graphics.drawRect(padding, rectSideLength + padding, lineWidth, 5 * rectSideLength + lineWidth);
 
-    graphics.lineStyle(lineWidth, 0x000000).moveTo(0, rectSideLength).lineTo(rectSideLength, 0);
-    graphics.lineStyle(lineWidth, 0x000000).moveTo(6 * rectSideLength, 0).lineTo(size + lineWidth, rectSideLength);
-    graphics.lineStyle(lineWidth, 0x000000).moveTo(0, 6 * rectSideLength).lineTo(rectSideLength, size + lineWidth);
-    graphics.lineStyle(lineWidth, 0x000000).moveTo(6 * rectSideLength + lineWidth, size + lineWidth).lineTo(size + lineWidth, 6 * rectSideLength + lineWidth);
-
-    //graphics.lineStyle(lineWidth, 0x000000).moveTo(rectSideLength, rectSideLength).lineTo(6 * rectSideLength, 6 * rectSideLength);
-    //graphics.lineStyle(lineWidth, 0x000000).moveTo(0, rectSideLength).lineTo(6 * rectSideLength, size);
+	graphics.lineStyle(lineWidth, 0x000000).moveTo(padding, rectSideLength + padding).lineTo(rectSideLength + padding, padding);
+	graphics.lineStyle(lineWidth, 0x000000).moveTo(6 * rectSideLength + padding, padding).lineTo(vres - padding + lineWidth, rectSideLength + padding);
+	graphics.lineStyle(lineWidth, 0x000000).moveTo(padding, 6 * rectSideLength + padding).lineTo(rectSideLength + padding, vres + lineWidth - padding);
+	graphics.lineStyle(lineWidth, 0x000000).moveTo(6 * rectSideLength + lineWidth + padding, vres + lineWidth - padding).lineTo(vres + lineWidth - padding, 6 * rectSideLength + lineWidth + padding);
+	
 
     var i = 6;
-    for (j = 1; j <= 5; j++) {
-        graphics.lineStyle(lineWidth, 0x000000).moveTo(0, j * rectSideLength).lineTo(i * rectSideLength, size);
-        i--;
-    }
-    i = 1;
-    for (j = 6; j >= 1; j--) {
-        graphics.lineStyle(lineWidth, 0x000000).moveTo(i * rectSideLength, 0).lineTo(size, j * rectSideLength);
-        i++;
-    }
-    i = 2;
-    for (j = 2; j <= 6; j++) {
-        graphics.lineStyle(lineWidth, 0x00000).moveTo(0, j * rectSideLength).lineTo(i * rectSideLength, 0);
-        i++;
-    }
-    i = 1;
-    for (j = 1; j <= 5; j++) {
-        graphics.lineStyle(lineWidth, 0x000000).moveTo(i * rectSideLength, size).lineTo(size, j * rectSideLength);
-        i++;
-    }
 
-    graphics.endFill();
-    stage.addChild(graphics);
-    renderer.render(stage);
+	for (j = 1; j <= 5; j++) {
+		graphics.lineStyle(0.8 * lineWidth, 0x000000).moveTo(padding, j * rectSideLength + padding).lineTo(i * rectSideLength + padding, vres + lineWidth - padding);
+		i--;
+	}
+
+	i = 1;
+
+	for (j = 6; j >= 2; j--) {
+		graphics.lineStyle(0.8 * lineWidth, 0x000000).moveTo(i * rectSideLength + padding, padding).lineTo(vres + lineWidth - padding, j * rectSideLength + padding);
+		i++;
+	}
+
+	i = 2;
+
+	for (j = 2; j <= 6; j++) {
+		graphics.lineStyle(0.8 *lineWidth, 0x00000).moveTo(padding, j * rectSideLength + lineWidth + padding).lineTo(i * rectSideLength + lineWidth + padding, padding);
+		i++;
+	}
+
+	i = 1;
+
+	for (j = 1; j <= 5; j++) {
+		graphics.lineStyle(0.8 * lineWidth, 0x000000).moveTo(i * rectSideLength + lineWidth + padding, vres + lineWidth - padding).lineTo(vres + lineWidth - padding, j * rectSideLength + lineWidth + padding);
+		i++;
+	}
+
+	graphics.lineStyle(0.8 * lineWidth, 0x000000).moveTo(rectSideLength + padding, rectSideLength + padding).lineTo(6 * rectSideLength + lineWidth / 2 + padding, 6 * rectSideLength + lineWidth / 2 + padding);
+	graphics.lineStyle(0.8 * lineWidth, 0x000000).moveTo(rectSideLength + lineWidth / 2 + padding, 6 * rectSideLength + lineWidth / 2 + padding).lineTo(6 * rectSideLength + lineWidth / 2 + padding, rectSideLength + lineWidth / 2 + padding);
 }
