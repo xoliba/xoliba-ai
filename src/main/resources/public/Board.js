@@ -6,6 +6,7 @@ class Board {
     constructor() {
         this.boardTable = new Array(ROWS);
         this.create2DArray();
+        this.generateStartingBoard();
     }
 
     create2DArray() {
@@ -17,8 +18,19 @@ class Board {
         }
     }
 
+    generateStartingBoard() {
+        //for now this is enough
+        for (let i = 0; i < this.boardTable.length; i++) {
+            for (let j = 0; j < this.boardTable.length; j++) {
+                this.boardTable[i][j] = Math.floor(Math.random() * (2 + 1) ) -1;;
+            }
+        }
+    }
+
     get gameBoard() {
         return this.boardTable;
     }
+
+
 
 }
