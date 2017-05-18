@@ -28,6 +28,8 @@ function drawLines(vres, vres, graphics) {
 	vres -= lineWidth;
 
 	for (i = 1; i < 7; i++) {
+		//graphics.lineStyle(lineWidth, 0x000000).moveTo(i * rectSideLength, 0).lineTo(i * rectSideLength, vres);
+		//graphics.lineStyle(lineWidth, 0x000000).moveTo(0, i * rectSideLength).lineTo(vres, i * rectSideLength);
 		graphics.drawRect(i * rectSideLength, 0, lineWidth, vres);
 		graphics.drawRect(0, i * rectSideLength, vres, lineWidth);
 	}
@@ -48,28 +50,31 @@ function drawLines(vres, vres, graphics) {
 	var i = 6;
 
 	for (j = 1; j <= 5; j++) {
-		graphics.lineStyle(lineWidth, 0x000000).moveTo(0, j * rectSideLength).lineTo(i * rectSideLength, vres);
+		graphics.lineStyle(0.8 * lineWidth, 0x000000).moveTo(0, j * rectSideLength).lineTo(i * rectSideLength, vres + lineWidth);
 		i--;
 	}
 
 	i = 1;
 
-	for (j = 6; j >= 1; j--) {
-		graphics.lineStyle(lineWidth, 0x000000).moveTo(i * rectSideLength, 0).lineTo(vres, j * rectSideLength);
+	for (j = 6; j >= 2; j--) {
+		graphics.lineStyle(0.8 * lineWidth, 0x000000).moveTo(i * rectSideLength, 0).lineTo(vres + lineWidth, j * rectSideLength);
 		i++;
 	}
 
 	i = 2;
 
 	for (j = 2; j <= 6; j++) {
-		graphics.lineStyle(lineWidth, 0x00000).moveTo(0, j * rectSideLength).lineTo(i * rectSideLength, 0);
+		graphics.lineStyle(0.8 *lineWidth, 0x00000).moveTo(0, j * rectSideLength + lineWidth).lineTo(i * rectSideLength + lineWidth, 0);
 		i++;
 	}
 
 	i = 1;
 
 	for (j = 1; j <= 5; j++) {
-		graphics.lineStyle(lineWidth, 0x000000).moveTo(i * rectSideLength, vres).lineTo(vres, j * rectSideLength);
+		graphics.lineStyle(0.8 * lineWidth, 0x000000).moveTo(i * rectSideLength + lineWidth, vres + lineWidth).lineTo(vres + lineWidth, j * rectSideLength + lineWidth);
 		i++;
 	}
+
+	graphics.lineStyle(0.8 * lineWidth, 0x000000).moveTo(rectSideLength / 2, rectSideLength / 2).lineTo(6 * rectSideLength + rectSideLength / 2 + lineWidth / 2, 6 * rectSideLength + rectSideLength / 2 + lineWidth / 2);
+	graphics.lineStyle(0.8 * lineWidth, 0x000000).moveTo(rectSideLength / 2 + lineWidth / 2, 6 * rectSideLength + rectSideLength / 2 + lineWidth / 2).lineTo(6 * rectSideLength + rectSideLength / 2 + lineWidth / 2, rectSideLength / 2 + lineWidth / 2);
 }
