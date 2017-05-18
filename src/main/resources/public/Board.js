@@ -7,6 +7,7 @@ class Board {
         this.boardTable = new Array(ROWS);
         this.create2DArray();
         this.generateStartingBoard();
+        this.chosenStone = new Stone(0,0,-2);
     }
 
     create2DArray() {
@@ -44,8 +45,40 @@ class Board {
         }
     }
 
+    clickStone (x,y) {
+        let clickedStone = new Stone(x,y,this.boardTable[y][x])
+        if (this.chosenStone.x == 0 && this.chosenStone.y == 0) { //no stone was chosen
+            this.chosenStone = new Stone(x,y,this.boardTable[y][x])
+    } else {                                                        //a stone was chosen, lets change places
+            this.changeStonePlaces(clickedStone,this.chosenStone)
+            this.chosenStone = new Stone(0,0,-2)
+        }
+        console.log("clickStone, chosenOne " + this.chosenStone.toString())
+    }
+
+    changeStonePlaces(st1, st2) {
+        let c = this.boardTable[st1.y][st2.x]
+        this.boardTable[st1.y][st1.x] = this.boardTable[st2.y][st2.x]
+        this.boardTable[st2.y][st2.x] = c;
+        console.log("stones moved")
+    }
+
     get gameBoard() {
         return this.boardTable;
+    }
+
+}
+
+class Stone {
+
+    constructor(x,y,c){
+        this.x = x
+        this.y = y
+        this.c = c
+    }
+
+    toString() {
+        return this.x + ", " + this.y + " c=" + this.c
     }
 
 }
