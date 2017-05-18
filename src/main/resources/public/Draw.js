@@ -11,8 +11,10 @@ function drawTable(stage, t) {
 }
 
 function drawButton(stage, x, y, color) {
-    var xpx = 40
-    var ypx = 40
+    var size = scale();
+    var xpx = size / 10;
+    var ypx = size / 10;
+    var radius = xpx / 4;
     var graphics = new PIXI.Graphics();
     if (color == 1) {
         graphics.beginFill(0xe74c3c);
@@ -21,9 +23,12 @@ function drawButton(stage, x, y, color) {
     } else {
         graphics.beginFill(0x0000ff);
     }
-    graphics.drawCircle(xpx + x * xpx, ypx + y * ypx, 15);
+    graphics.drawCircle(xpx + x * xpx, ypx + y * ypx, radius);
     graphics.endFill();
     stage.addChild(graphics);
-
 }
 
+function scale() {
+    var x = window.innerWidth;
+    return x;
+}
