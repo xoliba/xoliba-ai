@@ -13,9 +13,21 @@ function start() {
 
     var buttons = drawTable(app.stage, gameBoard);
 
+    var firstClicked;
+
     var padding = size / 10;
     var px = size / 7.5;
     var radius = px / 4;
+
+    var spr1 = [];
+    var spr2 = [];
+    var spr3 = [];
+    var spr4 = [];
+    var spr5 = [];
+    var spr6 = [];
+    var spr7 = [];
+
+    var sprites = [spr1, spr2, spr3, spr4, spr5, spr6, spr7];
 
       PIXI.loader
       .add("images/whiteCircle64.png")
@@ -35,12 +47,24 @@ function start() {
               sprite.width = radius * 2;
               sprite.height = radius * 2;
 
-              sprite.on('click', onClick)
+              sprite.on('pointerdown', onPointerDown)
 
-              function onClick(){
-                this.x += 20;
-                console.log('testi')
+              function onPointerDown(){
+                  if(firstClicked === undefined){
+                    firstClicked = this;
+                  } else {
+                    var helpx = firstClicked.x;
+                    var helpy = firstClicked.y;
+                    firstClicked.x = this.x;
+                    firstClicked.y = this.y;
+                    this.x = helpx;
+                    this.y = helpy;
+                    firstClicked = undefined;
+                  }
+                  console.log(firstClicked);
               }
+
+              sprites[i].push(sprite);
 
               app.stage.addChild(sprite);
 
