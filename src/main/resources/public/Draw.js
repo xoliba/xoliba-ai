@@ -1,6 +1,6 @@
+var sprites = [];
 
-
-function drawTable(stage, gameBoard) {
+function drawTable(stage, gameBoard, renderer) {
     let graphics = new PIXI.Graphics();
     size = scale();
     let t = gameBoard.boardTable
@@ -11,6 +11,7 @@ function drawTable(stage, gameBoard) {
     return t;
 
 }
+
 
 function scale() {
     var x = window.innerWidth;

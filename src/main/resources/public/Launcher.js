@@ -10,12 +10,12 @@ function start() {
 //    var stage = new PIXI.Container();
 
     var gameBoard = new Board();
+
     var buttons = drawTable(app.stage, gameBoard);
 
     var padding = size / 10;
     var px = size / 7.5;
     var radius = px / 4;
-
 
       PIXI.loader
       .add("images/whiteCircle64.png")
