@@ -1,93 +1,95 @@
+var sprites = [];
 
-
-function drawTable(stage, gameBoard) {
+function drawTable(stage, gameBoard, renderer) {
     let graphics = new PIXI.Graphics();
     size = scale();
     let t = gameBoard.boardTable
-
+    spritesetup(stage, renderer);
     drawLines(stage, size, graphics)
-
     for (var i = 0; i < t.length; i++) {
         let row = t[i];
         for (var j = 0; j < row.length; j++) {
             let color = row[j]
-            drawButton(stage, j, i, color, size, graphics, gameBoard)
+            //  drawButton(stage, j, i, color, size, graphics, gameBoard, renderer)
+
         }
     }
+    stage.addChild(graphics);
 }
 
-    function drawButton(stage, x, y, color, size, graphics, gameBoard) {
-    if(color < -1) {
+function drawButton(stage, x, y, color, size, graphics, gameBoard, renderer) {
+    if (color < -1) {
         return
     }
 
     padding = size / 10
     px = size / 7.5;
     radius = px / 4;
-    if (color == 1) {
-        graphics.beginFill(0xe74c3c); //red
-        graphics.lineStyle(1, 0x000000);
-    } else if (color == 0) {
-        graphics.beginFill(0xffffff); //white
-        graphics.lineStyle(1, 0x000000);
-    } else if (color == -1) {
-        graphics.beginFill(0x0000ff); //blue
-        graphics.lineStyle(1, 0x000000);
-    }
+    /*  if (color == 1) {
+     
+     graphics.beginFill(0xe74c3c); //red
+     graphics.lineStyle(1, 0x000000);
+     } else if (color == 0) {
+     graphics.beginFill(0xffffff); //white
+     graphics.lineStyle(1, 0x000000);
+     } else if (color == -1) {
+     graphics.beginFill(0x0000ff); //blue
+     graphics.lineStyle(1, 0x000000);
+     }
+     
+     graphics.drawCircle(padding + x * px, padding + y * px, radius);
+     graphics.endFill();
+     
+     
+     
+     stage.addChild(buttonSprite);
+     */
 
-    graphics.drawCircle(padding + x * px, padding + y * px, radius);
-    graphics.endFill();
-
-    //doesnt work
-    /*
-    var texture = graphics.generateTexture();
-    buttonSprite = new PIXI.Sprite(texture);
-    buttonSprite.buttonMode = true;
-    buttonSprite.interactive = true;
-    buttonSprite.hitArea = new PIXI.Circle(px + x * px, px + y * px, radius);
-    buttonSprite.mouseover = function (e) {
-        console.log(x, y);
-    };
-    buttonSprite.on('click', function(a) {
-        console.log("click");
-        gameBoard.clickStone(x,y);
-        buttonSprite.x += 15
-    });
-
-    stage.addChild(buttonSprite);
-    */
     stage.addChild(graphics)
 }
 
-function spritesetup (stage, renderer){
-  PIXI.loader
-    .add("images/whiteCircle64.png")
-    .load(setup);
+function spritesetup(stage, renderer) {
+    PIXI.loader
+            .add("images/whiteCircle64.png")
+            .load(setup);
 
-  function setup() {
-    var sprite = new PIXI.Sprite(
-      PIXI.loader.resources["images/whiteCircle64.png"].texture
-    );
-    sprite.interactive = true;
-    sprite.buttonMode = true;
-    sprite.on('click', onClick);
-    
-     
- 
-    stage.addChild(sprite);
-    renderer.render(stage);
+    function setup() {
+        for (var i = 0; i < 7; i++) {
+            for (var j = 0; j < 7; j++) {
+                 if(!((i == 0 || i == 6) && (j == 0 || j == 6))){
+                    var sprite = new PIXI.Sprite(
+                            PIXI.loader.resources["images/whiteCircle64.png"].texture
+                            );
+                    padding = size / 10
+                    px = size / 7.5;
+                    radius = px / 4;
+                    sprite.interactive = true;
+                    sprite.buttonMode = true;
+                    sprite.scale.x *= 0.5;
+                    sprite.scale.y *= 0.5
+                    sprite.on('click', onClick);
+                    sprite.x = padding + i * px - radius;
+                    sprite.y = padding + j * px - radius;
 
-  }
+                    sprites.push(sprite);
+
+                    stage.addChild(sprite);
+
+                    renderer.render(stage);
+                }
+            }
+        }
+    }
 }
 function onClick() {
     console.log("Click'd");
-   // this.sprite.x += 50;
-}  
+    // this.sprite.x += 50;
+}
 
 function scale() {
     var x = window.innerWidth;
     var y = window.innerHeight;
-    
+
     var result = Math.min(x, y);
     return result;
 }

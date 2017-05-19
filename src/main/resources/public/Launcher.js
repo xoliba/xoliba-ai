@@ -10,9 +10,9 @@ function start() {
     var stage = new PIXI.Container();
 
     var gameBoard = new Board();
-    drawTable(stage, gameBoard);
+    drawTable(stage, gameBoard, renderer);
 
-    spritesetup(stage, renderer);
+  
 
 }
 
