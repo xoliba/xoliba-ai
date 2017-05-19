@@ -1,4 +1,3 @@
-var sprites = [];
 
 function drawTable(stage) {
     let graphics = new PIXI.Graphics();

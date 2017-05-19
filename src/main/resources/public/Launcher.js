@@ -15,9 +15,21 @@ function start() {
 
     var stonesArray = gameBoard.boardTable;
 
+    var firstClicked;
+
     var padding = size / 10;
     var px = size / 7.5;
     var radius = px / 4;
+
+    var spr1 = [];
+    var spr2 = [];
+    var spr3 = [];
+    var spr4 = [];
+    var spr5 = [];
+    var spr6 = [];
+    var spr7 = [];
+
+    var sprites = [spr1, spr2, spr3, spr4, spr5, spr6, spr7];
 
       PIXI.loader
       .add([
@@ -55,16 +67,25 @@ function start() {
               sprite.width = radius * 2;
               sprite.height = radius * 2;
 
-              sprite.on('click', onClick);
 
-              function onClick(){
-                  let direction = Math.floor(Math.random() * 4 + 1);
-                  if (direction == 1) this.x += 20;
-                  else if (direction == 2) this.x -= 20;
-                  else if (direction == 3) this.y += 20;
-                  else  this.y -= 20;
-                console.log("click (" + this.x + ", " + this.y + ") mover direction " + direction);
+              sprite.on('pointerdown', onPointerDown)
+
+              function onPointerDown(){
+                  if(firstClicked === undefined){
+                    firstClicked = this;
+                  } else {
+                    var helpx = firstClicked.x;
+                    var helpy = firstClicked.y;
+                    firstClicked.x = this.x;
+                    firstClicked.y = this.y;
+                    this.x = helpx;
+                    this.y = helpy;
+                    firstClicked = undefined;
+                  }
+                  console.log(firstClicked);
               }
+
+              sprites[i].push(sprite);
 
               app.stage.addChild(sprite);
 
