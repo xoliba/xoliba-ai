@@ -6,6 +6,8 @@ plugins {
 apply plugin: 'java'
 apply plugin: 'application'
 
+task stage(dependsOn: ['shadowJar', 'clean'])
+
 repositories {
     jcenter()
 }
