@@ -1,14 +1,11 @@
 
-function drawTable(stage, gameBoard, renderer) {
+function drawTable(stage) {
     let graphics = new PIXI.Graphics();
     size = scale();
-    let t = gameBoard.boardTable
 
     drawLines(stage, size, graphics);
 
     stage.addChild(graphics)
-    return t;
-
 }
 
 
