@@ -59,6 +59,31 @@ function drawTable(stage, gameBoard) {
     stage.addChild(graphics)
 }
 
+function spritesetup (stage, renderer){
+  PIXI.loader
+    .add("images/whiteCircle64.png")
+    .load(setup);
+
+  function setup() {
+    var sprite = new PIXI.Sprite(
+      PIXI.loader.resources["images/whiteCircle64.png"].texture
+    );
+    sprite.interactive = true;
+    sprite.buttonMode = true;
+    sprite.on('click', onClick);
+    
+     
+ 
+    stage.addChild(sprite);
+    renderer.render(stage);
+
+  }
+}
+function onClick() {
+    console.log("Click'd");
+   // this.sprite.x += 50;
+}  
+
 function scale() {
     var x = window.innerWidth;
     var y = window.innerHeight;

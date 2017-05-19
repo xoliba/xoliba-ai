@@ -16,18 +16,6 @@ function start() {
 
 }
 
-function spritesetup (stage, renderer){
-  PIXI.loader
-    .add("images/whiteCircle64.png")
-    .load(setup);
 
-  function setup() {
-    var sprite = new PIXI.Sprite(
-      PIXI.loader.resources["images/whiteCircle64.png"].texture
-    );
 
-    stage.addChild(sprite);
-    renderer.render(stage);
 
-  }
-}
