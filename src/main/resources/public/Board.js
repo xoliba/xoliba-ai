@@ -20,13 +20,13 @@ class Board {
     }
 
     generateStartingBoard() {
-        
+
         let reds = 17;
         let blues = 17;
         let whites = 11;
-        
+
         for (let i = 0; i < this.boardTable.length; i++) {
-            for (let j = 0; j < this.boardTable.length; j++) {                
+            for (let j = 0; j < this.boardTable.length; j++) {
                 let sum = reds + blues + whites;
                 let value = Math.floor(Math.random() * sum + 1);
                 if((i == 0 || i == 6) && (j == 0 || j == 6)){
