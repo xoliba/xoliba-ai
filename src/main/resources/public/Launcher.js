@@ -34,11 +34,20 @@ function start() {
 
               var sprite;
 
-              if ()
+              let c = stonesArray[j][i];
+              let path = "";
+              if (c == -1) {
+                  path = "images/blueCircle64.png";
+              } else if (c == 0) {
+                  path = "images/whiteCircle64.png";
+              } else if (c == 1) {
+                  path = "images/redCircle64.png";
+              }
 
               sprite = new PIXI.Sprite(
-                PIXI.loader.resources["images/whiteCircle64.png"].texture
+                PIXI.loader.resources[path].texture
               );
+
               sprite.interactive = true;
               sprite.buttonMode = true;
               sprite.x = padding + i * px - radius;
@@ -46,11 +55,15 @@ function start() {
               sprite.width = radius * 2;
               sprite.height = radius * 2;
 
-              sprite.on('click', onClick)
+              sprite.on('click', onClick);
 
               function onClick(){
-                this.x += 20;
-                console.log('testi')
+                  let direction = Math.floor(Math.random() * 4 + 1);
+                  if (direction == 1) this.x += 20;
+                  else if (direction == 2) this.x -= 20;
+                  else if (direction == 3) this.y += 20;
+                  else  this.y -= 20;
+                console.log("click (" + this.x + ", " + this.y + ") mover direction " + direction);
               }
 
               app.stage.addChild(sprite);
