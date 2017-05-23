@@ -18,6 +18,9 @@ public class App {
 		
 		staticFiles.location("/public");
 		
-        get("/", (req, res) -> IOUtils.toString(Spark.class.getResourceAsStream("public/index.html")));
+        get("/", (req, res) -> {
+            res.redirect("http://xoliba.herokuapp.com");
+            return null;
+        });
     }
 }
