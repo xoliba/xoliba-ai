@@ -17,6 +17,8 @@ public class App {
         }
 		
 		staticFiles.location("/public");
+
+		webSocket("/echo", EchoWebSocket.class);
 		
         get("/", (req, res) -> {
             res.redirect("http://xoliba.herokuapp.com");
