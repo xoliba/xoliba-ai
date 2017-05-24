@@ -1,5 +1,6 @@
 import org.eclipse.jetty.websocket.api.*;
 import org.eclipse.jetty.websocket.api.annotations.*;
+import com.google.gson.Gson;
 import java.io.*;
 import java.util.*;
 import java.util.concurrent.*;
@@ -21,7 +22,8 @@ public class EchoWebSocket {
 	
 	@OnWebSocketMessage
 	public void message(Session session, String message) throws IOException {
-		System.out.println("Got: " + message);
-		session.getRemote().sendString(message);
+		Gson gson = new Gson();
+		System.out.println("Got: " + JsonConverter.jsonify(JsonConverter.parse(message)));
+		session.getRemote().sendString(JsonConverter.jsonify(JsonConverter.parse(message)));
 	}
 }
