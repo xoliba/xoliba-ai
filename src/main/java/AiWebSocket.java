@@ -6,7 +6,7 @@ import java.util.*;
 import java.util.concurrent.*;
 
 @WebSocket
-public class EchoWebSocket {
+public class AiWebSocket {
 	private static final Queue<Session> sessions = new ConcurrentLinkedQueue<>();
 
 	@OnWebSocketConnect
