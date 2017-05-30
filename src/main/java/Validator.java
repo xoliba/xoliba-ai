@@ -53,7 +53,7 @@ public class Validator {
 
         ArrayList<Coordinate> coordinates = new ArrayList<>();
         for (int i = 1; i < 7; i++) { //the max distance to walk is 6 steps
-            if (areAllDirectionsBlocked(stopWalkingToThisDirection)) {
+            if (areAllDirectionsBlocked(stopWalkingToThisDirection)) { //for effiency
                 break;
             }
 
@@ -128,74 +128,47 @@ public class Validator {
                 triangles += lookForTriangles(c, hypotenuseCoordinate, firstCornerCoordinate, secondCornerCoordinate, color);
             }
         }
-        return 0;
+        return triangles;
     }
 
+    /**
+     *
+     * @param origin the coordinate where we start looking from
+     * @param hypotenuseCoordinate the coordinate that is the longest distance from origin (same line or row)
+     * @param firstPossibleCornerCoordinate first option on diagonal
+     * @param secondPossibleCornerCoordinate second option on diagonal
+     * @param color the color of triangle we are looking for
+     * @return how many triangles can be formed from this coordinate
+     */
     protected int lookForTriangles(Coordinate origin, Coordinate hypotenuseCoordinate, Coordinate firstPossibleCornerCoordinate, Coordinate secondPossibleCornerCoordinate, int color) {
-        int triangles = 0;
+        int triangles;
+        int usableCorners = 0;
+        if (canBeUsedInTriangle(firstPossibleCornerCoordinate, color)) usableCorners++;
+        if (canBeUsedInTriangle(secondPossibleCornerCoordinate, color)) usableCorners++;
 
-        if (isThisOffBoard(firstPossibleCornerCoordinate) && isThisOffBoard(secondPossibleCornerCoordinate)) {
-            return 0; //both corners are off board, no triangles can be made
-        } else if (isThisOffBoard(hypotenuseCoordinate)) { //hypotenuse is off board
-
-        } else {//hypotenuse and at least one of the corners is on board
-
+        if (usableCorners == 0) {
+            triangles = 0; //both corners are unusable, no triangles can be made
+        } else if (!canBeUsedInTriangle(hypotenuseCoordinate, color)) { //hypotenuse cant be used
+            if (usableCorners == 2) {
+                triangles = 1; //both corners can be used, so one triangle is formed
+            } else {
+                triangles = 0;
+            }
+        } else {//hypotenuse and at least one of the corners are usable
+            if (usableCorners == 2) {
+                triangles = 3; //all three are usable, so three triangles
+            } else {
+                triangles = 1; //other corner is missing, so one triangle
+            }
         }
         return triangles;
+    }
+
+    protected boolean canBeUsedInTriangle(Coordinate c, int color) {
+        return !isThisOffBoard(c) && isCoordinateColor(c, color);
     }
 
     protected boolean isCoordinateColor(Coordinate c, int color) {
         return board[c.x][c.y] == color;
     }
-
-
-    /*
-    //THIS CLASS IS NOT TESTED SEPARATELY. so please refactor patameters as you want.
-    lookForTriangles(originX, originY, directionX, directionY, firstChangeX, firstChangeY, secondChangeX, secondChangeY, color) {
-        let foundOnThisDirection = 0;
-        let triangles = 0;
-        let targetX = originX + directionX;
-        let targetY = originY + directionY;
-        foundOnThisDirection += this.checkDiagonals(originX, originY, firstChangeX, firstChangeY, secondChangeX, secondChangeY, color);
-
-
-        if (!this.isThisOnBoard(targetX, targetY)) { //if the target is out of board
-            if (foundOnThisDirection === 2) { //if there are two on diagonals
-                triangles = 1;
-            } else {
-                triangles = 0;
-            }
-        } else if (foundOnThisDirection === 0 || (foundOnThisDirection === 1 && this.gameboard[originX + directionX][originY + directionY] !== color)) { //no triangles, target on board
-            triangles = 0;
-        } else if (foundOnThisDirection === 2 && this.gameboard[originX + directionX][originY + directionY] === color) { //all four stones are the right colour
-            triangles = 3;
-        } else {
-            triangles = 1;
-        }
-
-        return triangles;
-    }
-
-    isThisOnBoard(x, y) {
-        return x >= 0 && x <= 6 && y <= 6 && y >= 0; //if the target is out of board
-
-    }
-
-    //THIS CLASS IS NOT TESTED SEPARATELY. so please refactor patameters as you want.
-    checkDiagonals(positionX, positionY, firstChangeX, firstChangeY, secondChangeX, secondChangeY, color) {
-        return this.checkIfColour(positionX + firstChangeX, positionY + firstChangeY, color) +
-                this.checkIfColour(positionX + secondChangeX, positionY + secondChangeY, color);
-    }
-
-    checkIfColour(targetX, targetY, color) {
-        var result = 0;
-        if (this.isThisOnBoard(targetX, targetY)) {
-            if (this.gameboard[targetX][targetY] === color) {
-                result++;
-            }
-        }
-        return result;
-    }
-    */
-    
 }
