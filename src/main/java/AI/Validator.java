@@ -7,6 +7,7 @@ package AI;
  */
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  *
@@ -33,14 +34,20 @@ public class Validator {
     public ArrayList<Coordinate> getPossibleMoves(int originX, int originY){
         ArrayList<Coordinate> possibleTargetCoordinates = getConnectedWhites(originX, originY);
 
-        for (int i = 0; i < possibleTargetCoordinates.size(); i++) {
-            Coordinate c = possibleTargetCoordinates.get(i);
+        int color = board[originX][originY];
+        board[originX][originY] = 0; //original coordinate needs to be changed to 0 so that AI doesn't found false triangles.
+        
+        //Iterator is used to loop through the possible target coordinates
+        for (Iterator<Coordinate> iterator = possibleTargetCoordinates.iterator(); iterator.hasNext();) {
+            Coordinate c = iterator.next();
 
             //if triangle cannot be formed, remove this coordinate from the list
-            if (howManyTrianglesFound(c, board[originX][originY]) == 0) {
-                possibleTargetCoordinates.remove(c);
+            if (howManyTrianglesFound(c, color) == 0) {
+                iterator.remove();
             }
         }
+        
+        board[originX][originY] = color;
 
         return possibleTargetCoordinates;
     }
@@ -133,9 +140,11 @@ public class Validator {
         return triangles;
     }
 
+    /**es;
+    }
+
     /**
      *
-     * @param origin the coordinate where we start looking from
      * @param hypotenuseCoordinate the coordinate that is the longest distance from origin (same line or row)
      * @param firstPossibleCornerCoordinate first option on diagonal
      * @param secondPossibleCornerCoordinate second option on diagonal
