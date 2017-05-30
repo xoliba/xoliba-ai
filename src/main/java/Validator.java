@@ -35,7 +35,7 @@ public class Validator {
             int[] coordinate = possibleTargetCoordinates.get(i);
 
             //if triangle cannot be formed, remove this coordinate from the list
-            if (!checkIfFormsATriangle(coordinate, board[originX][originY])) {
+            if (howManyTrianglesFound(coordinate, board[originX][originY]) == 0) {
                 possibleTargetCoordinates.remove(coordinate);
             }
         }
@@ -116,8 +116,86 @@ public class Validator {
      * @param color
      * @return can a triangle of given color be formed with the coordinate
      */
-    protected boolean checkIfFormsATriangle(int[] coordinate, int color) {
-        return true;
+    protected int howManyTrianglesFound(int[] coordinate, int color) {
+        int triangles = 0;
+        int[][] hypotenuseDirections = new int[][] {{-1, 0},{1, 0},{0, -1},{0, 1} }; //left, right, up, down
+        int[][] edgeDirections = new int[][]{{-1, 1, -1, -1},{1, 1, 1, -1},{-1, -1, 1, -1},{-1, 1, 1, 1}}; //left, right, up, down
+
+        for (int i = 2; i <= 6; i += 2) { //for all possible triangle distances
+            int distanceSide = i / 2;
+            for (int j = 0; j < 4; j++) { //for all four directions
+                int[] hypotenuseCoordinate = new int[]{hypotenuseDirections[j][0] * i + coordinate[0], hypotenuseDirections[j][0] * i + coordinate[1]};
+                int[] firstCornerCoordinate = new int[]{edgeDirections[j][0] * distanceSide + coordinate[0], edgeDirections[j][1] * distanceSide + coordinate[1]};
+                int[] secondCornerCoordinate = new int[]{edgeDirections[j][2] * distanceSide + coordinate[0], edgeDirections[j][3] * distanceSide + coordinate[1]};
+
+                triangles += lookForTriangles(coordinate, hypotenuseCoordinate, firstCornerCoordinate, secondCornerCoordinate, color);
+            }
+        }
+        return 0;
     }
+
+    protected int lookForTriangles(int[] origin, int[] hypotenuseCoordinate, int[] firstPossibleCornerCoordinate, int[] secondPossibleCornerCoordinate, int color) {
+        int foundOnThisDirection = 0;
+        int triangles = 0;
+
+        if (isThisOffBoard(firstPossibleCornerCoordinate) && isThisOffBoard(secondPossibleCornerCoordinate)) {
+            return 0; //both corners are off board
+        }
+        return 0;
+    }
+
+    protected boolean isCoordinateColor(int[] coordinate, int color) {
+        return board[coordinate[0]][coordinate[1]] == color;
+    }
+
+
+    /*
+    //THIS CLASS IS NOT TESTED SEPARATELY. so please refactor patameters as you want.
+    lookForTriangles(originX, originY, directionX, directionY, firstChangeX, firstChangeY, secondChangeX, secondChangeY, color) {
+        let foundOnThisDirection = 0;
+        let triangles = 0;
+        let targetX = originX + directionX;
+        let targetY = originY + directionY;
+        foundOnThisDirection += this.checkDiagonals(originX, originY, firstChangeX, firstChangeY, secondChangeX, secondChangeY, color);
+
+
+        if (!this.isThisOnBoard(targetX, targetY)) { //if the target is out of board
+            if (foundOnThisDirection === 2) { //if there are two on diagonals
+                triangles = 1;
+            } else {
+                triangles = 0;
+            }
+        } else if (foundOnThisDirection === 0 || (foundOnThisDirection === 1 && this.gameboard[originX + directionX][originY + directionY] !== color)) { //no triangles, target on board
+            triangles = 0;
+        } else if (foundOnThisDirection === 2 && this.gameboard[originX + directionX][originY + directionY] === color) { //all four stones are the right colour
+            triangles = 3;
+        } else {
+            triangles = 1;
+        }
+
+        return triangles;
+    }
+
+    isThisOnBoard(x, y) {
+        return x >= 0 && x <= 6 && y <= 6 && y >= 0; //if the target is out of board
+
+    }
+
+    //THIS CLASS IS NOT TESTED SEPARATELY. so please refactor patameters as you want.
+    checkDiagonals(positionX, positionY, firstChangeX, firstChangeY, secondChangeX, secondChangeY, color) {
+        return this.checkIfColour(positionX + firstChangeX, positionY + firstChangeY, color) +
+                this.checkIfColour(positionX + secondChangeX, positionY + secondChangeY, color);
+    }
+
+    checkIfColour(targetX, targetY, color) {
+        var result = 0;
+        if (this.isThisOnBoard(targetX, targetY)) {
+            if (this.gameboard[targetX][targetY] === color) {
+                result++;
+            }
+        }
+        return result;
+    }
+    */
     
 }
