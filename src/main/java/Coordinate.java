@@ -10,7 +10,7 @@
  */
 public class Coordinate {
     
-    private int x, y;
+    protected int x, y;
 
     public Coordinate(int x, int y) {
         this.x = x;

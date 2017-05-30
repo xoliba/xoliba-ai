@@ -28,15 +28,15 @@ public class Validator {
      * @param originY
      * @return list of coordinates you can legally move to [ [x1,y1], [x2, y2], ...]
      */
-    public ArrayList<int[]> getPossibleMoves(int originX, int originY){
-        ArrayList<int[]> possibleTargetCoordinates = getConnectedWhites(originX, originY);
+    public ArrayList<Coordinate> getPossibleMoves(int originX, int originY){
+        ArrayList<Coordinate> possibleTargetCoordinates = getConnectedWhites(originX, originY);
 
         for (int i = 0; i < possibleTargetCoordinates.size(); i++) {
-            int[] coordinate = possibleTargetCoordinates.get(i);
+            Coordinate c = possibleTargetCoordinates.get(i);
 
             //if triangle cannot be formed, remove this coordinate from the list
-            if (howManyTrianglesFound(coordinate, board[originX][originY]) == 0) {
-                possibleTargetCoordinates.remove(coordinate);
+            if (howManyTrianglesFound(c, board[originX][originY]) == 0) {
+                possibleTargetCoordinates.remove(c);
             }
         }
 
@@ -47,11 +47,11 @@ public class Validator {
      * @return all the white coordinates one can move to in the format
      * [ [x1,y1], [x2, y2], ...]
      */
-    protected ArrayList<int[]> getConnectedWhites(int originX, int originY) {
+    protected ArrayList<Coordinate> getConnectedWhites(int originX, int originY) {
         int[][] walkingDirections = { {1,0},{1,1},{0,1},{-1,1},{-1,0},{-1,-1},{0,-1},{1,-1} }; //east, south-east, south, ...
         boolean[] stopWalkingToThisDirection = new boolean[8];
 
-        ArrayList<int[]> coordinates = new ArrayList<>();
+        ArrayList<Coordinate> coordinates = new ArrayList<>();
         for (int i = 1; i < 7; i++) { //the max distance to walk is 6 steps
             if (areAllDirectionsBlocked(stopWalkingToThisDirection)) {
                 break;
@@ -64,15 +64,15 @@ public class Validator {
 
                 int x = originX + i * walkingDirections[j][0]; //the origin + distance to walk on x-axis to this direction
                 int y = originY + i * walkingDirections[j][1];
-                int[] coordinateToCheck = {x,y};
+                Coordinate c = new Coordinate(x,y);
 
-                if (isThisOffBoard(coordinateToCheck) || board[coordinateToCheck[0]][coordinateToCheck[1]] != 0) {
+                if (isThisOffBoard(c) || board[c.x][c.y] != 0) {
                     stopWalkingToThisDirection[j] = true;
                     continue;
                 }
 
                 //the coordinate is on board and white, and this direction is not blocked
-                coordinates.add(coordinateToCheck);
+                coordinates.add(c);
             }
         }
 
@@ -85,25 +85,22 @@ public class Validator {
      * @return are all the 8 directions blocked?
      */
     protected boolean areAllDirectionsBlocked(boolean[] stopWalkingInThisDirection) {
-        int blocked = 0;
         for (int i = 0; i < stopWalkingInThisDirection.length; i++) {
-            if (stopWalkingInThisDirection[i]) {
-                blocked++;
+            if (!stopWalkingInThisDirection[i]) {
+                return false;
             }
         }
-
-        if (blocked == stopWalkingInThisDirection.length) return true;
-        return false;
+        return true;
     }
 
     /**
      *
-     * @param coordinate
+     * @param c
      * @return if both x and y are [0,6]
      */
-    protected boolean isThisOffBoard(int[] coordinate) {
-        int x = coordinate[0];
-        int y = coordinate[1];
+    protected boolean isThisOffBoard(Coordinate c) {
+        int x = c.x;
+        int y = c.y;
         if(x == 0 && (y == 0 || y == 6) || x == 6 && (y == 0 || y == 6)){
             return true; //the corners
         }
@@ -112,11 +109,11 @@ public class Validator {
 
     /**
      *
-     * @param coordinate [x,y]
+     * @param c [x,y]
      * @param color
      * @return can a triangle of given color be formed with the coordinate
      */
-    protected int howManyTrianglesFound(int[] coordinate, int color) {
+    protected int howManyTrianglesFound(Coordinate c, int color) {
         int triangles = 0;
         int[][] hypotenuseDirections = new int[][] {{-1, 0},{1, 0},{0, -1},{0, 1} }; //left, right, up, down
         int[][] edgeDirections = new int[][]{{-1, 1, -1, -1},{1, 1, 1, -1},{-1, -1, 1, -1},{-1, 1, 1, 1}}; //left, right, up, down
@@ -124,28 +121,31 @@ public class Validator {
         for (int i = 2; i <= 6; i += 2) { //for all possible triangle hypotenuse lengths
             int distanceSide = i / 2;
             for (int j = 0; j < 4; j++) { //for all four directions
-                int[] hypotenuseCoordinate = new int[]{hypotenuseDirections[j][0] * i + coordinate[0], hypotenuseDirections[j][0] * i + coordinate[1]};
-                int[] firstCornerCoordinate = new int[]{edgeDirections[j][0] * distanceSide + coordinate[0], edgeDirections[j][1] * distanceSide + coordinate[1]};
-                int[] secondCornerCoordinate = new int[]{edgeDirections[j][2] * distanceSide + coordinate[0], edgeDirections[j][3] * distanceSide + coordinate[1]};
+                Coordinate hypotenuseCoordinate = new Coordinate(hypotenuseDirections[j][0] * i + c.x, hypotenuseDirections[j][0] * i + c.y);
+                Coordinate firstCornerCoordinate = new Coordinate(edgeDirections[j][0] * distanceSide + c.x, edgeDirections[j][1] * distanceSide + c.y);
+                Coordinate secondCornerCoordinate = new Coordinate(edgeDirections[j][2] * distanceSide + c.x, edgeDirections[j][3] * distanceSide + c.y);
 
-                triangles += lookForTriangles(coordinate, hypotenuseCoordinate, firstCornerCoordinate, secondCornerCoordinate, color);
+                triangles += lookForTriangles(c, hypotenuseCoordinate, firstCornerCoordinate, secondCornerCoordinate, color);
             }
         }
         return 0;
     }
 
-    protected int lookForTriangles(int[] origin, int[] hypotenuseCoordinate, int[] firstPossibleCornerCoordinate, int[] secondPossibleCornerCoordinate, int color) {
-        int foundOnThisDirection = 0;
+    protected int lookForTriangles(Coordinate origin, Coordinate hypotenuseCoordinate, Coordinate firstPossibleCornerCoordinate, Coordinate secondPossibleCornerCoordinate, int color) {
         int triangles = 0;
 
         if (isThisOffBoard(firstPossibleCornerCoordinate) && isThisOffBoard(secondPossibleCornerCoordinate)) {
-            return 0; //both corners are off board
+            return 0; //both corners are off board, no triangles can be made
+        } else if (isThisOffBoard(hypotenuseCoordinate)) { //hypotenuse is off board
+
+        } else {//hypotenuse and at least one of the corners is on board
+
         }
-        return 0;
+        return triangles;
     }
 
-    protected boolean isCoordinateColor(int[] coordinate, int color) {
-        return board[coordinate[0]][coordinate[1]] == color;
+    protected boolean isCoordinateColor(Coordinate c, int color) {
+        return board[c.x][c.y] == color;
     }
 
 
