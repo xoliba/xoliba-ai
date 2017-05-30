@@ -1,9 +1,13 @@
+package AI;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 
+import AI.Coordinate;
+import AI.Validator;
 import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
@@ -44,6 +48,8 @@ public class ValidatorTest {
         }
         assertTrue(connected.contains(new Coordinate(0, 1)));
         assertFalse(connected.contains(new Coordinate(0, 0)));
+        assertFalse(connected.contains(new Coordinate(1, -1)));
+        assertFalse(connected.contains(new Coordinate(1, 7)));
         board[1][1] = 1;
         validator.updateBoard(board);
         connected = validator.getConnectedWhites(1, 0);
@@ -63,6 +69,12 @@ public class ValidatorTest {
         assertFalse(validator.isThisOffBoard(new Coordinate(0, 1)));
         assertFalse(validator.isThisOffBoard(new Coordinate(5, 6)));
         assertFalse(validator.isThisOffBoard(new Coordinate(6, 5)));
+    }
+    
+    @Test
+    public void areAllDirectionsBlockedTest(){
+        assertTrue(validator.areAllDirectionsBlocked(new boolean[]{true, true, true, true}));
+        assertFalse(validator.areAllDirectionsBlocked(new boolean[]{true, true, false, true}));
     }
     
     
