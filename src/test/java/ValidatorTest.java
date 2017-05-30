@@ -31,44 +31,40 @@ public class ValidatorTest {
     
     @Test
     public void getConnectecWhitesTest(){
-        ArrayList<int[]> connected = validator.getConnectedWhites(1, 0);
-        for (int[] connected1 : connected) {
-            for (int d : connected1) {
-                System.out.println(d);
-            }
-            System.out.println("pöö");
-        }
+        ArrayList<Coordinate> connected = validator.getConnectedWhites(1, 0);
         assertEquals(16, connected.size());
         for (int i = 2; i < 6; i++) {
-            assertFalse(connected.contains(new int[]{i,0}));
+            assertTrue(connected.contains(new Coordinate(i, 0)));
         }
         for (int i = 1; i < 6; i++) {
-            assertTrue(connected.contains(new int[]{i + 1, i}));
+            assertTrue(connected.contains(new Coordinate(i + 1, i)));
         }
         for (int i = 1; i < 7; i++) {
-            assertTrue(connected.contains(new int[]{1, i}));
+            assertTrue(connected.contains(new Coordinate(1, i)));
         }
-        assertTrue(connected.contains(new int[]{0, 1}));
-        assertFalse(connected.contains(new int[]{0, 0}));
+        assertTrue(connected.contains(new Coordinate(0, 1)));
+        assertFalse(connected.contains(new Coordinate(0, 0)));
         board[1][1] = 1;
         validator.updateBoard(board);
         connected = validator.getConnectedWhites(1, 0);
         assertEquals(10, connected.size());
         for (int i = 1; i < 7; i++) {
-            assertFalse(connected.contains(new int[]{1, i}));
+            assertFalse(connected.contains(new Coordinate(1, i)));
         }
     }
     
     @Test
     public void isThisOffBoardTest(){
-        assertTrue(validator.isThisOffBoard(new int[]{0, 0}));
-        assertTrue(validator.isThisOffBoard(new int[]{6, 6}));
-        assertTrue(validator.isThisOffBoard(new int[]{0, 6}));
-        assertTrue(validator.isThisOffBoard(new int[]{6, 0}));
-        assertFalse(validator.isThisOffBoard(new int[]{1, 0}));
-        assertFalse(validator.isThisOffBoard(new int[]{0, 1}));
-        assertFalse(validator.isThisOffBoard(new int[]{5, 6}));
-        assertFalse(validator.isThisOffBoard(new int[]{6, 5}));
+        assertTrue(validator.isThisOffBoard(new Coordinate(0, 0)));
+        assertTrue(validator.isThisOffBoard(new Coordinate(6, 6)));
+        assertTrue(validator.isThisOffBoard(new Coordinate(0, 6)));
+        assertTrue(validator.isThisOffBoard(new Coordinate(6, 0)));
+        assertFalse(validator.isThisOffBoard(new Coordinate(1, 0)));
+        assertFalse(validator.isThisOffBoard(new Coordinate(0, 1)));
+        assertFalse(validator.isThisOffBoard(new Coordinate(5, 6)));
+        assertFalse(validator.isThisOffBoard(new Coordinate(6, 5)));
     }
+    
+    
     
 }

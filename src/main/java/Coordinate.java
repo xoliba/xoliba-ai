@@ -10,20 +10,29 @@
  */
 public class Coordinate {
     
-    protected int x, y;
+    public int x, y;
 
     public Coordinate(int x, int y) {
         this.x = x;
         this.y = y;
     }
     
-    public boolean equals(Coordinate c){
-        if(c == null){
+    @Override
+    public boolean equals(Object o){
+        if(o == null || o.getClass() != this.getClass()){
             return false;
+        } else if (this.hashCode() != o.hashCode()){
+            return true;
         }
-        if(c.getClass() != this.getClass()){
-            return false;
-        }
-        return this.x == c.x && this.y == c.y;
+        return false;
+        
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 97 * hash + this.x;
+        hash = 97 * hash + this.y;
+        return hash;
     }
 }
