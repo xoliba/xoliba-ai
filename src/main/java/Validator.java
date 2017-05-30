@@ -49,24 +49,32 @@ public class Validator {
      */
     private ArrayList<int[]> getConnectedWhites(int originX, int originY) {
         int[] origin = new int[]{originX, originY};
+        int[][] walkingDirections = { {1,0},{1,-1},{0,-1},{-1,-1},{-1,0},{-1,1},{0,1},{1,1} }; //east, south-east, south, ...
+        boolean[] stopWalkingToThisDirection = new boolean[8];
 
-        ArrayList<int[]> coordinates = generateDistantCoordinatesOnTheSameAxis(origin);
-        for (int i = 0; i < coordinates.size(); i++) {
-            if (!checkIfConnectedByWhites(origin, coordinates.get(i))) {
-                coordinates.remove(coordinates.get(i));
+        ArrayList<int[]> coordinates = new ArrayList<>();
+        for (int i = 1; i < 7; i++) { //the max distance to walk is 6 steps
+            for (int j = 0; j < 8; j++) { //check all eight directions
+                if (stopWalkingToThisDirection[j]) {
+                    continue; //this direction is blocked already
+                }
+
+                int[] coordinateToCheck = { originX + i * walkingDirections[j][0], originY + i * walkingDirections[j][1]};
+
+                if (isThisOffBoard(coordinateToCheck) || board[coordinateToCheck[0]][coordinateToCheck[1]] != 0) {
+                    stopWalkingToThisDirection[j] = true;
+                    continue;
+                }
+                //the coordinate is on board and white
             }
+
         }
 
         return coordinates;
     }
 
-    /**
-     *
-     * @param originCoordinate the origin where we look at the distant targets
-     * @return a list of coordinates that are on the board and on the same axis with origin
-     */
-    private ArrayList<int[]> generateDistantCoordinatesOnTheSameAxis(int[] originCoordinate) {
-        return new ArrayList<>();
+    private boolean isThisOffBoard(int[] coordinate) {
+        return false;
     }
 
     /**
