@@ -21,7 +21,7 @@ public class Coordinate {
     public boolean equals(Object o){
         if(o == null || o.getClass() != this.getClass()){
             return false;
-        } else if (this.hashCode() != o.hashCode()){
+        } else if (this.hashCode() == o.hashCode()){
             return true;
         }
         return false;
@@ -30,7 +30,7 @@ public class Coordinate {
 
     @Override
     public int hashCode() {
-        int hash = 5;
+        int hash = 17;
         hash = 97 * hash + this.x;
         hash = 97 * hash + this.y;
         return hash;
