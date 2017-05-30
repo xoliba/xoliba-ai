@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
@@ -36,7 +35,7 @@ public class Validator {
             int[] coordinate = possibleTargetCoordinates.get(i);
 
             //if triangle cannot be formed, remove this coordinate from the list
-            if (!checkIfFormsATriangle(coordinate, board[coordinate[0]][coordinate[1]])) {
+            if (!checkIfFormsATriangle(coordinate)) {
                 possibleTargetCoordinates.remove(coordinate);
             }
         }
@@ -49,17 +48,44 @@ public class Validator {
      * [ [x1,y1], [x2, y2], ...]
      */
     private ArrayList<int[]> getConnectedWhites(int originX, int originY) {
-        ArrayList<int[]> coordinates = new ArrayList<>();
+        int[] origin = new int[]{originX, originY};
+
+        ArrayList<int[]> coordinates = generateDistantCoordinatesOnTheSameAxis(origin);
+        for (int i = 0; i < coordinates.size(); i++) {
+            if (!checkIfConnectedByWhites(origin, coordinates.get(i))) {
+                coordinates.remove(coordinates.get(i));
+            }
+        }
+
         return coordinates;
     }
 
     /**
      *
-     * @param coordinate [x,y]
-     * @param color of the triangle we are looking for
-     * @return can a triangle be formed if there is a stone of given color at this coordinate
+     * @param originCoordinate the origin where we look at the distant targets
+     * @return a list of coordinates that are on the board and on the same axis with origin
      */
-    private boolean checkIfFormsATriangle(int[] coordinate, int color) {
+    private ArrayList<int[]> generateDistantCoordinatesOnTheSameAxis(int[] originCoordinate) {
+        return new ArrayList<>();
+    }
+
+    /**
+     *
+     * @param c1 coordinate 1
+     * @param c2 coordinate that is on a same horizontal, vertical or diagonal axis as the coordinate 1
+     * @return if the two are connected by white stones
+     */
+    private boolean checkIfConnectedByWhites(int[] c1, int[] c2) {
+        return true;
+    }
+
+    /**
+     *
+     * @param coordinate [x,y]
+     * @return can a triangle be formed with the stone at the coordinate
+     */
+    private boolean checkIfFormsATriangle(int[] coordinate) {
+        int color = board[coordinate[0]][coordinate[1]];
         return true;
     }
     
