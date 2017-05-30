@@ -105,7 +105,7 @@ public class Validator {
         int x = coordinate[0];
         int y = coordinate[1];
         if(x == 0 && (y == 0 || y == 6) || x == 6 && (y == 0 || y == 6)){
-            return true;
+            return true; //the corners
         }
         return x > 6 || x < 0 || y > 6 || y < 0;
     }
@@ -121,7 +121,7 @@ public class Validator {
         int[][] hypotenuseDirections = new int[][] {{-1, 0},{1, 0},{0, -1},{0, 1} }; //left, right, up, down
         int[][] edgeDirections = new int[][]{{-1, 1, -1, -1},{1, 1, 1, -1},{-1, -1, 1, -1},{-1, 1, 1, 1}}; //left, right, up, down
 
-        for (int i = 2; i <= 6; i += 2) { //for all possible triangle distances
+        for (int i = 2; i <= 6; i += 2) { //for all possible triangle hypotenuse lengths
             int distanceSide = i / 2;
             for (int j = 0; j < 4; j++) { //for all four directions
                 int[] hypotenuseCoordinate = new int[]{hypotenuseDirections[j][0] * i + coordinate[0], hypotenuseDirections[j][0] * i + coordinate[1]};

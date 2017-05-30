@@ -6,7 +6,7 @@
 
 /**
  *
- * @author eerop
+ * @author eerop, filip
  */
 public class Coordinate {
     
