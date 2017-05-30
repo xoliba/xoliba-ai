@@ -96,8 +96,13 @@ public class Validator {
         return false;
     }
 
+    /**
+     *
+     * @param coordinate
+     * @return if both x and y are [0,6]
+     */
     protected boolean isThisOffBoard(int[] coordinate) {
-        return false;
+        return coordinate[0] < 7 && coordinate[0] > -1 && coordinate[1] < 7 && coordinate[0] > -1;
     }
 
     /**
