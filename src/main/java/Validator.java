@@ -125,7 +125,7 @@ public class Validator {
                 Coordinate firstCornerCoordinate = new Coordinate(edgeDirections[j][0] * distanceSide + c.x, edgeDirections[j][1] * distanceSide + c.y);
                 Coordinate secondCornerCoordinate = new Coordinate(edgeDirections[j][2] * distanceSide + c.x, edgeDirections[j][3] * distanceSide + c.y);
 
-                triangles += lookForTriangles(c, hypotenuseCoordinate, firstCornerCoordinate, secondCornerCoordinate, color);
+                triangles += lookForTriangles(hypotenuseCoordinate, firstCornerCoordinate, secondCornerCoordinate, color);
             }
         }
         return triangles;
@@ -140,7 +140,7 @@ public class Validator {
      * @param color the color of triangle we are looking for
      * @return how many triangles can be formed from this coordinate
      */
-    protected int lookForTriangles(Coordinate origin, Coordinate hypotenuseCoordinate, Coordinate firstPossibleCornerCoordinate, Coordinate secondPossibleCornerCoordinate, int color) {
+    protected int lookForTriangles(Coordinate hypotenuseCoordinate, Coordinate firstPossibleCornerCoordinate, Coordinate secondPossibleCornerCoordinate, int color) {
         int triangles;
         int usableCorners = 0;
         if (canBeUsedInTriangle(firstPossibleCornerCoordinate, color)) usableCorners++;
