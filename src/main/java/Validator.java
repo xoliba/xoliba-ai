@@ -35,7 +35,7 @@ public class Validator {
             int[] coordinate = possibleTargetCoordinates.get(i);
 
             //if triangle cannot be formed, remove this coordinate from the list
-            if (!checkIfFormsATriangle(coordinate)) {
+            if (!checkIfFormsATriangle(coordinate, board[originX][originY])) {
                 possibleTargetCoordinates.remove(coordinate);
             }
         }
@@ -47,7 +47,7 @@ public class Validator {
      * @return all the white coordinates one can move to in the format
      * [ [x1,y1], [x2, y2], ...]
      */
-    private ArrayList<int[]> getConnectedWhites(int originX, int originY) {
+    protected ArrayList<int[]> getConnectedWhites(int originX, int originY) {
         int[][] walkingDirections = { {1,0},{1,1},{0,1},{-1,1},{-1,0},{-1,-1},{0,-1},{1,-1} }; //east, south-east, south, ...
         boolean[] stopWalkingToThisDirection = new boolean[8];
 
@@ -107,21 +107,11 @@ public class Validator {
 
     /**
      *
-     * @param c1 coordinate 1
-     * @param c2 coordinate that is on a same horizontal, vertical or diagonal axis as the coordinate 1
-     * @return if the two are connected by white stones
-     */
-    protected boolean checkIfConnectedByWhites(int[] c1, int[] c2) {
-        return true;
-    }
-
-    /**
-     *
      * @param coordinate [x,y]
-     * @return can a triangle be formed with the stone at the coordinate
+     * @param color
+     * @return can a triangle of given color be formed with the coordinate
      */
-    protected boolean checkIfFormsATriangle(int[] coordinate) {
-        int color = board[coordinate[0]][coordinate[1]];
+    protected boolean checkIfFormsATriangle(int[] coordinate, int color) {
         return true;
     }
     
