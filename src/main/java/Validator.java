@@ -102,7 +102,12 @@ public class Validator {
      * @return if both x and y are [0,6]
      */
     protected boolean isThisOffBoard(int[] coordinate) {
-        return coordinate[0] < 7 && coordinate[0] > -1 && coordinate[1] < 7 && coordinate[0] > -1;
+        int x = coordinate[0];
+        int y = coordinate[1];
+        if(x == 0 && (y == 0 || y == 6) || x == 6 && (y == 0 || y == 6)){
+            return true;
+        }
+        return x > 6 || x < 0 || y > 6 || y < 0;
     }
 
     /**
