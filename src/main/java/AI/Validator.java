@@ -6,6 +6,8 @@ package AI;
  * and open the template in the editor.
  */
 
+import Game.Coordinate;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -124,18 +126,28 @@ public class Validator {
      */
     protected int howManyTrianglesFound(Coordinate c, int color) {
         int triangles = 0;
+
+        for (int i = 2; i <= 6; i += 2) { //for all possible triangle hypotenuse lengths
+            triangles += lookForTrianglesInTheDistanceOf(i, c, color);
+        }
+        return triangles;
+    }
+
+    protected int lookForTrianglesInTheDistanceOf(int distance, Coordinate c, int color) {
+        int triangles = 0;
         int[][] hypotenuseDirections = new int[][] {{-1, 0},{1, 0},{0, -1},{0, 1} }; //left, right, up, down
         int[][] edgeDirections = new int[][]{{-1, 1, -1, -1},{1, 1, 1, -1},{-1, -1, 1, -1},{-1, 1, 1, 1}}; //left, right, up, down
 
-        for (int i = 2; i <= 6; i += 2) { //for all possible triangle hypotenuse lengths
-            int distanceSide = i / 2;
-            for (int j = 0; j < 4; j++) { //for all four directions
-                Coordinate hypotenuseCoordinate = new Coordinate(hypotenuseDirections[j][0] * i + c.x, hypotenuseDirections[j][0] * i + c.y);
-                Coordinate firstCornerCoordinate = new Coordinate(edgeDirections[j][0] * distanceSide + c.x, edgeDirections[j][1] * distanceSide + c.y);
-                Coordinate secondCornerCoordinate = new Coordinate(edgeDirections[j][2] * distanceSide + c.x, edgeDirections[j][3] * distanceSide + c.y);
+        int distanceSide = distance / 2;
+        for (int i = 0; i < 4; i++) { //for all four directions
+            Coordinate hypotenuseCoordinate = new Coordinate(hypotenuseDirections[i][0] * distance + c.x, hypotenuseDirections[i][1] * distance + c.y);
+            Coordinate firstCornerCoordinate = new Coordinate(edgeDirections[i][0] * distanceSide + c.x, edgeDirections[i][1] * distanceSide + c.y);
+            Coordinate secondCornerCoordinate = new Coordinate(edgeDirections[i][2] * distanceSide + c.x, edgeDirections[i][3] * distanceSide + c.y);
 
-                triangles += lookForTrianglesInOneDirection(hypotenuseCoordinate, firstCornerCoordinate, secondCornerCoordinate, color);
-            }
+            triangles += lookForTrianglesInOneDirection(hypotenuseCoordinate, firstCornerCoordinate, secondCornerCoordinate, color);
+            //debugging
+            System.out.println("Validator, lookForTrianglesInTheDistanceOf() with distance:" + distance + ", distanceSide:" + distanceSide +
+                    "\n\th:" + hypotenuseCoordinate + ", d1:" + firstCornerCoordinate + ", d2:" + secondCornerCoordinate + ", triangles:" + triangles);
         }
         return triangles;
     }

@@ -1,6 +1,9 @@
 package AI;
 
 import java.util.ArrayList;
+
+import Game.Board;
+import Game.Coordinate;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -24,12 +27,13 @@ public class ValidatorTest {
         validator.updateBoard(board);
     }
 
-    private void fillBoardWithOnesX() {
+    private void fillBoardWithRedsInShapeOfX() {
+        int x = 1; int y = 0;
         for (int i = 1; i < 7; i++) {
-            for (int j = 0; j < 6; j++) {
-                board[i][j] = 1;
-                board[6-i][j] = 1;
-            }
+            board[x][y] = 1;
+            board[6-x][y] = 1;
+            x++;
+            y++;
         }
         validator.updateBoard(board);
     }
@@ -61,24 +65,34 @@ public class ValidatorTest {
     }
 
     @Test
-    public void isCoordinateOnBoardAndRightColorTest() {
-        fillBoardWithOnesX();
-        Coordinate c = new Coordinate(1,0);
-        assertTrue(validator.isCoordinateOnBoardAndRightColor(c, 1));
-        assertFalse(validator.isCoordinateOnBoardAndRightColor(c, -1));
-        c.x = 3; c.y = 2;
-        assertTrue(validator.isCoordinateOnBoardAndRightColor(c, 1));
-        assertFalse(validator.isCoordinateOnBoardAndRightColor(c, -1));
-        c.y = -2;
-        assertFalse(validator.isCoordinateOnBoardAndRightColor(c, 1));
-        c.x = 1; c.y = 2;
-        assertTrue(validator.isCoordinateOnBoardAndRightColor(c, 1));
+    public void howManyTrianglesFoundTest() {
+        for (int i = 0; i < 7; i++) {
+            for (int j = 0; j < 7; j++) {
+                assertEquals(0, validator.howManyTrianglesFound(new Coordinate(i,j), 1));
+            }
+        }
+
+        fillBoardWithRedsInShapeOfX();
+        assertEquals(5, validator.howManyTrianglesFound(new Coordinate(3,0), 1));
+        assertEquals(0, validator.howManyTrianglesFound(new Coordinate(3,0), -1));
+        assertEquals(2, validator.howManyTrianglesFound(new Coordinate(5, 6), 1));
+    }
+
+    @Test
+    public void lookForTrianglesInTheDistanceOfTest() {
+        fillBoardWithRedsInShapeOfX();
+        System.out.println("ValidatorTest, lookForTrianglesInTheDistanceOfTest():\n" + new Board(board));
+        assertEquals(5, validator.lookForTrianglesInTheDistanceOf(2, new Coordinate(3,0), 1));
+        assertEquals(0, validator.lookForTrianglesInTheDistanceOf(4, new Coordinate(3,0), 1));
+        assertEquals(0, validator.lookForTrianglesInTheDistanceOf(6, new Coordinate(3,0), 1));
+
     }
 
     @Test
     public void lookForTrianglesInOneDirectionTestSmallTriangle() {
         //initializing board with 5 red stones
         board[0][1] = 1; board[1][0] = 1; board[0][3] = 1; board[2][1] = 1;  board[1][4] = 1;
+        validator.updateBoard(board);
         Coordinate h, d1, d2; //hypotenuse, corner candidates 1 and 2
 
         //hypotenuse off board, corners are red
@@ -99,6 +113,43 @@ public class ValidatorTest {
 
         board[0][3] = -1; //lets change one red to blue
         assertEquals(0, validator.lookForTrianglesInOneDirection(h, d1, d2, 1));
+    }
+
+    @Test
+    public void lookForTrianglesInOneDirectionTestMiddleTriangle() {
+        //initializing board with 4 blue stones
+        board[3][1] = -1; board[1][3] = -1; board[5][3] = -1;
+        validator.updateBoard(board);
+        Coordinate h, d1, d2; //hypotenuse, corner candidates 1 and 2
+
+        //hypotenuse off board, one corner on board and blue
+        h = new Coordinate(-1, 5); d1 = new Coordinate(1, 3); d2 = new Coordinate(1, 7);
+        assertEquals(0, validator.lookForTrianglesInOneDirection(h, d1, d2, -1));
+
+        //all three off board
+        h = new Coordinate(4, 9); d1 = new Coordinate(5, 7);
+        assertEquals(0, validator.lookForTrianglesInOneDirection(h, d1, d2, -1));
+
+        //all three on board and blue
+        h = new Coordinate(3,1); d1 = new Coordinate(1,3); d2 = new Coordinate(5,3);
+        assertEquals(3, validator.lookForTrianglesInOneDirection(h, d1, d2, -1));
+    }
+
+    @Test
+    public void isCoordinateOnBoardAndRightColorTest() {
+        fillBoardWithRedsInShapeOfX();
+        System.out.println("ValidatorTest, isCoordinateOnBoardAndRightColorTest():\n" + new Board(board));
+        Coordinate c = new Coordinate(1,0);
+        assertTrue(validator.isCoordinateOnBoardAndRightColor(c, 1));
+        assertFalse(validator.isCoordinateOnBoardAndRightColor(c, -1));
+        c.x = 3; c.y = 2;
+        assertTrue(validator.isCoordinateOnBoardAndRightColor(c, 1));
+        assertFalse(validator.isCoordinateOnBoardAndRightColor(c, -1));
+        c.y = -2;
+        assertFalse(validator.isCoordinateOnBoardAndRightColor(c, 1));
+        c.x = 1; c.y = 2;
+        assertTrue(validator.isCoordinateOnBoardAndRightColor(c, 0));
+        assertFalse(validator.isCoordinateOnBoardAndRightColor(c, 1));
     }
 
     @Test

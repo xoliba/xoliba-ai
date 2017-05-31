@@ -1,6 +1,10 @@
 package AI;
 
 
+import Game.Board;
+import Game.Coordinate;
+
+import javax.swing.plaf.basic.BasicOptionPaneUI;
 import java.util.ArrayList;
 
 
@@ -16,6 +20,8 @@ public class AI {
     }
     
     public int[][] move(int[][] board){
+        Board b = new Board(board);
+        System.out.println("AI got a new board:\n" + b);
         validator.updateBoard(board);
         doFirstPossibleMove(board);
         return board;
@@ -46,4 +52,5 @@ public class AI {
         System.out.println("\tAI: swap coordinates " + startingPosition + " and " + endingPosition);
         System.out.println("\tAI: how many triangles formed with the move " + validator.howManyTrianglesFound(endingPosition, color));
     }
+
 }
