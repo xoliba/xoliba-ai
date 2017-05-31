@@ -1,11 +1,5 @@
 package AI;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 import AI.Coordinate;
 import AI.Validator;
 import java.util.ArrayList;
@@ -15,7 +9,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author eerop
+ * @author eerop, filip
  */
 public class ValidatorTest {
     
@@ -24,15 +18,24 @@ public class ValidatorTest {
     
     public ValidatorTest() {
         validator = new Validator();
+    }
+
+    @Before
+    public void setUp() {
         this.board = new int[7][7];
         validator.updateBoard(board);
     }
-    
-    @Before
-    public void setUp() {
-        
+
+    private void fillBoardWithOnesX() {
+        for (int i = 1; i < 7; i++) {
+            for (int j = 0; j < 6; j++) {
+                board[i][j] = 1;
+                board[6-i][j] = 1;
+            }
+        }
+        validator.updateBoard(board);
     }
-    
+
     @Test
     public void getConnectecWhitesTest(){
         ArrayList<Coordinate> connected = validator.getConnectedWhites(1, 0);
@@ -57,6 +60,14 @@ public class ValidatorTest {
         for (int i = 1; i < 7; i++) {
             assertFalse(connected.contains(new Coordinate(1, i)));
         }
+    }
+
+    @Test
+    public void canBeUsedInTriangleTest() {
+        fillBoardWithOnesX();
+        Coordinate c = new Coordinate(1,0);
+        assertTrue(validator.canBeUsedInTriangle(c, 1));
+        assertFalse(validator.canBeUsedInTriangle(c, -1));
     }
     
     @Test
