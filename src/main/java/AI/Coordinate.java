@@ -37,4 +37,9 @@ public class Coordinate {
         hash = 97 * hash + this.y;
         return hash;
     }
+
+    @Override
+    public String toString() {
+        return "(" + x + "," + y + ")";
+    }
 }

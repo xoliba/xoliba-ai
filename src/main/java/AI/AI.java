@@ -40,5 +40,6 @@ public class AI {
         int helpValue = board[c1.x][c1.y];
         board[c1.x][c1.y] = board[c2.x][c2.y];
         board[c2.x][c2.y] = helpValue;
+        System.out.println("\tAI: swap coordinates " + c1 + " and " + c2);
     }
 }
