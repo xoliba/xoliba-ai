@@ -1,7 +1,5 @@
 package AI;
 
-import AI.Coordinate;
-import AI.Validator;
 import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
@@ -63,17 +61,44 @@ public class ValidatorTest {
     }
 
     @Test
-    public void canBeUsedInTriangleTest() {
+    public void isCoordinateOnBoardAndRightColorTest() {
         fillBoardWithOnesX();
         Coordinate c = new Coordinate(1,0);
-        assertTrue(validator.canBeUsedInTriangle(c, 1));
-        assertFalse(validator.canBeUsedInTriangle(c, -1));
+        assertTrue(validator.isCoordinateOnBoardAndRightColor(c, 1));
+        assertFalse(validator.isCoordinateOnBoardAndRightColor(c, -1));
         c.x = 3; c.y = 2;
-        assertTrue(validator.canBeUsedInTriangle(c, 1));
-        assertFalse(validator.canBeUsedInTriangle(c, -1));
+        assertTrue(validator.isCoordinateOnBoardAndRightColor(c, 1));
+        assertFalse(validator.isCoordinateOnBoardAndRightColor(c, -1));
         c.y = -2;
-        assertFalse(validator.canBeUsedInTriangle(c, 1));
+        assertFalse(validator.isCoordinateOnBoardAndRightColor(c, 1));
+        c.x = 1; c.y = 2;
+        assertTrue(validator.isCoordinateOnBoardAndRightColor(c, 1));
+    }
 
+    @Test
+    public void lookForTrianglesInOneDirectionTestSmallTriangle() {
+        //initializing board with 5 red stones
+        board[0][1] = 1; board[1][0] = 1; board[0][3] = 1; board[2][1] = 1;  board[1][4] = 1;
+        Coordinate h, d1, d2; //hypotenuse, corner candidates 1 and 2
+
+        //hypotenuse off board, corners are red
+        h = new Coordinate(-1,2); d1 = new Coordinate(0,1); d2 = new Coordinate(0,3);
+        assertEquals(1, validator.lookForTrianglesInOneDirection(h, d1, d2, 1));
+
+        //hypotenuse on board and red, corners are red
+        h = new Coordinate(1,0); d2 = new Coordinate(2,1);
+        assertEquals(3, validator.lookForTrianglesInOneDirection(h, d1, d2, 1));
+
+        //h on board and white, one of the corners is red
+        h = new Coordinate(3,2); d1 = new Coordinate(2,3);
+        assertEquals(0, validator.lookForTrianglesInOneDirection(h, d1, d2, 1));
+
+        //h on board and red, one of the corners is red
+        h = new Coordinate(1,4); d2 = new Coordinate(0, 3);
+        assertEquals(1, validator.lookForTrianglesInOneDirection(h, d1, d2, 1));
+
+        board[0][3] = -1; //lets change one red to blue
+        assertEquals(0, validator.lookForTrianglesInOneDirection(h, d1, d2, 1));
     }
 
     @Test

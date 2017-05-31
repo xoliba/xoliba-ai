@@ -134,29 +134,30 @@ public class Validator {
                 Coordinate firstCornerCoordinate = new Coordinate(edgeDirections[j][0] * distanceSide + c.x, edgeDirections[j][1] * distanceSide + c.y);
                 Coordinate secondCornerCoordinate = new Coordinate(edgeDirections[j][2] * distanceSide + c.x, edgeDirections[j][3] * distanceSide + c.y);
 
-                triangles += lookForTriangles(hypotenuseCoordinate, firstCornerCoordinate, secondCornerCoordinate, color);
+                triangles += lookForTrianglesInOneDirection(hypotenuseCoordinate, firstCornerCoordinate, secondCornerCoordinate, color);
             }
         }
         return triangles;
     }
 
     /**
+     * The parameters are not checked: we trust that the coordinates given are reasonable.
      *
      * @param hypotenuseCoordinate the coordinate that is the longest distance from origin (same line or row)
      * @param firstPossibleCornerCoordinate first option on diagonal
      * @param secondPossibleCornerCoordinate second option on diagonal
      * @param color the color of triangle we are looking for
-     * @return how many triangles can be formed from this coordinate
+     * @return how many triangles can be formed with these three coordinates
      */
-    protected int lookForTriangles(Coordinate hypotenuseCoordinate, Coordinate firstPossibleCornerCoordinate, Coordinate secondPossibleCornerCoordinate, int color) {
+    protected int lookForTrianglesInOneDirection(Coordinate hypotenuseCoordinate, Coordinate firstPossibleCornerCoordinate, Coordinate secondPossibleCornerCoordinate, int color) {
         int triangles;
         int usableCorners = 0;
-        if (canBeUsedInTriangle(firstPossibleCornerCoordinate, color)) usableCorners++;
-        if (canBeUsedInTriangle(secondPossibleCornerCoordinate, color)) usableCorners++;
+        if (isCoordinateOnBoardAndRightColor(firstPossibleCornerCoordinate, color)) usableCorners++;
+        if (isCoordinateOnBoardAndRightColor(secondPossibleCornerCoordinate, color)) usableCorners++;
 
         if (usableCorners == 0) {
             triangles = 0; //both corners are unusable, no triangles can be made
-        } else if (!canBeUsedInTriangle(hypotenuseCoordinate, color)) { //hypotenuse cant be used
+        } else if (!isCoordinateOnBoardAndRightColor(hypotenuseCoordinate, color)) { //hypotenuse cant be used
             if (usableCorners == 2) {
                 triangles = 1; //both corners can be used, so one triangle is formed
             } else {
@@ -172,11 +173,10 @@ public class Validator {
         return triangles;
     }
 
-    protected boolean canBeUsedInTriangle(Coordinate c, int color) {
-        return !isThisOffBoard(c) && isCoordinateColor(c, color);
-    }
-
-    protected boolean isCoordinateColor(Coordinate c, int color) {
+    protected boolean isCoordinateOnBoardAndRightColor(Coordinate c, int color) {
+        if (isThisOffBoard(c)) {
+            return false;
+        }
         return board[c.x][c.y] == color;
     }
 }
