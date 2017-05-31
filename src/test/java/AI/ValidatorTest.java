@@ -68,8 +68,14 @@ public class ValidatorTest {
         Coordinate c = new Coordinate(1,0);
         assertTrue(validator.canBeUsedInTriangle(c, 1));
         assertFalse(validator.canBeUsedInTriangle(c, -1));
+        c.x = 3; c.y = 2;
+        assertTrue(validator.canBeUsedInTriangle(c, 1));
+        assertFalse(validator.canBeUsedInTriangle(c, -1));
+        c.y = -2;
+        assertFalse(validator.canBeUsedInTriangle(c, 1));
+
     }
-    
+
     @Test
     public void isThisOffBoardTest(){
         assertTrue(validator.isThisOffBoard(new Coordinate(0, 0)));
