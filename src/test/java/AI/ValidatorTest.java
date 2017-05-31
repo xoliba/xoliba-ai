@@ -42,22 +42,32 @@ public class ValidatorTest {
     @Test
     public void getPossibleMovesTest() {
         board[0][1] = 1;
+        Coordinate c = new Coordinate(0,1);
         System.out.println("ValidatorTest, getPossibleMovesTest(): empty\n" + new Board(board));
-        assertEquals(0, validator.getPossibleMoves(0,1).size());
+        assertEquals(0, validator.getPossibleMoves(c).size());
         board[2][1] = 1; board[1][2] = 1;
         System.out.println("getPossibleMovesTest(): one possible move from 0,1\n" + new Board(board));
-        assertEquals(1, validator.getPossibleMoves(0,1).size());
+        assertEquals(1, validator.getPossibleMoves(c).size());
         board[1][0] = -1;
         System.out.println("getPossibleMovesTest(): 0 possible moves from 0,1\n" + new Board(board));
-        assertEquals(0, validator.getPossibleMoves(0,1).size());
+        assertEquals(0, validator.getPossibleMoves(c).size());
 
         fillBoardWithRedsInShapeOfX(); board[0][1] = 1;
-        System.out.println("getPossibleMovesTest(): possible moves from 0,1\n" + new Board(board));
-        assertEquals(2, validator.getPossibleMoves(0,1).size());
+        System.out.println("getPossibleMovesTest(): 2 possible moves from 0,1\n" + new Board(board));
+        assertEquals(2, validator.getPossibleMoves(c).size());
 
+        c.x = 3; c.y = 2;
         fillBoardWithRedsInShapeOfX();
-        System.out.println("getPossibleMovesTest(): possible moves from 3,2\n" + new Board(board));
-        assertEquals(5, validator.getPossibleMoves(3,2).size());
+        System.out.println("getPossibleMovesTest(): 5 possible moves from 3,2\n" + new Board(board));
+        assertEquals(5, validator.getPossibleMoves(c).size());
+
+        for (int i = 0; i < 7; i++) {
+            board[i][5] = -1;
+        }
+        board[3][6] = 1;
+        c.x = 3; c.y = 6;
+        System.out.println("getPossibleMovesTest(): 2 possible moves from 3,6\n" + new Board(board));
+        assertEquals(2, validator.getPossibleMoves(c).size());
     }
 
     @Test

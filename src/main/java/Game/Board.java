@@ -25,7 +25,9 @@ public class Board{
                 b += "[";
                 int c = board[j][i];
                 if (c >= 0) b += " "; //makes the table even with some values < 0
-                b += c + "]";
+                if (c == 0) b += " "; //ads a space if the value is zero
+                else b += c; //otherwise adds the number
+                b += "]";
             }
             b += "\n";
         }

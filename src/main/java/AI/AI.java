@@ -31,7 +31,7 @@ public class AI {
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[0].length; j++) {
                 if (board[i][j] == color) { //the stone we are looking at is of my color
-                    ArrayList<Coordinate> possibleMoves = validator.getPossibleMoves(i,j);
+                    ArrayList<Coordinate> possibleMoves = validator.getPossibleMoves(new Coordinate(i,j));
                     if (possibleMoves.size() > 0) { //there are possible moves
                         swap(board, new Coordinate(i,j), possibleMoves.get(0));
                         return; //return after the first possible move

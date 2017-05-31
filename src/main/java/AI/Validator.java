@@ -29,15 +29,14 @@ public class Validator {
 
     /**
      *
-     * @param originX
-     * @param originY
+     * @param coordinate where we start moving from
      * @return list of coordinates you can legally move to [ [x1,y1], [x2, y2], ...]
      */
-    public ArrayList<Coordinate> getPossibleMoves(int originX, int originY){
-        ArrayList<Coordinate> possibleTargetCoordinates = getConnectedWhites(originX, originY);
+    public ArrayList<Coordinate> getPossibleMoves(Coordinate coordinate){
+        ArrayList<Coordinate> possibleTargetCoordinates = getConnectedWhites(coordinate.x, coordinate.y);
 
-        int color = board[originX][originY];
-        board[originX][originY] = 0; //original coordinate needs to be changed to 0 so that AI doesn't found false triangles.
+        int color = board[coordinate.x][coordinate.y];
+        board[coordinate.x][coordinate.y] = 0; //original coordinate needs to be changed to 0 so that AI doesn't found false triangles.
         
         //Iterator is used to loop through the possible target coordinates
         for (Iterator<Coordinate> iterator = possibleTargetCoordinates.iterator(); iterator.hasNext();) {
@@ -48,8 +47,8 @@ public class Validator {
                 iterator.remove();
             }
         }
-        
-        board[originX][originY] = color;
+
+        board[coordinate.x][coordinate.y] = color;
 
         return possibleTargetCoordinates;
     }
