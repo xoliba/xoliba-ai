@@ -28,6 +28,7 @@ public class ValidatorTest {
     }
 
     private void fillBoardWithRedsInShapeOfX() {
+        board = new int[7][7];
         int x = 1; int y = 0;
         for (int i = 1; i < 7; i++) {
             board[x][y] = 1;
@@ -36,6 +37,27 @@ public class ValidatorTest {
             y++;
         }
         validator.updateBoard(board);
+    }
+
+    @Test
+    public void getPossibleMovesTest() {
+        board[0][1] = 1;
+        System.out.println("ValidatorTest, getPossibleMovesTest(): empty\n" + new Board(board));
+        assertEquals(0, validator.getPossibleMoves(0,1).size());
+        board[2][1] = 1; board[1][2] = 1;
+        System.out.println("getPossibleMovesTest(): one possible move from 0,1\n" + new Board(board));
+        assertEquals(1, validator.getPossibleMoves(0,1).size());
+        board[1][0] = -1;
+        System.out.println("getPossibleMovesTest(): 0 possible moves from 0,1\n" + new Board(board));
+        assertEquals(0, validator.getPossibleMoves(0,1).size());
+
+        fillBoardWithRedsInShapeOfX(); board[0][1] = 1;
+        System.out.println("getPossibleMovesTest(): possible moves from 0,1\n" + new Board(board));
+        assertEquals(2, validator.getPossibleMoves(0,1).size());
+
+        fillBoardWithRedsInShapeOfX();
+        System.out.println("getPossibleMovesTest(): possible moves from 3,2\n" + new Board(board));
+        assertEquals(5, validator.getPossibleMoves(3,2).size());
     }
 
     @Test

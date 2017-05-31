@@ -145,9 +145,10 @@ public class Validator {
             Coordinate secondCornerCoordinate = new Coordinate(edgeDirections[i][2] * distanceSide + c.x, edgeDirections[i][3] * distanceSide + c.y);
 
             triangles += lookForTrianglesInOneDirection(hypotenuseCoordinate, firstCornerCoordinate, secondCornerCoordinate, color);
-            //debugging
+            /*for debugging:
             System.out.println("Validator, lookForTrianglesInTheDistanceOf() with distance:" + distance + ", distanceSide:" + distanceSide +
                     "\n\th:" + hypotenuseCoordinate + ", d1:" + firstCornerCoordinate + ", d2:" + secondCornerCoordinate + ", triangles:" + triangles);
+            */
         }
         return triangles;
     }
