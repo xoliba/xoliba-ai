@@ -21,11 +21,13 @@ public class Board{
     public String toString() {
         String b = "";
         for (int i = 0; i < board.length; i++) {
-            b += "[";
             for (int j = 0; j < board[0].length; j++) {
-                b += "[" + board[j][i] + "]";
+                b += "[";
+                int c = board[j][i];
+                if (c >= 0) b += " "; //makes the table even with some values < 0
+                b += c + "]";
             }
-            b += "]\n";
+            b += "\n";
         }
         return b;
     }
