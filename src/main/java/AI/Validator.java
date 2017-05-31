@@ -140,9 +140,6 @@ public class Validator {
         return triangles;
     }
 
-    /**es;
-    }
-
     /**
      *
      * @param hypotenuseCoordinate the coordinate that is the longest distance from origin (same line or row)
