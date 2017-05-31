@@ -18,7 +18,6 @@ public class AI {
     public int[][] move(int[][] board){
         validator.updateBoard(board);
         doFirstPossibleMove(board);
-
         return board;
     }
 
@@ -36,10 +35,15 @@ public class AI {
         }
     }
 
-    public void swap(int[][] board, Coordinate c1, Coordinate c2){
-        int helpValue = board[c1.x][c1.y];
-        board[c1.x][c1.y] = board[c2.x][c2.y];
-        board[c2.x][c2.y] = helpValue;
-        System.out.println("\tAI: swap coordinates " + c1 + " and " + c2);
+    public void swap(int[][] board, Coordinate start, Coordinate end){
+        int helpValue = board[start.x][start.y];
+        board[start.x][start.y] = board[end.x][end.y];
+        board[end.x][end.y] = helpValue;
+        printInfoFromMove(start, end, helpValue);
+    }
+
+    private void printInfoFromMove(Coordinate startingPosition, Coordinate endingPosition, int color) {
+        System.out.println("\tAI: swap coordinates " + startingPosition + " and " + endingPosition);
+        System.out.println("\tAI: how many triangles formed with the move " + validator.howManyTrianglesFound(endingPosition, color));
     }
 }
