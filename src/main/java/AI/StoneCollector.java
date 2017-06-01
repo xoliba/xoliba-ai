@@ -18,9 +18,9 @@ public class StoneCollector {
      * Expects that at least one legal triangle can be formed by using a stone at c;
      *
      * @param board integer table that represents board
-     * @param c the coordinate where lies the stone we must use as one corner of the triangle
+     * @param m the coordinate where lies the stone we must use as one corner of the triangle
      */
-    public Board collectStonesFromAnyTriangleAvailable(Board board, Coordinate c) {
+    public Board collectStonesFromAnyTriangleAvailable(Board board, Move m) {
 
         return board;
     }

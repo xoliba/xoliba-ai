@@ -21,4 +21,23 @@ public class Move {
         triangles.add(tri);
     }
 
+    @Override
+    public boolean equals(Object o){
+        if(o == null || o.getClass() != this.getClass()){
+            return false;
+        } else if (this.hashCode() == o.hashCode()){
+            return true;
+        }
+        return false;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 17;
+        hash = 97 * hash + this.start.hashCode();
+        hash = 97 * hash + this.target.hashCode();
+        return hash;
+    }
+
 }
