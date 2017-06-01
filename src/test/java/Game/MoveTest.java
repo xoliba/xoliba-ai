@@ -1,40 +1,32 @@
 package Game;
 
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
  *
- * @author eerop
+ * @author eerop, gilip
  */
 public class MoveTest {
     
-    public MoveTest() {
-    }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
+    Move move;
+
     @Before
     public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
+        move = new Move(new Coordinate(), new Coordinate());
     }
 
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
+    @Test
+    public void getBiggestTriangleTest() {
+        assertEquals(null, move.getBiggestTriangle()); //no triangles at all
+        move.addPossibleTriangle(new Triangle(new Coordinate(0,1), new Coordinate(1,0), new Coordinate(1,2)));
+        assertEquals(1, move.getBiggestTriangle().getSize()); //one small tri
+        move.addPossibleTriangle(new Triangle(new Coordinate(1,4), new Coordinate(1,0), new Coordinate(3,2)));
+        assertEquals(2, move.getBiggestTriangle().getSize()); //one small one med
+        move.addPossibleTriangle(new Triangle(new Coordinate(0,1), new Coordinate(1,0), new Coordinate(2,1)));
+        assertEquals(2, move.getBiggestTriangle().getSize()); //two smalls one med
+        move.addPossibleTriangle(new Triangle(new Coordinate(1,0), new Coordinate(1,6), new Coordinate(6,6)));
+        assertEquals(3, move.getBiggestTriangle().getSize()); //there is one big
+    }
 }
