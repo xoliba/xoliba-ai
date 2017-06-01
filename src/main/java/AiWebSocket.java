@@ -1,3 +1,4 @@
+import AI.AI;
 import org.eclipse.jetty.websocket.api.*;
 import org.eclipse.jetty.websocket.api.annotations.*;
 import com.google.gson.Gson;
@@ -24,6 +25,7 @@ public class AiWebSocket {
 	public void message(Session session, String message) throws IOException {
 		Gson gson = new Gson();
 		System.out.println("Got: " + JsonConverter.jsonify(JsonConverter.parse(message)));
-		session.getRemote().sendString(JsonConverter.jsonify(JsonConverter.parse(message)));
+                AI ai = new AI(1);
+		session.getRemote().sendString(JsonConverter.jsonify(ai.move(JsonConverter.parse(message))));
 	}
 }
