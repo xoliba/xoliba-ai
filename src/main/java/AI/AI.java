@@ -36,7 +36,7 @@ public class AI {
                     if (possibleMoves.size() > 0) { //there are possible moves
                         Coordinate target = possibleMoves.get(0);
                         swap(board.board, new Coordinate(i,j), target);
-                        board = stoneCollector.collectStonesFromAnyTriangleAvailable(board, target);
+                        this.board = stoneCollector.collectStonesFromAnyTriangleAvailable(board, target);
                         return; //return after the first possible move
                     }
                 }
