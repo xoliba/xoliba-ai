@@ -22,7 +22,7 @@ public class StoneCollector {
      * @param m the move that froms tringles
      */
     public Board collectStonesFromAnyTriangleAvailable(Board board, Move m) {
-        Triangle t = m.triangles.get(0);
+        Triangle t = m.getBiggestTriangle();
         hitStones(board, t);
         return board;
     }

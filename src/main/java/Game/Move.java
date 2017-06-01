@@ -21,6 +21,24 @@ public class Move {
         triangles.add(tri);
     }
 
+    /**
+     *
+     * @return null if there are no triangles, biggest triangle otherwise
+     */
+    public Triangle getBiggestTriangle() {
+        if (triangles.isEmpty()) return null;
+
+        Triangle biggest = triangles.get(0);
+        for (int i = 1; i < triangles.size(); i++) {
+            Triangle t = triangles.get(i);
+            if (t.getSize() > biggest.getSize()) {
+                biggest = t;
+            }
+        }
+
+        return biggest;
+    }
+
     @Override
     public boolean equals(Object o){
         if(o == null || o.getClass() != this.getClass()){
