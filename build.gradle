@@ -6,6 +6,7 @@ plugins {
 
 apply plugin: 'java'
 apply plugin: 'application'
+apply plugin: 'jacoco'
 
 task stage(dependsOn: ['shadowJar', 'clean'])
 
@@ -41,3 +42,10 @@ pitest {
     targetTests = ['AI.ValidatorTest']
 }
 mainClassName = 'App'
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        html.enabled false
+    }
+}
