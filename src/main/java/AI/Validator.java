@@ -23,7 +23,7 @@ public class Validator {
      * This must be called before asking for possible moves to ensure that the board is at the right state
      * @param board the latest board
      */
-    public void updateBoard(int[][] board) {
+    public void refreshBoard(int[][] board) {
         this.board = board;
     }
 

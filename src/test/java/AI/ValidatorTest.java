@@ -24,7 +24,7 @@ public class ValidatorTest {
     @Before
     public void setUp() {
         this.board = new int[7][7];
-        validator.updateBoard(board);
+        validator.refreshBoard(board);
     }
 
     private void fillBoardWithRedsInShapeOfX() {
@@ -36,7 +36,7 @@ public class ValidatorTest {
             x++;
             y++;
         }
-        validator.updateBoard(board);
+        validator.refreshBoard(board);
     }
 
     @Test
@@ -88,7 +88,7 @@ public class ValidatorTest {
         assertFalse(connected.contains(new Coordinate(1, -1)));
         assertFalse(connected.contains(new Coordinate(1, 7)));
         board[1][1] = 1;
-        validator.updateBoard(board);
+        validator.refreshBoard(board);
         connected = validator.getConnectedWhites(1, 0);
         assertEquals(10, connected.size());
         for (int i = 1; i < 7; i++) {
@@ -124,7 +124,7 @@ public class ValidatorTest {
     public void lookForTrianglesInOneDirectionTestSmallTriangle() {
         //initializing board with 5 red stones
         board[0][1] = 1; board[1][0] = 1; board[0][3] = 1; board[2][1] = 1;  board[1][4] = 1;
-        validator.updateBoard(board);
+        validator.refreshBoard(board);
         Coordinate h, d1, d2; //hypotenuse, corner candidates 1 and 2
 
         //hypotenuse off board, corners are red
@@ -151,7 +151,7 @@ public class ValidatorTest {
     public void lookForTrianglesInOneDirectionTestMiddleTriangle() {
         //initializing board with 4 blue stones
         board[3][1] = -1; board[1][3] = -1; board[5][3] = -1;
-        validator.updateBoard(board);
+        validator.refreshBoard(board);
         Coordinate h, d1, d2; //hypotenuse, corner candidates 1 and 2
 
         //hypotenuse off board, one corner on board and blue

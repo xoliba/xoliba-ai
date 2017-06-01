@@ -4,7 +4,6 @@ package AI;
 import Game.Board;
 import Game.Coordinate;
 
-import javax.swing.plaf.basic.BasicOptionPaneUI;
 import java.util.ArrayList;
 
 
@@ -13,16 +12,18 @@ public class AI {
     
     private int color;
     private Validator validator;
+    private StoneCollecter stoneCollecter;
 
     public AI(int color) {
         this.color = color;
         this.validator = new Validator();
+        this.stoneCollecter = new StoneCollecter();
     }
     
     public int[][] move(int[][] board){
         Board b = new Board(board);
         System.out.println("AI got a new board:\n" + b);
-        validator.updateBoard(board);
+        validator.refreshBoard(board);
         doFirstPossibleMove(board);
         return board;
     }
@@ -33,7 +34,9 @@ public class AI {
                 if (board[i][j] == color) { //the stone we are looking at is of my color
                     ArrayList<Coordinate> possibleMoves = validator.getPossibleMoves(new Coordinate(i,j));
                     if (possibleMoves.size() > 0) { //there are possible moves
-                        swap(board, new Coordinate(i,j), possibleMoves.get(0));
+                        Coordinate target = possibleMoves.get(0);
+                        swap(board, new Coordinate(i,j), target);
+                        stoneCollecter.collectStonesFromAnyTriangleAvailable(board, target);
                         return; //return after the first possible move
                     }
                 }
