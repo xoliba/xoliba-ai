@@ -17,4 +17,9 @@ public class Triangle {
     public Coordinate[] getCorners() {
         return corners;
     }
+
+    @Override
+    public String toString() {
+        return "triangle " + corners[0] + " " + corners[1] + " " + corners[2];
+    }
 }

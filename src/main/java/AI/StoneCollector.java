@@ -31,6 +31,7 @@ public class StoneCollector {
         Coordinate c1 = t.getCorners()[0];
         Coordinate c2 = t.getCorners()[1];
         Coordinate c3 = t.getCorners()[2];
+        System.out.println("\tStone Collector: hit stones " + t);
 
         if (c1.x == c2.x) {
             hitTriangles(board, c1.y, c2.y, c1.x, c3.x, true);
@@ -56,7 +57,7 @@ public class StoneCollector {
             n *= -1;
         }
         for (int i = 0; i < Math.abs(tipH - bottomH); i++) {
-            for (int j = min; j < max; j++) {
+            for (int j = min; j <= max; j++) {
                 if(j == basis1 || j == basis2) {
                     continue;
                 }
