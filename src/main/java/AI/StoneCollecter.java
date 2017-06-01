@@ -22,6 +22,7 @@ public class StoneCollecter {
      * @param c the coordinate where lies the stone we must use as one corner of the triangle
      */
     public Board collectStonesFromAnyTriangleAvailable(Board board, Coordinate c) {
+
         return board;
     }
 }

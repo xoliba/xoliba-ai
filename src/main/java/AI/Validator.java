@@ -132,6 +132,13 @@ public class Validator {
         return triangles;
     }
 
+    /**
+     *
+     * @param distance the length of hypotenuse on x- or y-axis
+     * @param c the coordinate we are using as one corner of the triangle
+     * @param color the color of the triangle we are looking for
+     * @return how many triangles can be formed with hypotenuse length of 'distance'
+     */
     protected int lookForTrianglesInTheDistanceOf(int distance, Coordinate c, int color) {
         int triangles = 0;
         int[][] hypotenuseDirections = new int[][] {{-1, 0},{1, 0},{0, -1},{0, 1} }; //left, right, up, down
