@@ -1,16 +1,15 @@
 package AI;
 
-import Game.Board;
-import Game.Coordinate;
+import Game.*;
 
 /**
  * Created by vili on 1.6.2017.
  */
-public class StoneCollecter {
+public class StoneCollector {
 
     private Validator validator;
 
-    public StoneCollecter() {
+    public StoneCollector() {
         validator = new Validator();
     }
 
