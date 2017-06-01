@@ -1,5 +1,6 @@
 package AI;
 
+import Game.Board;
 import Game.Coordinate;
 
 /**
@@ -20,7 +21,7 @@ public class StoneCollecter {
      * @param board integer table that represents board
      * @param c the coordinate where lies the stone we must use as one corner of the triangle
      */
-    public int[][] collectStonesFromAnyTriangleAvailable(int[][] board, Coordinate c) {
+    public Board collectStonesFromAnyTriangleAvailable(Board board, Coordinate c) {
         return board;
     }
 }
