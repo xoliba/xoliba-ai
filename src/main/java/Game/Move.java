@@ -20,6 +20,10 @@ public class Move {
     public void addPossibleTriangle(Triangle tri) {
         triangles.add(tri);
     }
+    
+    public void removeTriangles(){
+        triangles.clear();
+    }
 
     /**
      *
