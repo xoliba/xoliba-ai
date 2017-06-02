@@ -38,8 +38,8 @@ jar {
 }
 
 pitest {
-    targetClasses = ['AI.Validator'];
-    targetTests = ['AI.ValidatorTest']
+    targetClasses = ['AI.*'];
+    targetTests = ['AI.*']
 }
 mainClassName = 'App'
 

@@ -7,7 +7,7 @@ package Game;
 
 public class Board{
 
-    int[][] board;
+    public int[][] board;
 
     public Board() {
         board = new int[7][7];
