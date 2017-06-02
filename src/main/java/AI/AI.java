@@ -3,8 +3,9 @@ package AI;
 
 import Game.*;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
-
+import java.util.Random;
 
 
 public class AI {
@@ -13,36 +14,79 @@ public class AI {
     private int color;
     private Validator validator;
     private StoneCollector stoneCollector;
+    private Random random;
 
     public AI(int color) {
         this.color = color;
         this.validator = new Validator();
         this.stoneCollector = new StoneCollector();
+        this.random = new Random();
     }
     
     public int[][] move(int[][] b){
         board = new Board(b);
         System.out.println("AI got a new board:\n" + board);
         validator.refreshBoard(board.board);
-        doFirstPossibleMove(board);
-        System.out.println("AI did a move:\n" + board);
+
+        ArrayList<Move> allPossibleMoves = generateAllPossibleMoves(board);
+
+        int possibleMoves = allPossibleMoves.size();
+        if (possibleMoves > 0) {
+            int i = random.nextInt(allPossibleMoves.size());
+            Move m = allPossibleMoves.get(i);
+            swap(board.board, m);
+            stoneCollector.collectStonesFromBiggestTriangleAvailable(board, m);
+            System.out.println("AI did a move:\n" + board);
+        } else {
+            System.out.println("AI didn't do a move, there is none!");
+        }
+
         return board.board;
     }
 
-    private void doFirstPossibleMove(Board board) {
+    private ArrayList<Move> generateAllPossibleMoves(Board board) {
+        ArrayList<Move> moves = new ArrayList<>();
         for (int i = 0; i < board.board.length; i++) {
             for (int j = 0; j < board.board[0].length; j++) {
                 if (board.board[i][j] == color) { //the stone we are looking at is of my color
-                    ArrayList<Move> possibleMoves = validator.getPossibleMoves(new Coordinate(i,j));
-                    if (possibleMoves.size() > 0) { //there are possible moves
-                        Move move = possibleMoves.get(0);
-                        swap(board.board, move);
-                        this.board = stoneCollector.collectStonesFromAnyTriangleAvailable(board, move);
-                        return; //return after the first possible move
-                    }
+                    moves.addAll(validator.getPossibleMoves(new Coordinate(i,j)));
                 }
             }
         }
+        return moves;
+    }
+
+    private void scanThroughBoardAndExcecuteThisMethodToOurColoredStones(Method methodToExcecute) {
+        for (int i = 0; i < board.board.length; i++) {
+            for (int j = 0; j < board.board[0].length; j++) {
+                if (board.board[i][j] == color) { //the stone we are looking at is of my color
+                    boolean shouldWeContinue = true;
+                    try {
+                        shouldWeContinue = (boolean) methodToExcecute.invoke(this, new Coordinate(i,j));
+                    } catch (Exception e) {
+                        System.out.println(e);
+                    }
+                    if (!shouldWeContinue)
+                        return;
+                }
+            }
+        }
+    }
+
+    /**
+     *
+     * @param c coordinate that we should move if we are able
+     * @return false if we did a move, true if we did not
+     */
+    public boolean doFirstPossibleMove(Coordinate c) {
+        ArrayList<Move> possibleMoves = validator.getPossibleMoves(c);
+        if (possibleMoves.size() > 0) { //there are possible moves
+            Move move = possibleMoves.get(0);
+            swap(board.board, move);
+            this.board = stoneCollector.collectStonesFromAnyTriangleAvailable(board, move);
+            return false;
+        }
+        return true;
     }
 
     public void swap(int[][] board, Move move){
