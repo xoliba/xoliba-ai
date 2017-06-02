@@ -38,8 +38,8 @@ jar {
 }
 
 pitest {
-    targetClasses = ['AI.*'];
-    targetTests = ['AI.*']
+    targetClasses = ['AI.*', 'Game.*'];
+    targetTests = ['AI.*', 'Game.*']
 }
 mainClassName = 'App'
 
