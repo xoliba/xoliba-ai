@@ -13,7 +13,7 @@ public class AiWebSocket {
 	@OnWebSocketConnect
 	public void connected(Session session) {
 		sessions.add(session);
-		System.out.println("client connected, session:\n" + session.toString());
+		System.out.println("client connected");
 	}
 
 	@OnWebSocketClose
