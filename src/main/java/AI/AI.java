@@ -3,9 +3,7 @@ package AI;
 
 import Game.*;
 
-import java.lang.reflect.Array;
 import java.lang.reflect.Method;
-import java.time.temporal.ValueRange;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -24,7 +22,7 @@ public class AI {
         this.validator = new Validator();
         this.stoneCollector = new StoneCollector();
         this.random = new Random();
-        this.inceptionTreshold = 3;
+        this.inceptionTreshold = 0;
     }
 
     public int[][] move(int[][] b) {
@@ -42,7 +40,7 @@ public class AI {
             swap(board.board, m);
             stoneCollector.collectStonesFromBiggestTriangleAvailable(board, m);
             */
-            theBestMoveForRed(board);
+            doTheBestMoveForRed(board);
             System.out.println("AI did a move:\n" + board);
         } else {
             System.out.println("AI didn't do a move, there is none!");
@@ -74,7 +72,7 @@ public class AI {
      * @param board
      * @return board after the move was made
      */
-    private Board theBestMoveForRed(Board board) {
+    private Board doTheBestMoveForRed(Board board) {
         Board theBoardAfterTheBestMove = board;
         int redBest = Integer.MIN_VALUE;
         int blueBest = Integer.MAX_VALUE;
@@ -142,7 +140,7 @@ public class AI {
             for (Triangle t: m.triangles) { //for all triangles we might form
                 Board b = new Board(board.board.clone()); //lets make a copy of this situation
                 stoneCollector.hitStones(b, t); //lets do the move
-                v = Math.max(v, minValue(b, inceptionLevel++, redsBest, bluesBest)); //lets keep the best possible outcome
+                v = Math.max(v, minValue(b, inceptionLevel + 1, redsBest, bluesBest)); //lets keep the best possible outcome
                 if (v >= bluesBest) { //this is the alpha-beta part: if our new value is better than the so-far-best (from our perspective)
                     return v;         //that opponent could choose, then we do have look no further
                 }
@@ -173,7 +171,7 @@ public class AI {
             for (Triangle t: m.triangles) { //for all triangles we might form
                 Board b2 = new Board(b1.board.clone()); //lets make a copy of this situation
                 stoneCollector.hitStones(b2, t); //lets do the move
-                v = Math.min(v, maxValue(b2, inceptionLevel++, redsBest, bluesBest)); //lets keep the best possible outcome
+                v = Math.min(v, maxValue(b2, inceptionLevel + 1, redsBest, bluesBest)); //lets keep the best possible outcome
 
                 //this is the alpha-beta part: if our new value is better than the so-far-best (from our perspective)
                 if (v <= redsBest) { //that opponent could choose, then we do have look no further
@@ -195,9 +193,12 @@ public class AI {
         int sum = 0;
         for (int i = 0; i < board.board.length; i++) {
             for (int j = 0; j < board.board[0].length; j++) {
+                if ((i == 0 || i == 6) && (j == 0 || j == 6))
+                    continue;
                 sum += board.board[i][j];
             }
         }
+        System.out.println("AI: evaluateBoard:\n" + board + "sum: " + sum);
         return sum;
     }
 
@@ -238,7 +239,7 @@ public class AI {
         int helpValue = board[move.start.x][move.start.y];
         board[move.start.x][move.start.y] = board[move.target.x][move.target.y];
         board[move.target.x][move.target.y] = helpValue;
-        printInfoFromMove(move, helpValue);
+        //printInfoFromMove(move, helpValue);
     }
 
     private void printInfoFromMove(Move move, int color) {
