@@ -33,7 +33,7 @@ public class StoneCollector {
         return board;
     }
 
-    private void hitStones(Board board, Triangle t) {
+    protected void hitStones(Board board, Triangle t) {
         Coordinate c1 = t.getCorners()[0];
         Coordinate c2 = t.getCorners()[1];
         Coordinate c3 = t.getCorners()[2];
