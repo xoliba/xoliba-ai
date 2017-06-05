@@ -40,7 +40,7 @@ public class AI {
             swap(board.board, m);
             stoneCollector.collectStonesFromBiggestTriangleAvailable(board, m);
             */
-            doTheBestMoveForRed(board);
+            board = doTheBestMoveForRed(board);
             System.out.println("AI did a move:\n" + board);
         } else {
             System.out.println("AI didn't do a move, there is none!");
@@ -87,7 +87,7 @@ public class AI {
                 int v = minValue(b2, 0, redBest, blueBest); //the opponent gets a move
                 if (v > redBest) { //if the result is better than the known best
                     redBest = v; //update the best
-                    theBoardAfterTheBestMove = b2; //save the board after this certain triangle
+                    theBoardAfterTheBestMove = b2.copy(); //save the board after this certain triangle
                     System.out.println("doTheBestMoveForRed board was updated:\n" + theBoardAfterTheBestMove);
                 }
             }
