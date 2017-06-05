@@ -22,7 +22,7 @@ public class AI {
         this.validator = new Validator();
         this.stoneCollector = new StoneCollector();
         this.random = new Random();
-        this.inceptionTreshold = 0;
+        this.inceptionTreshold = 3;
     }
 
     public int[][] move(int[][] b) {
