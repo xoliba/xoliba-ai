@@ -23,9 +23,14 @@ public class AiWebSocket {
 	
 	@OnWebSocketMessage
 	public void message(Session session, String message) throws IOException {
-		Gson gson = new Gson();
-		System.out.println("Got: " + JsonConverter.jsonify(JsonConverter.parse(message)));
-                AI ai = new AI(1);
-		session.getRemote().sendString(JsonConverter.jsonify(ai.move(JsonConverter.parse(message))));
+		if (JsonConverter.ping(message)) {
+			System.out.println("ping");
+			return;
+		}
+		
+		System.out.println("Got: " + JsonConverter.jsonify(JsonConverter.parseTable(message)));
+		
+        AI ai = new AI(1);
+		session.getRemote().sendString(JsonConverter.jsonify(ai.move(JsonConverter.parseTable(message))));
 	}
 }
