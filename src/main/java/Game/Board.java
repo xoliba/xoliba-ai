@@ -34,7 +34,7 @@ public class Board{
         int hash = 17;
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[0].length; j++) {
-                hash = 97 * hash + i * board[i][j] * 7 + j * 13;
+                hash = 33 * hash + (i+1) * board[i][j] * 7 + (j+1) * 13;
             }
         }
         return hash;
@@ -55,5 +55,18 @@ public class Board{
             b += "\n";
         }
         return b;
+    }
+
+    /**
+     * Copies the board to a new board object, which should have the same hash but is a different object in the terms of reference.
+     * @return a copy of this board object
+     */
+    public Board copy() {
+        int[][] copy = new int[7][7];
+
+        for (int i = 0; i < board.length; i++) {
+            System.arraycopy(board[i], 0, copy[i], 0, board[i].length);
+        }
+        return new Board(copy);
     }
 }

@@ -31,14 +31,12 @@ public class AITest {
 
     @Test
     public void AIDoesAMove() {
-        int[][] boardAfterMove = boardWithTwoSmallTriangles.board.clone();
-        assertTrue("the board should be the same if no move was made", new Board(boardAfterMove).equals(boardWithTwoSmallTriangles));
-        int[][] tableClone = table.clone();
-        System.out.printf("new board\n" + new Board(tableClone));
-        boardAfterMove = ai.move(table);
-        System.out.printf("the same clone\n" + new Board(tableClone));
+        Board copy = boardWithTwoSmallTriangles.copy();
+        assertTrue("the board should be the same if no move was made",
+                copy.equals(boardWithTwoSmallTriangles));
+        int[][] boardAfterMove = ai.move(table);
         assertFalse("the board should be different after a move:\n" +
-                "board before move\n" + new Board(tableClone) + "board after move\n"
-                + new Board(boardAfterMove) , new Board(boardAfterMove).equals(new Board(tableClone)));
+                "board before move\n" + copy + "board after move\n"
+                + new Board(boardAfterMove) , new Board(boardAfterMove).equals(copy));
     }
 }
