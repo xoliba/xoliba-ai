@@ -56,6 +56,7 @@ public class AI {
      * @return the moves
      */
     private ArrayList<Move> generateAllPossibleMoves(Board board, int color) {
+        validator.refreshBoard(board.board);
         ArrayList<Move> moves = new ArrayList<>();
         for (int i = 0; i < board.board.length; i++) {
             for (int j = 0; j < board.board[0].length; j++) {
@@ -87,6 +88,7 @@ public class AI {
                 if (v > redBest) { //if the result is better than the known best
                     redBest = v; //update the best
                     theBoardAfterTheBestMove = b2; //save the board after this certain triangle
+                    System.out.println("doTheBestMoveForRed board was updated:\n" + theBoardAfterTheBestMove);
                 }
             }
         }
@@ -129,6 +131,7 @@ public class AI {
      * @return the biggest possible (predicted) evaluation outcome from this game situation
      */
     private int maxValue(Board board, int inceptionLevel, int redsBest, int bluesBest) {
+        //System.out.println("AI maxValue: inceptionLevel " + inceptionLevel + "; redsBest " + redsBest + "; bluesBest" + bluesBest);
         if (inceptionLevel > inceptionTreshold) {
             return evaluateBoard(board);
         }
@@ -198,7 +201,7 @@ public class AI {
                 sum += board.board[i][j];
             }
         }
-        System.out.println("AI: evaluateBoard:\n" + board + "sum: " + sum);
+        //System.out.println("AI: evaluateBoard:\n" + board + "sum: " + sum);
         return sum;
     }
 

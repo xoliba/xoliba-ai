@@ -17,9 +17,32 @@ public class Board{
         this.board = board;
     }
 
+
+    @Override
+    public boolean equals(Object o){
+        if(o == null || o.getClass() != this.getClass()){
+            return false;
+        } else if (this.hashCode() == o.hashCode()){
+            return true;
+        }
+        return false;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 17;
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[0].length; j++) {
+                hash = 97 * hash + i * board[i][j] * 7 + j * 13;
+            }
+        }
+        return hash;
+    }
+
     @Override
     public String toString() {
-        String b = "";
+        String b = "board " + this.hashCode() + "\n";
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[0].length; j++) {
                 b += "[";
