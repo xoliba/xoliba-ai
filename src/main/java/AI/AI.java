@@ -79,10 +79,10 @@ public class AI {
         int blueBest = Integer.MAX_VALUE;
 
         for (Move m: generateAllPossibleMoves(board, 1)) { //for every move
-            Board b1 = new Board(board.board.clone()); //we generate a board
+            Board b1 = board.copy(); //we generate a board
             swap(b1.board, m); //where we implement the move
             for (Triangle t:m.triangles) { //and for every triangle with that board
-                Board b2 = new Board(b1.board.clone()); //we make a board
+                Board b2 = b1.copy(); //we make a board
                 stoneCollector.hitStones(b2,t); //and implement the hitting
                 int v = minValue(b2, 0, redBest, blueBest); //the opponent gets a move
                 if (v > redBest) { //if the result is better than the known best
@@ -106,10 +106,10 @@ public class AI {
         int blueBest = Integer.MAX_VALUE;
 
         for (Move m: generateAllPossibleMoves(board, -1)) { //for every move
-            Board b1 = new Board(board.board.clone()); //we generate a board
+            Board b1 = board.copy(); //we generate a board
             swap(b1.board, m); //where we implement the move
             for (Triangle t:m.triangles) { //and for every triangle with that board
-                Board b2 = new Board(b1.board.clone()); //we make a board
+                Board b2 = b1.copy(); //we make a board
                 stoneCollector.hitStones(b2,t); //and implement the hitting
                 int v = maxValue(b2, 0, redBest, blueBest); //the opponent gets a move
                 if (v < blueBest) { //if the result is better than the known best
@@ -138,10 +138,10 @@ public class AI {
 
         int v = Integer.MIN_VALUE;
         for (Move m: generateAllPossibleMoves(board, 1)) { //for all possible moves for red
-            Board b1 = new Board(board.board.clone());
+            Board b1 = board.copy();
             swap(b1.board, m);
             for (Triangle t: m.triangles) { //for all triangles we might form
-                Board b = new Board(board.board.clone()); //lets make a copy of this situation
+                Board b = b1.copy(); //lets make a copy of this situation
                 stoneCollector.hitStones(b, t); //lets do the move
                 v = Math.max(v, minValue(b, inceptionLevel + 1, redsBest, bluesBest)); //lets keep the best possible outcome
                 if (v >= bluesBest) { //this is the alpha-beta part: if our new value is better than the so-far-best (from our perspective)
@@ -169,10 +169,10 @@ public class AI {
 
         int v = Integer.MAX_VALUE;
         for (Move m: generateAllPossibleMoves(board, -1)) { //for all possible moves for blue
-            Board b1 = new Board(board.board.clone());
+            Board b1 = board.copy();
             swap(b1.board, m);
             for (Triangle t: m.triangles) { //for all triangles we might form
-                Board b2 = new Board(b1.board.clone()); //lets make a copy of this situation
+                Board b2 = b1.copy(); //lets make a copy of this situation
                 stoneCollector.hitStones(b2, t); //lets do the move
                 v = Math.min(v, maxValue(b2, inceptionLevel + 1, redsBest, bluesBest)); //lets keep the best possible outcome
 
