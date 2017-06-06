@@ -15,14 +15,14 @@ public class AI {
     private Validator validator;
     private StoneCollector stoneCollector;
     private Random random;
-    private int inceptionTreshold;
+    private int inceptionTreshold; //how many rounds we go deeper
 
     public AI(int color) {
         this.color = color;
         this.validator = new Validator();
         this.stoneCollector = new StoneCollector();
         this.random = new Random();
-        this.inceptionTreshold = 0;
+        this.inceptionTreshold = 3;
     }
 
     public int[][] move(int[][] b) {
