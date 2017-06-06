@@ -1,6 +1,5 @@
 package Game;
 
-import java.security.cert.TrustAnchor;
 
 /**
  * Created by vili on 6.6.2017.
@@ -38,5 +37,22 @@ public class TurnData {
     public TurnData() {
         type = "TurnData";
         didMove = false;
+    }
+
+    @Override
+    public String toString() {
+        String s = "" + type;
+        s += didMove ? " a move was made:\n" : " nobody moved";
+        if (!didMove) return s;
+
+        Coordinate c1 = new Coordinate(start[0], start[1]);
+        Coordinate c2 = new Coordinate(target[0], target[1]);
+        s += new Board(board);
+        s += "start " + c1 + "; target " + c2 + ";\n";
+        s += "triangle was formed at " + new Triangle(c2,
+                new Coordinate(corners[0][0], corners[0][1]),
+                new Coordinate(corners[1][0], corners[1][1]));
+
+        return s;
     }
 }

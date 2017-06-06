@@ -66,7 +66,7 @@ public class AI {
     /**
      * Decide the best move by using alpha-beta pruning
      * @param board
-     * @return board after the move was made
+     * @return all relevant info wrapped in a TurnData object
      */
     private TurnData doTheBestMoveForRed(Board board) {
         Board theBoardAfterTheBestMove = board;
@@ -95,10 +95,10 @@ public class AI {
     /**
      * Decide the best move by using alpha-beta pruning
      * @param board
-     * @return board after the move was made
+     * @return all relevant info wrapped in a TurnData object
      */
-    private Board theBestMoveForBlue(Board board) {
-        Board theBoardAfterTheBestMove = board;
+    private TurnData theBestMoveForBlue(Board board) {
+        TurnData td = new TurnData();
         int redBest = Integer.MIN_VALUE;
         int blueBest = Integer.MAX_VALUE;
 
@@ -111,11 +111,11 @@ public class AI {
                 int v = maxValue(b2, 0, redBest, blueBest); //the opponent gets a move
                 if (v < blueBest) { //if the result is better than the known best
                     blueBest = v; //update the best
-                    theBoardAfterTheBestMove = b2; //save the board after this certain triangle
+                    td = new TurnData(true, b2, m, t);
                 }
             }
         }
-        return theBoardAfterTheBestMove;
+        return td;
     }
 
     /**
