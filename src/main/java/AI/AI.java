@@ -1,6 +1,5 @@
 package AI;
 
-
 import Game.*;
 
 import java.lang.reflect.Method;
@@ -18,11 +17,20 @@ public class AI {
     private int inceptionTreshold; //how many rounds we go deeper
 
     public AI(int color) {
+        this(color, 3);
+    }
+
+    /**
+     *
+     * @param color which AI plays
+     * @param difficulty 0 being the easiest, 3 being still easy to compute
+     */
+    public AI(int color, int difficulty) {
         this.color = color;
         this.validator = new Validator();
         this.stoneCollector = new StoneCollector();
         this.random = new Random();
-        this.inceptionTreshold = 3;
+        this.inceptionTreshold = difficulty;
     }
 
     public TurnData move(int[][] b) {
