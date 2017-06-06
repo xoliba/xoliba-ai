@@ -18,6 +18,24 @@ public class Board{
     }
 
 
+    /**
+     * What is the situation on board, who is winning?
+     *
+     * @return value that represents the situation: the smaller (negative) is better for blue and bigger (positive) is better for red
+     */
+    public int evaluate() {
+        int sum = 0;
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[0].length; j++) {
+                if ((i == 0 || i == 6) && (j == 0 || j == 6))
+                    continue;
+                sum += board[i][j];
+            }
+        }
+        //System.out.println("AI: evaluateBoard:\n" + board + "sum: " + sum);
+        return sum;
+    }
+
     @Override
     public boolean equals(Object o){
         if(o == null || o.getClass() != this.getClass()){
@@ -42,7 +60,8 @@ public class Board{
 
     @Override
     public String toString() {
-        String b = "board " + this.hashCode() + "\n";
+        String b = "board " + this.hashCode() + "\n" +
+                "value: " + this.evaluate() + "\n";
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[0].length; j++) {
                 b += "[";

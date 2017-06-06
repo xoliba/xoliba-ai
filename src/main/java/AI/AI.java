@@ -22,7 +22,7 @@ public class AI {
         this.validator = new Validator();
         this.stoneCollector = new StoneCollector();
         this.random = new Random();
-        this.inceptionTreshold = 3;
+        this.inceptionTreshold = 0;
     }
 
     public int[][] move(int[][] b) {
@@ -34,12 +34,6 @@ public class AI {
 
         int possibleMovesCount = allPossibleMoves.size();
         if (possibleMovesCount > 0) {
-            /*
-            int i = random.nextInt(allPossibleMoves.size());
-            Move m = allPossibleMoves.get(i);
-            swap(board.board, m);
-            stoneCollector.collectStonesFromBiggestTriangleAvailable(board, m);
-            */
             board = doTheBestMoveForRed(board);
             System.out.println("AI did a move:\n" + board);
         } else {
@@ -133,7 +127,7 @@ public class AI {
     private int maxValue(Board board, int inceptionLevel, int redsBest, int bluesBest) {
         //System.out.println("AI maxValue: inceptionLevel " + inceptionLevel + "; redsBest " + redsBest + "; bluesBest" + bluesBest);
         if (inceptionLevel > inceptionTreshold) {
-            return evaluateBoard(board);
+            return board.evaluate();
         }
 
         int v = Integer.MIN_VALUE;
@@ -164,7 +158,7 @@ public class AI {
      */
     private int minValue(Board board, int inceptionLevel, int redsBest, int bluesBest) {
         if (inceptionLevel > inceptionTreshold) {
-            return evaluateBoard(board);
+            return board.evaluate();
         }
 
         int v = Integer.MAX_VALUE;
@@ -184,25 +178,6 @@ public class AI {
             }
         }
         return v;
-    }
-
-    /**
-     * What is the situation on board, who is winning?
-     *
-     * @param board game situation
-     * @return value that represents the situation: the smaller (negative) is better for blue and bigger (positive) is better for red
-     */
-    private int evaluateBoard(Board board) {
-        int sum = 0;
-        for (int i = 0; i < board.board.length; i++) {
-            for (int j = 0; j < board.board[0].length; j++) {
-                if ((i == 0 || i == 6) && (j == 0 || j == 6))
-                    continue;
-                sum += board.board[i][j];
-            }
-        }
-        //System.out.println("AI: evaluateBoard:\n" + board + "sum: " + sum);
-        return sum;
     }
 
     private void scanThroughBoardAndExcecuteThisMethodToOurColoredStones(Method methodToExcecute) {
