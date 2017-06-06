@@ -27,4 +27,14 @@ public class TriangleTest {
         assertEquals(3, t.getSize());
     }
 
+    @Test
+    public void equalsTest() {
+        Triangle t1 = new Triangle(new Coordinate(0,1), new Coordinate(1,0), new Coordinate(1,2));
+        assertTrue(t.equals(t1));
+        t1 = new Triangle(new Coordinate(1,0), new Coordinate(0,1), new Coordinate(1,2));
+        assertTrue(t.equals(t1));
+        t1 = new Triangle(new Coordinate(1,0), new Coordinate(5,0), new Coordinate(3,1));
+        assertFalse(t.equals(t1));
+    }
+
 }

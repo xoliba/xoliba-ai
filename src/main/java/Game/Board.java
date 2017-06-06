@@ -24,6 +24,12 @@ public class Board{
      * @return value that represents the situation: the smaller (negative) is better for blue and bigger (positive) is better for red
      */
     public int evaluate() {
+        int e = sumOfTheStones();
+        
+        return e;
+    }
+
+    private int sumOfTheStones() {
         int sum = 0;
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[0].length; j++) {
@@ -32,7 +38,6 @@ public class Board{
                 sum += board[i][j];
             }
         }
-        //System.out.println("AI: evaluateBoard:\n" + board + "sum: " + sum);
         return sum;
     }
 

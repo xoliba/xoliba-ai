@@ -46,4 +46,10 @@ public class AITest {
         int[][] boardAfter10Moves = ai.move(table).board;
         assertFalse(new Board(boardAfter10Moves).equals(new Board(table)));
     }
+
+    @Test
+    public void maxValueTest() {
+        ai = new AI(1, 1);
+
+    }
 }

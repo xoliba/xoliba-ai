@@ -77,7 +77,6 @@ public class AI {
      * @return all relevant info wrapped in a TurnData object
      */
     private TurnData doTheBestMoveForRed(Board board) {
-        Board theBoardAfterTheBestMove = board;
         TurnData td = new TurnData();
         int redBest = Integer.MIN_VALUE;
         int blueBest = Integer.MAX_VALUE;
@@ -92,8 +91,7 @@ public class AI {
                 if (v > redBest) { //if the result is better than the known best
                     redBest = v; //update the best
                     td = new TurnData(true, b2.copy(), m, t);
-                    theBoardAfterTheBestMove = b2.copy(); //save the board after this certain triangle
-                    System.out.println("doTheBestMoveForRed board was updated:\n" + theBoardAfterTheBestMove);
+                    System.out.println("AI updated it's planned move (redBest " + redBest + "; blueBest " + blueBest + ")\n" + td);
                 }
             }
         }
