@@ -1,5 +1,7 @@
 package Game;
 
+import AI.Validator;
+
 /**
  * Created by vili on 31.5.2017.
  */
@@ -8,13 +10,19 @@ package Game;
 public class Board{
 
     public int[][] board;
+    private Validator validator;  //for evaluating
+    private int sizeOfRedsBiggestTriangle = 0;
+    private int sizeOfBluesBiggestTriangle = 0;
+    private int howManyTrianglesOnBoard = 0;
 
     public Board() {
-        board = new int[7][7];
+        this(new int[7][7]);
     }
+
 
     public Board(int[][] board) {
         this.board = board;
+        this.validator = new Validator();
     }
 
 
@@ -25,7 +33,10 @@ public class Board{
      */
     public int evaluate() {
         int e = sumOfTheStones();
-        
+
+        findAllTriangles();
+        e += 7 * (sizeOfRedsBiggestTriangle - sizeOfBluesBiggestTriangle);
+
         return e;
     }
 
@@ -39,6 +50,43 @@ public class Board{
             }
         }
         return sum;
+    }
+
+    /**
+     * scans through the board updating the sizes of the biggest triangles for both colors
+     * in the process
+     */
+    private void findAllTriangles() {
+        validator.refreshBoard(board);
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[0].length; j++) {
+                int c = board[i][j];
+                if (c != 1 && c != -1) continue;
+                //TODO if the size is already 3 no reason to look further
+
+                Move moveOnSpot = new Move(new Coordinate(i,j), new Coordinate(i,j));
+                howManyTrianglesOnBoard += validator.howManyTrianglesFound(moveOnSpot, c);
+
+                if (moveOnSpot.triangles.isEmpty()) continue;
+
+                int sizeOfTheT = moveOnSpot.getBiggestTriangle().getSize();
+                if (c == 1) {
+                    sizeOfRedsBiggestTriangle =  sizeOfTheT > sizeOfRedsBiggestTriangle ? sizeOfTheT : sizeOfRedsBiggestTriangle;
+                } else {
+                    sizeOfBluesBiggestTriangle =  sizeOfTheT > sizeOfBluesBiggestTriangle ? sizeOfTheT : sizeOfBluesBiggestTriangle;
+                }
+            }
+        }
+        //TODO every triangle is found three times, a spot for optimization maybe?
+        howManyTrianglesOnBoard /= 3;
+    }
+
+    /**
+     * must be called after evaluating (otherwise will be 0)
+     * @return how many triangles on board, both colors together
+     */
+    public int getHowManyTrianglesOnBoard() {
+        return howManyTrianglesOnBoard;
     }
 
     @Override

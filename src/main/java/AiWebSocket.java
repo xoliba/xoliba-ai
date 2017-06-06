@@ -2,6 +2,7 @@ import AI.AI;
 import org.eclipse.jetty.websocket.api.*;
 import org.eclipse.jetty.websocket.api.annotations.*;
 import java.io.*;
+import java.sql.Timestamp;
 import java.util.*;
 import java.util.concurrent.*;
 
@@ -22,26 +23,25 @@ public class AiWebSocket {
 	
 	@OnWebSocketMessage
 	public void message(Session session, String message) throws IOException {
-		/*
 		if (JsonConverter.ping(message)) {
 			System.out.println("ping");
 			return;
-		}*/
-		System.out.println("Got a message!\n" + message);
+		}
+		System.out.println("got a message @ " + new java.util.Date());
 
 		handleTable(session, message);
 		//handleData(session, message);
 	}
 
 	private void handleTable(Session session, String message) throws IOException {
-		System.out.println("Got: " + JsonConverter.jsonify(JsonConverter.parseTable(message)));
+		System.out.println("Got: " + JsonConverter.jsonify(JsonConverter.parseTable(message)) + "\n");
 
 		AI ai = new AI(1);
-		session.getRemote().sendString(JsonConverter.jsonify(ai.move(JsonConverter.parseTable(message))));
+		session.getRemote().sendString(JsonConverter.jsonify(ai.move(JsonConverter.parseTable(message)).board));
 	}
 
 	private void handleData(Session session, String message) throws IOException {
-		System.out.println("Got: " + JsonConverter.jsonify(JsonConverter.parseMessage(message)));
+		System.out.println("Got: " + JsonConverter.jsonify(JsonConverter.parseMessage(message)) + "\n");
 		
         AI ai = new AI(1);
 		session.getRemote().sendString(JsonConverter.jsonify(ai.move(JsonConverter.parseMessage(message).board)));

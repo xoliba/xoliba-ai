@@ -119,7 +119,7 @@ public class Validator {
      * @param color
      * @return can a triangle of given color be formed with the coordinate
      */
-    protected int howManyTrianglesFound(Move move, int color) {
+    public int howManyTrianglesFound(Move move, int color) {
         int triangles = 0;
 
         for (int i = 2; i <= 6; i += 2) { //for all possible triangle hypotenuse lengths

@@ -98,8 +98,6 @@ public class BoardTest {
         assertTrue("red has a bigger triangle than blue, so better for red", board4.evaluate() > 0);
         assertTrue("same sized triangles, but blue has potential for a bigger one", board5.evaluate() < 0);
         assertTrue("same sized triangles, but blue has more stones on board", board6.evaluate() < 0);
-
-
     }
 
 }

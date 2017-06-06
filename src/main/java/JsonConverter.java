@@ -1,12 +1,19 @@
 import Game.TurnData;
 import com.google.gson.Gson;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 public class JsonConverter {
 	private static Gson gson = new Gson();
 	
 	public static int[][] parseTable(String message) {
-		return gson.fromJson(message, int[][].class);
+		try {
+			int[][] t = gson.fromJson(message, int[][].class);
+			return t;
+		} catch (Exception e) {
+			System.out.println("EXCEPTION @ JsonConverter parseTable");
+			return new int[0][0];
+		}
 	}
 	
 	public static String jsonify(TurnData data) {
@@ -18,8 +25,13 @@ public class JsonConverter {
 	}
 	
 	public static boolean ping(String message) {
-		TurnData msg = parseMessage(message);
-		return msg.type.equals("ping");
+		try {
+			TurnData msg = parseMessage(message);
+			return msg.type.equals("ping");
+		} catch (Exception e) {
+			System.out.println("EXCEPTION @ JsonConverter ping");
+			return false;
+		}
 	}
 	
 	public static TurnData parseMessage(String message) {
