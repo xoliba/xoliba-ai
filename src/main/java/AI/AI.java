@@ -25,22 +25,23 @@ public class AI {
         this.inceptionTreshold = 3;
     }
 
-    public int[][] move(int[][] b) {
+    public TurnData move(int[][] b) {
         board = new Board(b);
         System.out.println("AI got a new board:\n" + board);
         validator.refreshBoard(board.board);
 
         ArrayList<Move> allPossibleMoves = generateAllPossibleMoves(board, color);
 
+        TurnData td = new TurnData();
         int possibleMovesCount = allPossibleMoves.size();
         if (possibleMovesCount > 0) {
-            board = doTheBestMoveForRed(board);
-            System.out.println("AI did a move:\n" + board);
+            td = doTheBestMoveForRed(board);
+            System.out.println("AI did a move:\n" + td);
         } else {
             System.out.println("AI didn't do a move, there is none!");
         }
 
-        return board.board;
+        return td;
     }
 
     /**
@@ -67,8 +68,9 @@ public class AI {
      * @param board
      * @return board after the move was made
      */
-    private Board doTheBestMoveForRed(Board board) {
+    private TurnData doTheBestMoveForRed(Board board) {
         Board theBoardAfterTheBestMove = board;
+        TurnData td = new TurnData();
         int redBest = Integer.MIN_VALUE;
         int blueBest = Integer.MAX_VALUE;
 
@@ -81,12 +83,13 @@ public class AI {
                 int v = minValue(b2, 0, redBest, blueBest); //the opponent gets a move
                 if (v > redBest) { //if the result is better than the known best
                     redBest = v; //update the best
+                    td = new TurnData(true, b2.copy(), m, t);
                     theBoardAfterTheBestMove = b2.copy(); //save the board after this certain triangle
                     System.out.println("doTheBestMoveForRed board was updated:\n" + theBoardAfterTheBestMove);
                 }
             }
         }
-        return theBoardAfterTheBestMove;
+        return td;
     }
 
     /**
