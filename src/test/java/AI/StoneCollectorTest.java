@@ -5,10 +5,7 @@
  */
 package AI;
 
-import Game.Board;
-import Game.Coordinate;
-import Game.Move;
-import Game.Triangle;
+import Game.*;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;

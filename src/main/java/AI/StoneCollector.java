@@ -33,11 +33,11 @@ public class StoneCollector {
         return board;
     }
 
-    private void hitStones(Board board, Triangle t) {
+    protected void hitStones(Board board, Triangle t) {
         Coordinate c1 = t.getCorners()[0];
         Coordinate c2 = t.getCorners()[1];
         Coordinate c3 = t.getCorners()[2];
-        System.out.println("\tStone Collector: hit stones " + t);
+        //System.out.println("\tStone Collector: hit stones " + t);
 
         if (c1.x == c2.x) {
             hitTriangles(board, c1.y, c2.y, c1.x, c3.x, true);
