@@ -27,7 +27,6 @@ public class AiWebSocket {
 			return;
 		}
 
-		
 		//System.out.println("Got: " + JsonConverter.jsonify(JsonConverter.parseMessage(message)));
 
 		System.out.println("got a message @ " + new java.util.Date());
@@ -65,8 +64,7 @@ public class AiWebSocket {
 	private void handleData(Session session, String message) throws IOException {
 		System.out.println("Got: " + JsonConverter.jsonify(JsonConverter.parseMessage(message)) + "\n");
 
-		
         AI ai = new AI(1);
-		session.getRemote().sendString(JsonConverter.jsonify(ai.move(JsonConverter.parseTable(message))));
+		session.getRemote().sendString(JsonConverter.jsonify(ai.move(JsonConverter.parseMessage(message).board)));
 	}
 }
