@@ -34,7 +34,7 @@ public class AITest {
         Board copy = boardWithTwoSmallTriangles.copy();
         assertTrue("the board should be the same if no move was made",
                 copy.equals(boardWithTwoSmallTriangles));
-        int[][] boardAfterMove = ai.move(table);
+        int[][] boardAfterMove = ai.move(table).board;
         assertFalse("the board should be different after a move:\n" +
                 "board before move\n" + copy + "board after move\n"
                 + new Board(boardAfterMove) , new Board(boardAfterMove).equals(copy));
