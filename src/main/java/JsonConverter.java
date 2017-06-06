@@ -13,6 +13,10 @@ public class JsonConverter {
 	public static String jsonify(TurnData data) {
 		return gson.toJson(data);
 	}
+
+	public static String jsonify(int[][] table) {
+		return gson.toJson(table);
+	}
 	
 	public static boolean ping(String message) {
 		TurnData msg = parseMessage(message);

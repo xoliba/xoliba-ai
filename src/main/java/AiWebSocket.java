@@ -26,10 +26,22 @@ public class AiWebSocket {
 			System.out.println("ping");
 			return;
 		}
-		
+
+		handleTable(session, message);
+		//handleData(session, message);
+	}
+
+	private void handleTable(Session session, String message) throws IOException {
+		System.out.println("Got: " + JsonConverter.jsonify(JsonConverter.parseTable(message)));
+
+		AI ai = new AI(1);
+		session.getRemote().sendString(JsonConverter.jsonify(ai.move(JsonConverter.parseTable(message))));
+	}
+
+	private void handleData(Session session, String message) throws IOException {
 		System.out.println("Got: " + JsonConverter.jsonify(JsonConverter.parseMessage(message)));
 		
         AI ai = new AI(1);
-		session.getRemote().sendString(JsonConverter.jsonify(ai.move(JsonConverter.parseTable(message))));
+		session.getRemote().sendString(JsonConverter.jsonify(ai.move(JsonConverter.parseMessage(message).board)));
 	}
 }
