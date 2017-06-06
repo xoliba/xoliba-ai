@@ -42,12 +42,14 @@ public class TurnData {
     @Override
     public String toString() {
         String s = "" + type;
-        s += didMove ? " a move was made:\n" : " nobody moved";
+        s += didMove ? " is a move:\n" : " did not move";
         if (!didMove) return s;
 
         Coordinate c1 = new Coordinate(start[0], start[1]);
         Coordinate c2 = new Coordinate(target[0], target[1]);
-        s += new Board(board);
+        Board b = new Board(board);
+        s += b;
+        s += "triangles on board (both colors): " + b.getHowManyTrianglesOnBoard() + "\n";
         s += "start " + c1 + "; target " + c2 + ";\n";
         s += "triangle was formed at " + new Triangle(c2,
                 new Coordinate(corners[0][0], corners[0][1]),
