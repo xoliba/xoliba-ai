@@ -22,11 +22,12 @@ public class AiWebSocket {
 	
 	@OnWebSocketMessage
 	public void message(Session session, String message) throws IOException {
+		/*
 		if (JsonConverter.ping(message)) {
 			System.out.println("ping");
 			return;
-		}
-		System.out.println("Got a message!");
+		}*/
+		System.out.println("Got a message!\n" + message);
 
 		handleTable(session, message);
 		//handleData(session, message);
