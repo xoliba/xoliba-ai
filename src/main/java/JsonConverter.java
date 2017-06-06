@@ -6,8 +6,7 @@ public class JsonConverter {
 	private static Gson gson = new Gson();
 	
 	public static int[][] parseTable(String message) {
-		TurnData msg = parseMessage(message);
-		return msg.board;
+		return gson.fromJson(message, int[][].class);
 	}
 	
 	public static String jsonify(TurnData data) {
