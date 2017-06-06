@@ -1,3 +1,4 @@
+import Game.TurnData;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
@@ -6,7 +7,7 @@ public class JsonConverter {
 	
 	public static int[][] parseTable(String message) {
 		TurnData msg = parseMessage(message);
-		return msg.table;
+		return msg.board;
 	}
 	
 	public static String jsonify(TurnData data) {
@@ -18,7 +19,7 @@ public class JsonConverter {
 		return msg.type.equals("ping");
 	}
 	
-	private static TurnData parseMessage(String message) {
+	public static TurnData parseMessage(String message) {
 		return gson.fromJson(message, TurnData.class);
 	}
 }

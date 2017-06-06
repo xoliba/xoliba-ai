@@ -27,7 +27,7 @@ public class AiWebSocket {
 			return;
 		}
 		
-		System.out.println("Got: " + JsonConverter.jsonify(JsonConverter.parseTable(message)));
+		System.out.println("Got: " + JsonConverter.jsonify(JsonConverter.parseMessage(message)));
 		
         AI ai = new AI(1);
 		session.getRemote().sendString(JsonConverter.jsonify(ai.move(JsonConverter.parseTable(message))));
