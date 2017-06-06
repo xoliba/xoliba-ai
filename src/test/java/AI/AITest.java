@@ -39,4 +39,11 @@ public class AITest {
                 "board before move\n" + copy + "board after move\n"
                 + new Board(boardAfterMove) , new Board(boardAfterMove).equals(copy));
     }
+
+    @Test
+    public void AIcomputesDeepInTheGameTreeWhileThereAreMoves() {
+        ai = new AI(1, 10);
+        int[][] boardAfter10Moves = ai.move(table).board;
+        assertFalse(new Board(boardAfter10Moves).equals(new Board(table)));
+    }
 }
