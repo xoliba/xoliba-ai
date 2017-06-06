@@ -26,6 +26,7 @@ public class AiWebSocket {
 			System.out.println("ping");
 			return;
 		}
+		System.out.println("Got a message!");
 
 		//System.out.println("Got: " + JsonConverter.jsonify(JsonConverter.parseMessage(message)));
 

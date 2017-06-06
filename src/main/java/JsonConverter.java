@@ -6,13 +6,7 @@ public class JsonConverter {
 	private static Gson gson = new Gson();
 	
 	public static int[][] parseTable(String message) {
-		try {
-			int[][] t = gson.fromJson(message, int[][].class);
-			return t;
-		} catch (Exception e) {
-			System.out.println("EXCEPTION @ JsonConverter parseTable");
-			return new int[0][0];
-		}
+		return gson.fromJson(message, int[][].class);
 	}
 	
 	public static String jsonify(TurnData data) {
