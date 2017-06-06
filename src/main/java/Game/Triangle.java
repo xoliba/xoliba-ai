@@ -49,4 +49,24 @@ public class Triangle {
     public int getSize() {
         return size;
     }
+
+    @Override
+    public boolean equals(Object o){
+        if(o == null || o.getClass() != this.getClass()){
+            return false;
+        } else if (this.hashCode() == o.hashCode()){
+            return true;
+        }
+        return false;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 17;
+        for (Coordinate c:corners) {
+            hash *= 91 * c.hashCode();
+        }
+        return hash;
+    }
 }

@@ -52,7 +52,7 @@ public class TurnData {
         s += "triangle was formed at " + new Triangle(c2,
                 new Coordinate(corners[0][0], corners[0][1]),
                 new Coordinate(corners[1][0], corners[1][1]));
-
+        s += "\n";
         return s;
     }
 }
