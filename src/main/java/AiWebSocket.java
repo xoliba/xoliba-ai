@@ -45,11 +45,11 @@ public class AiWebSocket {
 	 */
 	private void updateAI() {
 		if (ai == null) {
-			System.out.println("instantiated AI, difficulty of 2");
-			ai = new AI(1, 2);
-		} else if (howManyTablesReceived > 3 && ai.getDifficulty() < 3) {
+			System.out.println("instantiated AI, difficulty of 1");
+			ai = new AI(1, 1);
+		} else if (howManyTablesReceived > 5 && ai.getDifficulty() < 2) {
 			System.out.println("updated AI, difficulty is now 3");
-			ai = new AI(1, 3);
+			ai = new AI(1, 2);
 		}
 	}
 
