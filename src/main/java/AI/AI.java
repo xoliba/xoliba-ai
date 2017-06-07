@@ -36,7 +36,6 @@ public class AI {
     public TurnData move(int[][] b) {
         board = new Board(b);
         System.out.println("AI got a new board:\n" + board);
-        validator.refreshBoard(board.board);
 
         ArrayList<Move> allPossibleMoves = generateAllPossibleMoves(board, color);
 
