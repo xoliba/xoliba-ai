@@ -30,8 +30,8 @@ public class AiWebSocket {
 			System.out.println("ping");
 			return;
 		}
-		updateAI();
 		howManyTablesReceived++;
+		updateAI();
 
 		System.out.println("got a message @ " + new java.util.Date() + "\ntables received: " + howManyTablesReceived);
 
