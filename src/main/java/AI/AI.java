@@ -139,8 +139,13 @@ public class AI {
             return board.evaluate();
         }
 
+        ArrayList<Move> possibleMoves = generateAllPossibleMoves(board, 1);
+        if (possibleMoves.isEmpty()) {
+            return board.evaluate();
+        }
+
         int v = Integer.MIN_VALUE;
-        for (Move m: generateAllPossibleMoves(board, 1)) { //for all possible moves for red
+        for (Move m: possibleMoves) { //for all possible moves for red
             Board b1 = board.copy();
             swap(b1.board, m);
             for (Triangle t: m.triangles) { //for all triangles we might form
@@ -170,8 +175,13 @@ public class AI {
             return board.evaluate();
         }
 
+        ArrayList<Move> possibleMoves = generateAllPossibleMoves(board, -1);
+        if (possibleMoves.isEmpty()) {
+            return board.evaluate();
+        }
+
         int v = Integer.MAX_VALUE;
-        for (Move m: generateAllPossibleMoves(board, -1)) { //for all possible moves for blue
+        for (Move m: possibleMoves) { //for all possible moves for blue
             Board b1 = board.copy();
             swap(b1.board, m);
             for (Triangle t: m.triangles) { //for all triangles we might form
