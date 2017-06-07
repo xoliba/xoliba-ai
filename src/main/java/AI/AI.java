@@ -141,7 +141,7 @@ public class AI {
 
         ArrayList<Move> possibleMoves = generateAllPossibleMoves(board, 1);
         if (possibleMoves.isEmpty()) {
-            return board.evaluate();
+            return minValue(board, inceptionLevel + 1, redsBest, bluesBest);
         }
 
         int v = Integer.MIN_VALUE;
@@ -177,7 +177,7 @@ public class AI {
 
         ArrayList<Move> possibleMoves = generateAllPossibleMoves(board, -1);
         if (possibleMoves.isEmpty()) {
-            return board.evaluate();
+            return maxValue(board, inceptionLevel + 1, redsBest, bluesBest);
         }
 
         int v = Integer.MAX_VALUE;
