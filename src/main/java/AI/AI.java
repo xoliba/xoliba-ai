@@ -124,6 +124,7 @@ public class AI {
     }
 
     /**
+     * "Reds turn"
      * estimate how good option this board would be for the red
      *
      * @param board
@@ -161,6 +162,7 @@ public class AI {
     }
 
     /**
+     * "Blues turn"
      * estimate how good option this board would be for the blue
      *
      * @param board
