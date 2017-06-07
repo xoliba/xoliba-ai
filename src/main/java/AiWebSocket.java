@@ -27,9 +27,6 @@ public class AiWebSocket {
 			System.out.println("ping");
 			return;
 		}
-		System.out.println("got a message @ " + new java.util.Date());
-
-		//System.out.println("Got: " + JsonConverter.jsonify(JsonConverter.parseMessage(message)));
 
 		System.out.println("got a message @ " + new java.util.Date());
 
