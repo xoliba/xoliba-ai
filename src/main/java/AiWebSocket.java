@@ -28,7 +28,7 @@ public class AiWebSocket {
 		}
 
 		
-		System.out.println("Got: " + JsonConverter.jsonify(JsonConverter.parseMessage(message)));
+		//System.out.println("Got: " + JsonConverter.jsonify(JsonConverter.parseMessage(message)));
 
 		System.out.println("got a message @ " + new java.util.Date());
 
@@ -36,6 +36,10 @@ public class AiWebSocket {
 		//handleData(session, message);
 	}
 
+	/**
+	message = 2d array
+	return = 2d array
+	 */
 	private void handleTable(Session session, String message) throws IOException {
 		System.out.println("Got: " + JsonConverter.jsonify(JsonConverter.parseTable(message)) + "\n");
 
@@ -43,6 +47,10 @@ public class AiWebSocket {
 		session.getRemote().sendString(JsonConverter.jsonify(ai.move(JsonConverter.parseTable(message)).board));
 	}
 
+	/**
+	message = 2d array
+	return = turn data
+	*/
 	private void handleTableSendTurnData(Session session, String message) throws IOException {
 		System.out.println("Got: " + JsonConverter.jsonify(JsonConverter.parseTable(message)) + "\n");
 
@@ -50,6 +58,10 @@ public class AiWebSocket {
 		session.getRemote().sendString(JsonConverter.jsonify(ai.move(JsonConverter.parseTable(message))));
 	}
 
+	/**
+	message = turn data
+	return = turn data
+	*/
 	private void handleData(Session session, String message) throws IOException {
 		System.out.println("Got: " + JsonConverter.jsonify(JsonConverter.parseMessage(message)) + "\n");
 
