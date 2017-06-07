@@ -55,7 +55,7 @@ public class AiWebSocket {
 	private void handleTableSendTurnData(Session session, String message) throws IOException {
 		System.out.println("Got: " + JsonConverter.jsonify(JsonConverter.parseTable(message)) + "\n");
 		AI ai = new AI(1);
-		session.getRemote().sendString(JsonConverter.jsonify(ai.move(JsonConverter.parseTable(message)).board));
+		session.getRemote().sendString(JsonConverter.jsonify(ai.move(JsonConverter.parseTable(message))));
 	}
 
 	/**
