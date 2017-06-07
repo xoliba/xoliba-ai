@@ -10,6 +10,9 @@ import java.util.concurrent.*;
 public class AiWebSocket {
 	private static final Queue<Session> sessions = new ConcurrentLinkedQueue<>();
 
+	private AI ai;
+	private int howManyTablesReceived = 0;
+
 	@OnWebSocketConnect
 	public void connected(Session session) {
 		sessions.add(session);
@@ -27,11 +30,27 @@ public class AiWebSocket {
 			System.out.println("ping");
 			return;
 		}
+		updateAI();
+		howManyTablesReceived++;
 
-		System.out.println("got a message @ " + new java.util.Date());
+		System.out.println("got a message @ " + new java.util.Date() + "\ntables received: " + howManyTablesReceived);
 
 		handleTableSendTurnData(session, message);
 		//handleData(session, message);
+	}
+
+	/**
+	 * Instantiate AI if it is null.
+	 * Change AI to better one if the game has progressed enough
+	 */
+	private void updateAI() {
+		if (ai == null) {
+			System.out.println("instantiated AI, difficulty of 2");
+			ai = new AI(1, 2);
+		} else if (howManyTablesReceived > 3 && ai.getDifficulty() < 3) {
+			System.out.println("updated AI, difficulty is now 3");
+			ai = new AI(1, 3);
+		}
 	}
 
 	/**
@@ -40,8 +59,6 @@ public class AiWebSocket {
 	 */
 	private void handleTable(Session session, String message) throws IOException {
 		System.out.println("Got: " + JsonConverter.jsonify(JsonConverter.parseTable(message)) + "\n");
-
-		AI ai = new AI(1);
 		session.getRemote().sendString(JsonConverter.jsonify(ai.move(JsonConverter.parseTable(message)).board));
 	}
 
@@ -51,7 +68,6 @@ public class AiWebSocket {
 	*/
 	private void handleTableSendTurnData(Session session, String message) throws IOException {
 		System.out.println("Got: " + JsonConverter.jsonify(JsonConverter.parseTable(message)) + "\n");
-		AI ai = new AI(1);
 		session.getRemote().sendString(JsonConverter.jsonify(ai.move(JsonConverter.parseTable(message))));
 	}
 
@@ -61,8 +77,6 @@ public class AiWebSocket {
 	*/
 	private void handleData(Session session, String message) throws IOException {
 		System.out.println("Got: " + JsonConverter.jsonify(JsonConverter.parseMessage(message)) + "\n");
-
-        AI ai = new AI(1);
 		session.getRemote().sendString(JsonConverter.jsonify(ai.move(JsonConverter.parseMessage(message).board)));
 	}
 }
