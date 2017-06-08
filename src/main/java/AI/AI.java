@@ -39,7 +39,7 @@ public class AI {
 
     public TurnData move(int[][] b) {
         board = new Board(b);
-        System.out.println("AI got a new board:\n" + board);
+        System.out.println("AI (color of " + color + ") got a new board:\n" + board);
 
         ArrayList<Move> allPossibleMoves = generateAllPossibleMoves(board, color);
 
