@@ -1,9 +1,9 @@
 import AI.AI;
 import Game.TurnData;
+import com.google.gson.JsonElement;
 import org.eclipse.jetty.websocket.api.*;
 import org.eclipse.jetty.websocket.api.annotations.*;
 import java.io.*;
-import java.sql.Timestamp;
 import java.util.*;
 import java.util.concurrent.*;
 
@@ -31,15 +31,11 @@ public class AiWebSocket {
 			System.out.println("ping");
 			return;
 		}
-		System.out.println(message);
-		TurnData data = JsonConverter.parseMessage(message);
-		System.out.println("Got: " + data.board + "\n");
-		
-		AI ai = new AI(data.color, 3);
+		howManyTablesReceived++;
+		updateAI();
 
-		session.getRemote().sendString(JsonConverter.jsonify(ai.move(data.board)));
 		//handleTableSendTurnData(session, message);
-		//handleData(session, message);
+		handleData(session, message);
 	}
 
 	/**
@@ -49,10 +45,10 @@ public class AiWebSocket {
 	private void updateAI() {
 		if (ai == null) {
 			System.out.println("instantiated AI, difficulty of 2");
-			ai = new AI(1, 2);
-		} else if (howManyTablesReceived > 3 && ai.getDifficulty() < 3) {
+			ai = new AI(1, 1);
+		} else if (howManyTablesReceived > 5 && ai.getDifficulty() < 3) {
 			System.out.println("updated AI, difficulty is now 3");
-			ai = new AI(1, 3);
+			ai = new AI(1, 2);
 		}
 	}
 
@@ -79,7 +75,7 @@ public class AiWebSocket {
 	return = turn data
 	*/
 	private void handleData(Session session, String message) throws IOException {
-		System.out.println("Got: " + JsonConverter.jsonify(JsonConverter.parseMessage(message)) + "\n");
-		session.getRemote().sendString(JsonConverter.jsonify(ai.move(JsonConverter.parseMessage(message).board)));
+		TurnData data = JsonConverter.parseTurnData(message);
+		session.getRemote().sendString(JsonConverter.jsonify(ai.move(data.board)));
 	}
 }

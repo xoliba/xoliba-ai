@@ -1,7 +1,5 @@
 import Game.TurnData;
 import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 
 public class JsonConverter {
 	private static Gson gson = new Gson();
@@ -26,7 +24,7 @@ public class JsonConverter {
 	
 	public static boolean ping(String message) {
 		try {
-			TurnData msg = parseMessage(message);
+			TurnData msg = parseTurnData(message);
 			return msg.type.equals("ping");
 		} catch (Exception e) {
 			System.out.println("EXCEPTION @ JsonConverter ping");
@@ -34,7 +32,7 @@ public class JsonConverter {
 		}
 	}
 	
-	public static TurnData parseMessage(String message) {
+	public static TurnData parseTurnData(String message) {
 		return gson.fromJson(message, TurnData.class);
 	}
 }
