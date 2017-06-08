@@ -32,13 +32,16 @@ public class AiWebSocket {
 			return;
 		}
 		howManyTablesReceived++;
-		updateAI();
+
+		TurnData data = JsonConverter.parseTurnData(message);
+
+		updateAI(data);
 
 		System.out.println("got a message @ " + new java.util.Date() + "\ntables received: " + howManyTablesReceived);
 
 		long s = System.nanoTime();
-		//handleTableSendTurnData(session, message);
-		handleData(session, message);
+		data = ai.move(data.board); //lets update the turn data with AIs move
+		session.getRemote().sendString(JsonConverter.jsonify(data.board));
 		long e = System.nanoTime();
 		System.out.println("It took AI " + (e - s) / 1e9 + " seconds to compute the move");
 	}
@@ -47,13 +50,13 @@ public class AiWebSocket {
 	 * Instantiate AI if it is null.
 	 * Change AI to better one if the game has progressed enough
 	 */
-	private void updateAI() {
+	private void updateAI(TurnData data) {
 		if (ai == null) {
 			System.out.println("instantiated AI, difficulty of 1");
-			ai = new AI(1, 1);
+			ai = new AI(data.color, 1);
 		} else if (howManyTablesReceived > 5 && ai.getDifficulty() < 2) {
 			System.out.println("updated AI, difficulty is now 2");
-			ai = new AI(1, 2);
+			ai = new AI(data.color, 2);
 		}
 	}
 
