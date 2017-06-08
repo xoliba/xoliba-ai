@@ -35,7 +35,8 @@ public class AiWebSocket {
 
 		TurnData data = JsonConverter.parseTurnData(message);
 
-		updateAI(data);
+		ai = new AI(data.color, 1); //so that ai always plays at the right color even if the websocket connection hasnt been reset
+		//updateAI(data);
 
 		System.out.println("got a message @ " + new java.util.Date() + "\ntables received: " + howManyTablesReceived);
 
