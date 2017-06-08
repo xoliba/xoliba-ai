@@ -35,8 +35,11 @@ public class AiWebSocket {
 
 		System.out.println("got a message @ " + new java.util.Date() + "\ntables received: " + howManyTablesReceived);
 
+		long s = System.nanoTime();
 		handleTableSendTurnData(session, message);
 		//handleData(session, message);
+		long e = System.nanoTime();
+		System.out.println("It took AI " + (e - s) / 1e9 + " seconds to compute the move");
 	}
 
 	/**
