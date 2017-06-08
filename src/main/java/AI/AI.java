@@ -33,6 +33,10 @@ public class AI {
         this.inceptionTreshold = difficulty;
     }
 
+    public int getDifficulty() {
+        return inceptionTreshold;
+    }
+
     public TurnData move(int[][] b) {
         board = new Board(b);
         System.out.println("AI got a new board:\n" + board);
@@ -90,7 +94,7 @@ public class AI {
                 if (v > redBest) { //if the result is better than the known best
                     redBest = v; //update the best
                     td = new TurnData(true, b2.copy(), m, t);
-                    System.out.println("AI updated it's planned move (redBest " + redBest + "; blueBest " + blueBest + ")\n" + td);
+                    //System.out.println("AI updated it's planned move (redBest " + redBest + "; blueBest " + blueBest + ")\n" + td);
                 }
             }
         }
