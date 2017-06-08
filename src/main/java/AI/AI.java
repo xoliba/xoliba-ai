@@ -46,7 +46,8 @@ public class AI {
         TurnData td = new TurnData();
         int possibleMovesCount = allPossibleMoves.size();
         if (possibleMovesCount > 0) {
-            td = doTheBestMoveForRed(board);
+            if (color == 1) td = doTheBestMoveForRed(board);
+            else if (color == -1) td = doTheBestMoveForBlue(board);
             System.out.println("AI did a move:\n" + td);
         } else {
             System.out.println("AI didn't do a move, there is none!");
@@ -106,7 +107,7 @@ public class AI {
      * @param board
      * @return all relevant info wrapped in a TurnData object
      */
-    private TurnData theBestMoveForBlue(Board board) {
+    private TurnData doTheBestMoveForBlue(Board board) {
         TurnData td = new TurnData();
         int redBest = Integer.MIN_VALUE;
         int blueBest = Integer.MAX_VALUE;
