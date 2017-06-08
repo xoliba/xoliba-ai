@@ -34,8 +34,13 @@ public class AiWebSocket {
 		howManyTablesReceived++;
 		updateAI();
 
+		System.out.println("got a message @ " + new java.util.Date() + "\ntables received: " + howManyTablesReceived);
+
+		long s = System.nanoTime();
 		//handleTableSendTurnData(session, message);
 		handleData(session, message);
+		long e = System.nanoTime();
+		System.out.println("It took AI " + (e - s) / 1e9 + " seconds to compute the move");
 	}
 
 	/**
@@ -44,10 +49,10 @@ public class AiWebSocket {
 	 */
 	private void updateAI() {
 		if (ai == null) {
-			System.out.println("instantiated AI, difficulty of 2");
+			System.out.println("instantiated AI, difficulty of 1");
 			ai = new AI(1, 1);
-		} else if (howManyTablesReceived > 5 && ai.getDifficulty() < 3) {
-			System.out.println("updated AI, difficulty is now 3");
+		} else if (howManyTablesReceived > 5 && ai.getDifficulty() < 2) {
+			System.out.println("updated AI, difficulty is now 2");
 			ai = new AI(1, 2);
 		}
 	}

@@ -40,7 +40,6 @@ public class AI {
     public TurnData move(int[][] b) {
         board = new Board(b);
         System.out.println("AI got a new board:\n" + board);
-        validator.refreshBoard(board.board);
 
         ArrayList<Move> allPossibleMoves = generateAllPossibleMoves(board, color);
 
@@ -129,6 +128,7 @@ public class AI {
     }
 
     /**
+     * "Reds turn"
      * estimate how good option this board would be for the red
      *
      * @param board
@@ -143,8 +143,13 @@ public class AI {
             return board.evaluate();
         }
 
+        ArrayList<Move> possibleMoves = generateAllPossibleMoves(board, 1);
+        if (possibleMoves.isEmpty()) {
+            return minValue(board, inceptionLevel + 1, redsBest, bluesBest);
+        }
+
         int v = Integer.MIN_VALUE;
-        for (Move m: generateAllPossibleMoves(board, 1)) { //for all possible moves for red
+        for (Move m: possibleMoves) { //for all possible moves for red
             Board b1 = board.copy();
             swap(b1.board, m);
             for (Triangle t: m.triangles) { //for all triangles we might form
@@ -161,6 +166,7 @@ public class AI {
     }
 
     /**
+     * "Blues turn"
      * estimate how good option this board would be for the blue
      *
      * @param board
@@ -174,8 +180,13 @@ public class AI {
             return board.evaluate();
         }
 
+        ArrayList<Move> possibleMoves = generateAllPossibleMoves(board, -1);
+        if (possibleMoves.isEmpty()) {
+            return maxValue(board, inceptionLevel + 1, redsBest, bluesBest);
+        }
+
         int v = Integer.MAX_VALUE;
-        for (Move m: generateAllPossibleMoves(board, -1)) { //for all possible moves for blue
+        for (Move m: possibleMoves) { //for all possible moves for blue
             Board b1 = board.copy();
             swap(b1.board, m);
             for (Triangle t: m.triangles) { //for all triangles we might form

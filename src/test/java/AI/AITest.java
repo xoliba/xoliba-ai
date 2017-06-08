@@ -50,6 +50,5 @@ public class AITest {
     @Test
     public void maxValueTest() {
         ai = new AI(1, 1);
-
     }
 }
