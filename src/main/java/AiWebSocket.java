@@ -1,4 +1,5 @@
 import AI.AI;
+import Game.TurnData;
 import org.eclipse.jetty.websocket.api.*;
 import org.eclipse.jetty.websocket.api.annotations.*;
 import java.io.*;
@@ -30,12 +31,14 @@ public class AiWebSocket {
 			System.out.println("ping");
 			return;
 		}
-		howManyTablesReceived++;
-		updateAI();
+		System.out.println(message);
+		TurnData data = JsonConverter.parseMessage(message);
+		System.out.println("Got: " + data.board + "\n");
+		
+		AI ai = new AI(data.color, 3);
 
-		System.out.println("got a message @ " + new java.util.Date() + "\ntables received: " + howManyTablesReceived);
-
-		handleTableSendTurnData(session, message);
+		session.getRemote().sendString(JsonConverter.jsonify(ai.move(data.board)));
+		//handleTableSendTurnData(session, message);
 		//handleData(session, message);
 	}
 

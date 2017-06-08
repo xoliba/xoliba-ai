@@ -12,13 +12,15 @@ public class TurnData {
     public int[] start;     //[x,y]
     public int[] target;    //[x,y]
     public int[][] corners; //[[x,y],[x,y]]
+	public int color;
 
-    public TurnData(boolean didMove, Board board, Move move, Triangle triangle) {
+    public TurnData(boolean didMove, Board board, Move move, Triangle triangle, int color) {
         this.type = "TurnData";
         this.didMove = didMove;
         this.board = board.board;
         this.start = new int[]{move.start.x, move.start.y};
         this.target = new int[]{move.target.x, move.target.y};
+		this.color = color;
 
         corners = new int[2][2];
         int i = 0;

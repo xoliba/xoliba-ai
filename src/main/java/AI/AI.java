@@ -94,7 +94,7 @@ public class AI {
                 int v = minValue(b2, 0, redBest, blueBest); //the opponent gets a move
                 if (v > redBest) { //if the result is better than the known best
                     redBest = v; //update the best
-                    td = new TurnData(true, b2.copy(), m, t);
+                    td = new TurnData(true, b2.copy(), m, t, this.color);
                     //System.out.println("AI updated it's planned move (redBest " + redBest + "; blueBest " + blueBest + ")\n" + td);
                 }
             }
@@ -121,7 +121,7 @@ public class AI {
                 int v = maxValue(b2, 0, redBest, blueBest); //the opponent gets a move
                 if (v < blueBest) { //if the result is better than the known best
                     blueBest = v; //update the best
-                    td = new TurnData(true, b2, m, t);
+                    td = new TurnData(true, b2, m, t, this.color);
                 }
             }
         }
