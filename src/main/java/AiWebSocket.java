@@ -41,8 +41,9 @@ public class AiWebSocket {
 		System.out.println("got a message @ " + new java.util.Date() + "\ntables received: " + howManyTablesReceived);
 
 		long s = System.nanoTime();
-		data = ai.move(data.board); //lets update the turn data with AIs move
-		session.getRemote().sendString(JsonConverter.jsonify(data.board));
+		session.getRemote().sendString(JsonConverter.jsonify(ai.move(data.board)));
+	//	data = ai.move(data.board); //lets update the turn data with AIs move
+	//	session.getRemote().sendString(JsonConverter.jsonify(data.board));
 		long e = System.nanoTime();
 		System.out.println("It took AI " + (e - s) / 1e9 + " seconds to compute the move");
 	}
