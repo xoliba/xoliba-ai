@@ -29,23 +29,21 @@ public class AiWebSocket {
 	public void message(Session session, String message) throws IOException {
 		if (JsonConverter.ping(message)) {
 			System.out.println("ping");
-			return;
+		} else if (JsonConverter.startRound(message)) {
+			//we get completely new board, we should decide if we surrender or not
+		} else { //lets compute a normal turn
+			howManyTablesReceived++;
+			TurnData data = JsonConverter.parseTurnData(message);
+			updateAI(data);
+
+			System.out.println("got a message @ " + new java.util.Date() + "\ntables received: " + howManyTablesReceived);
+
+			long s = System.nanoTime();
+			data = ai.move(data.board); //lets update the turn data with AIs move
+			session.getRemote().sendString(JsonConverter.jsonify(data.board));
+			long e = System.nanoTime();
+			System.out.println("It took AI " + (e - s) / 1e9 + " seconds to compute the move");
 		}
-		howManyTablesReceived++;
-
-		TurnData data = JsonConverter.parseTurnData(message);
-
-		ai = new AI(data.color, 1); //so that ai always plays at the right color even if the websocket connection hasnt been reset
-		//updateAI(data);
-
-		System.out.println("got a message @ " + new java.util.Date() + "\ntables received: " + howManyTablesReceived);
-
-		long s = System.nanoTime();
-		session.getRemote().sendString(JsonConverter.jsonify(ai.move(data.board)));
-	//	data = ai.move(data.board); //lets update the turn data with AIs move
-	//	session.getRemote().sendString(JsonConverter.jsonify(data.board));
-		long e = System.nanoTime();
-		System.out.println("It took AI " + (e - s) / 1e9 + " seconds to compute the move");
 	}
 
 	/**

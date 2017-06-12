@@ -35,4 +35,8 @@ public class JsonConverter {
 	public static TurnData parseTurnData(String message) {
 		return gson.fromJson(message, TurnData.class);
 	}
+
+	public static boolean startRound(String message) {
+		return false;
+	}
 }
