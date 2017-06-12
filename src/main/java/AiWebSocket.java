@@ -1,6 +1,5 @@
 import AI.AI;
 import Game.TurnData;
-import com.google.gson.JsonElement;
 import org.eclipse.jetty.websocket.api.*;
 import org.eclipse.jetty.websocket.api.annotations.*;
 import java.io.*;
@@ -29,8 +28,14 @@ public class AiWebSocket {
 	public void message(Session session, String message) throws IOException {
 		if (JsonConverter.ping(message)) {
 			System.out.println("ping");
-		} else if (JsonConverter.startRound(message)) {
-			//we get completely new board, we should decide if we surrender or not
+		} else if (JsonConverter.startRound(message)) {  //we get completely new board, we should decide if we surrender or not
+			System.out.println("got a start round message!");
+			TurnData data = JsonConverter.parseTurnData(message);
+
+			ai = new AI(data.color, 1);
+			data = new TurnData(true, ai.doYouSurrender(data.board));
+
+			session.getRemote().sendString(JsonConverter.jsonifyTurnData(data));
 		} else { //lets compute a normal turn
 			howManyTablesReceived++;
 			TurnData data = JsonConverter.parseTurnData(message);
@@ -40,7 +45,7 @@ public class AiWebSocket {
 
 			long s = System.nanoTime();
 			data = ai.move(data.board); //lets update the turn data with AIs move
-			session.getRemote().sendString(JsonConverter.jsonify(data.board));
+			session.getRemote().sendString(JsonConverter.jsonifyTurnData(data));
 			long e = System.nanoTime();
 			System.out.println("It took AI " + (e - s) / 1e9 + " seconds to compute the move");
 		}
@@ -75,7 +80,7 @@ public class AiWebSocket {
 	*/
 	private void handleTableSendTurnData(Session session, String message) throws IOException {
 		System.out.println("Got: " + JsonConverter.jsonify(JsonConverter.parseTable(message)) + "\n");
-		session.getRemote().sendString(JsonConverter.jsonify(ai.move(JsonConverter.parseTable(message))));
+		session.getRemote().sendString(JsonConverter.jsonifyTurnData(ai.move(JsonConverter.parseTable(message))));
 	}
 
 	/**
@@ -84,6 +89,6 @@ public class AiWebSocket {
 	*/
 	private void handleData(Session session, String message) throws IOException {
 		TurnData data = JsonConverter.parseTurnData(message);
-		session.getRemote().sendString(JsonConverter.jsonify(ai.move(data.board)));
+		session.getRemote().sendString(JsonConverter.jsonifyTurnData(ai.move(data.board)));
 	}
 }

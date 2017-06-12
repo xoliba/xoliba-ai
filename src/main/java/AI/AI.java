@@ -37,6 +37,10 @@ public class AI {
         return inceptionTreshold;
     }
 
+    public boolean doYouSurrender(int[][] b) {
+        return false;
+    }
+
     public TurnData move(int[][] b) {
         board = new Board(b);
         System.out.println("AI (color of " + color + ") got a new board:\n" + board);

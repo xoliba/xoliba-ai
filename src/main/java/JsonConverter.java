@@ -14,7 +14,7 @@ public class JsonConverter {
 		}
 	}
 	
-	public static String jsonify(TurnData data) {
+	public static String jsonifyTurnData(TurnData data) {
 		return gson.toJson(data);
 	}
 

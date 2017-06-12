@@ -15,6 +15,15 @@ public class TurnData {
 	public int color;
 	public boolean surrender;//are giving up?
 
+    public TurnData(boolean startRound, boolean surrender) {
+        if (startRound) {
+            type = "startRound";
+        } else {
+            type = "TurnData";
+        }
+        this.surrender = surrender;
+    }
+
     public TurnData(boolean didMove, Board board, Move move, Triangle triangle, int color) {
         this(didMove, board, move, triangle, color, false);
     }
