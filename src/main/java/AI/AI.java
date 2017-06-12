@@ -38,6 +38,23 @@ public class AI {
     }
 
     public boolean doYouSurrender(int[][] b) {
+        int sum = 0;
+        for (int i = 1; i < 6; i++) {
+            int weight = 1;
+            if (i == 1 || i == 5) { //the corners are more valuable
+                weight = 3;
+            }
+            sum += b[i][0] * weight;
+            sum += b[i][6] * weight;
+            sum += b[0][i] * weight;
+            sum += b[6][i] * weight;
+        }
+
+        sum *= color; //if the sum is the same as our color, this will result positive value (good for us)
+
+        if (sum < -10) {
+            return true;
+        }
         return false;
     }
 
