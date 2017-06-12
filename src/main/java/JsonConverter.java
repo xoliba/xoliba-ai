@@ -27,7 +27,7 @@ public class JsonConverter {
 			TurnData msg = parseTurnData(message);
 			return msg.type.equals("ping");
 		} catch (Exception e) {
-			System.out.println("EXCEPTION @ JsonConverter ping");
+			System.out.println("THIS SHOULD NEVER HAPPEN: EXCEPTION @ JsonConverter ping");
 			return false;
 		}
 	}
@@ -37,6 +37,12 @@ public class JsonConverter {
 	}
 
 	public static boolean startRound(String message) {
-		return false;
+		try {
+			TurnData msg = parseTurnData(message);
+			return msg.type.equals("startRound");
+		} catch (Exception e) {
+			System.out.println("THIS SHOULD NEVER HAPPEN: EXCEPTION @ JsonConverter startRound");
+			return false;
+		}
 	}
 }

@@ -30,6 +30,7 @@ public class AiWebSocket {
 		if (JsonConverter.ping(message)) {
 			System.out.println("ping");
 		} else if (JsonConverter.startRound(message)) {
+
 			//we get completely new board, we should decide if we surrender or not
 		} else { //lets compute a normal turn
 			howManyTablesReceived++;
