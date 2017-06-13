@@ -3,11 +3,16 @@ package AI;
 import Game.*;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.runners.MockitoJUnitRunner;
+
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 
 /**
  * Created by vili on 5.6.2017.
  */
+@RunWith(MockitoJUnitRunner.class)
 public class AITest {
 
     private AI ai;
@@ -41,6 +46,13 @@ public class AITest {
     }
 
     @Test
+    public void aiCanMoveWithBothColors() {
+        AI mockedAI = mock(AI.class);
+
+        mockedAI.move(new int[7][7]);
+    }
+
+    @Test
     public void AIcomputesDeepInTheGameTreeWhileThereAreMoves() {
         ai = new AI(1, 10);
         int[][] boardAfter10Moves = ai.move(table).board;
@@ -49,6 +61,11 @@ public class AITest {
 
     @Test
     public void maxValueTest() {
-        ai = new AI(1, 1);
+        AI mockAI = mock(AI.class);
+
+        when(mockAI.getDifficulty()).thenReturn(1);
+
+        System.out.println(mockAI.getDifficulty());
+        verify(mockAI).getDifficulty();
     }
 }

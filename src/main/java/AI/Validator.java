@@ -1,5 +1,6 @@
 package AI;
 
+import Game.Board;
 import Game.Coordinate;
 import Game.Move;
 import Game.Triangle;
@@ -21,6 +22,25 @@ public class Validator {
      */
     public void refreshBoard(int[][] board) {
         this.board = board;
+    }
+
+    /**
+     * Generate all possible moves for this color
+     * @param board
+     * @param color for who we generate the moves
+     * @return the moves
+     */
+    protected ArrayList<Move> generateAllPossibleMoves(Board board, int color) {
+        this.board = board.board;
+        ArrayList<Move> moves = new ArrayList<>();
+        for (int i = 0; i < board.board.length; i++) {
+            for (int j = 0; j < board.board[0].length; j++) {
+                if (board.board[i][j] == color) { //the stone we are looking at is of the right color
+                    moves.addAll(getPossibleMoves(new Coordinate(i, j)));
+                }
+            }
+        }
+        return moves;
     }
 
     /**

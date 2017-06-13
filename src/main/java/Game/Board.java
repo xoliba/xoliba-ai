@@ -141,4 +141,10 @@ public class Board{
         }
         return new Board(copy);
     }
+
+    public void swap(Move move){
+        int helpValue = board[move.start.x][move.start.y];
+        board[move.start.x][move.start.y] = board[move.target.x][move.target.y];
+        board[move.target.x][move.target.y] = helpValue;
+    }
 }
