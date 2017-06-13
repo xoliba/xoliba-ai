@@ -14,7 +14,7 @@ public class JsonConverter {
 		}
 	}
 	
-	public static String jsonify(TurnData data) {
+	public static String jsonifyTurnData(TurnData data) {
 		return gson.toJson(data);
 	}
 
@@ -27,12 +27,22 @@ public class JsonConverter {
 			TurnData msg = parseTurnData(message);
 			return msg.type.equals("ping");
 		} catch (Exception e) {
-			System.out.println("EXCEPTION @ JsonConverter ping");
+			System.out.println("THIS SHOULD NEVER HAPPEN: EXCEPTION @ JsonConverter ping");
 			return false;
 		}
 	}
 	
 	public static TurnData parseTurnData(String message) {
 		return gson.fromJson(message, TurnData.class);
+	}
+
+	public static boolean startRound(String message) {
+		try {
+			TurnData msg = parseTurnData(message);
+			return msg.type.equals("startRound");
+		} catch (Exception e) {
+			System.out.println("THIS SHOULD NEVER HAPPEN: EXCEPTION @ JsonConverter startRound");
+			return false;
+		}
 	}
 }
