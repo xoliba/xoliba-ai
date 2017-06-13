@@ -63,7 +63,7 @@ public class TurnData {
         s += didMove ? " is a move:\n" : " did not move";
         if (!didMove) return s;
 
-        s += "surrender + " + surrender + "\n";
+        s += "surrender: " + surrender + "\n";
         Board b = new Board(board);
         Coordinate c1 = new Coordinate(start[0], start[1]);
         Coordinate c2 = new Coordinate(target[0], target[1]);

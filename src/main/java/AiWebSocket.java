@@ -29,6 +29,7 @@ public class AiWebSocket {
 		if (JsonConverter.ping(message)) {
 			System.out.println("ping");
 		} else if (JsonConverter.startRound(message)) {
+			System.out.println("got a start round message!");
 			handleStartingRound(session, message);
 		} else {
 			handleNormalTurn(session, message);
@@ -37,7 +38,6 @@ public class AiWebSocket {
 
 	//we get completely new board, we should decide if we surrender or not
 	private void handleStartingRound(Session session, String message) throws IOException {
-		System.out.println("got a start round message!");
 		TurnData data = JsonConverter.parseTurnData(message);
 
 		ai = new AI(data.color, 1);
