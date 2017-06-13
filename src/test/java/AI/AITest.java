@@ -3,11 +3,16 @@ package AI;
 import Game.*;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.runners.MockitoJUnitRunner;
+
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 
 /**
  * Created by vili on 5.6.2017.
  */
+@RunWith(MockitoJUnitRunner.class)
 public class AITest {
 
     private AI ai;

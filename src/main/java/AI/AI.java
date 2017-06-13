@@ -37,7 +37,7 @@ public class AI {
         return inceptionTreshold;
     }
 
-    public boolean doYouSurrender(int[][] b) {
+    public boolean doesWantToSurrender(int[][] b) {
         int sum = 0;
         for (int i = 1; i < 6; i++) {
             int weight = 1;
@@ -56,6 +56,10 @@ public class AI {
             return true;
         }
         return false;
+    }
+
+    public boolean doesWantToStopPlaying(TurnData data) {
+        return data.surrender;
     }
 
     public TurnData move(int[][] b) {

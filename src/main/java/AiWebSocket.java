@@ -41,7 +41,7 @@ public class AiWebSocket {
 		TurnData data = JsonConverter.parseTurnData(message);
 
 		ai = new AI(data.color, 1);
-		data = new TurnData(true, ai.doYouSurrender(data.board));
+		data = new TurnData(true, ai.doesWantToSurrender(data.board));
 
 		session.getRemote().sendString(JsonConverter.jsonifyTurnData(data));
 	}
@@ -52,10 +52,15 @@ public class AiWebSocket {
 		updateAI(data);
 
 		System.out.println("got a message @ " + new java.util.Date() + "\ntables received: " + howManyTablesReceived);
-
 		long s = System.nanoTime();
-		data = ai.move(data.board); //lets update the turn data with AIs move
+
+		if (ai.doesWantToStopPlaying(data)) {
+			data = new TurnData(false, true);
+		} else {
+			data = ai.move(data.board); //lets update the turn data with AIs move
+		}
 		session.getRemote().sendString(JsonConverter.jsonifyTurnData(data));
+
 		long e = System.nanoTime();
 		System.out.println("It took AI " + (e - s) / 1e9 + " seconds to compute the move");
 	}
