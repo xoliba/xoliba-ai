@@ -28,33 +28,42 @@ public class AiWebSocket {
 	public void message(Session session, String message) throws IOException {
 		if (JsonConverter.ping(message)) {
 			System.out.println("ping");
-		} else if (JsonConverter.startRound(message)) {  //we get completely new board, we should decide if we surrender or not
-			System.out.println("got a start round message!");
-			TurnData data = JsonConverter.parseTurnData(message);
-
-			ai = new AI(data.color, 1);
-			data = new TurnData(true, ai.doYouSurrender(data.board));
-
-			session.getRemote().sendString(JsonConverter.jsonifyTurnData(data));
-		} else { //lets compute a normal turn
-			howManyTablesReceived++;
-			TurnData data = JsonConverter.parseTurnData(message);
-			updateAI(data);
-
-			System.out.println("got a message @ " + new java.util.Date() + "\ntables received: " + howManyTablesReceived);
-
-			long s = System.nanoTime();
-			data = ai.move(data.board); //lets update the turn data with AIs move
-			session.getRemote().sendString(JsonConverter.jsonifyTurnData(data));
-			long e = System.nanoTime();
-			System.out.println("It took AI " + (e - s) / 1e9 + " seconds to compute the move");
+		} else if (JsonConverter.startRound(message)) {
+			handleStartingRound(session, message);
+		} else {
+			handleNormalTurn(session, message);
 		}
 	}
 
-	/**
-	 * Instantiate AI if it is null.
-	 * Change AI to better one if the game has progressed enough
-	 */
+	//we get completely new board, we should decide if we surrender or not
+	private void handleStartingRound(Session session, String message) throws IOException {
+		System.out.println("got a start round message!");
+		TurnData data = JsonConverter.parseTurnData(message);
+
+		ai = new AI(data.color, 1);
+		data = new TurnData(true, ai.doYouSurrender(data.board));
+
+		session.getRemote().sendString(JsonConverter.jsonifyTurnData(data));
+	}
+
+	private void handleNormalTurn(Session session, String message) throws IOException {
+		howManyTablesReceived++;
+		TurnData data = JsonConverter.parseTurnData(message);
+		updateAI(data);
+
+		System.out.println("got a message @ " + new java.util.Date() + "\ntables received: " + howManyTablesReceived);
+
+		long s = System.nanoTime();
+		data = ai.move(data.board); //lets update the turn data with AIs move
+		session.getRemote().sendString(JsonConverter.jsonifyTurnData(data));
+		long e = System.nanoTime();
+		System.out.println("It took AI " + (e - s) / 1e9 + " seconds to compute the move");
+	}
+
+		/**
+         * Instantiate AI if it is null.
+         * Change AI to better one if the game has progressed enough
+         */
 	private void updateAI(TurnData data) {
 		if (ai == null) {
 			System.out.println("instantiated AI, difficulty of 1");
