@@ -40,7 +40,7 @@ public class AiWebSocket {
 		TurnData data = JsonConverter.parseTurnData(message);
 
 		System.out.println("got a start round message! AI color " + data.color);
-		ai = new AI(data.color, 1);
+		ai = new AI(data.color, 2);
 		data = new TurnData(true, ai.doesWantToSurrender(data.board));
 
 		session.getRemote().sendString(JsonConverter.jsonifyTurnData(data));
@@ -49,7 +49,7 @@ public class AiWebSocket {
 	private void handleNormalTurn(Session session, String message) throws IOException {
 		howManyTablesReceived++;
 		TurnData data = JsonConverter.parseTurnData(message);
-		updateAI(data);
+		//updateAI(data);
 
 		System.out.println("got a message @ " + new java.util.Date() + "\ntables received: " + howManyTablesReceived);
 		long s = System.nanoTime();
