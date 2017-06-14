@@ -78,31 +78,4 @@ public class AiWebSocket {
 			ai = new AI(data.color, 2);
 		}
 	}
-
-	/**
-	message = 2d array
-	return = 2d array
-	 */
-	private void handleTable(Session session, String message) throws IOException {
-		System.out.println("Got: " + JsonConverter.jsonify(JsonConverter.parseTable(message)) + "\n");
-		session.getRemote().sendString(JsonConverter.jsonify(ai.move(JsonConverter.parseTable(message)).board));
-	}
-
-	/**
-	message = 2d array
-	return = turn data
-	*/
-	private void handleTableSendTurnData(Session session, String message) throws IOException {
-		System.out.println("Got: " + JsonConverter.jsonify(JsonConverter.parseTable(message)) + "\n");
-		session.getRemote().sendString(JsonConverter.jsonifyTurnData(ai.move(JsonConverter.parseTable(message))));
-	}
-
-	/**
-	message = turn data
-	return = turn data
-	*/
-	private void handleData(Session session, String message) throws IOException {
-		TurnData data = JsonConverter.parseTurnData(message);
-		session.getRemote().sendString(JsonConverter.jsonifyTurnData(ai.move(data.board)));
-	}
 }
