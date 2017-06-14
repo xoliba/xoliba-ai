@@ -33,8 +33,8 @@ public class AlphaBetaXoliba {
 
         this.inceptionTreshold = inceptionTreshold;
         TurnData td = new TurnData();
-        int redBest = Integer.MIN_VALUE;
-        int blueBest = Integer.MAX_VALUE;
+        double redBest = Integer.MIN_VALUE;
+        double blueBest = Integer.MAX_VALUE;
 
         for (Move m: validator.generateAllPossibleMoves(board, color)) { //for every move
             Board b1 = board.copy(); //we generate a board
@@ -42,7 +42,7 @@ public class AlphaBetaXoliba {
             for (Triangle t:m.triangles) { //and for every triangle that can be formed with that move
                 Board b2 = b1.copy(); //we make a board
                 stoneCollector.hitStones(b2,t); //and implement the hitting
-                int v = minValue(b2, 0, redBest, blueBest); //the opponent gets a move
+                double v = minValue(b2, 0, redBest, blueBest); //the opponent gets a move
                 if (color == 1) {
                     if (v > redBest) { //if the result is better than the known best for red
                         redBest = v; //update the best
@@ -69,7 +69,7 @@ public class AlphaBetaXoliba {
      * @param bluesBest the smallest value predicted atm
      * @return the biggest possible (predicted) evaluation outcome from this game situation
      */
-    private int maxValue(Board board, int inceptionLevel, int redsBest, int bluesBest) {
+    private double maxValue(Board board, int inceptionLevel, double redsBest, double bluesBest) {
         //System.out.println("AI maxValue: inceptionLevel " + inceptionLevel + "; redsBest " + redsBest + "; bluesBest" + bluesBest);
         if (inceptionLevel > inceptionTreshold) {
             return board.evaluate();
@@ -80,7 +80,7 @@ public class AlphaBetaXoliba {
             return minValue(board, inceptionLevel + 1, redsBest, bluesBest);
         }
 
-        int v = Integer.MIN_VALUE;
+        double v = Double.MIN_VALUE;
         for (Move m: possibleMoves) { //for all possible moves for red
             Board b1 = board.copy();
             b1.swap(m);
@@ -107,7 +107,7 @@ public class AlphaBetaXoliba {
      * @param bluesBest the smallest value predicted atm
      * @return the smallest possible (predicted) evaluation outcome from this game situation
      */
-    private int minValue(Board board, int inceptionLevel, int redsBest, int bluesBest) {
+    private double minValue(Board board, int inceptionLevel, double redsBest, double bluesBest) {
         if (inceptionLevel > inceptionTreshold) {
             return board.evaluate();
         }
@@ -117,7 +117,7 @@ public class AlphaBetaXoliba {
             return maxValue(board, inceptionLevel + 1, redsBest, bluesBest);
         }
 
-        int v = Integer.MAX_VALUE;
+        double v = Double.MAX_VALUE;
         for (Move m: possibleMoves) { //for all possible moves for blue
             Board b1 = board.copy();
             b1.swap(m);

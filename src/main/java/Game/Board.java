@@ -15,38 +15,49 @@ public class Board{
     private int sizeOfBluesBiggestTriangle = 0;
     private int howManyTrianglesOnBoard = 0;
 
+    private double triangleValue = 7.0;
+    private double edgeValue = 1.5;
+    private double cornerValue = 3.0;
+
     public Board() {
         this(new int[7][7]);
     }
-
 
     public Board(int[][] board) {
         this.board = board;
         this.validator = new Validator();
     }
 
+    public void setEdgeDignity(double triangle, double edge, double corner) {
+        this.triangleValue = triangle;
+        this.edgeValue = edge;
+        this.cornerValue = corner;
+    }
 
     /**
      * What is the situation on board, who is winning?
      *
      * @return value that represents the situation: the smaller (negative) is better for blue and bigger (positive) is better for red
      */
-    public int evaluate() {
-        int e = sumOfTheStones();
+    public double evaluate() {
+        double e = sumOfTheStones();
 
         findAllTriangles();
-        e += 7 * (sizeOfRedsBiggestTriangle - sizeOfBluesBiggestTriangle);
+        e += triangleValue * (sizeOfRedsBiggestTriangle - sizeOfBluesBiggestTriangle);
 
         return e;
     }
 
-    private int sumOfTheStones() {
-        int sum = 0;
+    private double sumOfTheStones() {
+        double sum = 0;
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[0].length; j++) {
                 if ((i == 0 || i == 6) && (j == 0 || j == 6))
                     continue;
-                sum += board[i][j];
+                if (i == 0 || i == 6 || j == 0 || j == 6) {
+                    if(i == 1 || i == 5 || j == 1 || j == 5) sum += board[i][j] * cornerValue;
+                    else sum += board[i][j] * edgeValue;
+                } else sum += board[i][j] * 1;
             }
         }
         return sum;
