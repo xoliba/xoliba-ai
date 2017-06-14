@@ -22,52 +22,37 @@ public class AlphaBetaXoliba {
     /**
      * Decide the best move by using alpha-beta pruning
      * @param board
+     * @param color best move for who?
      * @return all relevant info wrapped in a TurnData object
      */
-    protected TurnData doTheBestMoveForRed(Board board, int inceptionTreshold) {
+    protected TurnData doTheBestMoveForColor(Board board, int inceptionTreshold, int color) {
+        if (color != 1 && color != -1) {
+            System.out.println("Cannot do a move for any other color than -1 or 1!");
+            return null;
+        }
+
         this.inceptionTreshold = inceptionTreshold;
         TurnData td = new TurnData();
         int redBest = Integer.MIN_VALUE;
         int blueBest = Integer.MAX_VALUE;
 
-        for (Move m: validator.generateAllPossibleMoves(board, 1)) { //for every move
+        for (Move m: validator.generateAllPossibleMoves(board, color)) { //for every move
             Board b1 = board.copy(); //we generate a board
             b1.swap(m); //where we implement the move
-            for (Triangle t:m.triangles) { //and for every triangle with that board
+            for (Triangle t:m.triangles) { //and for every triangle that can be formed with that move
                 Board b2 = b1.copy(); //we make a board
                 stoneCollector.hitStones(b2,t); //and implement the hitting
                 int v = minValue(b2, 0, redBest, blueBest); //the opponent gets a move
-                if (v > redBest) { //if the result is better than the known best
-                    redBest = v; //update the best
-                    td = new TurnData(true, b2.copy(), m, t, 1);
-                    //System.out.println("AI updated it's planned move (redBest " + redBest + "; blueBest " + blueBest + ")\n" + td);
-                }
-            }
-        }
-        return td;
-    }
-
-    /**
-     * Decide the best move by using alpha-beta pruning
-     * @param board
-     * @return all relevant info wrapped in a TurnData object
-     */
-    protected TurnData doTheBestMoveForBlue(Board board, int inceptionTreshold) {
-        this.inceptionTreshold = inceptionTreshold;
-        TurnData td = new TurnData();
-        int redBest = Integer.MIN_VALUE;
-        int blueBest = Integer.MAX_VALUE;
-
-        for (Move m: validator.generateAllPossibleMoves(board, -1)) { //for every move
-            Board b1 = board.copy(); //we generate a board
-            b1.swap(m); //where we implement the move
-            for (Triangle t:m.triangles) { //and for every triangle with that board
-                Board b2 = b1.copy(); //we make a board
-                stoneCollector.hitStones(b2,t); //and implement the hitting
-                int v = maxValue(b2, 0, redBest, blueBest); //the opponent gets a move
-                if (v < blueBest) { //if the result is better than the known best
-                    blueBest = v; //update the best
-                    td = new TurnData(true, b2, m, t, -1);
+                if (color == 1) {
+                    if (v > redBest) { //if the result is better than the known best for red
+                        redBest = v; //update the best
+                        td = new TurnData(true, b2.copy(), m, t, 1);
+                    }
+                } else if (color == -1) {
+                    if (v < blueBest) { //if the result is better than the known best for blue
+                        blueBest = v; //update the best
+                        td = new TurnData(true, b2.copy(), m, t, -1);
+                    }
                 }
             }
         }

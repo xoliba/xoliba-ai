@@ -65,8 +65,7 @@ public class AI {
         System.out.println("AI (color of " + color + ") got a new board:\n" + board);
         TurnData td = new TurnData();
 
-        if (color == 1) td = abx.doTheBestMoveForRed(board, inceptionTreshold);
-        else if (color == -1) td = abx.doTheBestMoveForBlue(board, inceptionTreshold);
+        td = abx.doTheBestMoveForColor(board, inceptionTreshold, color);
         System.out.println("AI did a move:\n" + td);
 
         return td;
