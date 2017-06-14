@@ -40,12 +40,15 @@ public class Board{
      * @return value that represents the situation: the smaller (negative) is better for blue and bigger (positive) is better for red
      */
     public double evaluate() {
-        double e = sumOfTheStones();
+        double e=0;
+
+        //in any case we cant favor the situation when we have 2 stones or less.
+        //Actually we don't even have to calculate them: only thing that matters is biggest triangle.
+        if(amountOfTheStones(-1) > 2 || amountOfTheStones(1) > 2)
+            e = sumOfTheStones();
 
         findAllTriangles();
         e += triangleValue * (sizeOfRedsBiggestTriangle - sizeOfBluesBiggestTriangle);
-
-
 
         return e;
     }
@@ -60,6 +63,16 @@ public class Board{
                     if(i == 1 || i == 5 || j == 1 || j == 5) sum += board[i][j] * cornerValue;
                     else sum += board[i][j] * edgeValue;
                 } else sum += board[i][j] * 1;
+            }
+        }
+        return sum;
+    }
+
+    private int amountOfTheStones(int color) {
+        int sum = 0;
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[0].length; j++) {
+                if(board[i][j] == color) sum++;
             }
         }
         return sum;
