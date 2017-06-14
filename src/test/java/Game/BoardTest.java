@@ -19,9 +19,9 @@ public class BoardTest {
                 {0,0,0,0,-1,0,-1},
                 {0,0,0,0,0,0,0},
                 {0,0,0,0,0,0,0},
+                {0,0,0,0,0,0,0},
                 {1,0,1,0,0,0,0},
-                {0,1,0,0,0,0,0},
-                {-2,0,0,0,0,0,-2},
+                {-2,1,0,0,0,0,-2},
         });
         board2 = new Board(new int[][]{
                 {-2,0,0,0,0,1,-2},
@@ -34,11 +34,11 @@ public class BoardTest {
         });
         board3 = new Board(new int[][]{
                 {-2,0,0,0,0,0,-2},
-                {0,0,0,0,-1,0,-1},
+                {0,0,-1,0,-1,0,0},
                 {0,0,0,0,0,0,0},
                 {0,0,0,0,0,0,0},
-                {1,0,1,0,0,0,0},
-                {0,1,0,0,0,0,0},
+                {0,1,0,1,0,0,0},
+                {0,0,1,0,0,0,0},
                 {-2,0,0,0,0,0,-2},
         });
         board4 = new Board(new int[][]{
@@ -93,7 +93,8 @@ public class BoardTest {
     }
 
     @Test public void evaluateTest() {
-        assertEquals("symmetric board should be equally good", 0, board1.evaluate());
+        System.out.println(board1.evaluate());
+        assertTrue("symmetric board should be equally good", board1.evaluate() <= 0.0001 && board1.evaluate() >= -0.0001);
         assertTrue("red has a triangle and blue doesn't, so better for red", board3.evaluate() > 0);
         assertTrue("red has a bigger triangle than blue, so better for red", board4.evaluate() > 0);
         assertTrue("same sized triangles, but blue has potential for a bigger one", board5.evaluate() < 0);

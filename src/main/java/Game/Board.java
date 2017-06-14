@@ -45,6 +45,8 @@ public class Board{
         findAllTriangles();
         e += triangleValue * (sizeOfRedsBiggestTriangle - sizeOfBluesBiggestTriangle);
 
+
+
         return e;
     }
 
