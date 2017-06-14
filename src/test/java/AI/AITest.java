@@ -3,16 +3,12 @@ package AI;
 import Game.*;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.runners.MockitoJUnitRunner;
 
 import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
 
 /**
  * Created by vili on 5.6.2017.
  */
-@RunWith(MockitoJUnitRunner.class)
 public class AITest {
 
     private AI ai;
@@ -35,6 +31,19 @@ public class AITest {
     }
 
     @Test
+    public void AIknowsHowToSurrender() {
+        int[][] table = new int[7][7];
+        for (int i = 0; i < 7; i++) {
+            for (int j = 0; j < 7; j++) {
+                table[i][j] = -1;
+            }
+        }
+        assertTrue(ai.doesWantToSurrender(table));
+        ai = new AI(-1);
+        assertFalse(ai.doesWantToSurrender(table));
+    }
+
+    @Test
     public void AIDoesAMove() {
         Board copy = boardWithTwoSmallTriangles.copy();
         assertTrue("the board should be the same if no move was made",
@@ -47,9 +56,13 @@ public class AITest {
 
     @Test
     public void aiCanMoveWithBothColors() {
-        AI mockedAI = mock(AI.class);
-
-        mockedAI.move(new int[7][7]);
+        ai = new AI(1, 1);
+        Board start = new Board(table);
+        TurnData td = ai.move(start.copy().board);
+        assertFalse(start.equals(td.board));
+        ai = new AI(-1, 1);
+        td = ai.move(start.copy().board);
+        assertFalse(start.equals(td.board));
     }
 
     @Test
@@ -60,12 +73,9 @@ public class AITest {
     }
 
     @Test
-    public void maxValueTest() {
-        AI mockAI = mock(AI.class);
-
-        when(mockAI.getDifficulty()).thenReturn(1);
-
-        System.out.println(mockAI.getDifficulty());
-        verify(mockAI).getDifficulty();
+    public void getDifficultyTest() {
+        assertTrue(ai.getDifficulty() > -1);
+        ai = new AI(1, 3);
+        assertTrue(ai.getDifficulty() == 3);
     }
 }
