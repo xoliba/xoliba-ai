@@ -42,13 +42,17 @@ public class AlphaBetaXoliba {
             for (Triangle t:m.triangles) { //and for every triangle that can be formed with that move
                 Board b2 = b1.copy(); //we make a board
                 stoneCollector.hitStones(b2,t); //and implement the hitting
-                double v = minValue(b2, 0, redBest, blueBest); //the opponent gets a move
+
+                double v;
                 if (color == 1) {
+                    v = minValue(b2, 1, redBest, blueBest); //the blue gets a move
                     if (v > redBest) { //if the result is better than the known best for red
                         redBest = v; //update the best
                         td = new TurnData(true, b2.copy(), m, t, 1);
                     }
+
                 } else if (color == -1) {
+                    v = maxValue(b2, 1, redBest, blueBest); //the red gets a move
                     if (v < blueBest) { //if the result is better than the known best for blue
                         blueBest = v; //update the best
                         td = new TurnData(true, b2.copy(), m, t, -1);
@@ -69,7 +73,8 @@ public class AlphaBetaXoliba {
      * @param bluesBest the smallest value predicted atm
      * @return the biggest possible (predicted) evaluation outcome from this game situation
      */
-    private double maxValue(Board board, int inceptionLevel, double redsBest, double bluesBest) {
+
+    protected double maxValue(Board board, int inceptionLevel, double redsBest, double bluesBest) {
         //System.out.println("AI maxValue: inceptionLevel " + inceptionLevel + "; redsBest " + redsBest + "; bluesBest" + bluesBest);
         if (inceptionLevel > inceptionTreshold) {
             return board.evaluate();
@@ -107,7 +112,8 @@ public class AlphaBetaXoliba {
      * @param bluesBest the smallest value predicted atm
      * @return the smallest possible (predicted) evaluation outcome from this game situation
      */
-    private double minValue(Board board, int inceptionLevel, double redsBest, double bluesBest) {
+
+    protected double minValue(Board board, int inceptionLevel, double redsBest, double bluesBest) {
         if (inceptionLevel > inceptionTreshold) {
             return board.evaluate();
         }
