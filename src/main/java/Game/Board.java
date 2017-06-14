@@ -40,10 +40,11 @@ public class Board{
      * @return value that represents the situation: the smaller (negative) is better for blue and bigger (positive) is better for red
      */
     public double evaluate() {
-        double e=0;
+        double e = 0;
 
         //in any case we cant favor the situation when we have 2 stones or less.
         //Actually we don't even have to calculate them: only thing that matters is biggest triangle.
+        //todo does this work properly? How about test scenarios...?
         if(amountOfTheStones(-1) > 2 || amountOfTheStones(1) > 2)
             e = sumOfTheStones();
 
