@@ -12,7 +12,7 @@ public class AI {
     private Board board;
     private int color;
     private Random random;
-    private int inceptionTreshold; //how many rounds we go deeper
+    private int inceptionTreshold; //how many rounds we go deeper: [1,inf[
     private AlphaBetaXoliba abx;
 
     public AI(int color) {
@@ -22,7 +22,7 @@ public class AI {
     /**
      *
      * @param color which AI plays
-     * @param difficulty 0 being the easiest, 3 being still easy to compute
+     * @param difficulty 1 being the easiest, 3 being still easy to compute (0 does nothing)
      */
     public AI(int color, int difficulty) {
         this.color = color;

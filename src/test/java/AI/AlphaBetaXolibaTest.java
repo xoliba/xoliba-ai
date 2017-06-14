@@ -66,17 +66,29 @@ public class AlphaBetaXolibaTest {
         System.out.println("\tTesting with board:\n" + b);
 
         AlphaBetaXoliba spiedABX = spy(abx);
-        TurnData td = spiedABX.doTheBestMoveForColor(b.copy(), 0, 1); //with threshold 0 we should only look for our moves and take the best one
-        System.out.println("\tRed did a move:\n" + td);
-        verify(spiedABX, atLeastOnce()).minValue(any(Board.class), anyInt(), anyDouble(), anyDouble());
-        verify(spiedABX, never()).maxValue(any(Board.class), anyInt(), anyDouble(), anyDouble());
+        TurnData td = spiedABX.doTheBestMoveForColor(b.copy(), 0, 1); //with threshold 0 we should not do anything
+        System.out.println("\tRed did a move with threshold 0:\n" + td + "\n");
+        assertFalse(td.didMove);
 
         spiedABX = spy(new AlphaBetaXoliba());
-        td = spiedABX.doTheBestMoveForColor(b.copy(), 1, 1); //with threshold 1 we should consider what the opponent will do after our move
-        System.out.println("\tRed did a move:\n" + td);
-        verify(spiedABX, atLeastOnce()).maxValue(any(Board.class), anyInt(), anyDouble(), anyDouble());
-        verify(spiedABX, atLeastOnce()).maxValue(any(Board.class), anyInt(), anyDouble(), anyDouble());
+        td = spiedABX.doTheBestMoveForColor(b.copy(), 1, 1); //with threshold 1 we should only look for our moves and take the best one
+        System.out.println("\tRed did a move with threshold 1:\n" + td);
+        verify(spiedABX, atLeastOnce()).minValue(any(Board.class), anyInt(), anyDouble(), anyDouble());
+        verify(spiedABX, never()).maxValue(any(Board.class), anyInt(), anyDouble(), anyDouble());
+        assertTrue(td.didMove);
+        assertTrue("do the big triangle!",td.board[2][6] == 1);
 
+        spiedABX = spy(new AlphaBetaXoliba());
+        td = spiedABX.doTheBestMoveForColor(b.copy(), 2, 1); //with threshold 2 we should consider what the opponent will do after our move
+        System.out.println("\tRed did a move with threshold 2:\n" + td);
+        verify(spiedABX, atLeastOnce()).maxValue(any(Board.class), anyInt(), anyDouble(), anyDouble());
+        verify(spiedABX, atLeastOnce()).maxValue(any(Board.class), anyInt(), anyDouble(), anyDouble());
+        assertTrue("do the middle sized triangle, and block opponent from hitting you!", td.board[3][1] == 1);
+
+        spiedABX = spy(new AlphaBetaXoliba());
+        td = spiedABX.doTheBestMoveForColor(b.copy(), 3, 1); //with threshold 3 we should consider what situation we could get after opponents turn
+        System.out.println("\tRed did a move with threshold 3:\n" + td);
+        assertTrue("do the middle sized triangle, and get an opportunity to hit more points from opponent", td.board[3][5] == 1);
     }
 
 }

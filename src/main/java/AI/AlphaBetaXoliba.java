@@ -22,6 +22,7 @@ public class AlphaBetaXoliba {
     /**
      * Decide the best move by using alpha-beta pruning
      * @param board
+     * @param inceptionTreshold how deep should we go? 0 means no moves, 1 that we choose our best move, 2 that we consider also the opponents reaction and so on
      * @param color best move for who?
      * @return all relevant info wrapped in a TurnData object
      */
@@ -35,6 +36,10 @@ public class AlphaBetaXoliba {
         TurnData td = new TurnData();
         double redBest = Integer.MIN_VALUE;
         double blueBest = Integer.MAX_VALUE;
+
+        if (inceptionTreshold <= 0) {
+            return td;
+        }
 
         for (Move m: validator.generateAllPossibleMoves(board, color)) { //for every move
             Board b1 = board.copy(); //we generate a board
@@ -76,7 +81,7 @@ public class AlphaBetaXoliba {
 
     protected double maxValue(Board board, int inceptionLevel, double redsBest, double bluesBest) {
         //System.out.println("AI maxValue: inceptionLevel " + inceptionLevel + "; redsBest " + redsBest + "; bluesBest" + bluesBest);
-        if (inceptionLevel > inceptionTreshold) {
+        if (inceptionLevel >= inceptionTreshold) {
             return board.evaluate();
         }
 
@@ -114,7 +119,7 @@ public class AlphaBetaXoliba {
      */
 
     protected double minValue(Board board, int inceptionLevel, double redsBest, double bluesBest) {
-        if (inceptionLevel > inceptionTreshold) {
+        if (inceptionLevel >= inceptionTreshold) {
             return board.evaluate();
         }
 
