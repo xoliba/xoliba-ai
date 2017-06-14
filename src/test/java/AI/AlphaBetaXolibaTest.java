@@ -62,6 +62,20 @@ public class AlphaBetaXolibaTest {
 
     @Test
     public void maxValueTest() {
+        Board b = new Board(table1);
+        System.out.println("\tTesting with board:\n" + b);
+
+        AlphaBetaXoliba spiedABX = spy(abx);
+        TurnData td = spiedABX.doTheBestMoveForColor(b.copy(), 0, 1); //with threshold 0 we should only look for our moves and take the best one
+        System.out.println("\tRed did a move:\n" + td);
+        verify(spiedABX, atLeastOnce()).minValue(any(Board.class), anyInt(), anyInt(), anyInt());
+        verify(spiedABX, never()).maxValue(any(Board.class), anyInt(), anyInt(), anyInt());
+
+        spiedABX = spy(new AlphaBetaXoliba());
+        td = spiedABX.doTheBestMoveForColor(b.copy(), 1, 1); //with threshold 1 we should consider what the opponent will do after our move
+        System.out.println("\tRed did a move:\n" + td);
+        verify(spiedABX, atLeastOnce()).maxValue(any(Board.class), anyInt(), anyInt(), anyInt());
+        verify(spiedABX, atLeastOnce()).maxValue(any(Board.class), anyInt(), anyInt(), anyInt());
 
     }
 
