@@ -42,11 +42,10 @@ public class Board{
     public double evaluate() {
         double e = 0;
 
-        //in any case we cant favor the situation when we have 2 stones or less.
-        //Actually we don't even have to calculate them: only thing that matters is biggest triangle.
-        //todo does this work properly? How about test scenarios...?
-        if(amountOfTheStones(-1) > 2 || amountOfTheStones(1) > 2)
-            e = sumOfTheStones();
+        //Sometimes there is a chance AI favors situation where it rather have 1 stone at corner than 2 stones in the middle.
+        //Sometimes this is good: you cant eat corner stone. Bu maybe we should implement some sort of better algorithm
+        //when calculating how much value does the ending board give.
+        e = sumOfTheStones();
 
         findAllTriangles();
         e += triangleValue * (sizeOfRedsBiggestTriangle - sizeOfBluesBiggestTriangle);
@@ -55,25 +54,16 @@ public class Board{
     }
 
     private double sumOfTheStones() {
+
         double sum = 0;
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[0].length; j++) {
                 if ((i == 0 || i == 6) && (j == 0 || j == 6))
                     continue;
                 if (i == 0 || i == 6 || j == 0 || j == 6) {
-                    if(i == 1 || i == 5 || j == 1 || j == 5) sum += board[i][j] * cornerValue;
-                    else sum += board[i][j] * edgeValue;
-                } else sum += board[i][j] * 1;
-            }
-        }
-        return sum;
-    }
-
-    private int amountOfTheStones(int color) {
-        int sum = 0;
-        for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board[0].length; j++) {
-                if(board[i][j] == color) sum++;
+                    if(i == 1 || i == 5 || j == 1 || j == 5) sum += board[i][j] * cornerValue;  //Its a corner!
+                    else sum += board[i][j] * edgeValue;    //Its at edge!
+                } else sum += board[i][j] * 1;      //Its just normal stone :(
             }
         }
         return sum;
