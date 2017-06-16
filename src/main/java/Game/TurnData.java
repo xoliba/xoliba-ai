@@ -14,6 +14,7 @@ public class TurnData {
     public int[][] corners; //[[x,y],[x,y]]
 	public int color;
 	public boolean surrender;//are giving up?
+    public int difficulty;  //how much steroids do we give to our AI?
 
     public TurnData(boolean startRound, boolean surrender) {
         if (startRound) {
@@ -29,6 +30,10 @@ public class TurnData {
     }
 
     public TurnData(boolean didMove, Board board, Move move, Triangle triangle, int color, boolean surrender) {
+        this(didMove, board, move, triangle, color, surrender, 2);
+    }
+
+    public TurnData(boolean didMove, Board board, Move move, Triangle triangle, int color, boolean surrender, int difficulty) {
         this.type = "TurnData";
         this.didMove = didMove;
         this.board = board.board;
@@ -36,6 +41,7 @@ public class TurnData {
         this.target = new int[]{move.target.x, move.target.y};
 		this.color = color;
 		this.surrender = surrender;
+		this.difficulty = difficulty;
 
         corners = new int[2][2];
         int i = 0;
