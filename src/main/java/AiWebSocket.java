@@ -39,8 +39,8 @@ public class AiWebSocket {
 	private void handleStartingRound(Session session, String message) throws IOException {
 		TurnData data = JsonConverter.parseTurnData(message);
 
-		System.out.println("got a start round message! AI color " + data.color);
-		ai = new AI(data.color, 2);
+		System.out.println("got a start round message! AI color " + data.color + " difficulty " + data.difficulty);
+		ai = new AI(data.color, data.difficulty);
 		data = new TurnData(true, ai.doesWantToSurrender(data.board));
 
 		session.getRemote().sendString(JsonConverter.jsonifyTurnData(data));
