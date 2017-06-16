@@ -6,7 +6,8 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Random;
 
-
+//todo AI computes game dynamically forward, remembering relevant situation from previous computation
+//todo AI computes while user thinks next move
 public class AI {
 
     private Board board;
@@ -48,7 +49,6 @@ public class AI {
             sum += b[6][i] * weight;
         }
 
-        //color might be wrong if multiple users!
         sum *= color; //if the sum is the same as our color, this will result positive value (good for us)
 
         if (sum < -10) {
@@ -63,6 +63,7 @@ public class AI {
 
     public TurnData move(int[][] b, int color) {
         board = new Board(b);
+        this.color = color;
         System.out.println("AI (color of " + color + ") got a new board:\n" + board);
         TurnData td = new TurnData();
 
