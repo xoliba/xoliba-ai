@@ -23,7 +23,8 @@ public class AiWebSocket {
 	public void closed(Session session, int statusCode, String reason) {
 		sessions.remove(session);
 	}
-	
+
+	//todo we should have an ai for every single session differently to prevent bugs from race-con etc
 	@OnWebSocketMessage
 	public void message(Session session, String message) throws IOException {
 		if (JsonConverter.ping(message)) {
