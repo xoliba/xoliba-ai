@@ -20,7 +20,7 @@ public class TurnData {
         if (startRound) {
             type = "startRound";
         } else {
-            type = "TurnData";
+            type = "turnData";
         }
         this.surrender = surrender;
     }
