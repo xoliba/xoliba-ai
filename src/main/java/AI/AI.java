@@ -8,6 +8,7 @@ import java.util.Random;
 
 //todo AI computes game dynamically forward, remembering relevant situation from previous computation
 //todo AI computes while user thinks next move
+//todo AI should take time of its move and send the best option in the time limit
 public class AI {
 
     private Board board;
