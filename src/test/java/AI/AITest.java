@@ -48,7 +48,7 @@ public class AITest {
         Board copy = boardWithTwoSmallTriangles.copy();
         assertTrue("the board should be the same if no move was made",
                 copy.equals(boardWithTwoSmallTriangles));
-        int[][] boardAfterMove = ai.move(table).board;
+        int[][] boardAfterMove = ai.move(table, 1).board;
         assertFalse("the board should be different after a move:\n" +
                 "board before move\n" + copy + "board after move\n"
                 + new Board(boardAfterMove) , new Board(boardAfterMove).equals(copy));
@@ -58,17 +58,17 @@ public class AITest {
     public void aiCanMoveWithBothColors() {
         ai = new AI(1, 1);
         Board start = new Board(table);
-        TurnData td = ai.move(start.copy().board);
+        TurnData td = ai.move(start.copy().board, 1);
         assertFalse(start.equals(td.board));
         ai = new AI(-1, 1);
-        td = ai.move(start.copy().board);
+        td = ai.move(start.copy().board, 1);
         assertFalse(start.equals(td.board));
     }
 
     @Test
     public void AIcomputesDeepInTheGameTreeWhileThereAreMoves() {
         ai = new AI(1, 10);
-        int[][] boardAfter10Moves = ai.move(table).board;
+        int[][] boardAfter10Moves = ai.move(table, 1).board;
         assertFalse(new Board(boardAfter10Moves).equals(new Board(table)));
     }
 
