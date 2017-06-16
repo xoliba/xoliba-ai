@@ -62,16 +62,26 @@ public class AI {
         return data.surrender;
     }
 
-    public TurnData move(int[][] b, int color) {
+    public TurnData move(int[][] b, int color, int difficulty) {
         board = new Board(b);
         this.color = color;
-        System.out.println("AI (color of " + color + ") got a new board:\n" + board);
-        TurnData td = new TurnData();
+        if (difficulty > 0 && difficulty < 50)
+            this.inceptionTreshold = difficulty;
+        System.out.println("AI (color " + color + " difficulty " + inceptionTreshold + ") got a new board:\n" + board);
 
-        td = abx.doTheBestMoveForColor(board, inceptionTreshold, color);
+        TurnData td = abx.doTheBestMoveForColor(board, inceptionTreshold, color);
         System.out.println("AI did a move:\n" + td);
 
         return td;
+    }
+
+    public TurnData move(int[][] b, int color) {
+        return move(b, color, inceptionTreshold);
+    }
+
+
+    public TurnData move(int[][] b) {
+        return move(b, color, inceptionTreshold);
     }
 
 }

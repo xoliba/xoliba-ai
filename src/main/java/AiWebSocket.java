@@ -58,7 +58,7 @@ public class AiWebSocket {
 		if (ai.doesWantToStopPlaying(data)) {
 			data = new TurnData(false, true);
 		} else {
-			data = ai.move(data.board, data.color); //lets update the turn data with AIs move
+			data = ai.move(data.board, data.color, data.difficulty); //lets update the turn data with AIs move
 		}
 		session.getRemote().sendString(JsonConverter.jsonifyTurnData(data));
 
