@@ -48,6 +48,7 @@ public class AI {
             sum += b[6][i] * weight;
         }
 
+        //color might be wrong if multiple users!
         sum *= color; //if the sum is the same as our color, this will result positive value (good for us)
 
         if (sum < -10) {
@@ -60,7 +61,7 @@ public class AI {
         return data.surrender;
     }
 
-    public TurnData move(int[][] b) {
+    public TurnData move(int[][] b, int color) {
         board = new Board(b);
         System.out.println("AI (color of " + color + ") got a new board:\n" + board);
         TurnData td = new TurnData();
