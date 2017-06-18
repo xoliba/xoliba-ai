@@ -25,6 +25,11 @@ public class TurnData {
         this.surrender = surrender;
     }
 
+    public TurnData(boolean startRound, boolean surrender, int color) {
+        this(startRound, surrender);
+        this.color = color;
+    }
+
     public TurnData(boolean didMove, Board board, Move move, Triangle triangle, int color) {
         this(didMove, board, move, triangle, color, false);
     }
