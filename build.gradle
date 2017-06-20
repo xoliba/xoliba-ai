@@ -9,6 +9,9 @@ apply plugin: 'application'
 apply plugin: 'jacoco'
 
 task stage(dependsOn: ['shadowJar', 'clean'])
+task optimize(dependsOn: ['build'], type: Exec) {
+    commandLine "bash", "-c", "java -cp build/libs/xoliba-all.jar OptimizationMain"
+}
 
 repositories {
     jcenter()

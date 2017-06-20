@@ -88,6 +88,7 @@ public class MatchMaker {
             result = aiBlack.move(board);
             if(new Board(oldResult.board).hashCode() == new Board(result.board).hashCode()) {
                 //There have been same board layout in the past: so the result wont change.
+                //So now we assume AI will do the same move with the same board every time.
                 return result.board;
             }
             oldResult = result;
