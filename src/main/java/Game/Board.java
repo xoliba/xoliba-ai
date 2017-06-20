@@ -35,6 +35,29 @@ public class Board{
     }
 
     /**
+     * Calculate game points if game ended now.
+     */
+    public int calculatePoints() {
+        findAllTriangles();
+        if(sizeOfBluesBiggestTriangle == sizeOfRedsBiggestTriangle) return 0;
+
+        int reds = 0;
+        int blues = 0;
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[0].length; j++) {
+                if ((i == 0 || i == 6) && (j == 0 || j == 6))
+                    continue;
+                else if(board[i][j] == -1) reds++;
+                else if(board[i][j] == 1) blues++;
+            }
+        }
+
+        if(sizeOfBluesBiggestTriangle > sizeOfRedsBiggestTriangle)
+            return sizeOfBluesBiggestTriangle * reds;
+        else return sizeOfBluesBiggestTriangle * blues;
+    }
+
+    /**
      * What is the situation on board, who is winning?
      *
      * @return value that represents the situation: the smaller (negative) is better for blue and bigger (positive) is better for red

@@ -67,10 +67,10 @@ public class AI {
         this.color = color;
         if (difficulty > 0 && difficulty < 50)
             this.inceptionTreshold = difficulty;
-        System.out.println("AI (color " + color + " difficulty " + inceptionTreshold + ") got a new board:\n" + board);
+        //System.out.println("AI (color " + color + " difficulty " + inceptionTreshold + ") got a new board:\n" + board);
 
         TurnData td = abx.doTheBestMoveForColor(board, inceptionTreshold, color);
-        System.out.println("AI did a move:\n" + td);
+        //System.out.println("AI did a move:\n" + td);
 
         return td;
     }
