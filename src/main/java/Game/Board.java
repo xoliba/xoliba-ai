@@ -3,6 +3,8 @@ package Game;
 import AI.ParametersAI;
 import AI.Validator;
 
+import java.util.Random;
+
 /**
  * Created by vili on 31.5.2017.
  */
@@ -33,7 +35,7 @@ public class Board{
         this.weights = parameters;
     }
 
-    public static int getStartingTurn(int[][] board) {
+    public static boolean redStartsGame(int[][] board) {
         int sTurn = board[0][1] + board[0][5] + board[1][0] + board[1][6] + board[5][0] + board[5][6] + board[6][1] + board[6][5];
 
         if (sTurn == 0) {
@@ -45,7 +47,12 @@ public class Board{
             }
         }
 
-        return sTurn;
+        if (sTurn == 0) {
+            Random random = new Random();
+            return random.nextBoolean();
+        } else {
+            return sTurn > 0;
+        }
     }
 
     /**
