@@ -16,14 +16,14 @@ public class AI {
     private Random random;
     private int inceptionTreshold; //how many rounds we go deeper: [1,inf[
     private AlphaBetaXoliba abx;
-    private double[] stoneValues;
+    private ParametersAI parameters;
 
     public AI(int color) {
         this(color, 3);
     }
 
     public AI(int color, int difficulty) {
-        this(color, difficulty, new double[]{7, 1.5, 3.0});
+        this(color, difficulty, new ParametersAI());
     }
 
     /**
@@ -31,12 +31,12 @@ public class AI {
      * @param color which AI plays
      * @param difficulty 1 being the easiest, 3 being still easy to compute (0 does nothing)
      */
-    public AI(int color, int difficulty, double[] stoneValues) {
+    public AI(int color, int difficulty, ParametersAI parameters) {
         this.color = color;
         this.random = new Random();
         this.inceptionTreshold = difficulty;
         this.abx = new AlphaBetaXoliba();
-        this.stoneValues = stoneValues;
+        this.parameters = parameters;
     }
 
 
@@ -75,7 +75,7 @@ public class AI {
     }
 
     public TurnData move(int[][] b, int color, int difficulty) {
-        board = new Board(b, stoneValues[0], stoneValues[1], stoneValues[2]);
+        board = new Board(b, parameters);
         this.color = color;
         if (difficulty > 0 && difficulty < 50)
             this.inceptionTreshold = difficulty;

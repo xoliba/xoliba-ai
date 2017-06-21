@@ -1,5 +1,6 @@
 package Game;
 
+import AI.ParametersAI;
 import AI.Validator;
 
 /**
@@ -14,25 +15,22 @@ public class Board{
     private int sizeOfRedsBiggestTriangle = 0;
     private int sizeOfBluesBiggestTriangle = 0;
     private int howManyTrianglesOnBoard = 0;
-
-    private double triangleValue;
-    private double edgeValue;
-    private double cornerValue;
+    private boolean hasBeenEvaluated = false;
+    private double value = 0;
+    private ParametersAI weights;
 
     public Board() {
         this(new int[7][7]);
     }
 
     public Board(int[][] board) {
-        this(board, 7, 1.5, 3);
+        this(board, new ParametersAI());
     }
 
-    public Board(int[][] board, double triangle, double edge, double corner) {
+    public Board(int[][] board, ParametersAI parameters) {
         this.board = board;
         this.validator = new Validator();
-        this.triangleValue = triangle;
-        this.edgeValue = edge;
-        this.cornerValue = corner;
+        this.weights = parameters;
     }
 
     /**
@@ -64,33 +62,92 @@ public class Board{
      * @return value that represents the situation: the smaller (negative) is better for blue and bigger (positive) is better for red
      */
     public double evaluate() {
-        double e = 0;
+        if (hasBeenEvaluated)
+            return value;
+
+        value = 0;
 
         //Sometimes there is a chance AI favors situation where it rather have 1 stone at corner than 2 stones in the middle.
         //Sometimes this is good: you cant eat corner stone. Bu maybe we should implement some sort of better algorithm
         //when calculating how much value does the ending board give.
-        e = sumOfTheStones();
+        value = sumOfTheStones();
+        value += lookForBasis();
 
         findAllTriangles();
-        e += triangleValue * (sizeOfRedsBiggestTriangle - sizeOfBluesBiggestTriangle);
+        value += weights.triangleWeight * (sizeOfRedsBiggestTriangle - sizeOfBluesBiggestTriangle);
+        hasBeenEvaluated = true;
 
-        return e;
+        return value;
     }
 
+    /**
+     * corner, edge and 'normal' stones have different weights that affect the sum
+     * @return the values of stones on the board added together.
+     */
     private double sumOfTheStones() {
-
         double sum = 0;
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[0].length; j++) {
                 if ((i == 0 || i == 6) && (j == 0 || j == 6))
                     continue;
                 if (i == 0 || i == 6 || j == 0 || j == 6) {
-                    if(i == 1 || i == 5 || j == 1 || j == 5) sum += board[i][j] * cornerValue;  //Its a corner!
-                    else sum += board[i][j] * edgeValue;    //Its at edge!
-                } else sum += board[i][j] * 1;      //Its just normal stone :(
+                    if(i == 1 || i == 5 || j == 1 || j == 5) sum += board[i][j] * weights.cornerWeight;  //Its a corner!
+                    else sum += board[i][j] * weights.edgeWeight;    //Its at edge!
+                } else sum += board[i][j];      //Its just normal stone :(
             }
         }
         return sum;
+    }
+
+    /**
+     * stones, that are in the corners of the board forming a basis for a triangle give a notable advantage to that color
+     * @return the sum of found basis of both colors
+     */
+    private double lookForBasis() {
+        double sum = 0;
+        for (int i = 1; i < board.length - 1; i++) { //we dont look at the outside-the-board-corners
+            sum += countTheValueOfThisPair(new Coordinate(i, 0)); //the up-down edges
+            sum += countTheValueOfThisPair(new Coordinate(0, i)); //the left-right edges
+        }
+        sum += lookForMediumBasisOnEdges();
+        return sum;
+    }
+
+    private double lookForMediumBasisOnEdges() {
+        double sum = 0;
+        Coordinate[][] pairs = new Coordinate[][]{
+                {new Coordinate(0,1), new Coordinate(0,5)}, //west
+                {new Coordinate(6,1), new Coordinate(6, 5)}, //east
+                {new Coordinate(1,0), new Coordinate(5, 0)}, //north
+                {new Coordinate(1,6), new Coordinate(5, 6)} //south
+        };
+        for (int i = 0; i < pairs.length; i++) {
+            Coordinate c1 = pairs[i][0];
+            Coordinate c2 = pairs[i][1];
+
+            int color = board[c1.x][c1.y];
+            if (color != 0 && color == board[c2.x][c2.y]) {
+                sum += weights.basisEdgeMediumWeight * color;
+            }
+        }
+        return sum;
+    }
+
+    /**
+     *
+     * @param c a coordinate on the edge of the board
+     * @return the value of the pair formed with c and the coordinate on the other side of the board
+     */
+    private double countTheValueOfThisPair(Coordinate c) {
+        int color = board[c.x][c.y];
+        if (color == 0)
+            return 0; //there cannot be a pair
+        else if ((c.x == 0 || c.x == 6) &&  color == board[6 - c.x][c.y]) { //we're on the left or right edge and there is a pair
+            return weights.basisBigWeight * color;
+        } else if ((c.y == 0 || c.y == 6) && color == board[c.x][6 - c.y]) { //the same on up/down edges
+            return weights.basisBigWeight * color;
+        }
+        return 0; //there is no pair
     }
 
     /**
@@ -180,7 +237,7 @@ public class Board{
         for (int i = 0; i < board.length; i++) {
             System.arraycopy(board[i], 0, copy[i], 0, board[i].length);
         }
-        return new Board(copy, triangleValue, edgeValue, cornerValue);
+        return new Board(copy, weights);
     }
 
     public void swap(Move move){

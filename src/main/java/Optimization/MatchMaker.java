@@ -16,12 +16,12 @@ public class MatchMaker {
 
     int whiteDifficulty = 0;
     int blackDifficulty = 0;
-    double[] whiteParameters;
-    double[] blackParameters;
+    ParametersAI whiteParameters;
+    ParametersAI blackParameters;
     int[][][] boards;
 
     //todo ai parameters to a single class
-    public MatchMaker(int whiteDifficulty, double[] whiteParameters, int blackDifficulty, double[] blackParameters) {
+    public MatchMaker(int whiteDifficulty, ParametersAI whiteParameters, int blackDifficulty, ParametersAI blackParameters) {
         this.whiteDifficulty = whiteDifficulty;
         this.blackDifficulty = blackDifficulty;
         this.whiteParameters = whiteParameters;

@@ -14,6 +14,8 @@ import Game.TurnData;
 public class OptimizationMain {
 
     public static void main(String[] args) {
-        System.out.print(new MatchMaker(2, new double[]{7, 1.5, 3}, 3, new double[]{7, 1.5, 3}).calculate(50));
+        System.out.print(new MatchMaker(2, new ParametersAI(7, 1.5, 3, 5, 4),
+                                        3, new ParametersAI(7, 1.5, 3, 5, 4)
+        ).calculate(50));
     }
 }
