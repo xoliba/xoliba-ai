@@ -16,11 +16,15 @@ public class MatchMaker {
 
     int whiteDifficulty = 0;
     int blackDifficulty = 0;
+    double[] whiteParameters;
+    double[] blackParameters;
     int[][][] boards;
 
-    public MatchMaker(int whiteDifficulty, int blackDifficulty) {
+    public MatchMaker(int whiteDifficulty, double[] whiteParameters, int blackDifficulty, double[] blackParameters) {
         this.whiteDifficulty = whiteDifficulty;
         this.blackDifficulty = blackDifficulty;
+        this.whiteParameters = whiteParameters;
+        this.blackParameters = blackParameters;
         this.boards = getBoards();
     }
 
@@ -32,8 +36,8 @@ public class MatchMaker {
         int result;
 
         for(int i=0; i<amount && i<boards.length; i++) {
-            aiWhite = new AI(1, whiteDifficulty);
-            aiBlack = new AI(-1, blackDifficulty);
+            aiWhite = new AI(1, whiteDifficulty, whiteParameters);
+            aiBlack = new AI(-1, blackDifficulty, blackParameters);
             if(startingTurn(boards[i]) > 0) {
                 result = new Board(getRoundResultBoard(aiBlack, aiWhite, boards[i])).calculatePoints();
             } else {
@@ -43,8 +47,8 @@ public class MatchMaker {
             else whiteWons += result;
 
             //the same board but players switched. Little bit of copy-paste here :)
-            aiWhite = new AI(-1, whiteDifficulty);
-            aiBlack = new AI(1, blackDifficulty);
+            aiWhite = new AI(-1, whiteDifficulty, whiteParameters);
+            aiBlack = new AI(1, blackDifficulty, blackParameters);
             if(startingTurn(boards[i]) > 0) {
                 result = new Board(getRoundResultBoard(aiWhite, aiBlack, boards[i])).calculatePoints();
             } else {

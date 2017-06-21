@@ -15,20 +15,21 @@ public class Board{
     private int sizeOfBluesBiggestTriangle = 0;
     private int howManyTrianglesOnBoard = 0;
 
-    private double triangleValue = 7.0;
-    private double edgeValue = 1.5;
-    private double cornerValue = 3.0;
+    private double triangleValue;
+    private double edgeValue;
+    private double cornerValue;
 
     public Board() {
         this(new int[7][7]);
     }
 
     public Board(int[][] board) {
-        this.board = board;
-        this.validator = new Validator();
+        this(board, 7, 1.5, 3);
     }
 
-    public void setEdgeDignity(double triangle, double edge, double corner) {
+    public Board(int[][] board, double triangle, double edge, double corner) {
+        this.board = board;
+        this.validator = new Validator();
         this.triangleValue = triangle;
         this.edgeValue = edge;
         this.cornerValue = corner;
@@ -179,7 +180,7 @@ public class Board{
         for (int i = 0; i < board.length; i++) {
             System.arraycopy(board[i], 0, copy[i], 0, board[i].length);
         }
-        return new Board(copy);
+        return new Board(copy, triangleValue, edgeValue, cornerValue);
     }
 
     public void swap(Move move){
