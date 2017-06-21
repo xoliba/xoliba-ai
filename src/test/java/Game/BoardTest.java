@@ -101,4 +101,9 @@ public class BoardTest {
         assertTrue("same sized triangles, but blue has more stones on board", board6.evaluate() < 0);
     }
 
+    @Test
+    public void startingBoardTest() {
+        assertTrue(Board.redStartsGame(board6.board));
+    }
+
 }

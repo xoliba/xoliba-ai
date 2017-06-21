@@ -12,8 +12,8 @@ public class OptimizationMain {
         pw.writeNewFileWithParameterValues();
         //computeWithAllParameterCombinations(pw, 50);
 
-        new MatchMaker(2, bestParameters,
-                1,
+        new MatchMaker(3, bestParameters,
+                2,
                 //new ParametersAI(3, 3, 3, 3, 3)
                 bestParameters
         ).calculate(50);

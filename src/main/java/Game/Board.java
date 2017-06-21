@@ -51,7 +51,7 @@ public class Board{
             Random random = new Random();
             return random.nextBoolean();
         } else {
-            return sTurn > 0;
+            return sTurn < 0;
         }
     }
 

@@ -35,7 +35,7 @@ public class RoundResult {
 
     @Override
     public String toString() {
-        String s = "white " + whiteWins + "w:" + whitePoints + "p\t-  black"  + blackWins + "w:"  + blackPoints + "p\t";
+        String s = "white " + whiteWins + "w:" + whitePoints + "p\t- black "  + blackWins + "w:"  + blackPoints + "p\t";
         if (bothWinWithSameColor)
             s += " both AI's won with same color";
         return s;
