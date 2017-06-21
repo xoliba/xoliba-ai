@@ -42,8 +42,8 @@ jar {
 }
 
 pitest {
-    targetClasses = ['AI.*', 'Game.*'];
-    targetTests = ['AI.*', 'Game.*']
+    targetClasses = ['AI.*', 'Game.*', 'Optimization.MatchMaker'];
+    targetTests = ['AI.*', 'Game.*', 'Optimization.*']
 }
 mainClassName = 'App'
 

@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 
 import AI.*;
 import Game.Board;
@@ -25,63 +26,78 @@ public class MatchMaker {
         this.boards = getBoards();
     }
 
-    public double calculate(int amount) {
-        AI aiWhite;
-        AI aiBlack;
-        int whiteWinsPoints = 0;
-        int whiteVictories = 0;
-        int blackWinsPoints = 0;
-        int blackVictories = 0;
-        int result;
-
-        for(int i=0; i<amount && i<boards.length; i++) {
-            aiWhite = new AI(1, whiteDifficulty, whiteParameters);
-            aiBlack = new AI(-1, blackDifficulty, blackParameters);
-            if(Board.redStartsGame(boards[i])) {
-                result = new Board(getRoundResultBoard(aiWhite, aiBlack, boards[i])).calculatePoints();
-            } else {
-                result = new Board(getRoundResultBoard(aiBlack, aiWhite, boards[i])).calculatePoints();
-            }
-            if(result < 0) {
-                blackWinsPoints += result;
-                blackVictories++;
-            } else  {
-                whiteWinsPoints += result;
-                whiteVictories++;
-            }
-
-            //the same board but players switched. Little bit of copy-paste here :)
-            aiWhite = new AI(-1, whiteDifficulty, whiteParameters);
-            aiBlack = new AI(1, blackDifficulty, blackParameters);
-            if(Board.redStartsGame(boards[i])) {
-                result = new Board(getRoundResultBoard(aiBlack, aiWhite, boards[i])).calculatePoints();
-            } else {
-                result = new Board(getRoundResultBoard(aiWhite, aiBlack, boards[i])).calculatePoints();
-            }
-            if(result < 0) {
-                whiteWinsPoints += result;
-                whiteVictories++;
-            }
-            else {
-                blackWinsPoints += result;
-                blackVictories++;
-            }
-            System.out.println((i+1) + ". match result: white - black " + whiteWinsPoints + "-" + blackWinsPoints);
+    /**
+     *
+     * @param howManyGames
+     * @return how many percents white got more points than black
+     */
+    public double calculate(int howManyGames) {
+        ArrayList<RoundResult> results = new ArrayList<>();
+        RoundResult finalResult = new RoundResult();
+        for(int i=0; i<howManyGames && i<boards.length; i++) {
+            RoundResult rr = calculateRoundForBothRoles(boards[i]);
+            results.add(rr);
+            finalResult.add(rr);
+            System.out.println((i+1) + ".\tround result: " + rr);
         }
 
-        return parseResult(whiteWinsPoints, whiteVictories, blackWinsPoints, blackVictories, 2*amount);
+        return parseResult(finalResult.whitePoints, finalResult.whiteWins, finalResult.blackPoints, finalResult.blackWins, finalResult.getTotalSameColorWins(), 2*howManyGames);
     }
 
-    private double parseResult(int whiteWinsPoints, int whiteVictories, int blackWinsPoints, int blackVictories, int howManyGames) {
+    public RoundResult calculateRoundForBothRoles(int[][] board) {
+        AI aiWhite, aiBlack;
+        RoundResult rr = new RoundResult();
+
+        aiWhite = new AI(1, whiteDifficulty, whiteParameters);
+        aiBlack = new AI(-1, blackDifficulty, blackParameters);
+        int result = calculateRound(aiWhite, aiBlack, board);
+        if(result > 0) {
+            rr.whitePoints += result;
+            rr.whiteWins++;
+        } else  {
+            rr.blackPoints += result;
+            rr.blackWins++;
+        }
+        aiWhite = new AI(-1, whiteDifficulty, whiteParameters);
+        aiBlack = new AI(1, blackDifficulty, blackParameters);
+        result = calculateRound(aiBlack, aiWhite, board);
+        if(result > 0) {
+            rr.blackPoints += result;
+            rr.blackWins++;
+        } else  {
+            rr.whitePoints += result;
+            rr.whiteWins++;
+        }
+
+        if (rr.whiteWins == rr.blackWins && rr.whiteWins == 1)
+            rr.bothWinWithSameColor = true;
+
+        return rr;
+    }
+
+    public int calculateRound(AI red, AI blue, int[][] board) {
+        Board endSituation;
+        if (Board.redStartsGame(board)) {
+            endSituation = new Board(getRoundResultBoard(red, blue, board));
+        } else {
+            endSituation = new Board(getRoundResultBoard(blue, red, board));
+        }
+        int result = endSituation.calculatePoints();
+        return result;
+    }
+
+    private double parseResult(int whiteWinsPoints, int whiteVictories, int blackWinsPoints, int blackVictories, int howManySameColorWins, int howManyGames) {
         double whiteVicP = ((whiteVictories*1.0)/(howManyGames*1.0)) * 100;
         double blackVicP = ((blackVictories*1.0)/(howManyGames*1.0)) * 100;
+        double sameColorWinsPercent = (howManySameColorWins*1.0)/(howManyGames*0.5) * 100;
         double morePointsWhitePercent = (((whiteWinsPoints-blackWinsPoints)*1.0)/(blackWinsPoints*1.0)) * 100;
         double howManyPointsGivenPerGame = ((whiteWinsPoints+blackWinsPoints)*1.0/howManyGames);
         DecimalFormat formatter = new DecimalFormat("#0.00");
         System.out.println("### FINAL RESULT: white (lvl " + whiteDifficulty + ") - black (lvl " + blackDifficulty + ") " + whiteWinsPoints + "-" + blackWinsPoints + ", (victories w-b " + whiteVictories + "-" + blackVictories + ")\n"
                 + "\twhite wins " + formatter.format(whiteVicP) + "% of the games, black " + formatter.format(blackVicP) + "%\n"
                 + "\twhite gets " + formatter.format(morePointsWhitePercent) + "% more points than black\n"
-                + "\tpoints given per game " + formatter.format(howManyPointsGivenPerGame));
+                + "\tpoints given per game " + formatter.format(howManyPointsGivenPerGame) + "\n" +
+                "\tboth AIs won with same color " + formatter.format(sameColorWinsPercent) + "% of games");
         return morePointsWhitePercent;
 
     }

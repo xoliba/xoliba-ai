@@ -16,7 +16,7 @@ public class OptimizationMain {
                 1,
                 //new ParametersAI(3, 3, 3, 3, 3)
                 bestParameters
-        ).calculate(30);
+        ).calculate(50);
     }
 
     private static void computeWithAllParameterCombinations(ParameterWriter pw, int howManyGames) {

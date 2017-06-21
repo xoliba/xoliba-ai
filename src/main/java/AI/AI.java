@@ -12,9 +12,9 @@ import java.util.Random;
 public class AI {
 
     public static ParametersAI bestParameters = new ParametersAI(7,1.5,3,4,3.5);
+    public int color;
 
     private Board board;
-    private int color;
     private Random random;
     private int inceptionTreshold; //how many rounds we go deeper: [1,inf[
     private AlphaBetaXoliba abx;
