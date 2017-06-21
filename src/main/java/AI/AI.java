@@ -39,13 +39,7 @@ public class AI {
         this.parameters = parameters;
     }
 
-
-
     public int getDifficulty() {
-        return inceptionTreshold;
-    }
-
-    public int setBoardEvaluationValues() {
         return inceptionTreshold;
     }
 
@@ -71,6 +65,7 @@ public class AI {
     }
 
     public boolean doesWantToStopPlaying(TurnData data) {
+        //todo hard AI wouldn't agree right away
         return data.surrender;
     }
 

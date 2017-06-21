@@ -156,9 +156,7 @@ public class MatchMaker {
             }
 
             bufferedReader.close();
-        } catch(FileNotFoundException ex) {
-            ex.printStackTrace();
-        } catch(IOException ex) {
+        } catch(Exception ex) {
             ex.printStackTrace();
         }
         return boards;

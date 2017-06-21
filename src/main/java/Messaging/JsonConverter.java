@@ -1,3 +1,5 @@
+package Messaging;
+
 import AI.ParametersAI;
 import Game.TurnData;
 import com.google.gson.Gson;
@@ -10,7 +12,7 @@ public class JsonConverter {
 			int[][] t = gson.fromJson(message, int[][].class);
 			return t;
 		} catch (Exception e) {
-			System.out.println("EXCEPTION @ JsonConverter parseTable");
+			System.out.println("EXCEPTION @ Messaging.JsonConverter parseTable");
 			return new int[0][0];
 		}
 	}
@@ -37,7 +39,7 @@ public class JsonConverter {
 			TurnData msg = parseTurnData(message);
 			return msg.type.equals("ping");
 		} catch (Exception e) {
-			System.out.println("THIS SHOULD NEVER HAPPEN: EXCEPTION @ JsonConverter ping");
+			System.out.println("THIS SHOULD NEVER HAPPEN: EXCEPTION @ Messaging.JsonConverter ping");
 			return false;
 		}
 	}
@@ -51,7 +53,7 @@ public class JsonConverter {
 			TurnData msg = parseTurnData(message);
 			return msg.type.equals("startRound");
 		} catch (Exception e) {
-			System.out.println("THIS SHOULD NEVER HAPPEN: EXCEPTION @ JsonConverter startRound");
+			System.out.println("THIS SHOULD NEVER HAPPEN: EXCEPTION @ Messaging.JsonConverter startRound");
 			return false;
 		}
 	}
