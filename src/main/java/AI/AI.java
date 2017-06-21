@@ -88,7 +88,6 @@ public class AI {
         return move(b, color, inceptionTreshold);
     }
 
-
     public TurnData move(int[][] b) {
         return move(b, color, inceptionTreshold);
     }

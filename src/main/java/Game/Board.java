@@ -33,6 +33,21 @@ public class Board{
         this.weights = parameters;
     }
 
+    public static int getStartingTurn(int[][] board) {
+        int sTurn = board[0][1] + board[0][5] + board[1][0] + board[1][6] + board[5][0] + board[5][6] + board[6][1] + board[6][5];
+
+        if (sTurn == 0) {
+            for (int i = 1; i < 6; i++) {
+                sTurn += board[i][0];
+                sTurn += board[i][6];
+                sTurn += board[0][i];
+                sTurn += board[6][i];
+            }
+        }
+
+        return sTurn;
+    }
+
     /**
      * Calculate game points if game ended now.
      */

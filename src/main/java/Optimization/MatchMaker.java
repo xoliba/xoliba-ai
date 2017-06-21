@@ -39,7 +39,7 @@ public class MatchMaker {
         for(int i=0; i<amount && i<boards.length; i++) {
             aiWhite = new AI(1, whiteDifficulty, whiteParameters);
             aiBlack = new AI(-1, blackDifficulty, blackParameters);
-            if(startingTurn(boards[i]) > 0) {
+            if(Board.getStartingTurn(boards[i]) > 0) {
                 result = new Board(getRoundResultBoard(aiBlack, aiWhite, boards[i])).calculatePoints();
             } else {
                 result = new Board(getRoundResultBoard(aiWhite, aiBlack, boards[i])).calculatePoints();
@@ -50,7 +50,7 @@ public class MatchMaker {
             //the same board but players switched. Little bit of copy-paste here :)
             aiWhite = new AI(-1, whiteDifficulty, whiteParameters);
             aiBlack = new AI(1, blackDifficulty, blackParameters);
-            if(startingTurn(boards[i]) > 0) {
+            if(Board.getStartingTurn(boards[i]) > 0) {
                 result = new Board(getRoundResultBoard(aiWhite, aiBlack, boards[i])).calculatePoints();
             } else {
                 result = new Board(getRoundResultBoard(aiBlack, aiWhite, boards[i])).calculatePoints();
@@ -112,21 +112,6 @@ public class MatchMaker {
         }
         System.out.print("Game stopped: too many rounds. ");
         return result.board;
-    }
-
-    private int startingTurn(int[][] board) {
-        int sTurn = board[0][1] + board[0][5] + board[1][0] + board[1][6] + board[5][0] + board[5][6] + board[6][1] + board[6][5];
-
-        if (sTurn == 0) {
-            for (int i = 1; i < 6; i++) {
-                sTurn += board[i][0];
-                sTurn += board[i][6];
-                sTurn += board[0][i];
-                sTurn += board[6][i];
-            }
-        }
-
-        return sTurn;
     }
 
     private int[][][] getBoards() {
