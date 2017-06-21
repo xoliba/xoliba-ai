@@ -20,6 +20,7 @@ public class MatchMaker {
     double[] blackParameters;
     int[][][] boards;
 
+    //todo ai parameters to a single class
     public MatchMaker(int whiteDifficulty, double[] whiteParameters, int blackDifficulty, double[] blackParameters) {
         this.whiteDifficulty = whiteDifficulty;
         this.blackDifficulty = blackDifficulty;
@@ -151,11 +152,11 @@ public class MatchMaker {
                     row = 0;
                     i++;
                 }
-            }   
+            }
 
-            bufferedReader.close();         
+            bufferedReader.close();
         } catch(FileNotFoundException ex) {
-            ex.printStackTrace();              
+            ex.printStackTrace();
         } catch(IOException ex) {
             ex.printStackTrace();
         }
