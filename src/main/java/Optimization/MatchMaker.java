@@ -60,6 +60,7 @@ public class MatchMaker {
             System.out.println((i+1) + ". match result: white - black " + whiteWons + "-" + blackWons);
         }
 
+        //todo fix percent math
         if(whiteWons > blackWons) {
             System.out.println("### FINAL RESULT: white - black " + whiteWons + "-" + blackWons + " (" + ((whiteWons * 1.0) / (blackWons * 1.0) - 1.0) + ")");
             return (whiteWons * 1.0) / (blackWons * 1.0) - 1.0;
