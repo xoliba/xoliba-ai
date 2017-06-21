@@ -11,6 +11,8 @@ import java.util.Random;
 //todo AI should take time of its move and send the best option in the time limit
 public class AI {
 
+    public static ParametersAI bestParameters = new ParametersAI(7,1.5,3,4,3.5);
+
     private Board board;
     private int color;
     private Random random;
@@ -23,7 +25,7 @@ public class AI {
     }
 
     public AI(int color, int difficulty) {
-        this(color, difficulty, new ParametersAI());
+        this(color, difficulty, bestParameters);
     }
 
     /**

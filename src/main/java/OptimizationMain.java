@@ -1,16 +1,25 @@
 import Optimization.*;
 import AI.*;
 
+import java.util.List;
+
+import static AI.AI.bestParameters;
+
 public class OptimizationMain {
 
     public static void main(String[] args) {
         ParameterWriter pw = new ParameterWriter();
         pw.writeNewFileWithParameterValues();
+        List<ParametersAI> parameterCombinations = pw.readParameterCombinations();
 
-        /*
-        System.out.print(new MatchMaker(2, new ParametersAI(7, 1.5, 3, 5, 4),
-                                        3, new ParametersAI(7, 1.5, 3, 5, 4)
-        ).calculate(50));
-        */
+        for (int i = 0; i < parameterCombinations.size(); i++) {
+            ParametersAI p = parameterCombinations.get(i);
+            System.out.println( "Default parameters on white: " + bestParameters + "\n" +
+                                "versus black with test param " + p);
+            new MatchMaker(2, bestParameters,
+                            2, p
+            ).calculate(10);
+        }
+
     }
 }

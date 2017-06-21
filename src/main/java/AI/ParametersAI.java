@@ -1,4 +1,5 @@
 package AI;
+import static AI.AI.bestParameters;
 
 /**
  * Created by vili on 21.6.2017.
@@ -12,7 +13,15 @@ public class ParametersAI {
     public double basisBigWeight; //value of a pair of stones, which are on the opposite edges of the board (and form a basis for a big triangle)
 
     public ParametersAI() {
-        this(7, 1.5, 3, 4, 3.5);
+        this(bestParameters.toArray());
+    }
+
+    /**
+     *
+     * @param parameters length 5
+     */
+    public ParametersAI(double[] parameters) {
+        this(parameters[0], parameters[1], parameters[2], parameters[3], parameters[4]);
     }
 
     public ParametersAI(double triangle, double edge, double corner, double basisMedium, double basisBig) {
@@ -21,5 +30,15 @@ public class ParametersAI {
         this.cornerWeight = corner;
         this.basisEdgeMediumWeight = basisMedium;
         this.basisBigWeight = basisBig;
+    }
+
+    public double[] toArray() {
+        return new double[]{
+                triangleWeight, edgeWeight, cornerWeight, basisEdgeMediumWeight, basisBigWeight};
+    }
+
+    @Override
+    public String toString() {
+        return "triangle " + triangleWeight + " edge " + edgeWeight + " corner " + cornerWeight + " medium basis " + basisEdgeMediumWeight + " big basis " + basisBigWeight;
     }
 }
