@@ -1,3 +1,4 @@
+import AI.ParametersAI;
 import Game.TurnData;
 import com.google.gson.Gson;
 
@@ -13,15 +14,24 @@ public class JsonConverter {
 			return new int[0][0];
 		}
 	}
-	
+
+	public static String jsonifyTable(int[][] table) {
+		return gson.toJson(table);
+	}
+
+	public static ParametersAI parseParameters(String message) {
+		return gson.fromJson(message, ParametersAI.class);
+	}
+
+	public static String jsonifyParameters(ParametersAI p) {
+		return gson.toJson(p);
+	}
+
 	public static String jsonifyTurnData(TurnData data) {
 		return gson.toJson(data);
 	}
 
-	public static String jsonify(int[][] table) {
-		return gson.toJson(table);
-	}
-	
+
 	public static boolean ping(String message) {
 		try {
 			TurnData msg = parseTurnData(message);
