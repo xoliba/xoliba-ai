@@ -84,9 +84,9 @@ public class MatchMaker {
     public int calculateRound(AI red, AI blue, int[][] board) {
         Board endSituation;
         if (Board.redStartsGame(board)) {
-            endSituation = new Board(getRoundResultBoard(red, blue, board));
+            endSituation = new Board(playUntilRoundEnded(red, blue, board));
         } else {
-            endSituation = new Board(getRoundResultBoard(blue, red, board));
+            endSituation = new Board(playUntilRoundEnded(blue, red, board));
         }
         int result = endSituation.calculatePoints();
         return result;
@@ -112,31 +112,29 @@ public class MatchMaker {
                 "\tboth AIs won with same color " + formatter.format(sameColorWinsPercent) + "% of games\n" +
                 "\tpercent of boards that the challenger (black) won both games " + formatter.format(percentOfChallengerWonBothGames) + "%\n");
         return percentOfChallengerWonBothGames;
-
     }
 
-    //Starting AI first.
-    private int[][] getRoundResultBoard(AI aiWhite, AI aiBlack, int[][] board) {
+    public int[][] playUntilRoundEnded(AI firstAI, AI secondAI, int[][] board) {
         TurnData result = null;
-        TurnData oldResult = aiWhite.move(board);
+        TurnData oldResult = firstAI.move(board);
         int turnsWithoutStonesHit = 0;
 
         //Right now max moves is set to 100.
         for(int i=0; i<100; i++) {
-            result = aiWhite.move(board);
+            result = firstAI.move(board);
             if(result.didMove == false) {
-                result = aiBlack.move(board);
+                result = secondAI.move(board);
                 if(result.didMove == false) {
                     //Either one cant move
                     return result.board;
                 }
-                result = aiWhite.move(board);
+                result = firstAI.move(board);
                 if(result.didMove == false) {
                     return result.board;
                 }
             }
 
-            result = aiBlack.move(board);
+            result = secondAI.move(board);
             if(new Board(oldResult.board).hashCode() == new Board(result.board).hashCode()) {
                 //There have been same board layout in the past: so the result wont change.
                 //So now we assume AI will do the same move with the same board every time.
@@ -144,12 +142,12 @@ public class MatchMaker {
             }
             oldResult = result;
             if(result.didMove == false) {
-                result = aiWhite.move(board);
+                result = firstAI.move(board);
                 if(result.didMove == false) {
                     //Either one cant move
                     return result.board;
                 }
-                result = aiBlack.move(board);
+                result = secondAI.move(board);
                 if(result.didMove == false) {
                     return result.board;
                 }

@@ -19,6 +19,10 @@ public class MatchMakerTest {
 
     public MatchMakerTest() {
         this.mm = new MatchMaker(2, AI.bestParameters, 1, AI.bestParameters);
+    }
+
+    @Before
+    public void setBoard() {
         this.board = new int[][]{
                 {-2, 0, 0, 0, 0, 0,-2},
                 {-1, 0, 0, 0, 0, 0, 0},
@@ -36,6 +40,7 @@ public class MatchMakerTest {
         MatchMaker spiedMM = spy(mm);
         spiedMM.calculateRoundForBothRoles(board);
         verify(spiedMM, times(2)).calculateRound(any(AI.class), any(AI.class), eq(board));
+        verify(spiedMM, times(2)).playUntilRoundEnded(any(AI.class), any(AI.class), eq(this.board));
     }
 
     @Test
@@ -46,6 +51,10 @@ public class MatchMakerTest {
         RoundResult rr = spiedMM.calculateRoundForBothRoles(board);
         System.out.println(rr);
         assertTrue("the deeper looking AI should always be able to win when it plays red",rr.whitePoints > 0);
+    }
+
+    @Test
+    public void playUntilRoundEndedTest() {
 
     }
 

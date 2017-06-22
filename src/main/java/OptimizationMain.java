@@ -14,9 +14,9 @@ public class OptimizationMain {
 
 
         new MatchMaker(4, bestParameters,
-                4,
-                new ParametersAI(-35, 10, 15, 5, 5),
-                //bestParameters,
+                2,
+                //new ParametersAI(-35, 10, 15, 5, 5),
+                bestParameters,
                 true
         ).calculate(50);
 
