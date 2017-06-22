@@ -58,10 +58,10 @@ public class MatchMaker {
         aiWhite = new AI(1, whiteDifficulty, whiteParameters);
         aiBlack = new AI(-1, blackDifficulty, blackParameters);
         int result = calculateRound(aiWhite, aiBlack, board);
-        if(result > 0) {
+        if (result > 0) {
             rr.whitePoints += result;
             rr.whiteWins++;
-        } else  {
+        } else if (result < 0) {
             rr.blackPoints -= result;
             rr.blackWins++;
         }
@@ -71,7 +71,7 @@ public class MatchMaker {
         if(result > 0) {
             rr.blackPoints += result;
             rr.blackWins++;
-        } else  {
+        } else if (result < 0) {
             rr.whitePoints -= result;
             rr.whiteWins++;
         }
