@@ -1,10 +1,10 @@
 package Optimization;
 
 import AI.AI;
+import AI.ParametersAI;
 import Game.Board;
 import org.junit.Before;
 import org.junit.Test;
-import org.omg.CORBA.BAD_INV_ORDER;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
@@ -55,7 +55,12 @@ public class MatchMakerTest {
 
     @Test
     public void playUntilRoundEndedTest() {
-
+        AI first = new AI(1, 2, new ParametersAI());
+        AI second = new AI(-1, 2, new ParametersAI());
+        System.out.println("testing with board\n" + new Board(board));
+        Board endBoard = new Board(mm.playUntilRoundEnded(first, second, board));
+        System.out.println("after finishing game:\n" + endBoard);
+        assertTrue("if red starts and looks to moves ahead, it must win", endBoard.calculatePoints() > 0);
     }
 
 }
