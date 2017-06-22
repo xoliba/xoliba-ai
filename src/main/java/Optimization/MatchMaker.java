@@ -62,7 +62,7 @@ public class MatchMaker {
             rr.whitePoints += result;
             rr.whiteWins++;
         } else  {
-            rr.blackPoints += result;
+            rr.blackPoints -= result;
             rr.blackWins++;
         }
         aiWhite = new AI(-1, whiteDifficulty, whiteParameters);
@@ -72,7 +72,7 @@ public class MatchMaker {
             rr.blackPoints += result;
             rr.blackWins++;
         } else  {
-            rr.whitePoints += result;
+            rr.whitePoints -= result;
             rr.whiteWins++;
         }
 
