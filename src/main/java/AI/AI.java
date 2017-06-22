@@ -16,7 +16,7 @@ public class AI {
 
     private Board board;
     private Random random;
-    private int inceptionTreshold; //how many rounds we go deeper: [1,inf[
+    private int inceptionThreshold; //how many rounds we go deeper: [1,inf[
     private AlphaBetaXoliba abx;
     private ParametersAI parameters;
 
@@ -36,13 +36,13 @@ public class AI {
     public AI(int color, int difficulty, ParametersAI parameters) {
         this.color = color;
         this.random = new Random();
-        this.inceptionTreshold = difficulty;
+        this.inceptionThreshold = difficulty;
         this.abx = new AlphaBetaXoliba();
         this.parameters = parameters;
     }
 
     public int getDifficulty() {
-        return inceptionTreshold;
+        return inceptionThreshold;
     }
 
     public boolean doesWantToSurrender(int[][] b) {
@@ -75,21 +75,21 @@ public class AI {
         board = new Board(b, parameters);
         this.color = color;
         if (difficulty > 0 && difficulty < 50)
-            this.inceptionTreshold = difficulty;
+            this.inceptionThreshold = difficulty;
         //System.out.println("AI (color " + color + " difficulty " + inceptionTreshold + ") got a new board:\n" + board);
 
-        TurnData td = abx.doTheBestMoveForColor(board, inceptionTreshold, color);
+        TurnData td = abx.doTheBestMoveForColor(board, inceptionThreshold, color);
         //System.out.println("AI did a move:\n" + td);
 
         return td;
     }
 
     public TurnData move(int[][] b, int color) {
-        return move(b, color, inceptionTreshold);
+        return move(b, color, inceptionThreshold);
     }
 
     public TurnData move(int[][] b) {
-        return move(b, color, inceptionTreshold);
+        return move(b, color, inceptionThreshold);
     }
 
 }
