@@ -37,7 +37,9 @@ public class RoundResult {
     public String toString() {
         String s = "white " + whiteWins + "w:" + whitePoints + "p\t- black "  + blackWins + "w:"  + blackPoints + "p\t";
         if (bothWinWithSameColor)
-            s += " both AI's won with same color";
+            s += " both AI's won with same color\t";
+        if (blackWins == 2)
+            s += "Black wins both games! SOS";
         return s;
     }
 }
