@@ -138,6 +138,15 @@ public class BoardTest {
                         {1, 0, 1, 0, 1, 1, 0},
                         {-2, -1, 1, 0, 1, 0, -2}});
         assertTrue("Blue should win", blueBoard.calculatePoints() == -3);
+        Board blueBoard2 = new Board(new int[][]{
+                {-2,1, -1,-1, 1, 0, -2},
+                {0, 1, -1, 1, 0, 1, 0},
+                {0, 1, 0,  0, 0, 0, 0},
+                {1, 0, 0,  0,-1, 0, 0},
+                {0, 1, 0,  0, 0, 0, 0},
+                {1, 0, -1, 0, 0, 0, 0},
+                {-2, 1, 0, 0, 0, 0, -2}});
+        assertTrue("Blue should win", blueBoard2.calculatePoints() == -14);
         Board drawNoTri = new Board(new int[][]{
                         {-2, 0, 1, 0, -1, 0, -2},
                         {1, 1, 1, 0, -1, -1, -1},
@@ -146,7 +155,6 @@ public class BoardTest {
                         {0, 0, 0, 0, 0, 0, 0},
                         {1, 1, 1, 0, -1, -1, -1},
                         {-2, 0, 1, 0, -1, 0, -2}});
-                        
         assertTrue("Draw with no triangles", drawNoTri.calculatePoints() == 0);
         Board drawSmallTri = new Board(new int[][]{
                         {-2, 0, 0, 0, 0, 1, -2},
