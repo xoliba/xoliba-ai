@@ -114,6 +114,7 @@ public class MatchMaker {
         return percentOfChallengerWonBothGames;
     }
 
+    //TODO this is broken
     public int[][] playUntilRoundEnded(AI firstAI, AI secondAI, int[][] board) {
         TurnData result = null;
         TurnData oldResult = firstAI.move(board);
