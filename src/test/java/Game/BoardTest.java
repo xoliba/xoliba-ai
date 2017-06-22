@@ -101,6 +101,64 @@ public class BoardTest {
         assertTrue("same sized triangles, but blue has more stones on board", board6.evaluate() < 0);
     }
 
+    @Test public void calculatePointsTest() {
+        Board drawBig = new Board(new int[][]{
+                        {-2, 0, 0, 0, 0, 1, -2},
+                        {0, 1, 1, 0, 1, 1, 0},
+                        {-1, 1, 0, 1, 1, 1, -1},
+                        {1, 0, 0, 0, 0, 0, 1},
+                        {0, 1, 0, 0, 0, 0, 0},
+                        {1, 0, 1, -1, 1, 1, 1},
+                        {-2, 1, 1, 1, 1, -1, -2}});
+        assertTrue("Draw with big triangles", drawBig.calculatePoints() == 0);
+        Board redBoard = new Board(new int[][]{
+                        {-2, 0, 0, 0, 0, 1, -2},
+                        {0, 1, 1, 0, 1, 1, 0},
+                        {0, 1, 0, 1, 1, 1, 0},
+                        {1, 0, 0, 0, 0, 0, 1},
+                        {0, 1, 0, 0, 0, 0, 0},
+                        {1, 0, 1, 0, 1, 1, 1},
+                        {-2, 1, 1, 1, 1, 0, -2}});
+        assertTrue("Red should win", redBoard.calculatePoints() == 51);
+        Board redBoard2 = new Board(new int[][]{
+                        {-2, -1, -1, -1, -1, 1, -2},
+                        {0, 1, 1, 0, 1, 1, 0},
+                        {0, 1, 0, 0, 1, 1, 0},
+                        {1, 0, 0, 1, 0, 0, 1},
+                        {0, 1, 0, 0, 0, 0, 0},
+                        {1, 0, 1, 0, 1, 1, 1},
+                        {-2, 1, 1, 0, 1, 0, -2}});
+        assertTrue("Red should win", redBoard2.calculatePoints() == 26);
+        Board blueBoard = new Board(new int[][]{
+                        {-2, -1, -1, -1, -1, 0, -2},
+                        {0, 1, 1, 0, 1, 1, 0},
+                        {0, 1, 0, 0, 1, 1, 0},
+                        {1, 0, 0, 1, -1, 0, 0},
+                        {0, 1, 0, 0, 0, 0, 0},
+                        {1, 0, 1, 0, 1, 1, 0},
+                        {-2, -1, 1, 0, 1, 0, -2}});
+        assertTrue("Blue should win", blueBoard.calculatePoints() == -3);
+        Board drawNoTri = new Board(new int[][]{
+                        {-2, 0, 1, 0, -1, 0, -2},
+                        {1, 1, 1, 0, -1, -1, -1},
+                        {0, 0, 0, 0, 0, 0, 0},
+                        {1, 1, 1, 0, -1, -1, -1},
+                        {0, 0, 0, 0, 0, 0, 0},
+                        {1, 1, 1, 0, -1, -1, -1},
+                        {-2, 0, 1, 0, -1, 0, -2}});
+                        
+        assertTrue("Draw with no triangles", drawNoTri.calculatePoints() == 0);
+        Board drawSmallTri = new Board(new int[][]{
+                        {-2, 0, 0, 0, 0, 1, -2},
+                        {0, 0, 0, 0, 1, 0, 1},
+                        {0, 0, 0, 0, 0, 0, 0},
+                        {0, 0, 0, 0, 0, 0, 0},
+                        {0, 0, 0, 0, 0, 0, 0},
+                        {-1, 0, -1, 0, 0, 0, 0},
+                        {-2, -1, 0, 0, 0, 0, -2}});
+        assertTrue("Draw with small triangles", drawSmallTri.calculatePoints() == 0);
+    }
+
     @Test
     public void startingBoardTest() {
         assertTrue(Board.redStartsGame(board6.board));

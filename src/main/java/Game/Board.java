@@ -56,7 +56,8 @@ public class Board{
     }
 
     /**
-     * Calculate game points if game ended now.
+     * Calculate game points if game ended now. Will return negative if blue wins, and positive if red wins.
+     * The amount will tell how much points were awarded.
      */
     public int calculatePoints() {
         findAllTriangles();
@@ -65,17 +66,14 @@ public class Board{
         int reds = 0;
         int blues = 0;
         for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board[0].length; j++) {
-                if ((i == 0 || i == 6) && (j == 0 || j == 6))
-                    continue;
-                else if(board[i][j] == -1) reds++;
-                else if(board[i][j] == 1) blues++;
+            for (int j = 0; j < board[i].length; j++) {
+                if(board[i][j] == -1) blues++;
+                else if(board[i][j] == 1) reds++;
             }
         }
-
         if(sizeOfBluesBiggestTriangle > sizeOfRedsBiggestTriangle)
-            return sizeOfBluesBiggestTriangle * reds;
-        else return sizeOfBluesBiggestTriangle * blues;
+            return -sizeOfBluesBiggestTriangle * (17-reds);
+        else return sizeOfRedsBiggestTriangle * (17-blues);
     }
 
     /**
