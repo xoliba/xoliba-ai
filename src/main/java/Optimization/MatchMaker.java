@@ -5,6 +5,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.concurrent.Semaphore;
+import java.util.concurrent.TimeUnit;
 
 import AI.*;
 import Game.Board;
@@ -40,16 +42,45 @@ public class MatchMaker {
     public double calculate(int howManyBoards) {
         ArrayList<RoundResult> results = new ArrayList<>();
         RoundResult finalResult = new RoundResult();
+		
+		Semaphore finished = new Semaphore(howManyBoards < boards.length ? 1 - howManyBoards : 1 - boards.length); // :P
+		Semaphore threadCount = new Semaphore(8);
+		Semaphore mutex = new Semaphore(1);
+		
         for(int i=0; i<howManyBoards && i<boards.length; i++) {
-            RoundResult rr = calculateRoundForBothRoles(boards[i]);
-            results.add(rr);
-            finalResult.add(rr);
-            if (print)
-                System.out.println((i+1) + ".\tround result: " + rr);
+			int j = i;		// yes, this is necessary
+			
+			Thread matchThread = new Thread(() -> {
+				acquire(threadCount);
+				
+				RoundResult rr = calculateRoundForBothRoles(boards[j]);
+				
+				acquire(mutex);
+				results.add(rr);
+				finalResult.add(rr);
+				if (print)
+					System.out.println((j+1) + ".\tround result: " + rr);
+				
+				mutex.release();
+				threadCount.release();
+				finished.release();
+			});
+			
+			matchThread.start();
         }
-
-        return parseResult(finalResult, 2*howManyBoards);
+		
+		acquire(finished);
+		
+		return parseResult(finalResult, 2*howManyBoards);
     }
+	
+	private static void acquire(Semaphore semaphore) {
+		try {
+			semaphore.acquire();
+		} catch (InterruptedException e) {
+			System.out.println("Thread interrupted");
+		}
+	}
 
     public RoundResult calculateRoundForBothRoles(int[][] board) {
         AI aiWhite, aiBlack;
