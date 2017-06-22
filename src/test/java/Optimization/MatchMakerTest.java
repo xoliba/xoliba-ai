@@ -60,7 +60,7 @@ public class MatchMakerTest {
         System.out.println("testing with board\n" + new Board(board));
         Board endBoard = new Board(mm.playUntilRoundEnded(first, second, board));
         System.out.println("after finishing game:\n" + endBoard);
-        assertTrue("if red starts and looks to moves ahead, it must win", endBoard.calculatePoints() > 0);
+        assertTrue("if red starts and looks two moves ahead, it must win", endBoard.calculatePoints() > 0);
     }
 
 }
