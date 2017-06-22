@@ -17,6 +17,12 @@ public class MatchMaker {
     ParametersAI whiteParameters; //the champ
     ParametersAI blackParameters; //the challenger
     int[][][] boards;
+    boolean print = false;
+
+    public MatchMaker(int whiteDifficulty, ParametersAI whiteParameters, int blackDifficulty, ParametersAI blackParameters, boolean print) {
+        this(whiteDifficulty, whiteParameters, blackDifficulty, blackParameters);
+        this.print = print;
+    }
 
     public MatchMaker(int whiteDifficulty, ParametersAI whiteParameters, int blackDifficulty, ParametersAI blackParameters) {
         this.whiteDifficulty = whiteDifficulty;
@@ -38,7 +44,8 @@ public class MatchMaker {
             RoundResult rr = calculateRoundForBothRoles(boards[i]);
             results.add(rr);
             finalResult.add(rr);
-            System.out.println((i+1) + ".\tround result: " + rr);
+            if (print)
+                System.out.println((i+1) + ".\tround result: " + rr);
         }
 
         return parseResult(finalResult, 2*howManyBoards);
@@ -103,7 +110,7 @@ public class MatchMaker {
                 + "\twhite gets " + formatter.format(morePointsWhitePercent) + "% more points than black\n"
                 + "\tpoints given per game " + formatter.format(howManyPointsGivenPerGame) + "\n" +
                 "\tboth AIs won with same color " + formatter.format(sameColorWinsPercent) + "% of games\n" +
-                "\tpercent of boards that the challenger (black) won both games " + formatter.format(percentOfChallengerWonBothGames) + "%");
+                "\tpercent of boards that the challenger (black) won both games " + formatter.format(percentOfChallengerWonBothGames) + "%\n");
         return percentOfChallengerWonBothGames;
 
     }

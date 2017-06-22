@@ -22,5 +22,22 @@ public class RoundResultTest {
         assertTrue(rr.getTotalSameColorWins() == 1);
         assertTrue(rr.getTotalChallangerWinsBothGamesValue() == 0);
         rr1.updateStats();
+        assertTrue(rr1.getTotalSameColorWins() == 0);
+        assertTrue(rr1.getTotalChallangerWinsBothGamesValue() == 1);
+        RoundResult fiRes = new RoundResult();
+        fiRes.blackWins++;
+        fiRes.whiteWins++;
+        fiRes.whitePoints += 18;
+        fiRes.blackPoints += 12;
+        fiRes.updateStats();
+        assertTrue(fiRes.getTotalSameColorWins() == 1);
+        fiRes.add(rr);
+        assertTrue(fiRes.getTotalSameColorWins() == 2);
+        assertTrue(fiRes.getTotalChallangerWinsBothGamesValue() == 0);
+        assertTrue(rr.getTotalSameColorWins() == 1);
+        fiRes.add(rr1);
+        assertTrue(fiRes.getTotalSameColorWins() == 2);
+        assertTrue(fiRes.getTotalChallangerWinsBothGamesValue() == 1);
+        assertTrue(rr1.getTotalChallangerWinsBothGamesValue() == 1);
     }
 }

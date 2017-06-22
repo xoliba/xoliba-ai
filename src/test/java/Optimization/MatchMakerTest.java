@@ -45,7 +45,7 @@ public class MatchMakerTest {
         System.out.println("testing with board\n" + new Board(board));
         RoundResult rr = spiedMM.calculateRoundForBothRoles(board);
         System.out.println(rr);
-        assertTrue(rr.whitePoints > 0);
+        assertTrue("the deeper looking AI should always be able to win when it plays red",rr.whitePoints > 0);
 
     }
 

@@ -12,21 +12,25 @@ public class OptimizationMain {
         pw.writeNewFileWithParameterValues();
         //computeWithAllParameterCombinations(pw, 50);
 
-        new MatchMaker(2, bestParameters,
-                1,
-                //new ParametersAI(3, 3, 3, 3, 3)
-                bestParameters
+
+        new MatchMaker(4, bestParameters,
+                4,
+                new ParametersAI(-35, 10, 15, 5, 5),
+                //bestParameters,
+                true
         ).calculate(50);
+
     }
 
     private static void computeWithAllParameterCombinations(ParameterWriter pw, int howManyGames) {
         List<ParametersAI> parameterCombinations = pw.readParameterCombinations();
         for (int i = 0; i < parameterCombinations.size(); i++) {
             ParametersAI p = parameterCombinations.get(i);
-            System.out.println( "Default parameters on white: " + bestParameters + "\n" +
-                                "versus black with test param " + p);
-            new MatchMaker(2, bestParameters,
-                            2, p
+            System.out.println( "  %%% New gladiators in the pit! %%%\n" +
+                    "Default parameters on white: " + bestParameters + "\n" +
+                                "versus black with test param " + p + "\n");
+            new MatchMaker(1, bestParameters,
+                            1, p
             ).calculate(howManyGames);
         }
     }
