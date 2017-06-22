@@ -147,42 +147,31 @@ public class MatchMaker {
 
     //TODO this is broken
     public int[][] playUntilRoundEnded(AI firstAI, AI secondAI, int[][] board) {
-        TurnData result = null;
-        TurnData oldResult = firstAI.move(board);
         int turnsWithoutStonesHit = 0;
+        AI[] ai = new AI[]{firstAI, secondAI};
 
         //Right now max moves is set to 100.
-        for(int i=0; i<100; i++) {
-            result = firstAI.move(board);
+        TurnData result = ai[0].move(board);
+        TurnData oldResult = result;
+        for(int i=1; i<100; i++) {
+            result = ai[i%2].move(board);
             if(result.didMove == false) {
-                result = secondAI.move(board);
-                if(result.didMove == false) {
-                    //Either one cant move
+                turnsWithoutStonesHit+=2;
+                if(turnsWithoutStonesHit >= 3) {
                     return result.board;
                 }
-                result = firstAI.move(board);
-                if(result.didMove == false) {
-                    return result.board;
-                }
+            } else if(turnsWithoutStonesHit > 0) {
+                turnsWithoutStonesHit--;
             }
-
-            result = secondAI.move(board);
-            if(new Board(oldResult.board).hashCode() == new Board(result.board).hashCode()) {
-                //There have been same board layout in the past: so the result wont change.
-                //So now we assume AI will do the same move with the same board every time.
-                return result.board;
-            }
-            oldResult = result;
-            if(result.didMove == false) {
-                result = firstAI.move(board);
-                if(result.didMove == false) {
-                    //Either one cant move
+            //Lets check every second turn if AIs are in a loop.
+            //Btw changing this to 0 will give slightly different points.
+            if(i%4 == 1) {
+                if(new Board(oldResult.board).hashCode() == new Board(result.board).hashCode()) {
+                    //There have been same board layout in the past: so the result wont change.
+                    //So now we assume AI will do the same move with the same board every time.
                     return result.board;
                 }
-                result = secondAI.move(board);
-                if(result.didMove == false) {
-                    return result.board;
-                }
+                oldResult = result;
             }
         }
         System.out.print("Game stopped: too many rounds. ");
