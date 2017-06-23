@@ -100,17 +100,22 @@ public class Board{
         return value;
     }
 
+    private double sumOfTheStones() {
+        return sumOfTheStones(false);
+    }
+
     /**
      * corner, edge and 'normal' stones have different weights that affect the sum
+     * @param plain if we ignore the weights and take just a plain sum
      * @return the values of stones on the board added together.
      */
-    private double sumOfTheStones() {
+    private double sumOfTheStones(boolean plain) {
         double sum = 0;
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[0].length; j++) {
                 if ((i == 0 || i == 6) && (j == 0 || j == 6))
                     continue;
-                if (i == 0 || i == 6 || j == 0 || j == 6) {
+                if ((i == 0 || i == 6 || j == 0 || j == 6) && !plain) {
                     if(i == 1 || i == 5 || j == 1 || j == 5) sum += board[i][j] * weights.cornerWeight;  //Its a corner!
                     else sum += board[i][j] * weights.edgeWeight;    //Its at edge!
                 } else sum += board[i][j];      //Its just normal stone :(
@@ -264,5 +269,10 @@ public class Board{
         int helpValue = board[move.start.x][move.start.y];
         board[move.start.x][move.start.y] = board[move.target.x][move.target.y];
         board[move.target.x][move.target.y] = helpValue;
+    }
+
+    //todo test
+    public static boolean sameAmountOfStonesOnBoard(int[][] b1, int[][] b2) {
+        return new Board(b1).sumOfTheStones(true) == new Board(b2).sumOfTheStones(true);
     }
 }
