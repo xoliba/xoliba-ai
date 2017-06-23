@@ -13,8 +13,8 @@ public class OptimizationMain {
         //computeWithAllParameterCombinations(pw, 50);
 
 
-        new MatchMaker(4, bestParameters,
-                2,
+        new MatchMaker(2, bestParameters,
+                1,
                 //new ParametersAI(-35, 10, 15, 5, 5),
                 bestParameters,
                 true

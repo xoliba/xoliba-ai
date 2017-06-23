@@ -71,25 +71,32 @@ public class AI {
         return data.surrender;
     }
 
-    public TurnData move(int[][] b, int color, int difficulty) {
+    //todo refactor AI to take turn data as a parameter
+    public TurnData move(int[][] b, int color, int difficulty, int withoutHit) {
         board = new Board(b, parameters);
         this.color = color;
         if (difficulty > 0 && difficulty < 50)
             this.inceptionThreshold = difficulty;
-        //System.out.println("AI (color " + color + " difficulty " + inceptionTreshold + ") got a new board:\n" + board);
+        //System.out.println("AI (color " + color + " difficulty " + inceptionThreshold + ") got a new board:\n" + board);
 
         TurnData td = abx.doTheBestMoveForColor(board, inceptionThreshold, color);
+        //todo make this more elegant
+        if (Board.sameAmountOfStonesOnBoard(board.board, td.board)) {
+            td.withoutHit = withoutHit + 1;
+        } else {
+            td.withoutHit = 0;
+        }
         //System.out.println("AI did a move:\n" + td);
 
         return td;
     }
 
     public TurnData move(int[][] b, int color) {
-        return move(b, color, inceptionThreshold);
+        return move(b, color, inceptionThreshold,  0);
     }
 
     public TurnData move(int[][] b) {
-        return move(b, color, inceptionThreshold);
+        return move(b, color, inceptionThreshold, 0);
     }
 
 }

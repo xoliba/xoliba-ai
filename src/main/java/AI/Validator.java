@@ -33,7 +33,7 @@ public class Validator {
     protected ArrayList<Move> generateAllPossibleMoves(Board board, int color) {
         this.board = board.board;
         ArrayList<Move> moves = new ArrayList<>();
-        for (int i = 0; i < board.board.length; i++) {
+        for (int i = 0; i < this.board.length; i++) {
             for (int j = 0; j < board.board[0].length; j++) {
                 if (board.board[i][j] == color) { //the stone we are looking at is of the right color
                     moves.addAll(getPossibleMoves(new Coordinate(i, j)));

@@ -33,7 +33,7 @@ public class AlphaBetaXoliba {
         }
 
         this.inceptionTreshold = inceptionTreshold;
-        TurnData td = new TurnData();
+        TurnData td = new TurnData(board.board);
         double redBest = Integer.MIN_VALUE;
         double blueBest = Integer.MAX_VALUE;
 

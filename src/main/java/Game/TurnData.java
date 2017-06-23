@@ -15,6 +15,7 @@ public class TurnData {
 	public int color;
 	public boolean surrender;//are giving up?
     public int difficulty;  //how much steroids do we give to our AI?
+    public int withoutHit;  //how many rounds we have done without hitting a stone?
 
     public TurnData(boolean startRound, boolean surrender) {
         if (startRound) {
@@ -35,10 +36,10 @@ public class TurnData {
     }
 
     public TurnData(boolean didMove, Board board, Move move, Triangle triangle, int color, boolean surrender) {
-        this(didMove, board, move, triangle, color, surrender, 2);
+        this(didMove, board, move, triangle, color, surrender, 2, 0);
     }
 
-    public TurnData(boolean didMove, Board board, Move move, Triangle triangle, int color, boolean surrender, int difficulty) {
+    public TurnData(boolean didMove, Board board, Move move, Triangle triangle, int color, boolean surrender, int difficulty, int withoutHit) {
         this.type = "TurnData";
         this.didMove = didMove;
         this.board = board.board;
@@ -47,6 +48,7 @@ public class TurnData {
 		this.color = color;
 		this.surrender = surrender;
 		this.difficulty = difficulty;
+		this.withoutHit = withoutHit;
 
         corners = new int[2][2];
         int i = 0;
@@ -60,18 +62,20 @@ public class TurnData {
     }
 
     /**
-     * empty constructor for not doing a move
+     * constructor for not doing a move
+     * @param board the situation before (and after) move
      */
-    public TurnData() {
+    public TurnData(int[][] board) {
         type = "TurnData";
         didMove = false;
         surrender = false;
+        this.board = board;
     }
 
     @Override
     public String toString() {
         String s = "" + type;
-        s += didMove ? " is a move:\n" : " did not move";
+        s += didMove ? " is a move:\n" : " did not move\n";
         if (!didMove) return s;
 
         s += "surrender: " + surrender + "\n";
@@ -81,8 +85,8 @@ public class TurnData {
         s += b;
         s += "triangles on board (both colors): " + b.getHowManyTrianglesOnBoard() + "\n";
         s += "start " + c1 + "; target " + c2 + ";\n";
-        s += new Triangle(c2, new Coordinate(corners[0][0], corners[0][1]), new Coordinate(corners[1][0], corners[1][1]));
-        s += "\n";
+        s += new Triangle(c2, new Coordinate(corners[0][0], corners[0][1]), new Coordinate(corners[1][0], corners[1][1])) + "\n";
+        s += "turns without hitting a stone " + withoutHit + "\n";
         return s;
     }
 }

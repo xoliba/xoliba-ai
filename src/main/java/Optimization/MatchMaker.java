@@ -6,7 +6,6 @@ import java.io.InputStreamReader;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.concurrent.Semaphore;
-import java.util.concurrent.TimeUnit;
 
 import AI.*;
 import Game.Board;
@@ -145,37 +144,52 @@ public class MatchMaker {
         return percentOfChallengerWonBothGames;
     }
 
-    //TODO this is broken
+    //TODO this is broken, needs testing
     public int[][] playUntilRoundEnded(AI firstAI, AI secondAI, int[][] board) {
-        int turnsWithoutStonesHit = 0;
+        int turnsWithoutMoving = 0;
         AI[] ai = new AI[]{firstAI, secondAI};
-
-        //Right now max moves is set to 100.
-        TurnData result = ai[0].move(board);
+        //System.out.println("play until round ends, board in the beginning\n" + new Board(board));
+        //Right now max moves is set to 100, which is 50 turns
+        TurnData result = ai[0].move(board, ai[0].color, ai[0].getDifficulty(), 0);
         TurnData oldResult = result;
         for(int i=1; i<100; i++) {
-            result = ai[i%2].move(board);
-            if(result.didMove == false) {
-                turnsWithoutStonesHit+=2;
-                if(turnsWithoutStonesHit >= 3) {
-                    return result.board;
-                }
-            } else if(turnsWithoutStonesHit > 0) {
-                turnsWithoutStonesHit--;
+            //System.out.println("top of the loop, old result:\n" + oldResult);
+            AI acting = ai[i%2];
+            result = acting.move(oldResult.board, acting.color, acting.getDifficulty(), oldResult.withoutHit);
+            //System.out.println("ai no. " + i%2 + " did a move (result):\n" + result);
+            turnsWithoutMoving = updateGameEndingIndicators(result, turnsWithoutMoving);
+            if (turnsWithoutMoving > 2 || result.withoutHit == 30) {
+                System.out.println("game ended, turns without moving " + turnsWithoutMoving + ", moves without hitting " + result.withoutHit);
+                return result.board;
             }
-            //Lets check every second turn if AIs are in a loop.
-            //Btw changing this to 0 will give slightly different points.
-            if(i%4 == 1) {
-                if(new Board(oldResult.board).hashCode() == new Board(result.board).hashCode()) {
-                    //There have been same board layout in the past: so the result wont change.
-                    //So now we assume AI will do the same move with the same board every time.
-                    return result.board;
-                }
-                oldResult = result;
-            }
+            oldResult = result;
         }
-        System.out.print("Game stopped: too many rounds. ");
+        //System.out.print("\tGame stopped: too many rounds.\n");
         return result.board;
+    }
+
+    private int updateGameEndingIndicators(TurnData latestTurnData, int turnsWithouMoving) {
+        if(latestTurnData.didMove == false) {
+            turnsWithouMoving += 2;
+        } else if(turnsWithouMoving > 0) {
+            //System.out.println("turns without stones hit is " + turnsWithouMoving + ", lets decrease it by one");
+            turnsWithouMoving--;
+        }
+
+        //Lets check every second turn if AIs are in a loop.
+        //Btw changing this to 0 will give slightly different points.
+        /*
+        if(i%4 == 1) {
+            //if the situation is repetitive AND it's not about other AI not able to do a move
+            if (new Board(oldResult.board).hashCode() == new Board(result.board).hashCode() && turnsWithouMoving < 2) {
+                //There have been same board layout in the past: so the result wont change.
+                //So now we assume AI will do the same move with the same board every time.
+                System.out.println("return board 'same board':\n" + result);
+                return result.board;
+            }
+            oldResult = result;
+        }*/
+        return turnsWithouMoving;
     }
 
     private int[][][] getBoards() {
