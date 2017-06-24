@@ -11,7 +11,10 @@ import java.util.Random;
 //todo AI should take time of its move and send the best option in the time limit
 public class AI {
 
-    public static ParametersAI bestParameters = new ParametersAI(7, 1.5, 3, 1, 1, 1);
+    //public static ParametersAI bestParameters = new ParametersAI(7, 1.5, 3, 1, 1, 1); //the first guess
+    //public static ParametersAI bestParameters = new ParametersAI(25, 25, 25, 25, 25, 25); //values for iteration (params [0,50]
+    //public static ParametersAI bestParameters = new ParametersAI(4, 28, 50, 2, 0, 0); //values after 1 iteration with lvl 1 vs lvl 1, 50 games, params [0,50]
+    public static ParametersAI bestParameters = new ParametersAI(6, 50, 26, 0, 8, 18); //values after 2 iteration with lvl 1 vs lvl 1, 50 games, params [0,50]
     public int color;
 
     private Board board;

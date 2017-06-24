@@ -38,7 +38,7 @@ public class MatchMaker {
     /**
      *
      * @param howManyBoards
-     * @return how many percents of games black (the challenger) won both games
+     * @return a single double that describes how well the challenger performed; the bigger the better (for the challenger)
      */
     public double calculate(int howManyBoards) {
         //ArrayList<RoundResult> results = new ArrayList<>();
@@ -186,7 +186,7 @@ public class MatchMaker {
     /**
      * @param theFinalResult a round result where all the information from other rounds has been iteratively added
      * @param howManyGames was played in total
-     * @return
+     * @return a sum of three percentages that describe how well the challenger played. The bigger the better.
      */
     private double parseResult(RoundResult theFinalResult, int howManyGames) {
         double whiteVicP = ((theFinalResult.whiteWins*1.0)/(howManyGames*1.0)) * 100;
@@ -195,14 +195,16 @@ public class MatchMaker {
         double morePointsWhitePercent = (((theFinalResult.whitePoints-theFinalResult.blackPoints)*1.0)/(theFinalResult.blackPoints*1.0)) * 100;
         double howManyPointsGivenPerGame = ((theFinalResult.whitePoints+theFinalResult.blackPoints)*1.0/howManyGames);
         double percentOfChallengerWonMoreGames = (theFinalResult.getTotalChallangerWinsMoreGamesValue()*1.0)/(howManyGames*0.5) * 100;
+        double challengerPerformance = percentOfChallengerWonMoreGames - morePointsWhitePercent + blackVicP;
         DecimalFormat formatter = new DecimalFormat("#0.00");
         System.out.println("\n### FINAL RESULT: white (lvl " + whiteDifficulty + ") - black (lvl " + blackDifficulty + ") " + theFinalResult.whitePoints + "-" + theFinalResult.blackPoints + ", (victories w-b " + theFinalResult.whiteWins + "-" + theFinalResult.blackWins + ")\n"
                 + "\twhite wins " + formatter.format(whiteVicP) + "% of the games, black " + formatter.format(blackVicP) + "%\n"
                 + "\twhite gets " + formatter.format(morePointsWhitePercent) + "% more points than black\n"
                 + "\tpoints given per game " + formatter.format(howManyPointsGivenPerGame) + "\n" +
                 "\tboth AIs won with same color " + formatter.format(sameColorWinsPercent) + "% of games\n" +
-                "\tpercent of boards that the challenger (black) won more games than white " + formatter.format(percentOfChallengerWonMoreGames) + "%\n");
-        return percentOfChallengerWonMoreGames;
+                "\tpercent of boards that the challenger (black) won more games than white " + formatter.format(percentOfChallengerWonMoreGames) + "%\n" +
+                "\tchallenger performance: " + formatter.format(challengerPerformance) + "\n");
+        return challengerPerformance;
     }
 
     private String parseGameEndedMessage(boolean starter, int whosTurn, int turnsWithoutMoving, int movesWithoutHitting) {

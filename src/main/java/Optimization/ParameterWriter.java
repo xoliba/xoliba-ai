@@ -20,6 +20,8 @@ import static AI.AI.bestParameters;
  */
 public class ParameterWriter {
     private String fileName = "./build/resources/main/parameters.txt";
+    private int minWeight = 0;
+    private int maxWeight = 50;
 
     public void writeNewFileWithParameterValues() {
         List<String> lines = parametersToJsonLines(generateParameters());
@@ -42,10 +44,11 @@ public class ParameterWriter {
 
     private ArrayList<ParametersAI> generateParameters() {
         ArrayList<ParametersAI> p = new ArrayList<>();
-        for (int i = 0; i < 5; i++) { //for every parameter
-            double[] meters = new double[6];
+        int howManyParams = bestParameters.toArray().length;
+        for (int i = 0; i < howManyParams; i++) { //for every parameter
+            double[] meters = new double[howManyParams];
             System.arraycopy(bestParameters.toArray(), 0, meters, 0, meters.length);
-            for (int j = -20; j < 50; j += 2) { //for values {j | -21<j<50 j%2==0}
+            for (int j = minWeight; j <= maxWeight; j += 2) {
                 meters[i] = j;
                 p.add(new ParametersAI(meters[0], meters[1], meters[2], meters[3], meters[4], meters[5]));
             }
