@@ -43,11 +43,11 @@ public class ParameterWriter {
     private ArrayList<ParametersAI> generateParameters() {
         ArrayList<ParametersAI> p = new ArrayList<>();
         for (int i = 0; i < 5; i++) { //for every parameter
-            double[] meters = new double[5];
+            double[] meters = new double[6];
             System.arraycopy(bestParameters.toArray(), 0, meters, 0, meters.length);
             for (int j = -20; j < 50; j += 2) { //for values {j | -21<j<50 j%2==0}
                 meters[i] = j;
-                p.add(new ParametersAI(meters[0], meters[1], meters[2], meters[3], meters[4]));
+                p.add(new ParametersAI(meters[0], meters[1], meters[2], meters[3], meters[4], meters[5]));
             }
         }
         return p;

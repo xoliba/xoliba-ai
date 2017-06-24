@@ -17,9 +17,10 @@ public class Board{
     private int sizeOfRedsBiggestTriangle = 0;
     private int sizeOfBluesBiggestTriangle = 0;
     private int howManyTrianglesOnBoard = 0;
-    private boolean hasBeenEvaluated = false;
+    private boolean hasBeenEvaluated = false; //for efficiency, possible BUG if the board is changed
     private double value = 0;
     private ParametersAI weights;
+    private boolean trianglesHaveBeenLookedFor = false; //for efficiency, possible BUG if the board is changed
 
     public Board() {
         this(new int[7][7]);
@@ -60,7 +61,8 @@ public class Board{
      * The amount will tell how much points were awarded.
      */
     public int calculatePoints() {
-        findAllTriangles();
+        if (!trianglesHaveBeenLookedFor)
+            findAllTriangles();
         if(sizeOfBluesBiggestTriangle == sizeOfRedsBiggestTriangle) return 0;
 
         int reds = 0;
@@ -95,6 +97,7 @@ public class Board{
 
         findAllTriangles();
         value += weights.triangleWeight * (sizeOfRedsBiggestTriangle - sizeOfBluesBiggestTriangle);
+        value += weights.calculatePointsWeight * calculatePoints();
         hasBeenEvaluated = true;
 
         return value;
@@ -202,6 +205,7 @@ public class Board{
         }
         //TODO every triangle is found three times, a spot for optimization maybe?
         howManyTrianglesOnBoard /= 3;
+        trianglesHaveBeenLookedFor = true;
     }
 
     /**
