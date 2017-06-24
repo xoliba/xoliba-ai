@@ -175,4 +175,23 @@ public class BoardTest {
         assertFalse(Board.redStartsGame(board1.board));
     }
 
+    @Test
+    public void sameAmountOfStonesOnBoardTest() {
+        assertTrue(Board.sameAmountOfStonesOnBoard(board1.board, board1.board));
+        assertTrue(Board.sameAmountOfStonesOnBoard(board1.board, board2.board));
+        board2.board[0][0] = 0; //the outside-of-the-board corners shouldn't affect the result
+        assertTrue(Board.sameAmountOfStonesOnBoard(board1.board, board2.board));
+        assertFalse(Board.sameAmountOfStonesOnBoard(board1.board, board3.board));
+        assertFalse(Board.sameAmountOfStonesOnBoard(board5.board, board6.board));
+        assertFalse("empty board should have different sum than a not empty one!\n" +
+                "empty board how many stones: " + new Board(new int[7][7]).howManyStonesOnBoard() +
+                "\nnot empty board how many stones: " + board4.howManyStonesOnBoard(), Board.sameAmountOfStonesOnBoard(new int[7][7], board4.board));
+    }
+
+    @Test
+    public void howManyStonesOnBoard() {
+        assertTrue(board1.howManyStonesOnBoard() == 6);
+        assertTrue(new  Board().howManyStonesOnBoard() == 0);
+        assertTrue(board6.howManyStonesOnBoard() == 8);
+    }
 }

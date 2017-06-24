@@ -109,7 +109,7 @@ public class Board{
      * @param plain if we ignore the weights and take just a plain sum
      * @return the values of stones on the board added together.
      */
-    private double sumOfTheStones(boolean plain) {
+    public double sumOfTheStones(boolean plain) {
         double sum = 0;
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[0].length; j++) {
@@ -271,8 +271,20 @@ public class Board{
         board[move.target.x][move.target.y] = helpValue;
     }
 
-    //todo test
     public static boolean sameAmountOfStonesOnBoard(int[][] b1, int[][] b2) {
-        return new Board(b1).sumOfTheStones(true) == new Board(b2).sumOfTheStones(true);
+        return new Board(b1).howManyStonesOnBoard() == new Board(b2).howManyStonesOnBoard();
+    }
+
+    public int howManyStonesOnBoard() {
+        int count = 0;
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[0].length; j++) {
+                if ((i == 0 || i == 6) && (j == 0 || j == 6))
+                    continue;
+                if (board[i][j] != 0)
+                    count++;
+            }
+        }
+    return count;
     }
 }

@@ -22,22 +22,22 @@ public class AlphaBetaXoliba {
     /**
      * Decide the best move by using alpha-beta pruning
      * @param board
-     * @param inceptionTreshold how deep should we go? 0 means no moves, 1 that we choose our best move, 2 that we consider also the opponents reaction and so on
+     * @param inceptionThreshold how deep should we go? 0 means no moves, 1 that we choose our best move, 2 that we consider also the opponents reaction and so on
      * @param color best move for who?
      * @return all relevant info wrapped in a TurnData object
      */
-    protected TurnData doTheBestMoveForColor(Board board, int inceptionTreshold, int color) {
+    protected TurnData doTheBestMoveForColor(Board board, int inceptionThreshold, int color) {
         if (color != 1 && color != -1) {
             System.out.println("Cannot do a move for any other color than -1 or 1!");
             return null;
         }
 
-        this.inceptionTreshold = inceptionTreshold;
+        this.inceptionTreshold = inceptionThreshold;
         TurnData td = new TurnData(board.board);
         double redBest = Integer.MIN_VALUE;
         double blueBest = Integer.MAX_VALUE;
 
-        if (inceptionTreshold <= 0) {
+        if (inceptionThreshold <= 0) {
             return td;
         }
 
