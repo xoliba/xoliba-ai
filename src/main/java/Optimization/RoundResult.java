@@ -5,12 +5,14 @@ package Optimization;
  */
 public class RoundResult {
 
+    public int roundNo;
     public int whiteWins, blackWins, whitePoints, blackPoints;
     public boolean bothWinWithSameColor;
     private int howManyTimesBothAIsWonWithSameColor = 0;
-    private int howManyTimesChallengerWonBothGames;
+    private int howManyTimesChallengerWonMoreGames = 0;
 
-    public RoundResult(int whiteWins, int blackWins, int whitePoints, int blackPoints) {
+    public RoundResult(int roundNo, int whiteWins, int blackWins, int whitePoints, int blackPoints) {
+        this.roundNo = roundNo;
         this.whiteWins = whiteWins;
         this.blackWins = blackWins;
         this.whitePoints = whitePoints;
@@ -18,7 +20,7 @@ public class RoundResult {
     }
 
     public RoundResult() {
-        this(0,0,0,0);
+        this(-1,0,0,0,0);
     }
 
     /**
@@ -27,10 +29,10 @@ public class RoundResult {
     public void updateStats() {
         if (whiteWins == blackWins && whiteWins == 1) {
             bothWinWithSameColor = true;
-            howManyTimesBothAIsWonWithSameColor++;
+            howManyTimesBothAIsWonWithSameColor = 1;
         }
-        if (blackWins == 2) {
-            howManyTimesChallengerWonBothGames++;
+        if (blackWins > whiteWins) {
+            howManyTimesChallengerWonMoreGames = 1;
         }
     }
 
@@ -38,8 +40,8 @@ public class RoundResult {
         return howManyTimesBothAIsWonWithSameColor;
     }
 
-    public int getTotalChallangerWinsBothGamesValue() {
-        return howManyTimesChallengerWonBothGames;
+    public int getTotalChallangerWinsMoreGamesValue() {
+        return howManyTimesChallengerWonMoreGames;
     }
 
     public void add(RoundResult rr) {
@@ -49,16 +51,17 @@ public class RoundResult {
         this.blackPoints += rr.blackPoints;
         if (rr.bothWinWithSameColor)
             this.howManyTimesBothAIsWonWithSameColor++;
-        this.howManyTimesChallengerWonBothGames += rr.howManyTimesChallengerWonBothGames;
+        this.howManyTimesChallengerWonMoreGames += rr.howManyTimesChallengerWonMoreGames;
     }
 
     @Override
     public String toString() {
-        String s = "white " + whiteWins + "w:" + whitePoints + "p\t- black "  + blackWins + "w:"  + blackPoints + "p\t";
-        if (bothWinWithSameColor)
-            s += " both AI's won with same color\t";
-        if (blackWins == 2)
-            s += "Black wins both games! SOS";
+        String s = roundNo + "." + (roundNo < 100 ? "\t" : "") + "\t";
+        s += "white " + whiteWins + "w:" + whitePoints + "p\t- black "  + blackWins + "w:"  + blackPoints + "p\t";
+        if (bothWinWithSameColor && blackPoints > whitePoints)
+            s += " both won, but black got more points!\t";
+        if (howManyTimesChallengerWonMoreGames != 0)
+            s += " Black won more games than white!\t";
         return s;
     }
 }

@@ -17,8 +17,9 @@ public class OptimizationMain {
                 1,
                 //new ParametersAI(-35, 10, 15, 5, 5),
                 bestParameters,
-                true
-        ).calculate(50);
+                true, //do we print more?
+                true //do we run on single thread
+        ).calculate(100);
 
     }
 

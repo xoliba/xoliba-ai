@@ -19,10 +19,12 @@ public class MatchMaker {
     ParametersAI blackParameters; //the challenger
     int[][][] boards;
     boolean print = false;
+    boolean runSingleThread = false;
 
-    public MatchMaker(int whiteDifficulty, ParametersAI whiteParameters, int blackDifficulty, ParametersAI blackParameters, boolean print) {
+    public MatchMaker(int whiteDifficulty, ParametersAI whiteParameters, int blackDifficulty, ParametersAI blackParameters, boolean print, boolean runSingleThread) {
         this(whiteDifficulty, whiteParameters, blackDifficulty, blackParameters);
         this.print = print;
+        this.runSingleThread = runSingleThread;
     }
 
     public MatchMaker(int whiteDifficulty, ParametersAI whiteParameters, int blackDifficulty, ParametersAI blackParameters) {
@@ -39,7 +41,7 @@ public class MatchMaker {
      * @return how many percents of games black (the challenger) won both games
      */
     public double calculate(int howManyBoards) {
-        ArrayList<RoundResult> results = new ArrayList<>();
+        //ArrayList<RoundResult> results = new ArrayList<>();
         RoundResult finalResult = new RoundResult();
 		
 		Semaphore finished = new Semaphore(howManyBoards < boards.length ? 1 - howManyBoards : 1 - boards.length); // :P
@@ -48,28 +50,39 @@ public class MatchMaker {
 		
         for(int i=0; i<howManyBoards && i<boards.length; i++) {
 			int j = i;		// yes, this is necessary
-			
-			Thread matchThread = new Thread(() -> {
-				acquire(threadCount);
-				
-				RoundResult rr = calculateRoundForBothRoles(boards[j]);
-				
-				acquire(mutex);
-				results.add(rr);
-				finalResult.add(rr);
-				if (print)
-					System.out.println((j+1) + ".\tround result: " + rr);
-				
-				mutex.release();
-				threadCount.release();
-				finished.release();
-			});
-			
-			matchThread.start();
+
+            if (runSingleThread) {
+                RoundResult rr = calculateRoundForBothRoles(boards[j]);
+                rr.roundNo = j+1;
+                if (print)
+                    System.out.println(rr);
+                finalResult.add(rr);
+            } else {
+
+                Thread matchThread = new Thread(() -> {
+                    acquire(threadCount);
+
+                    RoundResult rr = calculateRoundForBothRoles(boards[j]);
+                    rr.roundNo = j+1;
+
+                    acquire(mutex);
+                    //results.add(rr);
+                    finalResult.add(rr);
+                    if (print)
+                        System.out.println(rr);
+                    mutex.release();
+                    threadCount.release();
+                    finished.release();
+                });
+
+			    matchThread.start();
+            }
         }
-		
-		acquire(finished);
-		
+
+        if (!runSingleThread) {
+		    acquire(finished);
+        }
+
 		return parseResult(finalResult, 2*howManyBoards);
     }
 	
@@ -122,28 +135,6 @@ public class MatchMaker {
         return result;
     }
 
-    /**
-     * @param theFinalResult a round result where all the information from other rounds has been iteratively added
-     * @param howManyGames was played in total
-     * @return
-     */
-    private double parseResult(RoundResult theFinalResult, int howManyGames) {
-        double whiteVicP = ((theFinalResult.whiteWins*1.0)/(howManyGames*1.0)) * 100;
-        double blackVicP = ((theFinalResult.blackWins*1.0)/(howManyGames*1.0)) * 100;
-        double sameColorWinsPercent = (theFinalResult.getTotalSameColorWins()*1.0)/(howManyGames*0.5) * 100;
-        double morePointsWhitePercent = (((theFinalResult.whitePoints-theFinalResult.blackPoints)*1.0)/(theFinalResult.blackPoints*1.0)) * 100;
-        double howManyPointsGivenPerGame = ((theFinalResult.whitePoints+theFinalResult.blackPoints)*1.0/howManyGames);
-        double percentOfChallengerWonBothGames = (theFinalResult.getTotalChallangerWinsBothGamesValue()*1.0)/(howManyGames*0.5) * 100;
-        DecimalFormat formatter = new DecimalFormat("#0.00");
-        System.out.println("### FINAL RESULT: white (lvl " + whiteDifficulty + ") - black (lvl " + blackDifficulty + ") " + theFinalResult.whitePoints + "-" + theFinalResult.blackPoints + ", (victories w-b " + theFinalResult.whiteWins + "-" + theFinalResult.blackWins + ")\n"
-                + "\twhite wins " + formatter.format(whiteVicP) + "% of the games, black " + formatter.format(blackVicP) + "%\n"
-                + "\twhite gets " + formatter.format(morePointsWhitePercent) + "% more points than black\n"
-                + "\tpoints given per game " + formatter.format(howManyPointsGivenPerGame) + "\n" +
-                "\tboth AIs won with same color " + formatter.format(sameColorWinsPercent) + "% of games\n" +
-                "\tpercent of boards that the challenger (black) won both games " + formatter.format(percentOfChallengerWonBothGames) + "%\n");
-        return percentOfChallengerWonBothGames;
-    }
-
     //TODO this is broken, needs testing
     public int[][] playUntilRoundEnded(AI firstAI, AI secondAI, int[][] board) {
         int turnsWithoutMoving = 0;
@@ -159,13 +150,42 @@ public class MatchMaker {
             //System.out.println("ai no. " + i%2 + " did a move (result):\n" + result);
             turnsWithoutMoving = updateGameEndingIndicators(result, turnsWithoutMoving);
             if (turnsWithoutMoving > 2 || result.withoutHit == 30) {
-                System.out.println("game ended, turns without moving " + turnsWithoutMoving + ", moves without hitting " + result.withoutHit);
+                if (print) System.out.println(parseGameEndedMessage(i%2 == 0, acting.color, turnsWithoutMoving, result.withoutHit));
                 return result.board;
             }
             oldResult = result;
         }
         //System.out.print("\tGame stopped: too many rounds.\n");
         return result.board;
+    }
+
+    /**
+     * @param theFinalResult a round result where all the information from other rounds has been iteratively added
+     * @param howManyGames was played in total
+     * @return
+     */
+    private double parseResult(RoundResult theFinalResult, int howManyGames) {
+        double whiteVicP = ((theFinalResult.whiteWins*1.0)/(howManyGames*1.0)) * 100;
+        double blackVicP = ((theFinalResult.blackWins*1.0)/(howManyGames*1.0)) * 100;
+        double sameColorWinsPercent = (theFinalResult.getTotalSameColorWins()*1.0)/(howManyGames*0.5) * 100;
+        double morePointsWhitePercent = (((theFinalResult.whitePoints-theFinalResult.blackPoints)*1.0)/(theFinalResult.blackPoints*1.0)) * 100;
+        double howManyPointsGivenPerGame = ((theFinalResult.whitePoints+theFinalResult.blackPoints)*1.0/howManyGames);
+        double percentOfChallengerWonMoreGames = (theFinalResult.getTotalChallangerWinsMoreGamesValue()*1.0)/(howManyGames*0.5) * 100;
+        DecimalFormat formatter = new DecimalFormat("#0.00");
+        System.out.println("\n### FINAL RESULT: white (lvl " + whiteDifficulty + ") - black (lvl " + blackDifficulty + ") " + theFinalResult.whitePoints + "-" + theFinalResult.blackPoints + ", (victories w-b " + theFinalResult.whiteWins + "-" + theFinalResult.blackWins + ")\n"
+                + "\twhite wins " + formatter.format(whiteVicP) + "% of the games, black " + formatter.format(blackVicP) + "%\n"
+                + "\twhite gets " + formatter.format(morePointsWhitePercent) + "% more points than black\n"
+                + "\tpoints given per game " + formatter.format(howManyPointsGivenPerGame) + "\n" +
+                "\tboth AIs won with same color " + formatter.format(sameColorWinsPercent) + "% of games\n" +
+                "\tpercent of boards that the challenger (black) won more games than white " + formatter.format(percentOfChallengerWonMoreGames) + "%\n");
+        return percentOfChallengerWonMoreGames;
+    }
+
+    private String parseGameEndedMessage(boolean starter, int whosTurn, int turnsWithoutMoving, int movesWithoutHitting) {
+        String s = whosTurn == 1 ? "reds" : "blues";
+        String reason = turnsWithoutMoving > 2 ? "AI couldn't do a move" : "there were " + movesWithoutHitting + " turns without hitting";
+        s = "\tgame ended on " + s + (starter ? " (starter)" : "(second)") + " turn, because " + reason;
+        return s;
     }
 
     private int updateGameEndingIndicators(TurnData latestTurnData, int turnsWithouMoving) {

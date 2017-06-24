@@ -20,10 +20,10 @@ public class RoundResultTest {
     public void addTest() {
         rr.updateStats();
         assertTrue(rr.getTotalSameColorWins() == 1);
-        assertTrue(rr.getTotalChallangerWinsBothGamesValue() == 0);
+        assertTrue(rr.getTotalChallangerWinsMoreGamesValue() == 0);
         rr1.updateStats();
         assertTrue(rr1.getTotalSameColorWins() == 0);
-        assertTrue(rr1.getTotalChallangerWinsBothGamesValue() == 1);
+        assertTrue(rr1.getTotalChallangerWinsMoreGamesValue() == 1);
         RoundResult fiRes = new RoundResult();
         fiRes.blackWins++;
         fiRes.whiteWins++;
@@ -33,11 +33,11 @@ public class RoundResultTest {
         assertTrue(fiRes.getTotalSameColorWins() == 1);
         fiRes.add(rr);
         assertTrue(fiRes.getTotalSameColorWins() == 2);
-        assertTrue(fiRes.getTotalChallangerWinsBothGamesValue() == 0);
+        assertTrue(fiRes.getTotalChallangerWinsMoreGamesValue() == 0);
         assertTrue(rr.getTotalSameColorWins() == 1);
         fiRes.add(rr1);
         assertTrue(fiRes.getTotalSameColorWins() == 2);
-        assertTrue(fiRes.getTotalChallangerWinsBothGamesValue() == 1);
-        assertTrue(rr1.getTotalChallangerWinsBothGamesValue() == 1);
+        assertTrue(fiRes.getTotalChallangerWinsMoreGamesValue() == 1);
+        assertTrue(rr1.getTotalChallangerWinsMoreGamesValue() == 1);
     }
 }
