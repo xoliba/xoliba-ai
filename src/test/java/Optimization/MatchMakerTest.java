@@ -39,8 +39,18 @@ public class MatchMakerTest {
     public void bothAIsGetBothColorsForOneBoardTest() {
         MatchMaker spiedMM = spy(mm);
         spiedMM.calculateRoundForBothRoles(board);
+        verify(spiedMM, times(2)).calculateRound(any(AI.class), any(AI.class), eq(board), any(RoundResult.class));
+        verify(spiedMM, times(2)).playUntilRoundEnded(any(AI.class), any(AI.class), eq(this.board), any(RoundResult.class));
+
+        /*
+        //for these test to succeed we would need to overwrite the hashcode method of AI, and I don't dare to do it.
+        //one can still run these and see if from the report if the code actually works or not
+        spiedMM = spy(new MatchMaker(2, AI.bestParameters, 1, AI.bestParameters));
+        spiedMM.calculateRoundForBothRoles(this.board);
         verify(spiedMM, times(2)).calculateRound(any(AI.class), any(AI.class), eq(board));
-        verify(spiedMM, times(2)).playUntilRoundEnded(any(AI.class), any(AI.class), eq(this.board));
+        verify(spiedMM).calculateRound(eq(new AI(1, 1)), eq(new AI(-1, 2)), eq(this.board));
+        verify(spiedMM).calculateRound(eq(new AI(1, 2)), eq(new AI(-1, 1)), eq(this.board));
+        */
     }
 
     @Test
@@ -58,7 +68,7 @@ public class MatchMakerTest {
         AI first = new AI(1, 2, new ParametersAI());
         AI second = new AI(-1, 2, new ParametersAI());
         System.out.println("testing with board\n" + new Board(board));
-        Board endBoard = new Board(mm.playUntilRoundEnded(first, second, board));
+        Board endBoard = new Board(mm.playUntilRoundEnded(first, second, board, new RoundResult()));
         System.out.println("after finishing game:\n" + endBoard);
         assertTrue("if red starts and looks two moves ahead, it must win", endBoard.calculatePoints() > 0);
     }

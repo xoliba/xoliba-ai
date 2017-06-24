@@ -19,7 +19,7 @@ public class OptimizationMain {
                 bestParameters,
                 true, //do we print more?
                 true //do we run on single thread
-        ).calculate(100);
+        ).calculate(50);
 
     }
 

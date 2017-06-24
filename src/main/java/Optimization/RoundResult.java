@@ -1,5 +1,7 @@
 package Optimization;
 
+import java.util.ArrayList;
+
 /**
  * Created by vili on 21.6.2017.
  */
@@ -10,6 +12,7 @@ public class RoundResult {
     public boolean bothWinWithSameColor;
     private int howManyTimesBothAIsWonWithSameColor = 0;
     private int howManyTimesChallengerWonMoreGames = 0;
+    private ArrayList<String> endGameMessages = new ArrayList<>();
 
     public RoundResult(int roundNo, int whiteWins, int blackWins, int whitePoints, int blackPoints) {
         this.roundNo = roundNo;
@@ -54,14 +57,27 @@ public class RoundResult {
         this.howManyTimesChallengerWonMoreGames += rr.howManyTimesChallengerWonMoreGames;
     }
 
+    public void addEndGameMessage(String message) {
+        endGameMessages.add(message);
+    }
+
     @Override
     public String toString() {
-        String s = roundNo + "." + (roundNo < 100 ? "\t" : "") + "\t";
+        //String s = roundNo + "." + (roundNo < 100 ? "\t" : "") + "\t"; //works better for some consoles
+        String s = roundNo + ".\t";
         s += "white " + whiteWins + "w:" + whitePoints + "p\t- black "  + blackWins + "w:"  + blackPoints + "p\t";
         if (bothWinWithSameColor && blackPoints > whitePoints)
             s += " both won, but black got more points!\t";
         if (howManyTimesChallengerWonMoreGames != 0)
             s += " Black won more games than white!\t";
+        return s;
+    }
+
+    public String endGameMessagesToString() {
+        String s = "";
+        for (int i = 0; i < endGameMessages.size(); i++) {
+            s += "\t" + (i+1) + ". round " + endGameMessages.get(i) + "\n";
+        }
         return s;
     }
 }

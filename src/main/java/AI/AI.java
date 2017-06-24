@@ -99,4 +99,11 @@ public class AI {
         return move(b, color, inceptionThreshold, 0);
     }
 
+    @Override
+    public String toString() {
+        String s = "AI lvl " + inceptionThreshold + " color ";
+        s += color == 1 ? "red" : "blue";
+        s += " parameters:\n\t" + parameters;
+        return s;
+    }
 }

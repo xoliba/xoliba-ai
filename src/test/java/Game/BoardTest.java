@@ -170,6 +170,9 @@ public class BoardTest {
     @Test
     public void startingBoardTest() {
         assertTrue(Board.redStartsGame(board6.board));
+        assertFalse(Board.redStartsGame(board2.board));
+        board1.board[1][0] = 1;
+        assertFalse(Board.redStartsGame(board1.board));
     }
 
 }

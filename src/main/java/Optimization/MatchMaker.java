@@ -55,7 +55,7 @@ public class MatchMaker {
                 RoundResult rr = calculateRoundForBothRoles(boards[j]);
                 rr.roundNo = j+1;
                 if (print)
-                    System.out.println(rr);
+                    System.out.println(rr + "\n" + rr.endGameMessagesToString());
                 finalResult.add(rr);
             } else {
 
@@ -100,7 +100,7 @@ public class MatchMaker {
 
         aiWhite = new AI(1, whiteDifficulty, whiteParameters);
         aiBlack = new AI(-1, blackDifficulty, blackParameters);
-        int result = calculateRound(aiWhite, aiBlack, board);
+        int result = calculateRound(aiWhite, aiBlack, board, rr);
         if (result > 0) {
             rr.whitePoints += result;
             rr.whiteWins++;
@@ -110,7 +110,7 @@ public class MatchMaker {
         }
         aiWhite = new AI(-1, whiteDifficulty, whiteParameters);
         aiBlack = new AI(1, blackDifficulty, blackParameters);
-        result = calculateRound(aiBlack, aiWhite, board);
+        result = calculateRound(aiBlack, aiWhite, board, rr);
         if(result > 0) {
             rr.blackPoints += result;
             rr.blackWins++;
@@ -124,19 +124,19 @@ public class MatchMaker {
         return rr;
     }
 
-    public int calculateRound(AI red, AI blue, int[][] board) {
+    public int calculateRound(AI red, AI blue, int[][] board, RoundResult rr) {
         Board endSituation;
         if (Board.redStartsGame(board)) {
-            endSituation = new Board(playUntilRoundEnded(red, blue, board));
+            endSituation = new Board(playUntilRoundEnded(red, blue, board, rr));
         } else {
-            endSituation = new Board(playUntilRoundEnded(blue, red, board));
+            endSituation = new Board(playUntilRoundEnded(blue, red, board, rr));
         }
         int result = endSituation.calculatePoints();
         return result;
     }
 
     //TODO this is broken, needs testing
-    public int[][] playUntilRoundEnded(AI firstAI, AI secondAI, int[][] board) {
+    public int[][] playUntilRoundEnded(AI firstAI, AI secondAI, int[][] board, RoundResult rr) {
         int turnsWithoutMoving = 0;
         AI[] ai = new AI[]{firstAI, secondAI};
         //System.out.println("play until round ends, board in the beginning\n" + new Board(board));
@@ -150,13 +150,37 @@ public class MatchMaker {
             //System.out.println("ai no. " + i%2 + " did a move (result):\n" + result);
             turnsWithoutMoving = updateGameEndingIndicators(result, turnsWithoutMoving);
             if (turnsWithoutMoving > 2 || result.withoutHit == 30) {
-                if (print) System.out.println(parseGameEndedMessage(i%2 == 0, acting.color, turnsWithoutMoving, result.withoutHit));
+                rr.addEndGameMessage(parseGameEndedMessage(i%2 == 0, acting.color, turnsWithoutMoving, result.withoutHit));
                 return result.board;
             }
             oldResult = result;
         }
         //System.out.print("\tGame stopped: too many rounds.\n");
         return result.board;
+    }
+
+    private int updateGameEndingIndicators(TurnData latestTurnData, int turnsWithouMoving) {
+        if(!latestTurnData.didMove) {
+            turnsWithouMoving += 2;
+        } else if(turnsWithouMoving > 0) {
+            //System.out.println("turns without stones hit is " + turnsWithouMoving + ", lets decrease it by one");
+            turnsWithouMoving--;
+        }
+
+        //Lets check every second turn if AIs are in a loop.
+        //Btw changing this to 0 will give slightly different points.
+        /*
+        if(i%4 == 1) {
+            //if the situation is repetitive AND it's not about other AI not able to do a move
+            if (new Board(oldResult.board).hashCode() == new Board(result.board).hashCode() && turnsWithouMoving < 2) {
+                //There have been same board layout in the past: so the result wont change.
+                //So now we assume AI will do the same move with the same board every time.
+                System.out.println("return board 'same board':\n" + result);
+                return result.board;
+            }
+            oldResult = result;
+        }*/
+        return turnsWithouMoving;
     }
 
     /**
@@ -184,32 +208,8 @@ public class MatchMaker {
     private String parseGameEndedMessage(boolean starter, int whosTurn, int turnsWithoutMoving, int movesWithoutHitting) {
         String s = whosTurn == 1 ? "reds" : "blues";
         String reason = turnsWithoutMoving > 2 ? "AI couldn't do a move" : "there were " + movesWithoutHitting + " turns without hitting";
-        s = "\tgame ended on " + s + (starter ? " (starter)" : "(second)") + " turn, because " + reason;
+        s = "ended on " + s + (starter ? " (starting AI)" : " (second AI)") + " turn, because " + reason;
         return s;
-    }
-
-    private int updateGameEndingIndicators(TurnData latestTurnData, int turnsWithouMoving) {
-        if(latestTurnData.didMove == false) {
-            turnsWithouMoving += 2;
-        } else if(turnsWithouMoving > 0) {
-            //System.out.println("turns without stones hit is " + turnsWithouMoving + ", lets decrease it by one");
-            turnsWithouMoving--;
-        }
-
-        //Lets check every second turn if AIs are in a loop.
-        //Btw changing this to 0 will give slightly different points.
-        /*
-        if(i%4 == 1) {
-            //if the situation is repetitive AND it's not about other AI not able to do a move
-            if (new Board(oldResult.board).hashCode() == new Board(result.board).hashCode() && turnsWithouMoving < 2) {
-                //There have been same board layout in the past: so the result wont change.
-                //So now we assume AI will do the same move with the same board every time.
-                System.out.println("return board 'same board':\n" + result);
-                return result.board;
-            }
-            oldResult = result;
-        }*/
-        return turnsWithouMoving;
     }
 
     private int[][][] getBoards() {
