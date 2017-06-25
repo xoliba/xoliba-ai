@@ -9,11 +9,11 @@ public class OptimizationMain {
 
 
     public static void main(String[] args) {
-        testOneSetup(5, 5, 5);
+        //testOneSetup(3, 2, 100);
 
         boolean[] testThisParameter = new boolean[]{
-                false, false, false, false, false, true};
-        //iterateWithDifferentParameters(testThisParameter, 0, 100, 30, 30, 4, 4);
+                true, false, false, false, false, false};
+        iterateWithDifferentParameters(testThisParameter, 0, 100, 10, 50, 2, 2);
 
     }
 
@@ -68,6 +68,7 @@ public class OptimizationMain {
             MatchMaker referee = new MatchMaker(whiteDifficulty, bestParameters, blackDifficulty, p);
             AIMatchResult theResult = referee.calculate(howManyBoards);
             System.out.println("challengers performance: " + theResult.challengerPerformance + "\n");
+            System.out.println(theResult);
 
             if (theBestFinalResults[bestIndex] == null || theBestFinalResults[bestIndex].challengerPerformance < theResult.challengerPerformance) {
                 theBestFinalResults[bestIndex] = theResult;

@@ -83,19 +83,53 @@ public class TurnData {
 
     @Override
     public String toString() {
-        String s = "" + type;
+        String s = "" + type + " hash code: " + hashCode();
         s += didMove ? " is a move:\n" : " did not move\n";
         if (!didMove) return s;
 
         s += "surrender: " + surrender + "\n";
         Board b = new Board(board);
-        Coordinate c1 = new Coordinate(start[0], start[1]);
-        Coordinate c2 = new Coordinate(target[0], target[1]);
         s += b;
         s += "triangles on board (both colors): " + b.getHowManyTrianglesOnBoard() + "\n";
-        s += "start " + c1 + "; target " + c2 + ";\n";
-        s += new Triangle(c2, new Coordinate(corners[0][0], corners[0][1]), new Coordinate(corners[1][0], corners[1][1])) + "\n";
+
+        if (start != null && target != null && corners != null) {
+            Coordinate c1 = new Coordinate(start[0], start[1]);
+            Coordinate c2 = new Coordinate(target[0], target[1]);
+            s += "start " + c1 + "; target " + c2 + ";\n";
+            s += new Triangle(c2, new Coordinate(corners[0][0], corners[0][1]), new Coordinate(corners[1][0], corners[1][1])) + "\n";
+        }
         s += "turns without hitting a stone " + withoutHit + "\n";
         return s;
     }
+
+    //tried to use these to help testing, didn't work out
+    /*
+    @Override
+    public int hashCode() {
+        int hash = 17;
+        hash *= new Board(board).hashCode();
+        hash *= type.hashCode() + (didMove ? 1 : -1);
+        hash *= (12 + color);
+        hash *= surrender ? 7 : 3;
+        hash += difficulty;
+        hash *= withoutHit;
+        if (start != null && target != null) {
+            hash *= start[0] + start[1] * target[0] + target[1];
+        }
+        if (corners != null) {
+            hash *= corners[0][0] + corners[1][0] * corners[1][0] + corners[1][1];
+        }
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object o){
+        if(o == null || o.getClass() != this.getClass()){
+            return false;
+        } else if (this.hashCode() == o.hashCode()){
+            return true;
+        }
+        return false;
+    }
+    */
 }

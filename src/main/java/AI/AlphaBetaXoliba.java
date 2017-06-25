@@ -47,8 +47,8 @@ public class AlphaBetaXoliba {
             for (Triangle t:m.triangles) { //and for every triangle that can be formed with that move
                 Board b2 = b1.copy(); //we make a board
                 stoneCollector.hitStones(b2,t); //and implement the hitting
-
-                TurnData aMove = new TurnData(true, b2, 0);
+                int withoutHit = Board.sameAmountOfStonesOnBoard(b1.board, b2.board) ? 1 : 0;
+                TurnData aMove = new TurnData(true, b2, withoutHit);
                 double v;
                 if (color == 1) {
                     v = minValue(aMove, 1, redBest, blueBest, 0); //the blue gets a move
