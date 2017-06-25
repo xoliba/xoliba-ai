@@ -30,7 +30,8 @@ public class CoachTest {
                 2, new ParametersAI(100,1,1,1,1,1),
                 1, true);
 
-        RoundRecord[] bothRounds = match.theFinalResult.getAllRounds().get(0);
+        ArrayList<RoundRecord[]> allRecords = match.theFinalResult.getAllRounds();
+        RoundRecord[] bothRounds = allRecords.get(0);
         boolean allTheMovesAreSame = true;
         ArrayList<TurnData> firstRoundTurns = bothRounds[0].getTurns();
         ArrayList<TurnData> secondRoundTurns = bothRounds[1].getTurns();
