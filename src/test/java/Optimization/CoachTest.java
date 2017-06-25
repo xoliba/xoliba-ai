@@ -21,14 +21,14 @@ public class CoachTest {
 
     @Before
     public void setup() {
-        coach = new Coach();
+        coach = new Coach(false);
     }
 
     @Test
     public void AIsShouldActDifferentlyWithDifferentParameters() {
-        AIMatchResult match = new Coach().runOneShowdown(2, new ParametersAI(1, 100, 100, 100, 100, 0),
+        AIMatchResult match = new Coach(true).runOneShowdown(2, new ParametersAI(1, 100, 100, 100, 100, 0),
                 2, new ParametersAI(100,1,1,1,1,1),
-                1, true);
+                1);
 
         RoundRecord[] bothRounds = match.theFinalResult.getAllRounds().get(0);
         boolean allTheMovesAreSame = true;
