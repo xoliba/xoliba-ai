@@ -12,14 +12,12 @@ import java.util.Random;
 public class AI {
     //the first guess
     //public static ParametersAI bestParameters = new ParametersAI(7, 1.5, 3, 1, 1, 1);
-    //values for iteration (params [0,50]
-    //public static ParametersAI bestParameters = new ParametersAI(25, 25, 25, 25, 25, 25);
-    //values after 2 iterations with lvl 1 vs lvl 1, 50 boards, params [0,50]
-    //public static ParametersAI bestParameters = new ParametersAI(6, 50, 26, 0, 8, 18);
-    //values after 4 iterations with lvl 1 vs lvl 1, 100 boards, params [0,50]
-    //public static ParametersAI bestParameters = new ParametersAI(4,40,44,16,20,0.1);
-    //values after 1 iteration with lvl 1 vs lvl 1, 35 boards, params [0,100], frequency 10
-    public static ParametersAI bestParameters = new ParametersAI(4,50,40,16,20,0.1);
+
+    //LVL 1 best params atm
+    //public static ParametersAI bestParameters = new ParametersAI(4,50,40,16,20,0.1);
+
+    //LVL 2 best params atm
+    public static ParametersAI bestParameters = new ParametersAI(40,80,50,50,0.1,30);
     public int color;
 
     private Board board;

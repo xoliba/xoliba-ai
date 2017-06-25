@@ -43,14 +43,19 @@ public class TurnData {
         this.type = "TurnData";
         this.didMove = didMove;
         this.board = board.board;
-        this.start = new int[]{move.start.x, move.start.y};
-        this.target = new int[]{move.target.x, move.target.y};
+        if (move != null) {
+            this.start = new int[]{move.start.x, move.start.y};
+            this.target = new int[]{move.target.x, move.target.y};
+        }
 		this.color = color;
 		this.surrender = surrender;
 		this.difficulty = difficulty;
 		this.withoutHit = withoutHit;
 
         corners = new int[2][2];
+        if (triangle == null) {
+            return;
+        }
         int i = 0;
         for (Coordinate c:triangle.getCorners()) {
             if (c.equals(move.target)) { //we know that the target is part of the triangle
@@ -70,6 +75,10 @@ public class TurnData {
         didMove = false;
         surrender = false;
         this.board = board;
+    }
+
+    public TurnData(boolean didMove, Board board, int withoutHit) {
+        this(didMove, board, null, null, 0, false, 0, withoutHit);
     }
 
     @Override

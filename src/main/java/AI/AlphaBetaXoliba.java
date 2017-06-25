@@ -48,16 +48,17 @@ public class AlphaBetaXoliba {
                 Board b2 = b1.copy(); //we make a board
                 stoneCollector.hitStones(b2,t); //and implement the hitting
 
+                TurnData aMove = new TurnData(true, b2, 0);
                 double v;
                 if (color == 1) {
-                    v = minValue(b2, 1, redBest, blueBest, 0); //the blue gets a move
+                    v = minValue(aMove, 1, redBest, blueBest, 0); //the blue gets a move
                     if (v > redBest) { //if the result is better than the known best for red
                         redBest = v; //update the best
                         td = new TurnData(true, b2.copy(), m, t, 1);
                     }
 
                 } else if (color == -1) {
-                    v = maxValue(b2, 1, redBest, blueBest, 0); //the red gets a move
+                    v = maxValue(aMove, 1, redBest, blueBest, 0); //the red gets a move
                     if (v < blueBest) { //if the result is better than the known best for blue
                         blueBest = v; //update the best
                         td = new TurnData(true, b2.copy(), m, t, -1);
@@ -72,22 +73,26 @@ public class AlphaBetaXoliba {
      * "Reds turn"
      * estimate how good option this board would be for the red
      *
-     * @param board
+     * @param lastTurn
      * @param inceptionLevel
      * @param redsBest the biggest value predicted atm
      * @param bluesBest the smallest value predicted atm
      * @return the biggest possible (predicted) evaluation outcome from this game situation
      */
 
-    protected double maxValue(Board board, int inceptionLevel, double redsBest, double bluesBest, int turnSkipped) {
+    protected double maxValue(TurnData lastTurn, int inceptionLevel, double redsBest, double bluesBest, int turnSkipped) {
         //System.out.println("AI maxValue: inceptionLevel " + inceptionLevel + "; redsBest " + redsBest + "; bluesBest" + bluesBest);
-        if (inceptionLevel >= inceptionTreshold || turnSkipped > 2) {
-            return board.evaluate();
+        Board board = new Board(lastTurn.board);
+        if (gameEndedAfter(lastTurn, turnSkipped)) {
+            return board.evaluate(true);
+        }
+        if (inceptionLevel >= inceptionTreshold) {
+            return board.evaluate(false);
         }
 
         ArrayList<Move> possibleMoves = validator.generateAllPossibleMoves(board, 1);
         if (possibleMoves.isEmpty()) {
-            return minValue(board, inceptionLevel + 1, redsBest, bluesBest, turnSkipped+2);
+            return minValue(new TurnData(false, board, lastTurn.withoutHit + 1), inceptionLevel + 1, redsBest, bluesBest, turnSkipped+2);
         }
         turnSkipped--;
 
@@ -96,9 +101,11 @@ public class AlphaBetaXoliba {
             Board b1 = board.copy();
             b1.swap(m);
             for (Triangle t: m.triangles) { //for all triangles we might form
-                Board b = b1.copy(); //lets make a copy of this situation
-                stoneCollector.hitStones(b, t); //lets do the move
-                v = Math.max(v, minValue(b, inceptionLevel + 1, redsBest, bluesBest, Math.max(turnSkipped, 0))); //lets keep the best possible outcome
+                Board b2 = b1.copy(); //lets make a copy of this situation
+                stoneCollector.hitStones(b2, t); //lets do the move
+                int withoutHit = Board.sameAmountOfStonesOnBoard(b1.board, b2.board) ? lastTurn.withoutHit + 1 : 0;
+                TurnData td = new TurnData(true, b2, withoutHit);
+                v = Math.max(v, minValue(td, inceptionLevel + 1, redsBest, bluesBest, Math.max(turnSkipped, 0))); //lets keep the best possible outcome
                 if (v >= bluesBest) { //this is the alpha-beta part: if our new value is better than the so-far-best (from our perspective)
                     return v;         //that opponent could choose, then we do have look no further
                 }
@@ -112,21 +119,25 @@ public class AlphaBetaXoliba {
      * "Blues turn"
      * estimate how good option this board would be for the blue
      *
-     * @param board
+     * @param lastTurn
      * @param inceptionLevel
      * @param redsBest the biggest value predicted atm
      * @param bluesBest the smallest value predicted atm
      * @return the smallest possible (predicted) evaluation outcome from this game situation
      */
 
-    protected double minValue(Board board, int inceptionLevel, double redsBest, double bluesBest, int turnSkipped) {
-        if (inceptionLevel >= inceptionTreshold || turnSkipped > 2) {
-            return board.evaluate();
+    protected double minValue(TurnData lastTurn, int inceptionLevel, double redsBest, double bluesBest, int turnSkipped) {
+        Board board = new Board(lastTurn.board);
+        if (gameEndedAfter(lastTurn, turnSkipped)) {
+            return board.evaluate(true);
+        }
+        if (inceptionLevel >= inceptionTreshold) {
+            return board.evaluate(false);
         }
 
         ArrayList<Move> possibleMoves = validator.generateAllPossibleMoves(board, -1);
         if (possibleMoves.isEmpty()) {
-            return maxValue(board, inceptionLevel + 1, redsBest, bluesBest, turnSkipped+2);
+            return maxValue(new TurnData(false, board, lastTurn.withoutHit + 1), inceptionLevel + 1, redsBest, bluesBest, turnSkipped+2);
         }
         turnSkipped--;
 
@@ -137,7 +148,9 @@ public class AlphaBetaXoliba {
             for (Triangle t: m.triangles) { //for all triangles we might form
                 Board b2 = b1.copy(); //lets make a copy of this situation
                 stoneCollector.hitStones(b2, t); //lets do the move
-                v = Math.min(v, maxValue(b2, inceptionLevel + 1, redsBest, bluesBest, Math.max(turnSkipped, 0))); //lets keep the best possible outcome
+                int withoutHit = Board.sameAmountOfStonesOnBoard(b1.board, b2.board) ? lastTurn.withoutHit + 1 : 0;
+                TurnData td = new TurnData(true, b2, withoutHit);
+                v = Math.min(v, maxValue(td, inceptionLevel + 1, redsBest, bluesBest, Math.max(turnSkipped, 0))); //lets keep the best possible outcome
 
                 //this is the alpha-beta part: if our new value is better than the so-far-best (from our perspective)
                 if (v <= redsBest) { //that opponent could choose, then we do have look no further
@@ -147,5 +160,14 @@ public class AlphaBetaXoliba {
             }
         }
         return v;
+    }
+
+    private boolean gameEndedAfter(TurnData lastTurn, int turnsSkipped) {
+        if (lastTurn.withoutHit >= 30) {
+            return true;
+        } else if (turnsSkipped > 2) {
+            return true;
+        }
+        return false;
     }
 }

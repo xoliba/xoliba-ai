@@ -78,12 +78,16 @@ public class Board{
         else return sizeOfRedsBiggestTriangle * (17-blues);
     }
 
+    public double evaluate() {
+        return evaluate(false);
+    }
+
     /**
      * What is the situation on board, who is winning?
      *
      * @return value that represents the situation: the smaller (negative) is better for blue and bigger (positive) is better for red
      */
-    public double evaluate() {
+    public double evaluate(boolean gameEnded) {
         if (hasBeenEvaluated)
             return value;
 
@@ -97,10 +101,15 @@ public class Board{
 
         findAllTriangles();
         value += weights.triangleWeight * (sizeOfRedsBiggestTriangle - sizeOfBluesBiggestTriangle);
-        value += weights.calculatePointsWeight * calculatePoints();
+        if (gameEnded)
+            value += weights.calculatePointsWeight * calculatePoints();
         hasBeenEvaluated = true;
 
         return value;
+    }
+
+    public static double evaluate(int[][] b, boolean gameEnded) {
+        return new Board(b).evaluate(gameEnded);
     }
 
     private double sumOfTheStones() {
