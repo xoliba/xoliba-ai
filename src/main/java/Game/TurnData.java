@@ -112,7 +112,7 @@ public class TurnData {
         hash *= (12 + color);
         hash *= surrender ? 7 : 3;
         hash += difficulty;
-        hash *= withoutHit;
+        hash *= (withoutHit + 1);
         if (start != null && target != null) {
             hash += (start[0] + start[1] + target[0] + target[1]) * 31;
         }

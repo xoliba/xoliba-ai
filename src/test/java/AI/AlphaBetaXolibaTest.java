@@ -13,7 +13,7 @@ import static org.mockito.Mockito.*;
 public class AlphaBetaXolibaTest {
 
     private AlphaBetaXoliba abx;
-    private int[][] table, table1, table2, table3;
+    private int[][] table, table1, table2, table3, table4;
 
     @Before
     public void setUp() {
@@ -116,14 +116,35 @@ public class AlphaBetaXolibaTest {
         b1.swap(new Move(new Coordinate(3, 4), new Coordinate(4,5)));
         Board b2 = b1.copy();
         b2.swap(new Move(new Coordinate(5, 0), new Coordinate(5,2)));
-        System.out.println("\tTesting with board b:\n" + b + "\nand b1:\n" + b1 + "\nand b2\n" + b2);
+        Board b3 = b2.copy();
+        b3.swap(new Move(new Coordinate(4, 5), new Coordinate(5,4)));
+        System.out.println("\tTesting with board b:\n" + b + "\nand b1:\n" + b1 + "\nand b2\n" + b2 + "\nand b3\n" + b3);
 
         AlphaBetaXoliba spiedABX = spy(new AlphaBetaXoliba());
         spiedABX.minValue(new TurnData(true, b.copy(), 28), 0, Integer.MIN_VALUE, Integer.MAX_VALUE, 0);
 
+        //we well continue calling until the 30 move limit
         verify(spiedABX, atLeastOnce()).maxValue(eq(new TurnData(true, b1.copy(), 29)), anyInt(), anyDouble(), anyDouble(), eq(0));
         verify(spiedABX, never()).minValue(eq(new TurnData(true, b2.copy(), 29)), anyInt(), anyDouble(), anyDouble(), eq(0));
+        verify(spiedABX, atLeastOnce()).minValue(eq(new TurnData(true, b2.copy(), 30)), anyInt(), anyDouble(), anyDouble(), eq(0));
+        verify(spiedABX, never()).maxValue(eq(new TurnData(true, b2.copy(), 30)), anyInt(), anyDouble(), anyDouble(), eq(0));
 
+        //after we reach 30 moves without hitting we shouldn't go further
+        spiedABX = spy(new AlphaBetaXoliba());
+        spiedABX.minValue(new TurnData(true, b2.copy(), 30), 0, Integer.MIN_VALUE, Integer.MAX_VALUE, 0);
+        verify(spiedABX, never()).maxValue(any(TurnData.class), anyInt(), anyDouble(), anyDouble(), eq(0));
+
+        //after 29 moves without hitting we should want to make the final, winning move!
+        System.out.println("ask for min value without hit 29 board\n" + b2);
+        b.swap(new Move(new Coordinate(5,0), new Coordinate(5, 2)));
+        spiedABX = spy(new AlphaBetaXoliba());
+        double minVal1 = spiedABX.minValue(new TurnData(true, b2.copy(), 29), 0, Integer.MIN_VALUE, Integer.MAX_VALUE, 0);
+        verify(spiedABX, times(1)).maxValue(eq(new TurnData(true, b.copy(), 30)), anyInt(), anyDouble(), anyDouble(), eq(0));
+        verify(spiedABX, times(1)).maxValue(eq(new TurnData(true, b3.copy(), 30)), anyInt(), anyDouble(), anyDouble(), eq(0));
+        double maxVal1 = spiedABX.maxValue(new TurnData(true, b.copy(), 30), 0, Integer.MIN_VALUE, Integer.MAX_VALUE, 0);
+        double maxVal2 = spiedABX.maxValue(new TurnData(true, b3.copy(), 30), 0, Integer.MIN_VALUE, Integer.MAX_VALUE, 0);
+        assertTrue("min value should always choose the medium triangle move, because game is going to end on the next move",minVal1 == maxVal1);
+        assertTrue("the move with game ending should always be better for blue when the biggest triangle is bigger", maxVal1 < maxVal2);
     }
 
 }
