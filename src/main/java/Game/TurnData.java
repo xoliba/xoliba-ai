@@ -52,10 +52,10 @@ public class TurnData {
 		this.difficulty = difficulty;
 		this.withoutHit = withoutHit;
 
-        corners = new int[2][2];
         if (triangle == null) {
             return;
         }
+        corners = new int[2][2];
         int i = 0;
         for (Coordinate c:triangle.getCorners()) {
             if (c.equals(move.target)) { //we know that the target is part of the triangle
@@ -103,7 +103,7 @@ public class TurnData {
     }
 
     //tried to use these to help testing, didn't work out
-    /*
+
     @Override
     public int hashCode() {
         int hash = 17;
@@ -114,10 +114,10 @@ public class TurnData {
         hash += difficulty;
         hash *= withoutHit;
         if (start != null && target != null) {
-            hash *= start[0] + start[1] * target[0] + target[1];
+            hash += (start[0] + start[1] + target[0] + target[1]) * 31;
         }
         if (corners != null) {
-            hash *= corners[0][0] + corners[1][0] * corners[1][0] + corners[1][1];
+            hash += (corners[0][0] + corners[1][0] + corners[1][0] + corners[1][1]) * 5;
         }
         return hash;
     }
@@ -131,5 +131,5 @@ public class TurnData {
         }
         return false;
     }
-    */
+
 }

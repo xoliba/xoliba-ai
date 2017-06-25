@@ -18,7 +18,7 @@ public class Board{
     private int sizeOfBluesBiggestTriangle = 0;
     private int howManyTrianglesOnBoard = 0;
     private boolean hasBeenEvaluated = false; //for efficiency, possible BUG if the board is changed
-    private double value = 0;
+    private double[] values = new double[2]; //0 for game ended false and 1 for game ended true
     private ParametersAI weights;
     private boolean trianglesHaveBeenLookedFor = false; //for efficiency, possible BUG if the board is changed
 
@@ -98,24 +98,28 @@ public class Board{
      * @return value that represents the situation: the smaller (negative) is better for blue and bigger (positive) is better for red
      */
     public double evaluate(boolean gameEnded) {
-        if (hasBeenEvaluated)
-            return value;
-
-        value = 0;
+        int i = gameEnded ? 1 : 0;
+        double v = values[i];
+        if (hasBeenEvaluated && v != 0)
+            return v;
 
         //Sometimes there is a chance AI favors situation where it rather have 1 stone at corner than 2 stones in the middle.
         //Sometimes this is good: you cant eat corner stone. Bu maybe we should implement some sort of better algorithm
         //when calculating how much value does the ending board give.
-        value = sumOfTheStones();
-        value += lookForBasis();
+        v = sumOfTheStones();
+        v += lookForBasis();
 
         findAllTriangles();
-        value += weights.triangleWeight * (sizeOfRedsBiggestTriangle - sizeOfBluesBiggestTriangle);
+        v += weights.triangleWeight * (sizeOfRedsBiggestTriangle - sizeOfBluesBiggestTriangle);
         if (gameEnded)
-            value += weights.calculatePointsWeight * calculatePoints();
-        hasBeenEvaluated = true;
+            v += weights.calculatePointsWeight * calculatePoints();
 
-        return value;
+        values[i] = v;
+
+        if (values[0] != 0 && values[1] != 0)
+            hasBeenEvaluated = true;
+
+        return v;
     }
 
     public static double evaluate(int[][] b, boolean gameEnded) {

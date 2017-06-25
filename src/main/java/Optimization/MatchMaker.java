@@ -149,6 +149,7 @@ public class MatchMaker {
         //System.out.println("play until round ends, board in the beginning\n" + new Board(board));
         //Right now max moves is set to 100, which is 50 turns
         TurnData result = ai[0].move(board, ai[0].color, ai[0].getDifficulty(), 0);
+        //System.out.println("board after one move\n" + new Board(result.board));
         TurnData oldResult = result;
         for(int i=1; i<100; i++) {
             //System.out.println("top of the loop, old result:\n" + oldResult);
@@ -230,6 +231,7 @@ public class MatchMaker {
         return boards;
     }
 
+    //from int[][][] to arraylist<int[][]> through json
     private void writeBoards(int[][][] boards) {
         ArrayList<String> bs = new ArrayList<>();
         for (int i = 0; i < boards.length; i++) {

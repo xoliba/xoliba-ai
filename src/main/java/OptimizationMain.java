@@ -9,11 +9,11 @@ public class OptimizationMain {
 
 
     public static void main(String[] args) {
-        testOneSetup(2, 2, 100);
+        //testOneSetup(2, 2, 100);
 
         boolean[] testThisParameter = new boolean[]{
-                true, false, false, false, false, false};
-        //iterateWithDifferentParameters(testThisParameter, 0, 100, 10, 50, 2, 2);
+                true, true, true, false, false, false};
+        iterateWithDifferentParameters(testThisParameter, 0, 1000, 500, 35, 2, 2);
 
     }
 
@@ -96,7 +96,7 @@ public class OptimizationMain {
 
     private static String getEstimationOfProcessLength(int rounds, int whiteLVL, int blackLVL) {
         double[] executionEstimations = new double[] {
-            250, 8.5, 2.7, 0.10, 0.018, 1, 1
+            250, 12.5, 2.7, 0.10, 0.018, 1, 1
         }; //how many rounds per second we compute (on my machine) if we iterate two AIs of lvl n (n = 1, 2, 3,..)
         double estimation = rounds * 1.0 / 2 / executionEstimations[whiteLVL - 1];
         estimation += rounds * 1.0 / 2 / executionEstimations[blackLVL - 1];
