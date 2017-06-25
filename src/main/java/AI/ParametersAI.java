@@ -41,8 +41,8 @@ public class ParametersAI {
 
     @Override
     public String toString() {
-        return "triangle " + triangleWeight + " edge " + edgeWeight + " corner " + cornerWeight +
-                " medium basis " + basisEdgeMediumWeight + " big basis " + basisBigWeight
-                + " points given " + calculatePointsWeight;
+        return "triangle " + triangleWeight + " # edge " + edgeWeight + " # corner " + cornerWeight +
+                " # medium basis " + basisEdgeMediumWeight + " # big basis " + basisBigWeight
+                + " # points given " + calculatePointsWeight;
     }
 }

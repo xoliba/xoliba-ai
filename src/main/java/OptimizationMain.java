@@ -9,11 +9,11 @@ public class OptimizationMain {
 
 
     public static void main(String[] args) {
-        //testOneSetup(2, 2, 100);
+        //testOneSetup(2, 1, 100);
 
         boolean[] testThisParameter = new boolean[]{
-                true, true, true, false, false, false};
-        iterateWithDifferentParameters(testThisParameter, 0, 1000, 500, 35, 2, 2);
+                true, true, true, true, true, true};
+        iterateWithDifferentParameters(testThisParameter, 0, 1000, 500, 50, 2, 2);
 
     }
 
