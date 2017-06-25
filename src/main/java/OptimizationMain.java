@@ -8,27 +8,34 @@ import static AI.AI.bestParameters;
 public class OptimizationMain {
 
     public static void main(String[] args) {
-        ParameterWriter pw = new ParameterWriter();
-        pw.writeNewFileWithParameterValues();
-        computeWithAllParameterCombinations(pw, 50, 1, 1);
+        testOneSetup(3, 1, 50);
+        //iterateWithDifferentParameters(0, 100, 10, 50, 1, 1);
 
-/*
-        new MatchMaker(2, bestParameters,
-                1,
+    }
+
+    private static void testOneSetup(int whiteLVL, int blackLVL, int howManyBoards) {
+       MatchMaker referee = new MatchMaker(whiteLVL, bestParameters,
+                blackLVL,
                 //new ParametersAI(-35, 10, 15, 5, 5),
                 bestParameters,
                 true, //do we print more?
                 false //do we run on single thread
-        ).calculate(50);
-*/
+        );
+        System.out.println(referee.calculate(howManyBoards));
     }
 
-    private static void computeWithAllParameterCombinations(ParameterWriter pw, int howManyGames, int whiteDifficulty, int blackDifficulty) {
+    private static void iterateWithDifferentParameters(int minWeight, int maxWeight, double frequency, int howManyBoards, int whiteLVL, int blackLVL) {
+        ParameterWriter pw = new ParameterWriter(minWeight, maxWeight, frequency);
+        pw.writeNewFileWithParameterValues();
+        computeWithAllParameterCombinations(pw, howManyBoards, whiteLVL, blackLVL);
+    }
+
+    private static void computeWithAllParameterCombinations(ParameterWriter pw, int howManyBoards, int whiteDifficulty, int blackDifficulty) {
+        long start = System.currentTimeMillis();
         List<ParametersAI> parameterCombinations = pw.readParameterCombinations();
         int combinations = parameterCombinations.size();
         int paramCount = bestParameters.toArray().length;
-        ParametersAI[] theBestParameters = new ParametersAI[paramCount];
-        double[] bestParametersPerformance = new double[paramCount];
+        AIMatchResult[] theBestFinalResults = new AIMatchResult[paramCount];
         int bestIndex = 0;
         for (int i = 0; i < combinations; i++) {
             if (i != 0 && i % (combinations / paramCount) == 0) {
@@ -43,17 +50,22 @@ public class OptimizationMain {
             );
 
             MatchMaker referee = new MatchMaker(whiteDifficulty, bestParameters, blackDifficulty, p);
-            double challengerPerformance = referee.calculate(howManyGames);
+            AIMatchResult theResult = referee.calculate(howManyBoards);
+            System.out.println("challengers performance: " + theResult.challengerPerformance + "\n");
 
-            if (theBestParameters[bestIndex] == null || bestParametersPerformance[bestIndex] < challengerPerformance) {
-                theBestParameters[bestIndex] = p;
-                bestParametersPerformance[bestIndex] = challengerPerformance;
+            if (theBestFinalResults[bestIndex] == null || theBestFinalResults[bestIndex].challengerPerformance < theResult.challengerPerformance) {
+                theBestFinalResults[bestIndex] = theResult;
             }
         }
 
-        System.out.println("\nThe best parameters and corresponding performance:\n");
-        for (int i = 0; i < theBestParameters.length; i++) {
-            System.out.println(theBestParameters[i] + "\n\tchallenger performance: " + bestParametersPerformance[i] + "\n");
+        System.out.println("\nThe best parameters and corresponding performance against white parameters:\n" +
+                theBestFinalResults[0].whiteParam + "\n"
+        );
+        for (int i = 0; i < theBestFinalResults.length; i++) {
+            System.out.println("for parameter " + (i+1) + "\n" + theBestFinalResults[i] + "\n");
         }
+
+        long end = System.currentTimeMillis();
+        System.out.println("iteration took " + (end - start) / 1000 + " seconds");
     }
 }
