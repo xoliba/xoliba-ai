@@ -3,6 +3,7 @@ package Optimization;
 import AI.AI;
 import AI.ParametersAI;
 import Game.Board;
+import Game.RoundRecord;
 import Messaging.JsonConverter;
 import org.junit.Before;
 import org.junit.Test;
@@ -43,8 +44,8 @@ public class MatchMakerTest {
     public void bothAIsGetBothColorsForOneBoardTest() {
         MatchMaker spiedMM = spy(mm);
         spiedMM.calculateRoundForBothRoles(board);
-        verify(spiedMM, times(2)).calculateRound(any(AI.class), any(AI.class), eq(board), any(RoundResult.class));
-        verify(spiedMM, times(2)).playUntilRoundEnded(any(AI.class), any(AI.class), eq(this.board), any(RoundResult.class));
+        verify(spiedMM, times(2)).calculateRound(any(AI.class), any(AI.class), eq(board));
+        verify(spiedMM, times(2)).playUntilRoundEnded(any(AI.class), any(AI.class), eq(this.board), any(RoundRecord.class));
 
         /*
         //for these test to succeed we would need to overwrite the hashcode method of AI, and I don't dare to do it.
@@ -71,8 +72,10 @@ public class MatchMakerTest {
     public void playUntilRoundEndedTest() {
         AI first = new AI(1, 2, new ParametersAI());
         AI second = new AI(-1, 2, new ParametersAI());
-        System.out.println("testing with board\n" + new Board(board));
-        Board endBoard = new Board(mm.playUntilRoundEnded(first, second, board, new RoundResult()));
+        Board b = new Board(board);
+        System.out.println("testing with board\n" + b);
+        RoundRecord record = mm.playUntilRoundEnded(first, second, board, new RoundRecord(b, first, second));
+        Board endBoard = record.getEndBoard();
         System.out.println("after finishing game:\n" + endBoard);
         assertTrue("if red starts and looks two moves ahead, it must win", endBoard.calculatePoints() > 0);
     }

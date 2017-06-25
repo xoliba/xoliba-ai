@@ -12,12 +12,13 @@ import java.util.Random;
 public class AI {
     //the first guess
     //public static ParametersAI bestParameters = new ParametersAI(7, 1.5, 3, 1, 1, 1);
+    public static ParametersAI bestParameters = new ParametersAI(7, 1.5, 3, 0, 0, 0);
 
     //LVL 1 best params atm
     //public static ParametersAI bestParameters = new ParametersAI(4,50,40,16,20,0.1);
 
     //LVL 2 best params atm
-    public static ParametersAI bestParameters = new ParametersAI(40,80,50,50,0.1,30);
+    //public static ParametersAI bestParameters = new ParametersAI(40,80,50,50,0.1,30);
     public int color;
 
     private Board board;
@@ -83,7 +84,7 @@ public class AI {
         this.color = color;
         if (difficulty > 0 && difficulty < 50)
             this.inceptionThreshold = difficulty;
-        //System.out.println("AI (color " + color + " difficulty " + inceptionThreshold + ") got a new board:\n" + board);
+        //System.out.println(this + " got a new board:\n" + board);
 
         TurnData td = abx.doTheBestMoveForColor(board, inceptionThreshold, color);
         //todo make this more elegant

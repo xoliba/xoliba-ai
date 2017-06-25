@@ -31,11 +31,11 @@ public class RoundResultTest {
         fiRes.blackPoints += 12;
         fiRes.updateStats();
         assertTrue(fiRes.getTotalSameColorWins() == 1);
-        fiRes.add(rr);
+        fiRes.add(rr, false);
         assertTrue(fiRes.getTotalSameColorWins() == 2);
         assertTrue(fiRes.getTotalChallangerWinsMoreGamesValue() == 0);
         assertTrue(rr.getTotalSameColorWins() == 1);
-        fiRes.add(rr1);
+        fiRes.add(rr1, false);
         assertTrue(fiRes.getTotalSameColorWins() == 2);
         assertTrue(fiRes.getTotalChallangerWinsMoreGamesValue() == 1);
         assertTrue(rr1.getTotalChallangerWinsMoreGamesValue() == 1);

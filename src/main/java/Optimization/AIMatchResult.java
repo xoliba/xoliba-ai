@@ -10,7 +10,7 @@ import java.text.DecimalFormat;
 public class AIMatchResult {
     public double whiteVicP, blackVicP, sameColorWinsPercent, morePointsWhitePercent, howManyPointsGivenPerGame, percentOfChallengerWonMoreGames, challengerPerformance;
     int whiteLVL, blackLVL;
-    RoundResult theFinalResult;
+    public RoundResult theFinalResult;
     public ParametersAI whiteParam, blackParam;
 
     /**

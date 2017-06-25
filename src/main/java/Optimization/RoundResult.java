@@ -1,5 +1,7 @@
 package Optimization;
 
+import Game.RoundRecord;
+
 import java.util.ArrayList;
 
 /**
@@ -10,9 +12,10 @@ public class RoundResult {
     public int roundNo;
     public int whiteWins, blackWins, whitePoints, blackPoints;
     public boolean bothWinWithSameColor;
+    private RoundRecord[] bothRounds;
     private int howManyTimesBothAIsWonWithSameColor = 0;
     private int howManyTimesChallengerWonMoreGames = 0;
-    private ArrayList<String> endGameMessages = new ArrayList<>();
+    private ArrayList<RoundRecord[]> allRounds = new ArrayList<>();
 
     public RoundResult(int roundNo, int whiteWins, int blackWins, int whitePoints, int blackPoints) {
         this.roundNo = roundNo;
@@ -20,6 +23,7 @@ public class RoundResult {
         this.blackWins = blackWins;
         this.whitePoints = whitePoints;
         this.blackPoints = blackPoints;
+        this.bothRounds = new RoundRecord[2];
     }
 
     public RoundResult() {
@@ -39,6 +43,13 @@ public class RoundResult {
         }
     }
 
+    public void addRoundRecord(RoundRecord rr, boolean first) {
+        if (first)
+            bothRounds[0] = rr;
+        else
+            bothRounds[1] = rr;
+    }
+
     public int getTotalSameColorWins() {
         return howManyTimesBothAIsWonWithSameColor;
     }
@@ -47,7 +58,7 @@ public class RoundResult {
         return howManyTimesChallengerWonMoreGames;
     }
 
-    public void add(RoundResult rr) {
+    public void add(RoundResult rr, boolean keepRecord) {
         this.whiteWins += rr.whiteWins;
         this.blackWins += rr.blackWins;
         this.whitePoints += rr.whitePoints;
@@ -55,10 +66,13 @@ public class RoundResult {
         if (rr.bothWinWithSameColor)
             this.howManyTimesBothAIsWonWithSameColor++;
         this.howManyTimesChallengerWonMoreGames += rr.howManyTimesChallengerWonMoreGames;
+        if (keepRecord) {
+            this.allRounds.add(rr.bothRounds);
+        }
     }
 
-    public void addEndGameMessage(String message) {
-        endGameMessages.add(message);
+    public ArrayList<RoundRecord[]> getAllRounds() {
+        return allRounds;
     }
 
     @Override
@@ -75,8 +89,8 @@ public class RoundResult {
 
     public String endGameMessagesToString() {
         String s = "";
-        for (int i = 0; i < endGameMessages.size(); i++) {
-            s += "\t" + (i+1) + ". round " + endGameMessages.get(i) + "\n";
+        for (int i = 0; i < bothRounds.length; i++) {
+            s += "\t" + (i+1) + ". round " + bothRounds[i].endGameMessage + "\n";
         }
         return s;
     }

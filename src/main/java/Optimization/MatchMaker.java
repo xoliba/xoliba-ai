@@ -15,6 +15,7 @@ import java.util.concurrent.Semaphore;
 
 import AI.*;
 import Game.Board;
+import Game.RoundRecord;
 import Game.TurnData;
 import Messaging.JsonConverter;
 
@@ -27,6 +28,7 @@ public class MatchMaker {
     ArrayList<int[][]> boards;
     boolean print = false;
     boolean runSingleThread = false;
+    boolean keepRecord = false;
 
     public MatchMaker(int whiteDifficulty, ParametersAI whiteParameters, int blackDifficulty, ParametersAI blackParameters, boolean print, boolean runSingleThread) {
         this(whiteDifficulty, whiteParameters, blackDifficulty, blackParameters);
@@ -42,12 +44,17 @@ public class MatchMaker {
         this.boards = readBoards();
     }
 
+    public AIMatchResult calculate(int howManyBoards) {
+        return calculate(howManyBoards, this.keepRecord);
+    }
+
     /**
      *
      * @param howManyBoards
      * @return a single double that describes how well the challenger performed; the bigger the better (for the challenger)
      */
-    public AIMatchResult calculate(int howManyBoards) {
+    public AIMatchResult calculate(int howManyBoards, boolean keepRecord) {
+        this.keepRecord = keepRecord;
         //ArrayList<RoundResult> results = new ArrayList<>();
         RoundResult finalResult = new RoundResult();
 		
@@ -63,7 +70,7 @@ public class MatchMaker {
                 rr.roundNo = j+1;
                 if (print)
                     System.out.println(rr + "\n" + rr.endGameMessagesToString());
-                finalResult.add(rr);
+                finalResult.add(rr, keepRecord);
             } else {
 
                 Thread matchThread = new Thread(() -> {
@@ -74,9 +81,9 @@ public class MatchMaker {
 
                     acquire(mutex);
                     //results.add(rr);
-                    finalResult.add(rr);
+                    finalResult.add(rr, keepRecord);
                     if (print)
-                        System.out.println(rr);
+                        System.out.println(rr + "\n" + rr.endGameMessagesToString());
                     mutex.release();
                     threadCount.release();
                     finished.release();
@@ -107,7 +114,9 @@ public class MatchMaker {
 
         aiWhite = new AI(1, whiteDifficulty, whiteParameters);
         aiBlack = new AI(-1, blackDifficulty, blackParameters);
-        int result = calculateRound(aiWhite, aiBlack, board, rr);
+        RoundRecord record = calculateRound(aiWhite, aiBlack, board);
+        rr.addRoundRecord(record, true);
+        int result = record.result;
         if (result > 0) {
             rr.whitePoints += result;
             rr.whiteWins++;
@@ -117,7 +126,9 @@ public class MatchMaker {
         }
         aiWhite = new AI(-1, whiteDifficulty, whiteParameters);
         aiBlack = new AI(1, blackDifficulty, blackParameters);
-        result = calculateRound(aiBlack, aiWhite, board, rr);
+        record = calculateRound(aiBlack, aiWhite, board);
+        result = record.result;
+        rr.addRoundRecord(record, false);
         if(result > 0) {
             rr.blackPoints += result;
             rr.blackWins++;
@@ -131,40 +142,42 @@ public class MatchMaker {
         return rr;
     }
 
-    public int calculateRound(AI red, AI blue, int[][] board, RoundResult rr) {
-        Board endSituation;
+    public RoundRecord calculateRound(AI red, AI blue, int[][] board) {
+        RoundRecord record = new RoundRecord(new Board(board), red, blue);
         if (Board.redStartsGame(board)) {
-            endSituation = new Board(playUntilRoundEnded(red, blue, board, rr));
+            playUntilRoundEnded(red, blue, board, record);
         } else {
-            endSituation = new Board(playUntilRoundEnded(blue, red, board, rr));
+            playUntilRoundEnded(blue, red, board, record);
         }
-        int result = endSituation.calculatePoints();
-        return result;
+        record.calculatePoints();
+        return record;
     }
 
     //TODO this might be broken, might need more testing
-    public int[][] playUntilRoundEnded(AI firstAI, AI secondAI, int[][] board, RoundResult rr) {
+    public RoundRecord playUntilRoundEnded(AI firstAI, AI secondAI, int[][] board, RoundRecord record) {
         int turnsWithoutMoving = 0;
         AI[] ai = new AI[]{firstAI, secondAI};
         //System.out.println("play until round ends, board in the beginning\n" + new Board(board));
         //Right now max moves is set to 100, which is 50 turns
         TurnData result = ai[0].move(board, ai[0].color, ai[0].getDifficulty(), 0);
         //System.out.println("board after one move\n" + new Board(result.board));
+        record.addTurn(result);
         TurnData oldResult = result;
         for(int i=1; i<100; i++) {
             //System.out.println("top of the loop, old result:\n" + oldResult);
             AI acting = ai[i%2];
             result = acting.move(oldResult.board, acting.color, acting.getDifficulty(), oldResult.withoutHit);
+            record.addTurn(result);
             //System.out.println("ai no. " + i%2 + " did a move (result):\n" + result);
             turnsWithoutMoving = updateGameEndingIndicators(result, turnsWithoutMoving);
             if (turnsWithoutMoving > 2 || result.withoutHit == 30) {
-                rr.addEndGameMessage(parseGameEndedMessage(i%2 == 0, acting.color, turnsWithoutMoving, result.withoutHit));
-                return result.board;
+                record.addEndGameMessage(parseGameEndedMessage(i%2 == 0, acting.color, turnsWithoutMoving, result.withoutHit));
+                return record;
             }
             oldResult = result;
         }
         System.out.print("\tGame stopped: too many rounds.\n");
-        return result.board;
+        return record;
     }
 
     private int updateGameEndingIndicators(TurnData latestTurnData, int turnsWithoutMoving) {

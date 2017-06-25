@@ -98,15 +98,15 @@ public class Board{
      * @return value that represents the situation: the smaller (negative) is better for blue and bigger (positive) is better for red
      */
     public double evaluate(boolean gameEnded) {
-        int i = gameEnded ? 1 : 0;
+        /*int i = gameEnded ? 1 : 0;
         double v = values[i];
         if (hasBeenEvaluated && v != 0)
             return v;
-
+*/
         //Sometimes there is a chance AI favors situation where it rather have 1 stone at corner than 2 stones in the middle.
         //Sometimes this is good: you cant eat corner stone. Bu maybe we should implement some sort of better algorithm
         //when calculating how much value does the ending board give.
-        v = sumOfTheStones();
+        double v = sumOfTheStones();
         v += lookForBasis();
 
         findAllTriangles();
@@ -114,7 +114,7 @@ public class Board{
         if (gameEnded)
             v += weights.calculatePointsWeight * calculatePoints();
 
-        values[i] = v;
+        //values[i] = v;
 
         if (values[0] != 0 && values[1] != 0)
             hasBeenEvaluated = true;
@@ -229,6 +229,10 @@ public class Board{
         //TODO every triangle is found three times, a spot for optimization maybe?
         howManyTrianglesOnBoard /= 3;
         trianglesHaveBeenLookedFor = true;
+    }
+
+    public ParametersAI getWeights() {
+        return weights;
     }
 
     /**
