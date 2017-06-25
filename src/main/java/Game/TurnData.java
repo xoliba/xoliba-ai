@@ -83,7 +83,7 @@ public class TurnData {
 
     @Override
     public String toString() {
-        String s = "" + type + " hash code: " + hashCode();
+        String s = "" + type + " (hash " + hashCode() + ")";
         s += didMove ? " is a move:\n" : " did not move\n";
         if (!didMove) return s;
 

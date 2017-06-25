@@ -120,10 +120,10 @@ public class AlphaBetaXolibaTest {
 
         AlphaBetaXoliba spiedABX = spy(new AlphaBetaXoliba());
         spiedABX.minValue(new TurnData(true, b.copy(), 28), 0, Integer.MIN_VALUE, Integer.MAX_VALUE, 0);
-        /*
+
         verify(spiedABX, atLeastOnce()).maxValue(eq(new TurnData(true, b1.copy(), 29)), anyInt(), anyDouble(), anyDouble(), eq(0));
         verify(spiedABX, never()).minValue(eq(new TurnData(true, b2.copy(), 29)), anyInt(), anyDouble(), anyDouble(), eq(0));
-        */
+
     }
 
 }

@@ -3,13 +3,20 @@ package Optimization;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.reflect.Array;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.Semaphore;
 
 import AI.*;
 import Game.Board;
 import Game.TurnData;
+import Messaging.JsonConverter;
 
 public class MatchMaker {
 
@@ -17,7 +24,7 @@ public class MatchMaker {
     int blackDifficulty = 1;
     ParametersAI whiteParameters; //the champ
     ParametersAI blackParameters; //the challenger
-    int[][][] boards;
+    ArrayList<int[][]> boards;
     boolean print = false;
     boolean runSingleThread = false;
 
@@ -32,7 +39,7 @@ public class MatchMaker {
         this.blackDifficulty = blackDifficulty;
         this.whiteParameters = whiteParameters;
         this.blackParameters = blackParameters;
-        this.boards = getBoards();
+        this.boards = readBoards();
     }
 
     /**
@@ -44,15 +51,15 @@ public class MatchMaker {
         //ArrayList<RoundResult> results = new ArrayList<>();
         RoundResult finalResult = new RoundResult();
 		
-		Semaphore finished = new Semaphore(howManyBoards < boards.length ? 1 - howManyBoards : 1 - boards.length); // :P
+		Semaphore finished = new Semaphore(howManyBoards < boards.size() ? 1 - howManyBoards : 1 - boards.size()); // :P
 		Semaphore threadCount = new Semaphore(8);
 		Semaphore mutex = new Semaphore(1);
 		
-        for(int i=0; i<howManyBoards && i<boards.length; i++) {
+        for(int i=0; i<howManyBoards && i<boards.size(); i++) {
 			int j = i;		// yes, this is necessary
 
             if (runSingleThread) {
-                RoundResult rr = calculateRoundForBothRoles(boards[j]);
+                RoundResult rr = calculateRoundForBothRoles(boards.get(i));
                 rr.roundNo = j+1;
                 if (print)
                     System.out.println(rr + "\n" + rr.endGameMessagesToString());
@@ -62,7 +69,7 @@ public class MatchMaker {
                 Thread matchThread = new Thread(() -> {
                     acquire(threadCount);
 
-                    RoundResult rr = calculateRoundForBothRoles(boards[j]);
+                    RoundResult rr = calculateRoundForBothRoles(boards.get(j));
                     rr.roundNo = j+1;
 
                     acquire(mutex);
@@ -155,16 +162,16 @@ public class MatchMaker {
             }
             oldResult = result;
         }
-        //System.out.print("\tGame stopped: too many rounds.\n");
+        System.out.print("\tGame stopped: too many rounds.\n");
         return result.board;
     }
 
-    private int updateGameEndingIndicators(TurnData latestTurnData, int turnsWithouMoving) {
+    private int updateGameEndingIndicators(TurnData latestTurnData, int turnsWithoutMoving) {
         if(!latestTurnData.didMove) {
-            turnsWithouMoving += 2;
-        } else if(turnsWithouMoving > 0) {
+            turnsWithoutMoving += 2;
+        } else if(turnsWithoutMoving > 0) {
             //System.out.println("turns without stones hit is " + turnsWithouMoving + ", lets decrease it by one");
-            turnsWithouMoving--;
+            turnsWithoutMoving--;
         }
 
         //Lets check every second turn if AIs are in a loop.
@@ -180,7 +187,7 @@ public class MatchMaker {
             }
             oldResult = result;
         }*/
-        return turnsWithouMoving;
+        return turnsWithoutMoving;
     }
 
     private String parseGameEndedMessage(boolean starter, int whosTurn, int turnsWithoutMoving, int movesWithoutHitting) {
@@ -221,5 +228,40 @@ public class MatchMaker {
             ex.printStackTrace();
         }
         return boards;
+    }
+
+    private void writeBoards(int[][][] boards) {
+        ArrayList<String> bs = new ArrayList<>();
+        for (int i = 0; i < boards.length; i++) {
+            bs.add(JsonConverter.jsonifyTable(boards[i]));
+        }
+
+        try {
+            Path file = Paths.get("./build/resources/main/boardsJSON.txt");
+            Files.write(file, bs, Charset.forName("UTF-8"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private ArrayList<int[][]> readBoards() {
+        ArrayList<int[][]> p = new ArrayList<>();
+        try {
+            InputStream in = MatchMaker.class.getResourceAsStream("/boardsJSON.txt");
+            BufferedReader bufferedReader =  new BufferedReader(new InputStreamReader(in));
+
+            String line = "";
+            while((line = bufferedReader.readLine()) != null) {
+                if (line.length() < 3) {
+                    continue;
+                }
+                p.add(JsonConverter.parseTable(line));
+            }
+
+            bufferedReader.close();
+        } catch(Exception ex) {
+            ex.printStackTrace();
+        }
+        return p;
     }
 }

@@ -3,6 +3,7 @@ package Optimization;
 import AI.AI;
 import AI.ParametersAI;
 import Game.Board;
+import Messaging.JsonConverter;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -15,7 +16,9 @@ import static org.mockito.Mockito.*;
 public class MatchMakerTest {
 
     private MatchMaker mm;
-    private int[][] board;
+    private int[][] board, board1;
+    private String b56JSON =
+            "[[-2,0,1,1,1,-1,-2],[1,-1,0,-1,1,0,1],[-1,0,-1,-1,-1,-1,0],[1,1,1,-1,-1,1,-1],[-1,-1,1,0,1,0,0],[0,1,1,1,1,-1,0],[-2,0,-1,-1,1,-1,-2]]";
 
     public MatchMakerTest() {
         this.mm = new MatchMaker(2, AI.bestParameters, 1, AI.bestParameters);
@@ -32,6 +35,7 @@ public class MatchMakerTest {
                 {-1, 0, 0, 1, 0, 0,-1},
                 {-2, 0, 0, 0, 0, 0,-2},
         };
+        this.board1 = JsonConverter.parseTable(b56JSON);
     }
 
 
@@ -73,4 +77,17 @@ public class MatchMakerTest {
         assertTrue("if red starts and looks two moves ahead, it must win", endBoard.calculatePoints() > 0);
     }
 
+    @Test
+    public void sameLevelAIsWithSameParametersGetSameResults() {
+        mm = new MatchMaker(2, new ParametersAI(), 2, new ParametersAI());
+        Board b = new Board(board1);
+        System.out.println("testing with board\n" + b);
+        System.out.println("We run the test three times because sometimes it match maker gives different results!?!?\n");
+        for (int i = 0; i < 3; i++) {
+            RoundResult rr = mm.calculateRoundForBothRoles(board1);
+            System.out.println(rr + "\n" + rr.endGameMessagesToString());
+            assertTrue("Both AIs should win the same amount when playing the same board with same params and difficulty!",
+                    rr.whitePoints == rr.blackPoints && rr.whiteWins == rr.blackWins);
+        }
+    }
 }

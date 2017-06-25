@@ -37,6 +37,16 @@ public class Board{
     }
 
     public static boolean redStartsGame(int[][] board) {
+        return Board.redStartsGame(board, false);
+    }
+
+    /**
+     *
+     * @param board to be considered
+     * @param random true if we want to randomize the starter in the case of even amount of stones in corners and edges
+     * @return
+     */
+    public static boolean redStartsGame(int[][] board, boolean random) {
         int sTurn = board[0][1] + board[0][5] + board[1][0] + board[1][6] + board[5][0] + board[5][6] + board[6][1] + board[6][5];
 
         if (sTurn == 0) {
@@ -48,9 +58,9 @@ public class Board{
             }
         }
 
-        if (sTurn == 0) {
-            Random random = new Random();
-            return random.nextBoolean();
+        if (sTurn == 0 && random) {
+            Random rnd = new Random();
+            return rnd.nextBoolean();
         } else {
             return sTurn < 0;
         }
