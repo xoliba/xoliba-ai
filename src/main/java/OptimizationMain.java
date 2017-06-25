@@ -9,11 +9,11 @@ public class OptimizationMain {
 
 
     public static void main(String[] args) {
-        //testOneSetup(3, 2, 100);
+        testOneSetup(2, 2, 100);
 
         boolean[] testThisParameter = new boolean[]{
                 true, false, false, false, false, false};
-        iterateWithDifferentParameters(testThisParameter, 0, 100, 10, 50, 2, 2);
+        //iterateWithDifferentParameters(testThisParameter, 0, 100, 10, 50, 2, 2);
 
     }
 
@@ -24,7 +24,7 @@ public class OptimizationMain {
             blackLVL,
             bestParameters,
             true, //do we print more?
-            false //do we run on single thread
+            true //do we run on single thread
         );
         System.out.println(referee.calculate(howManyBoards));
         System.out.println(howLongItTook(start, 2 * howManyBoards));
@@ -96,10 +96,10 @@ public class OptimizationMain {
 
     private static String getEstimationOfProcessLength(int rounds, int whiteLVL, int blackLVL) {
         double[] executionEstimations = new double[] {
-            250, 12, 2.7, 0.10, 0.018, 1, 1
+            250, 10, 2.7, 0.10, 0.018, 1, 1
         }; //how many rounds per second we compute (on my machine) if we iterate two AIs of lvl n (n = 1, 2, 3,..)
-        double estimation = rounds / 2 / executionEstimations[whiteLVL - 1];
-        estimation += rounds / 2 / executionEstimations[blackLVL - 1];
+        double estimation = rounds * 1.0 / 2 / executionEstimations[whiteLVL - 1];
+        estimation += rounds * 1.0 / 2 / executionEstimations[blackLVL - 1];
         String s = "Lets play " + rounds + " rounds in total with AI lvl " + whiteLVL + " (w) " + blackLVL + " (b)!\n" +
                 "It might take around " + (int) estimation + " sec to compute all the rounds...\n";
         return s;
