@@ -198,6 +198,7 @@ public class MatchMaker {
         return s;
     }
 
+    @Deprecated
     private int[][][] getBoards() {
         int[][][] boards = new int[10000][7][7];
         String line = null;

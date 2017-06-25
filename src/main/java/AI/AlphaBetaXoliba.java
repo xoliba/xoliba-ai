@@ -11,12 +11,12 @@ public class AlphaBetaXoliba {
 
     private Validator validator;
     private StoneCollector stoneCollector;
-    private int inceptionTreshold;
+    private int inceptionThreshold;
 
     public AlphaBetaXoliba() {
         validator = new Validator();
         stoneCollector = new StoneCollector();
-        inceptionTreshold = 3;
+        inceptionThreshold = 3;
     }
 
     /**
@@ -32,7 +32,7 @@ public class AlphaBetaXoliba {
             return null;
         }
 
-        this.inceptionTreshold = inceptionThreshold;
+        this.inceptionThreshold = inceptionThreshold;
         TurnData td = new TurnData(board.board);
         double redBest = Integer.MIN_VALUE;
         double blueBest = Integer.MAX_VALUE;
@@ -86,7 +86,7 @@ public class AlphaBetaXoliba {
         if (gameEndedAfter(lastTurn, turnSkipped)) {
             return board.evaluate(true);
         }
-        if (inceptionLevel >= inceptionTreshold) {
+        if (inceptionLevel >= inceptionThreshold) {
             return board.evaluate(false);
         }
 
@@ -131,7 +131,7 @@ public class AlphaBetaXoliba {
         if (gameEndedAfter(lastTurn, turnSkipped)) {
             return board.evaluate(true);
         }
-        if (inceptionLevel >= inceptionTreshold) {
+        if (inceptionLevel >= inceptionThreshold) {
             return board.evaluate(false);
         }
 
