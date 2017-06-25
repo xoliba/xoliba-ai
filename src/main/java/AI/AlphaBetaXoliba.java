@@ -12,11 +12,13 @@ public class AlphaBetaXoliba {
     private Validator validator;
     private StoneCollector stoneCollector;
     private int inceptionThreshold;
+    private ParametersAI params;
 
     public AlphaBetaXoliba() {
         validator = new Validator();
         stoneCollector = new StoneCollector();
         inceptionThreshold = 3;
+        this.params = AI.bestParameters;
     }
 
     /**
@@ -32,6 +34,7 @@ public class AlphaBetaXoliba {
             return null;
         }
 
+        this.params = board.getWeights();
         this.inceptionThreshold = inceptionThreshold;
         TurnData td = new TurnData(board.board);
         double redBest = Integer.MIN_VALUE;
@@ -82,7 +85,7 @@ public class AlphaBetaXoliba {
 
     protected double maxValue(TurnData lastTurn, int inceptionLevel, double redsBest, double bluesBest, int turnSkipped) {
         //System.out.println("AI maxValue: inceptionLevel " + inceptionLevel + "; redsBest " + redsBest + "; bluesBest" + bluesBest);
-        Board board = new Board(lastTurn.board);
+        Board board = new Board(lastTurn.board, params);
         if (gameEndedAfter(lastTurn, turnSkipped)) {
             return board.evaluate(true);
         }
@@ -127,7 +130,7 @@ public class AlphaBetaXoliba {
      */
 
     protected double minValue(TurnData lastTurn, int inceptionLevel, double redsBest, double bluesBest, int turnSkipped) {
-        Board board = new Board(lastTurn.board);
+        Board board = new Board(lastTurn.board, params);
         if (gameEndedAfter(lastTurn, turnSkipped)) {
             return board.evaluate(true);
         }
