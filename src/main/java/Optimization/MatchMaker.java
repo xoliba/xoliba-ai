@@ -253,7 +253,7 @@ public class MatchMaker {
         }
 
         try {
-            Path file = Paths.get("./build/resources/main/boardsJSON.txt");
+            Path file = Paths.get("./src/main/resources/boardsJSON.txt");
             Files.write(file, bs, Charset.forName("UTF-8"));
         } catch (Exception e) {
             e.printStackTrace();
