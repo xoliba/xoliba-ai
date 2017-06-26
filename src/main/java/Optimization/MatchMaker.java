@@ -13,6 +13,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Semaphore;
 
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+
 import AI.*;
 import Game.Board;
 import Game.RoundRecord;
@@ -21,18 +24,19 @@ import Messaging.JsonConverter;
 
 public class MatchMaker {
 
+    Logger logger = LogManager.getLogger(Optimization.MatchMaker.class);
     int whiteDifficulty = 1;
     int blackDifficulty = 1;
     ParametersAI whiteParameters; //the champ
     ParametersAI blackParameters; //the challenger
     ArrayList<int[][]> boards;
-    boolean print = false;
+    //boolean print = false;
     boolean runSingleThread = false;
     boolean keepRecord = false;
 
     public MatchMaker(int whiteDifficulty, ParametersAI whiteParameters, int blackDifficulty, ParametersAI blackParameters, boolean print, boolean runSingleThread) {
         this(whiteDifficulty, whiteParameters, blackDifficulty, blackParameters);
-        this.print = print;
+        //this.print = print;   //We have logging system now. Del this plz?
         this.runSingleThread = runSingleThread;
     }
 
@@ -68,11 +72,9 @@ public class MatchMaker {
             if (runSingleThread) {
                 RoundResult rr = calculateRoundForBothRoles(boards.get(i));
                 rr.roundNo = j+1;
-                if (print)
-                    System.out.println(rr + "\n" + rr.endGameMessagesToString());
+                logger.debug(rr + "\n" + rr.endGameMessagesToString());
                 finalResult.add(rr, keepRecord);
             } else {
-
                 Thread matchThread = new Thread(() -> {
                     acquire(threadCount);
 
@@ -82,8 +84,7 @@ public class MatchMaker {
                     acquire(mutex);
                     //results.add(rr);
                     finalResult.add(rr, keepRecord);
-                    if (print)
-                        System.out.println(rr + "\n" + rr.endGameMessagesToString());
+                    logger.debug(rr + "\n" + rr.endGameMessagesToString());
                     mutex.release();
                     threadCount.release();
                     finished.release();
@@ -217,7 +218,7 @@ public class MatchMaker {
         String line = null;
 
         try {
-            InputStream in = MatchMaker.class.getResourceAsStream("/boards.txt");
+            InputStream in = MatchMaker.class.getResourceAsStream("/boardsJSON.txt");
             BufferedReader bufferedReader =  new BufferedReader(new InputStreamReader(in));
 
             int i=0;
