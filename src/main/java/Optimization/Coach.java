@@ -15,6 +15,10 @@ import static AI.AI.bestParameters;
 public class Coach {
 
     private boolean keepRecord = false;
+    private double[] executionEstimations = new double[] {
+            250, 12.5, 1.8, 0.10, 0.018, 1, 1
+    }; //how many rounds per second we compute (on my machine) if we iterate two AIs of lvl n (n = 1, 2, 3,..)
+
 
     public Coach(boolean keepRecord) {
         this.keepRecord = keepRecord;
@@ -112,9 +116,6 @@ public class Coach {
     }
 
     private String getEstimationOfProcessLength(int rounds, int whiteLVL, int blackLVL) {
-        double[] executionEstimations = new double[] {
-                250, 12.5, 2.7, 0.10, 0.018, 1, 1
-        }; //how many rounds per second we compute (on my machine) if we iterate two AIs of lvl n (n = 1, 2, 3,..)
         double estimation = rounds * 1.0 / 2 / executionEstimations[whiteLVL - 1];
         estimation += rounds * 1.0 / 2 / executionEstimations[blackLVL - 1];
         String s = "Lets play " + rounds + " rounds in total with AI lvl " + whiteLVL + " (w) " + blackLVL + " (b)!\n" +
