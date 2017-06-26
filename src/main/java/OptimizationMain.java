@@ -3,13 +3,9 @@ import Game.TurnData;
 import Optimization.*;
 import AI.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static AI.AI.bestParameters;
 
 public class OptimizationMain {
-
 
     public static void main(String[] args) {
         ///*

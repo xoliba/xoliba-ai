@@ -8,5 +8,6 @@
 xoliba.iml
 bin/
 /.nb-gradle/
+logs/*
 src/assets/vendor
 src/main/resources/public/clientdeps
