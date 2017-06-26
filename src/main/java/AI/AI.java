@@ -53,7 +53,6 @@ public class AI {
         return inceptionThreshold;
     }
 
-    //todo test
     public boolean doesWantToSurrender(TurnData data) {
         if (color == 1 && data.bluePoints >= 0.6 * data.scoreLimit)
             return false;
@@ -81,7 +80,6 @@ public class AI {
         return false;
     }
 
-    //todo test
     public boolean doesWantToStopPlaying(TurnData data) {
         if (!data.surrender) //if other doesn't want to stop
             return false;

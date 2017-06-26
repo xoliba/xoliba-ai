@@ -28,6 +28,7 @@ public class TurnData {
         }
         this.surrender = surrender;
         this.scoreLimit = 50;
+        this.board = new int[7][7];
     }
 
     public TurnData(boolean startRound, boolean surrender, int[][] board) {

@@ -13,7 +13,7 @@ public class AITest {
 
     private AI ai;
     private Board boardWithTwoSmallTriangles;
-    private int[][] table;
+    private int[][] table, table1;
 
     @Before
     public void setUp() {
@@ -25,6 +25,15 @@ public class AITest {
                 {0,0,0,0,0,0,0},
                 {1,0,1,0,0,0,0},
                 {0,1,0,0,0,0,0},
+                {-2,0,0,0,0,0,-2},
+        };
+        table1 = new int[][]{
+                {-2,0,0,0,0,-1,-2},
+                {0,0,0,0,-1,0,-1},
+                {0,0,0,0,0,0,0},
+                {0,0,0,0,-1,0,0},
+                {1,0,1,0,0,0,0},
+                {0,1,0,0,0,0,-1},
                 {-2,0,0,0,0,0,-2},
         };
         boardWithTwoSmallTriangles = new Board(table);
@@ -44,6 +53,18 @@ public class AITest {
                 , ai.doesWantToSurrender(td));
         ai = new AI(-1);
         assertFalse(ai.doesWantToSurrender(td));
+        ai = new AI(1, 3);
+        td.bluePoints = 30;
+        assertFalse(ai.doesWantToSurrender(td));
+    }
+
+    @Test
+    public void AIknowsHowToAnswerEndGameRequest() {
+        TurnData td = new TurnData(false, true);
+        assertTrue("easy AI should agree to end game if player asks, AI:\n" + ai + "\n" + td, ai.doesWantToStopPlaying(td));
+        td = new TurnData(false, true, table1);
+        ai = new AI(1, 4);
+        assertFalse("hard AI should agree to end game if player asks, AI:\n" + ai + "\n" + td, ai.doesWantToStopPlaying(td));
     }
 
     @Test
