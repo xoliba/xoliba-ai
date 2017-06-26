@@ -12,14 +12,16 @@ public class OptimizationMain {
 
 
     public static void main(String[] args) {
-        new Coach().runOneShowdown(2, bestParameters,
-                2, new ParametersAI(100,1,1,1,1,1),
-                1, true);
-
+        ///*
+        new Coach(true).runOneShowdown(4, bestParameters,
+                4, new ParametersAI(5,40,40,5,5,5),
+                1);
+        //*/
         /*
         boolean[] testTheseParameters = new boolean[]{
-                true, true, true, false, false, false};
-        new Coach().iterateWithDifferentParameters(testTheseParameters, 0, 1000, 500, 100, 2, 2);
+                true, true, true, true, true, true};
+        new Coach(true).iterateWithDifferentParameters(testTheseParameters, 0, 120, 20,
+                50, 2, 2);
         */
     }
 

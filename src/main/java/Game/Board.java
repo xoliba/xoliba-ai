@@ -17,8 +17,8 @@ public class Board{
     private int sizeOfRedsBiggestTriangle = 0;
     private int sizeOfBluesBiggestTriangle = 0;
     private int howManyTrianglesOnBoard = 0;
-    private boolean hasBeenEvaluated = false; //for efficiency, possible BUG if the board is changed
-    private double[] values = new double[2]; //0 for game ended false and 1 for game ended true
+//    private boolean hasBeenEvaluated = false; //for efficiency, possible BUG if the board is changed
+//    private double[] values = new double[2]; //0 for game ended false and 1 for game ended true
     private ParametersAI weights;
     private boolean trianglesHaveBeenLookedFor = false; //for efficiency, possible BUG if the board is changed
 
@@ -98,7 +98,8 @@ public class Board{
      * @return value that represents the situation: the smaller (negative) is better for blue and bigger (positive) is better for red
      */
     public double evaluate(boolean gameEnded) {
-        /*int i = gameEnded ? 1 : 0;
+/*
+        int i = gameEnded ? 1 : 0;
         double v = values[i];
         if (hasBeenEvaluated && v != 0)
             return v;
@@ -114,16 +115,13 @@ public class Board{
         if (gameEnded)
             v += weights.calculatePointsWeight * calculatePoints();
 
-        //values[i] = v;
+        /*
+        values[i] = v;
 
         if (values[0] != 0 && values[1] != 0)
             hasBeenEvaluated = true;
-
+        */
         return v;
-    }
-
-    public static double evaluate(int[][] b, boolean gameEnded) {
-        return new Board(b).evaluate(gameEnded);
     }
 
     private double sumOfTheStones() {
@@ -154,7 +152,7 @@ public class Board{
      * stones, that are in the corners of the board forming a basis for a triangle give a notable advantage to that color
      * @return the sum of found basis of both colors
      */
-    private double lookForBasis() {
+    private double lookForBasis() { //todo test
         double sum = 0;
         for (int i = 1; i < board.length - 1; i++) { //we dont look at the outside-the-board-corners
             sum += countTheValueOfThisPair(new Coordinate(i, 0)); //the up-down edges
@@ -164,6 +162,7 @@ public class Board{
         return sum;
     }
 
+    //todo test
     private double lookForMediumBasisOnEdges() {
         double sum = 0;
         Coordinate[][] pairs = new Coordinate[][]{
@@ -268,7 +267,7 @@ public class Board{
     public String toString() {
         String b = "board " + this.hashCode() + "\n" +
                 "value: " + this.evaluate() + "\n";
-        b += "evaluated with params " + weights + "\n";
+        //b += "evaluated with params " + weights + "\n"; //this gives false information when turn data prints board, because td doesn't have information regarding the weights board used
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[0].length; j++) {
                 b += "[";

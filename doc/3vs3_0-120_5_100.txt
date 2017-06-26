@@ -1,0 +1,2819 @@
+
+Lets play 30000 rounds in total with AI lvl 3 (w) 3 (b)!
+It might take around 11111 sec to compute all the rounds...
+
+generating and writing parameters into a file took 154 ms
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 0.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 30.33041722745626
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2634-2229, (victories w-b 89-67)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 0.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 44.50% of the games, black 33.50%
+	white gets 18.17% more points than black
+	points given per game 24.32
+	both AIs won with same color 51.00% of games
+	percent of boards that the challenger (black) won more games than white 15.00%
+	challenger performance: 30.33
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 5.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 26.141886151231947
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2845-2354, (victories w-b 92-70)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 5.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 46.00% of the games, black 35.00%
+	white gets 20.86% more points than black
+	points given per game 26.00
+	both AIs won with same color 54.00% of games
+	percent of boards that the challenger (black) won more games than white 12.00%
+	challenger performance: 26.14
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 10.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 37.69243768483312
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2753-2367, (victories w-b 88-74)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 10.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 44.00% of the games, black 37.00%
+	white gets 16.31% more points than black
+	points given per game 25.60
+	both AIs won with same color 52.00% of games
+	percent of boards that the challenger (black) won more games than white 17.00%
+	challenger performance: 37.69
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 15.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 50.01101321585903
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2684-2497, (victories w-b 85-81)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 15.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 42.50% of the games, black 40.50%
+	white gets 7.49% more points than black
+	points given per game 25.91
+	both AIs won with same color 56.00% of games
+	percent of boards that the challenger (black) won more games than white 17.00%
+	challenger performance: 50.01
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 20.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 47.308316430020284
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2556-2465, (victories w-b 85-80)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 20.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 42.50% of the games, black 40.00%
+	white gets 3.69% more points than black
+	points given per game 25.11
+	both AIs won with same color 64.00% of games
+	percent of boards that the challenger (black) won more games than white 11.00%
+	challenger performance: 47.31
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 25.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 50.22256097560975
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2710-2624, (victories w-b 84-83)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 25.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 42.00% of the games, black 41.50%
+	white gets 3.28% more points than black
+	points given per game 26.67
+	both AIs won with same color 64.00% of games
+	percent of boards that the challenger (black) won more games than white 12.00%
+	challenger performance: 50.22
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 30.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 36.4361622230567
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2931-2663, (victories w-b 91-81)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 30.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 45.50% of the games, black 40.50%
+	white gets 10.06% more points than black
+	points given per game 27.97
+	both AIs won with same color 73.00% of games
+	percent of boards that the challenger (black) won more games than white 6.00%
+	challenger performance: 36.44
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 35.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 36.88884702336097
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2856-2654, (victories w-b 89-83)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 35.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 44.50% of the games, black 41.50%
+	white gets 7.61% more points than black
+	points given per game 27.55
+	both AIs won with same color 78.00% of games
+	percent of boards that the challenger (black) won more games than white 3.00%
+	challenger performance: 36.89
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 43.5
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2850-2850, (victories w-b 87-87)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 43.50% of the games, black 43.50%
+	white gets 0.00% more points than black
+	points given per game 28.50
+	both AIs won with same color 87.00% of games
+	percent of boards that the challenger (black) won more games than white 0.00%
+	challenger performance: 43.50
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 45.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 48.61627069834413
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2872-2778, (victories w-b 89-84)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 45.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 44.50% of the games, black 42.00%
+	white gets 3.38% more points than black
+	points given per game 28.25
+	both AIs won with same color 72.00% of games
+	percent of boards that the challenger (black) won more games than white 10.00%
+	challenger performance: 48.62
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 50.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 71.83676092544988
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2837-3112, (victories w-b 84-94)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 50.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 42.00% of the games, black 47.00%
+	white gets -8.84% more points than black
+	points given per game 29.75
+	both AIs won with same color 68.00% of games
+	percent of boards that the challenger (black) won more games than white 16.00%
+	challenger performance: 71.84
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 55.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 64.46629398224269
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2966-3041, (victories w-b 87-92)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 55.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 43.50% of the games, black 46.00%
+	white gets -2.47% more points than black
+	points given per game 30.04
+	both AIs won with same color 67.00% of games
+	percent of boards that the challenger (black) won more games than white 16.00%
+	challenger performance: 64.47
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 60.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 58.69840695148443
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2867-2762, (victories w-b 89-85)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 60.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 44.50% of the games, black 42.50%
+	white gets 3.80% more points than black
+	points given per game 28.14
+	both AIs won with same color 57.00% of games
+	percent of boards that the challenger (black) won more games than white 20.00%
+	challenger performance: 58.70
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 65.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 71.29031104755094
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2677-2797, (victories w-b 82-88)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 65.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 41.00% of the games, black 44.00%
+	white gets -4.29% more points than black
+	points given per game 27.37
+	both AIs won with same color 55.00% of games
+	percent of boards that the challenger (black) won more games than white 23.00%
+	challenger performance: 71.29
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 70.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 72.71698113207547
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2727-2862, (victories w-b 82-90)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 70.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 41.00% of the games, black 45.00%
+	white gets -4.72% more points than black
+	points given per game 27.95
+	both AIs won with same color 56.00% of games
+	percent of boards that the challenger (black) won more games than white 23.00%
+	challenger performance: 72.72
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 75.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 69.23579244617014
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2713-2833, (victories w-b 82-88)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 75.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 41.00% of the games, black 44.00%
+	white gets -4.24% more points than black
+	points given per game 27.73
+	both AIs won with same color 59.00% of games
+	percent of boards that the challenger (black) won more games than white 21.00%
+	challenger performance: 69.24
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 80.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 58.5105723660226
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2825-2743, (victories w-b 85-85)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 80.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 42.50% of the games, black 42.50%
+	white gets 2.99% more points than black
+	points given per game 27.84
+	both AIs won with same color 59.00% of games
+	percent of boards that the challenger (black) won more games than white 19.00%
+	challenger performance: 58.51
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 85.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 62.03017708709794
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2780-2767, (victories w-b 85-85)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 85.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 42.50% of the games, black 42.50%
+	white gets 0.47% more points than black
+	points given per game 27.73
+	both AIs won with same color 58.00% of games
+	percent of boards that the challenger (black) won more games than white 20.00%
+	challenger performance: 62.03
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 90.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 58.92857142857143
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2830-2800, (victories w-b 86-84)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 90.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 43.00% of the games, black 42.00%
+	white gets 1.07% more points than black
+	points given per game 28.15
+	both AIs won with same color 60.00% of games
+	percent of boards that the challenger (black) won more games than white 18.00%
+	challenger performance: 58.93
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 95.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 60.717948717948715
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2844-2808, (victories w-b 85-86)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 95.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 42.50% of the games, black 43.00%
+	white gets 1.28% more points than black
+	points given per game 28.26
+	both AIs won with same color 60.00% of games
+	percent of boards that the challenger (black) won more games than white 19.00%
+	challenger performance: 60.72
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 100.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 62.07235686687741
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2788-2847, (victories w-b 84-86)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 100.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 42.00% of the games, black 43.00%
+	white gets -2.07% more points than black
+	points given per game 28.18
+	both AIs won with same color 60.00% of games
+	percent of boards that the challenger (black) won more games than white 17.00%
+	challenger performance: 62.07
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 105.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 62.236111111111114
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2830-2880, (victories w-b 86-87)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 105.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 43.00% of the games, black 43.50%
+	white gets -1.74% more points than black
+	points given per game 28.55
+	both AIs won with same color 60.00% of games
+	percent of boards that the challenger (black) won more games than white 17.00%
+	challenger performance: 62.24
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 110.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 59.1299037749815
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2712-2702, (victories w-b 85-83)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 110.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 42.50% of the games, black 41.50%
+	white gets 0.37% more points than black
+	points given per game 27.07
+	both AIs won with same color 59.00% of games
+	percent of boards that the challenger (black) won more games than white 18.00%
+	challenger performance: 59.13
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 115.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 58.35759611795446
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2723-2679, (victories w-b 86-82)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 115.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 43.00% of the games, black 41.00%
+	white gets 1.64% more points than black
+	points given per game 27.01
+	both AIs won with same color 57.00% of games
+	percent of boards that the challenger (black) won more games than white 19.00%
+	challenger performance: 58.36
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 120.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 60.8394495412844
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2743-2725, (victories w-b 83-83)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 120.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 41.50% of the games, black 41.50%
+	white gets 0.66% more points than black
+	points given per game 27.34
+	both AIs won with same color 57.00% of games
+	percent of boards that the challenger (black) won more games than white 20.00%
+	challenger performance: 60.84
+##################################################
+
+
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤ START TESTING WITH NEW PARAMETER ¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 0.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: -10.301381692573408
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 3701-2316, (victories w-b 106-75)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 0.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 53.00% of the games, black 37.50%
+	white gets 59.80% more points than black
+	points given per game 30.09
+	both AIs won with same color 56.00% of games
+	percent of boards that the challenger (black) won more games than white 12.00%
+	challenger performance: -10.30
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 5.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 43.04211362733413
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2969-2517, (victories w-b 93-78)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 5.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 46.50% of the games, black 39.00%
+	white gets 17.96% more points than black
+	points given per game 27.43
+	both AIs won with same color 43.00% of games
+	percent of boards that the challenger (black) won more games than white 22.00%
+	challenger performance: 43.04
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 10.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 34.99216552832463
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 3099-2489, (victories w-b 94-79)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 10.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 47.00% of the games, black 39.50%
+	white gets 24.51% more points than black
+	points given per game 27.94
+	both AIs won with same color 48.00% of games
+	percent of boards that the challenger (black) won more games than white 20.00%
+	challenger performance: 34.99
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 15.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 29.033812341504646
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 3075-2366, (victories w-b 93-74)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 15.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 46.50% of the games, black 37.00%
+	white gets 29.97% more points than black
+	points given per game 27.20
+	both AIs won with same color 44.00% of games
+	percent of boards that the challenger (black) won more games than white 22.00%
+	challenger performance: 29.03
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 20.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 38.698265668111944
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 3014-2537, (victories w-b 95-77)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 20.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 47.50% of the games, black 38.50%
+	white gets 18.80% more points than black
+	points given per game 27.75
+	both AIs won with same color 51.00% of games
+	percent of boards that the challenger (black) won more games than white 19.00%
+	challenger performance: 38.70
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 25.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 42.28671196677992
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 3052-2649, (victories w-b 94-81)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 25.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 47.00% of the games, black 40.50%
+	white gets 15.21% more points than black
+	points given per game 28.50
+	both AIs won with same color 54.00% of games
+	percent of boards that the challenger (black) won more games than white 17.00%
+	challenger performance: 42.29
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 30.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 45.93888263967004
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2962-2667, (victories w-b 92-82)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 30.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 46.00% of the games, black 41.00%
+	white gets 11.06% more points than black
+	points given per game 28.14
+	both AIs won with same color 59.00% of games
+	percent of boards that the challenger (black) won more games than white 16.00%
+	challenger performance: 45.94
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 35.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 58.943497591700634
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2768-2699, (victories w-b 85-83)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 35.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 42.50% of the games, black 41.50%
+	white gets 2.56% more points than black
+	points given per game 27.34
+	both AIs won with same color 56.00% of games
+	percent of boards that the challenger (black) won more games than white 20.00%
+	challenger performance: 58.94
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 40.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 55.47806354009077
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2790-2644, (victories w-b 90-82)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 40.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 45.00% of the games, black 41.00%
+	white gets 5.52% more points than black
+	points given per game 27.17
+	both AIs won with same color 50.00% of games
+	percent of boards that the challenger (black) won more games than white 20.00%
+	challenger performance: 55.48
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 45.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 57.798165137614674
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2785-2725, (victories w-b 86-84)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 45.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 43.00% of the games, black 42.00%
+	white gets 2.20% more points than black
+	points given per game 27.55
+	both AIs won with same color 57.00% of games
+	percent of boards that the challenger (black) won more games than white 18.00%
+	challenger performance: 57.80
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 50.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 52.84869128719971
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2849-2789, (victories w-b 86-84)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 50.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 43.00% of the games, black 42.00%
+	white gets 2.15% more points than black
+	points given per game 28.19
+	both AIs won with same color 65.00% of games
+	percent of boards that the challenger (black) won more games than white 13.00%
+	challenger performance: 52.85
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 55.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 46.226439310597726
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2789-2727, (victories w-b 88-83)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 55.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 44.00% of the games, black 41.50%
+	white gets 2.27% more points than black
+	points given per game 27.58
+	both AIs won with same color 73.00% of games
+	percent of boards that the challenger (black) won more games than white 7.00%
+	challenger performance: 46.23
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 43.5
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2850-2850, (victories w-b 87-87)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 43.50% of the games, black 43.50%
+	white gets 0.00% more points than black
+	points given per game 28.50
+	both AIs won with same color 87.00% of games
+	percent of boards that the challenger (black) won more games than white 0.00%
+	challenger performance: 43.50
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 65.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 49.65109989181392
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2852-2773, (victories w-b 85-87)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 65.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 42.50% of the games, black 43.50%
+	white gets 2.85% more points than black
+	points given per game 28.12
+	both AIs won with same color 74.00% of games
+	percent of boards that the challenger (black) won more games than white 9.00%
+	challenger performance: 49.65
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 70.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 59.17832916815423
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2782-2801, (victories w-b 84-87)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 70.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 42.00% of the games, black 43.50%
+	white gets -0.68% more points than black
+	points given per game 27.91
+	both AIs won with same color 68.00% of games
+	percent of boards that the challenger (black) won more games than white 15.00%
+	challenger performance: 59.18
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 75.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 40.88247307835128
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2952-2693, (victories w-b 90-83)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 75.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 45.00% of the games, black 41.50%
+	white gets 9.62% more points than black
+	points given per game 28.23
+	both AIs won with same color 70.00% of games
+	percent of boards that the challenger (black) won more games than white 9.00%
+	challenger performance: 40.88
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 80.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 39.8821892393321
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 3062-2695, (victories w-b 93-79)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 80.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 46.50% of the games, black 39.50%
+	white gets 13.62% more points than black
+	points given per game 28.79
+	both AIs won with same color 60.00% of games
+	percent of boards that the challenger (black) won more games than white 14.00%
+	challenger performance: 39.88
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 85.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 39.986765278318416
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2929-2569, (victories w-b 89-78)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 85.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 44.50% of the games, black 39.00%
+	white gets 14.01% more points than black
+	points given per game 27.49
+	both AIs won with same color 56.00% of games
+	percent of boards that the challenger (black) won more games than white 15.00%
+	challenger performance: 39.99
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 90.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 49.82082551594747
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2843-2665, (victories w-b 86-81)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 90.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 43.00% of the games, black 40.50%
+	white gets 6.68% more points than black
+	points given per game 27.54
+	both AIs won with same color 57.00% of games
+	percent of boards that the challenger (black) won more games than white 16.00%
+	challenger performance: 49.82
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 95.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 53.39969834087481
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2774-2652, (victories w-b 85-80)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 95.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 42.50% of the games, black 40.00%
+	white gets 4.60% more points than black
+	points given per game 27.13
+	both AIs won with same color 53.00% of games
+	percent of boards that the challenger (black) won more games than white 18.00%
+	challenger performance: 53.40
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 100.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 47.356257264626116
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2817-2581, (victories w-b 86-77)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 100.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 43.00% of the games, black 38.50%
+	white gets 9.14% more points than black
+	points given per game 26.99
+	both AIs won with same color 54.00% of games
+	percent of boards that the challenger (black) won more games than white 18.00%
+	challenger performance: 47.36
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 105.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 51.54643962848297
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2712-2584, (victories w-b 84-77)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 105.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 42.00% of the games, black 38.50%
+	white gets 4.95% more points than black
+	points given per game 26.48
+	both AIs won with same color 55.00% of games
+	percent of boards that the challenger (black) won more games than white 18.00%
+	challenger performance: 51.55
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 110.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 65.98991354466858
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2693-2776, (victories w-b 82-84)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 110.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 41.00% of the games, black 42.00%
+	white gets -2.99% more points than black
+	points given per game 27.34
+	both AIs won with same color 58.00% of games
+	percent of boards that the challenger (black) won more games than white 21.00%
+	challenger performance: 65.99
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 115.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 64.12661260597125
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2696-2713, (victories w-b 82-83)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 115.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 41.00% of the games, black 41.50%
+	white gets -0.63% more points than black
+	points given per game 27.05
+	both AIs won with same color 56.00% of games
+	percent of boards that the challenger (black) won more games than white 22.00%
+	challenger performance: 64.13
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 120.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 56.32242469319449
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2761-2689, (victories w-b 87-82)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 120.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 43.50% of the games, black 41.00%
+	white gets 2.68% more points than black
+	points given per game 27.25
+	both AIs won with same color 60.00% of games
+	percent of boards that the challenger (black) won more games than white 18.00%
+	challenger performance: 56.32
+##################################################
+
+
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤ START TESTING WITH NEW PARAMETER ¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 0.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 69.97462277091907
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2873-2916, (victories w-b 82-91)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 0.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 41.00% of the games, black 45.50%
+	white gets -1.47% more points than black
+	points given per game 28.95
+	both AIs won with same color 54.00% of games
+	percent of boards that the challenger (black) won more games than white 23.00%
+	challenger performance: 69.97
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 5.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 88.55510960172893
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2638-3239, (victories w-b 80-98)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 5.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 40.00% of the games, black 49.00%
+	white gets -18.56% more points than black
+	points given per game 29.39
+	both AIs won with same color 62.00% of games
+	percent of boards that the challenger (black) won more games than white 21.00%
+	challenger performance: 88.56
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 10.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 87.39578816971198
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2635-3229, (victories w-b 80-98)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 10.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 40.00% of the games, black 49.00%
+	white gets -18.40% more points than black
+	points given per game 29.32
+	both AIs won with same color 65.00% of games
+	percent of boards that the challenger (black) won more games than white 20.00%
+	challenger performance: 87.40
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 15.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 73.30542531815138
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2738-2986, (victories w-b 85-92)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 15.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 42.50% of the games, black 46.00%
+	white gets -8.31% more points than black
+	points given per game 28.62
+	both AIs won with same color 60.00% of games
+	percent of boards that the challenger (black) won more games than white 19.00%
+	challenger performance: 73.31
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 20.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 67.19643441282304
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2944-3057, (victories w-b 91-91)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 20.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 45.50% of the games, black 45.50%
+	white gets -3.70% more points than black
+	points given per game 30.00
+	both AIs won with same color 63.00% of games
+	percent of boards that the challenger (black) won more games than white 18.00%
+	challenger performance: 67.20
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 25.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 63.751759973181365
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2886-2983, (victories w-b 88-89)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 25.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 44.00% of the games, black 44.50%
+	white gets -3.25% more points than black
+	points given per game 29.34
+	both AIs won with same color 65.00% of games
+	percent of boards that the challenger (black) won more games than white 16.00%
+	challenger performance: 63.75
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 30.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 70.7643489668744
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2858-3049, (victories w-b 84-91)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 30.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 42.00% of the games, black 45.50%
+	white gets -6.26% more points than black
+	points given per game 29.54
+	both AIs won with same color 65.00% of games
+	percent of boards that the challenger (black) won more games than white 19.00%
+	challenger performance: 70.76
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 35.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 78.34154244977317
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2736-3086, (victories w-b 81-94)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 35.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 40.50% of the games, black 47.00%
+	white gets -11.34% more points than black
+	points given per game 29.11
+	both AIs won with same color 65.00% of games
+	percent of boards that the challenger (black) won more games than white 20.00%
+	challenger performance: 78.34
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 40.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 71.45642349903163
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2867-3098, (victories w-b 84-94)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 40.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 42.00% of the games, black 47.00%
+	white gets -7.46% more points than black
+	points given per game 29.82
+	both AIs won with same color 69.00% of games
+	percent of boards that the challenger (black) won more games than white 17.00%
+	challenger performance: 71.46
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 45.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 54.53517411185368
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2842-2843, (victories w-b 85-87)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 45.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 42.50% of the games, black 43.50%
+	white gets -0.04% more points than black
+	points given per game 28.43
+	both AIs won with same color 73.00% of games
+	percent of boards that the challenger (black) won more games than white 11.00%
+	challenger performance: 54.54
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 43.5
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2850-2850, (victories w-b 87-87)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 43.50% of the games, black 43.50%
+	white gets 0.00% more points than black
+	points given per game 28.50
+	both AIs won with same color 87.00% of games
+	percent of boards that the challenger (black) won more games than white 0.00%
+	challenger performance: 43.50
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 55.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 45.44646131279794
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2783-2727, (victories w-b 87-83)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 55.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 43.50% of the games, black 41.50%
+	white gets 2.05% more points than black
+	points given per game 27.55
+	both AIs won with same color 74.00% of games
+	percent of boards that the challenger (black) won more games than white 6.00%
+	challenger performance: 45.45
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 60.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 61.04050127134036
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2628-2753, (victories w-b 79-85)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 60.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 39.50% of the games, black 42.50%
+	white gets -4.54% more points than black
+	points given per game 26.91
+	both AIs won with same color 64.00% of games
+	percent of boards that the challenger (black) won more games than white 14.00%
+	challenger performance: 61.04
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 65.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 62.36428038777032
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2632-2682, (victories w-b 80-83)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 65.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 40.00% of the games, black 41.50%
+	white gets -1.86% more points than black
+	points given per game 26.57
+	both AIs won with same color 56.00% of games
+	percent of boards that the challenger (black) won more games than white 19.00%
+	challenger performance: 62.36
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 70.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 62.343988376316744
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2716-2753, (victories w-b 83-84)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 70.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 41.50% of the games, black 42.00%
+	white gets -1.34% more points than black
+	points given per game 27.34
+	both AIs won with same color 56.00% of games
+	percent of boards that the challenger (black) won more games than white 19.00%
+	challenger performance: 62.34
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 75.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 57.19117647058823
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2810-2720, (victories w-b 85-83)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 75.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 42.50% of the games, black 41.50%
+	white gets 3.31% more points than black
+	points given per game 27.65
+	both AIs won with same color 55.00% of games
+	percent of boards that the challenger (black) won more games than white 19.00%
+	challenger performance: 57.19
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 80.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 62.89264022865309
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2816-2799, (victories w-b 85-85)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 80.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 42.50% of the games, black 42.50%
+	white gets 0.61% more points than black
+	points given per game 28.07
+	both AIs won with same color 54.00% of games
+	percent of boards that the challenger (black) won more games than white 21.00%
+	challenger performance: 62.89
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 85.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 57.28263988522238
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2808-2788, (victories w-b 88-84)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 85.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 44.00% of the games, black 42.00%
+	white gets 0.72% more points than black
+	points given per game 27.98
+	both AIs won with same color 58.00% of games
+	percent of boards that the challenger (black) won more games than white 16.00%
+	challenger performance: 57.28
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 90.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 48.08472686733556
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2904-2691, (victories w-b 88-82)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 90.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 44.00% of the games, black 41.00%
+	white gets 7.92% more points than black
+	points given per game 27.98
+	both AIs won with same color 58.00% of games
+	percent of boards that the challenger (black) won more games than white 15.00%
+	challenger performance: 48.08
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 95.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 54.74274697025339
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2907-2723, (victories w-b 87-85)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 95.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 43.50% of the games, black 42.50%
+	white gets 6.76% more points than black
+	points given per game 28.15
+	both AIs won with same color 56.00% of games
+	percent of boards that the challenger (black) won more games than white 19.00%
+	challenger performance: 54.74
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 100.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 59.85714285714286
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2655-2625, (victories w-b 80-82)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 100.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 40.00% of the games, black 41.00%
+	white gets 1.14% more points than black
+	points given per game 26.40
+	both AIs won with same color 53.00% of games
+	percent of boards that the challenger (black) won more games than white 20.00%
+	challenger performance: 59.86
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 105.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 32.0873573309921
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2743-2278, (victories w-b 85-71)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 105.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 42.50% of the games, black 35.50%
+	white gets 20.41% more points than black
+	points given per game 25.11
+	both AIs won with same color 49.00% of games
+	percent of boards that the challenger (black) won more games than white 17.00%
+	challenger performance: 32.09
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 110.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 29.27740790057701
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2810-2253, (victories w-b 87-72)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 110.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 43.50% of the games, black 36.00%
+	white gets 24.72% more points than black
+	points given per game 25.32
+	both AIs won with same color 49.00% of games
+	percent of boards that the challenger (black) won more games than white 18.00%
+	challenger performance: 29.28
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 115.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 11.636363636363633
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2955-2167, (victories w-b 90-68)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 115.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 45.00% of the games, black 34.00%
+	white gets 36.36% more points than black
+	points given per game 25.61
+	both AIs won with same color 50.00% of games
+	percent of boards that the challenger (black) won more games than white 14.00%
+	challenger performance: 11.64
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 120.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 7.46843853820598
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2961-2107, (victories w-b 92-66)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 120.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 46.00% of the games, black 33.00%
+	white gets 40.53% more points than black
+	points given per game 25.34
+	both AIs won with same color 47.00% of games
+	percent of boards that the challenger (black) won more games than white 15.00%
+	challenger performance: 7.47
+##################################################
+
+
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤ START TESTING WITH NEW PARAMETER ¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 0.0 # big basis 0.1 # points given 30.0
+challengers performance: 79.42005958291956
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2676-3021, (victories w-b 81-90)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 0.0 # big basis 0.1 # points given 30.0
+
+	white wins 40.50% of the games, black 45.00%
+	white gets -11.42% more points than black
+	points given per game 28.48
+	both AIs won with same color 58.00% of games
+	percent of boards that the challenger (black) won more games than white 23.00%
+	challenger performance: 79.42
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 5.0 # big basis 0.1 # points given 30.0
+challengers performance: 84.17741935483872
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2583-3100, (victories w-b 77-91)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 5.0 # big basis 0.1 # points given 30.0
+
+	white wins 38.50% of the games, black 45.50%
+	white gets -16.68% more points than black
+	points given per game 28.41
+	both AIs won with same color 60.00% of games
+	percent of boards that the challenger (black) won more games than white 22.00%
+	challenger performance: 84.18
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 10.0 # big basis 0.1 # points given 30.0
+challengers performance: 60.56673511293634
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2847-2922, (victories w-b 84-86)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 10.0 # big basis 0.1 # points given 30.0
+
+	white wins 42.00% of the games, black 43.00%
+	white gets -2.57% more points than black
+	points given per game 28.84
+	both AIs won with same color 63.00% of games
+	percent of boards that the challenger (black) won more games than white 15.00%
+	challenger performance: 60.57
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 15.0 # big basis 0.1 # points given 30.0
+challengers performance: 61.80003432887058
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2846-2913, (victories w-b 85-89)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 15.0 # big basis 0.1 # points given 30.0
+
+	white wins 42.50% of the games, black 44.50%
+	white gets -2.30% more points than black
+	points given per game 28.80
+	both AIs won with same color 66.00% of games
+	percent of boards that the challenger (black) won more games than white 15.00%
+	challenger performance: 61.80
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 20.0 # big basis 0.1 # points given 30.0
+challengers performance: 56.77410992049775
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2914-2893, (victories w-b 87-89)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 20.0 # big basis 0.1 # points given 30.0
+
+	white wins 43.50% of the games, black 44.50%
+	white gets 0.73% more points than black
+	points given per game 29.04
+	both AIs won with same color 68.00% of games
+	percent of boards that the challenger (black) won more games than white 13.00%
+	challenger performance: 56.77
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 25.0 # big basis 0.1 # points given 30.0
+challengers performance: 58.7085635359116
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2861-2896, (victories w-b 86-89)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 25.0 # big basis 0.1 # points given 30.0
+
+	white wins 43.00% of the games, black 44.50%
+	white gets -1.21% more points than black
+	points given per game 28.79
+	both AIs won with same color 70.00% of games
+	percent of boards that the challenger (black) won more games than white 13.00%
+	challenger performance: 58.71
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 30.0 # big basis 0.1 # points given 30.0
+challengers performance: 65.0
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2832-2950, (victories w-b 84-90)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 30.0 # big basis 0.1 # points given 30.0
+
+	white wins 42.00% of the games, black 45.00%
+	white gets -4.00% more points than black
+	points given per game 28.91
+	both AIs won with same color 67.00% of games
+	percent of boards that the challenger (black) won more games than white 16.00%
+	challenger performance: 65.00
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 35.0 # big basis 0.1 # points given 30.0
+challengers performance: 58.34904013961606
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2855-2865, (victories w-b 85-88)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 35.0 # big basis 0.1 # points given 30.0
+
+	white wins 42.50% of the games, black 44.00%
+	white gets -0.35% more points than black
+	points given per game 28.60
+	both AIs won with same color 71.00% of games
+	percent of boards that the challenger (black) won more games than white 14.00%
+	challenger performance: 58.35
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 40.0 # big basis 0.1 # points given 30.0
+challengers performance: 52.84332040888262
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2884-2837, (victories w-b 86-87)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 40.0 # big basis 0.1 # points given 30.0
+
+	white wins 43.00% of the games, black 43.50%
+	white gets 1.66% more points than black
+	points given per game 28.61
+	both AIs won with same color 73.00% of games
+	percent of boards that the challenger (black) won more games than white 11.00%
+	challenger performance: 52.84
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 45.0 # big basis 0.1 # points given 30.0
+challengers performance: 51.814736096351396
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2800-2823, (victories w-b 86-88)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 45.0 # big basis 0.1 # points given 30.0
+
+	white wins 43.00% of the games, black 44.00%
+	white gets -0.81% more points than black
+	points given per game 28.11
+	both AIs won with same color 79.00% of games
+	percent of boards that the challenger (black) won more games than white 7.00%
+	challenger performance: 51.81
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 43.5
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2850-2850, (victories w-b 87-87)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 43.50% of the games, black 43.50%
+	white gets 0.00% more points than black
+	points given per game 28.50
+	both AIs won with same color 87.00% of games
+	percent of boards that the challenger (black) won more games than white 0.00%
+	challenger performance: 43.50
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 55.0 # big basis 0.1 # points given 30.0
+challengers performance: 42.97174936617168
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2817-2761, (victories w-b 88-84)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 55.0 # big basis 0.1 # points given 30.0
+
+	white wins 44.00% of the games, black 42.00%
+	white gets 2.03% more points than black
+	points given per game 27.89
+	both AIs won with same color 79.00% of games
+	percent of boards that the challenger (black) won more games than white 3.00%
+	challenger performance: 42.97
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 60.0 # big basis 0.1 # points given 30.0
+challengers performance: 49.027444565612505
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2764-2751, (victories w-b 86-85)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 60.0 # big basis 0.1 # points given 30.0
+
+	white wins 43.00% of the games, black 42.50%
+	white gets 0.47% more points than black
+	points given per game 27.57
+	both AIs won with same color 75.00% of games
+	percent of boards that the challenger (black) won more games than white 7.00%
+	challenger performance: 49.03
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 65.0 # big basis 0.1 # points given 30.0
+challengers performance: 53.689519023689876
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2725-2786, (victories w-b 84-87)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 65.0 # big basis 0.1 # points given 30.0
+
+	white wins 42.00% of the games, black 43.50%
+	white gets -2.19% more points than black
+	points given per game 27.55
+	both AIs won with same color 75.00% of games
+	percent of boards that the challenger (black) won more games than white 8.00%
+	challenger performance: 53.69
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 70.0 # big basis 0.1 # points given 30.0
+challengers performance: 35.934245035593854
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2951-2669, (victories w-b 89-81)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 70.0 # big basis 0.1 # points given 30.0
+
+	white wins 44.50% of the games, black 40.50%
+	white gets 10.57% more points than black
+	points given per game 28.10
+	both AIs won with same color 73.00% of games
+	percent of boards that the challenger (black) won more games than white 6.00%
+	challenger performance: 35.93
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 75.0 # big basis 0.1 # points given 30.0
+challengers performance: 41.79955947136564
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2961-2724, (victories w-b 90-83)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 75.0 # big basis 0.1 # points given 30.0
+
+	white wins 45.00% of the games, black 41.50%
+	white gets 8.70% more points than black
+	points given per game 28.43
+	both AIs won with same color 68.00% of games
+	percent of boards that the challenger (black) won more games than white 9.00%
+	challenger performance: 41.80
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 80.0 # big basis 0.1 # points given 30.0
+challengers performance: 48.20600858369099
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2958-2796, (victories w-b 89-86)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 80.0 # big basis 0.1 # points given 30.0
+
+	white wins 44.50% of the games, black 43.00%
+	white gets 5.79% more points than black
+	points given per game 28.77
+	both AIs won with same color 69.00% of games
+	percent of boards that the challenger (black) won more games than white 11.00%
+	challenger performance: 48.21
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 85.0 # big basis 0.1 # points given 30.0
+challengers performance: 47.82627422828428
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2958-2786, (victories w-b 91-86)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 85.0 # big basis 0.1 # points given 30.0
+
+	white wins 45.50% of the games, black 43.00%
+	white gets 6.17% more points than black
+	points given per game 28.72
+	both AIs won with same color 68.00% of games
+	percent of boards that the challenger (black) won more games than white 11.00%
+	challenger performance: 47.83
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 90.0 # big basis 0.1 # points given 30.0
+challengers performance: 51.53361344537815
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2955-2856, (victories w-b 90-88)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 90.0 # big basis 0.1 # points given 30.0
+
+	white wins 45.00% of the games, black 44.00%
+	white gets 3.47% more points than black
+	points given per game 29.05
+	both AIs won with same color 70.00% of games
+	percent of boards that the challenger (black) won more games than white 11.00%
+	challenger performance: 51.53
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 95.0 # big basis 0.1 # points given 30.0
+challengers performance: 50.545211819152726
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2892-2809, (victories w-b 90-87)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 95.0 # big basis 0.1 # points given 30.0
+
+	white wins 45.00% of the games, black 43.50%
+	white gets 2.95% more points than black
+	points given per game 28.50
+	both AIs won with same color 72.00% of games
+	percent of boards that the challenger (black) won more games than white 10.00%
+	challenger performance: 50.55
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 100.0 # big basis 0.1 # points given 30.0
+challengers performance: 54.47589098532495
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2877-2862, (victories w-b 88-88)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 100.0 # big basis 0.1 # points given 30.0
+
+	white wins 44.00% of the games, black 44.00%
+	white gets 0.52% more points than black
+	points given per game 28.70
+	both AIs won with same color 72.00% of games
+	percent of boards that the challenger (black) won more games than white 11.00%
+	challenger performance: 54.48
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 105.0 # big basis 0.1 # points given 30.0
+challengers performance: 49.48312611012433
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2914-2815, (victories w-b 89-86)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 105.0 # big basis 0.1 # points given 30.0
+
+	white wins 44.50% of the games, black 43.00%
+	white gets 3.52% more points than black
+	points given per game 28.64
+	both AIs won with same color 71.00% of games
+	percent of boards that the challenger (black) won more games than white 10.00%
+	challenger performance: 49.48
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 110.0 # big basis 0.1 # points given 30.0
+challengers performance: 65.86675505469009
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2840-3017, (victories w-b 86-92)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 110.0 # big basis 0.1 # points given 30.0
+
+	white wins 43.00% of the games, black 46.00%
+	white gets -5.87% more points than black
+	points given per game 29.29
+	both AIs won with same color 71.00% of games
+	percent of boards that the challenger (black) won more games than white 14.00%
+	challenger performance: 65.87
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 115.0 # big basis 0.1 # points given 30.0
+challengers performance: 59.03536870203537
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2936-2997, (victories w-b 88-90)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 115.0 # big basis 0.1 # points given 30.0
+
+	white wins 44.00% of the games, black 45.00%
+	white gets -2.04% more points than black
+	points given per game 29.66
+	both AIs won with same color 72.00% of games
+	percent of boards that the challenger (black) won more games than white 12.00%
+	challenger performance: 59.04
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 120.0 # big basis 0.1 # points given 30.0
+challengers performance: 61.97594386902773
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2874-2993, (victories w-b 87-90)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 120.0 # big basis 0.1 # points given 30.0
+
+	white wins 43.50% of the games, black 45.00%
+	white gets -3.98% more points than black
+	points given per game 29.34
+	both AIs won with same color 70.00% of games
+	percent of boards that the challenger (black) won more games than white 13.00%
+	challenger performance: 61.98
+##################################################
+
+
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤ START TESTING WITH NEW PARAMETER ¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.0 # points given 30.0
+challengers performance: 44.25212464589235
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2831-2824, (victories w-b 86-87)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.0 # points given 30.0
+
+	white wins 43.00% of the games, black 43.50%
+	white gets 0.25% more points than black
+	points given per game 28.27
+	both AIs won with same color 85.00% of games
+	percent of boards that the challenger (black) won more games than white 1.00%
+	challenger performance: 44.25
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 5.0 # points given 30.0
+challengers performance: 38.32448537378115
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2940-2769, (victories w-b 90-85)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 5.0 # points given 30.0
+
+	white wins 45.00% of the games, black 42.50%
+	white gets 6.18% more points than black
+	points given per game 28.55
+	both AIs won with same color 83.00% of games
+	percent of boards that the challenger (black) won more games than white 2.00%
+	challenger performance: 38.32
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 10.0 # points given 30.0
+challengers performance: 62.89050589050589
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2716-2886, (victories w-b 81-90)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 10.0 # points given 30.0
+
+	white wins 40.50% of the games, black 45.00%
+	white gets -5.89% more points than black
+	points given per game 28.01
+	both AIs won with same color 75.00% of games
+	percent of boards that the challenger (black) won more games than white 12.00%
+	challenger performance: 62.89
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 15.0 # points given 30.0
+challengers performance: 73.1127098321343
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2653-2919, (victories w-b 80-92)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 15.0 # points given 30.0
+
+	white wins 40.00% of the games, black 46.00%
+	white gets -9.11% more points than black
+	points given per game 27.86
+	both AIs won with same color 68.00% of games
+	percent of boards that the challenger (black) won more games than white 18.00%
+	challenger performance: 73.11
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 20.0 # points given 30.0
+challengers performance: 56.916206261510126
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2758-2715, (victories w-b 84-87)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 20.0 # points given 30.0
+
+	white wins 42.00% of the games, black 43.50%
+	white gets 1.58% more points than black
+	points given per game 27.36
+	both AIs won with same color 68.00% of games
+	percent of boards that the challenger (black) won more games than white 15.00%
+	challenger performance: 56.92
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 25.0 # points given 30.0
+challengers performance: 42.48022061620388
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2945-2629, (victories w-b 89-83)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 25.0 # points given 30.0
+
+	white wins 44.50% of the games, black 41.50%
+	white gets 12.02% more points than black
+	points given per game 27.87
+	both AIs won with same color 66.00% of games
+	percent of boards that the challenger (black) won more games than white 13.00%
+	challenger performance: 42.48
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 30.0 # points given 30.0
+challengers performance: 54.07424846070265
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2897-2761, (victories w-b 87-86)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 30.0 # points given 30.0
+
+	white wins 43.50% of the games, black 43.00%
+	white gets 4.93% more points than black
+	points given per game 28.29
+	both AIs won with same color 64.00% of games
+	percent of boards that the challenger (black) won more games than white 16.00%
+	challenger performance: 54.07
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 35.0 # points given 30.0
+challengers performance: 55.099415204678365
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2788-2736, (victories w-b 86-84)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 35.0 # points given 30.0
+
+	white wins 43.00% of the games, black 42.00%
+	white gets 1.90% more points than black
+	points given per game 27.62
+	both AIs won with same color 63.00% of games
+	percent of boards that the challenger (black) won more games than white 15.00%
+	challenger performance: 55.10
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 40.0 # points given 30.0
+challengers performance: 60.353747714808044
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2739-2735, (victories w-b 85-85)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 40.0 # points given 30.0
+
+	white wins 42.50% of the games, black 42.50%
+	white gets 0.15% more points than black
+	points given per game 27.37
+	both AIs won with same color 60.00% of games
+	percent of boards that the challenger (black) won more games than white 18.00%
+	challenger performance: 60.35
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 45.0 # points given 30.0
+challengers performance: 65.81422351233672
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2706-2756, (victories w-b 83-86)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 45.0 # points given 30.0
+
+	white wins 41.50% of the games, black 43.00%
+	white gets -1.81% more points than black
+	points given per game 27.31
+	both AIs won with same color 55.00% of games
+	percent of boards that the challenger (black) won more games than white 21.00%
+	challenger performance: 65.81
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 50.0 # points given 30.0
+challengers performance: 63.81875224094658
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2808-2789, (victories w-b 86-87)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 50.0 # points given 30.0
+
+	white wins 43.00% of the games, black 43.50%
+	white gets 0.68% more points than black
+	points given per game 27.98
+	both AIs won with same color 55.00% of games
+	percent of boards that the challenger (black) won more games than white 21.00%
+	challenger performance: 63.82
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 55.0 # points given 30.0
+challengers performance: 62.40402193784278
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2806-2735, (victories w-b 87-86)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 55.0 # points given 30.0
+
+	white wins 43.50% of the games, black 43.00%
+	white gets 2.60% more points than black
+	points given per game 27.70
+	both AIs won with same color 52.00% of games
+	percent of boards that the challenger (black) won more games than white 22.00%
+	challenger performance: 62.40
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 60.0 # points given 30.0
+challengers performance: 70.89222614840989
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2734-2830, (victories w-b 85-89)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 60.0 # points given 30.0
+
+	white wins 42.50% of the games, black 44.50%
+	white gets -3.39% more points than black
+	points given per game 27.82
+	both AIs won with same color 53.00% of games
+	percent of boards that the challenger (black) won more games than white 23.00%
+	challenger performance: 70.89
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 65.0 # points given 30.0
+challengers performance: 70.24089635854341
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2792-2856, (victories w-b 86-90)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 65.0 # points given 30.0
+
+	white wins 43.00% of the games, black 45.00%
+	white gets -2.24% more points than black
+	points given per game 28.24
+	both AIs won with same color 54.00% of games
+	percent of boards that the challenger (black) won more games than white 23.00%
+	challenger performance: 70.24
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 70.0 # points given 30.0
+challengers performance: 65.7072135785007
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2808-2828, (victories w-b 89-88)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 70.0 # points given 30.0
+
+	white wins 44.50% of the games, black 44.00%
+	white gets -0.71% more points than black
+	points given per game 28.18
+	both AIs won with same color 56.00% of games
+	percent of boards that the challenger (black) won more games than white 21.00%
+	challenger performance: 65.71
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 75.0 # points given 30.0
+challengers performance: 61.34710743801653
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2829-2783, (victories w-b 89-86)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 75.0 # points given 30.0
+
+	white wins 44.50% of the games, black 43.00%
+	white gets 1.65% more points than black
+	points given per game 28.06
+	both AIs won with same color 57.00% of games
+	percent of boards that the challenger (black) won more games than white 20.00%
+	challenger performance: 61.35
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 80.0 # points given 30.0
+challengers performance: 62.142550911039656
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2823-2799, (victories w-b 88-86)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 80.0 # points given 30.0
+
+	white wins 44.00% of the games, black 43.00%
+	white gets 0.86% more points than black
+	points given per game 28.11
+	both AIs won with same color 58.00% of games
+	percent of boards that the challenger (black) won more games than white 20.00%
+	challenger performance: 62.14
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 85.0 # points given 30.0
+challengers performance: 55.345454545454544
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2933-2750, (victories w-b 91-84)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 85.0 # points given 30.0
+
+	white wins 45.50% of the games, black 42.00%
+	white gets 6.65% more points than black
+	points given per game 28.41
+	both AIs won with same color 55.00% of games
+	percent of boards that the challenger (black) won more games than white 20.00%
+	challenger performance: 55.35
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 90.0 # points given 30.0
+challengers performance: 52.5865561694291
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2957-2715, (victories w-b 91-83)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 90.0 # points given 30.0
+
+	white wins 45.50% of the games, black 41.50%
+	white gets 8.91% more points than black
+	points given per game 28.36
+	both AIs won with same color 55.00% of games
+	percent of boards that the challenger (black) won more games than white 20.00%
+	challenger performance: 52.59
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 95.0 # points given 30.0
+challengers performance: 54.437591776798826
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2930-2724, (victories w-b 91-84)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 95.0 # points given 30.0
+
+	white wins 45.50% of the games, black 42.00%
+	white gets 7.56% more points than black
+	points given per game 28.27
+	both AIs won with same color 55.00% of games
+	percent of boards that the challenger (black) won more games than white 20.00%
+	challenger performance: 54.44
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 100.0 # points given 30.0
+challengers performance: 44.95357686453577
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2984-2628, (victories w-b 93-81)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 100.0 # points given 30.0
+
+	white wins 46.50% of the games, black 40.50%
+	white gets 13.55% more points than black
+	points given per game 28.06
+	both AIs won with same color 54.00% of games
+	percent of boards that the challenger (black) won more games than white 18.00%
+	challenger performance: 44.95
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 105.0 # points given 30.0
+challengers performance: 45.4980879541109
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2955-2615, (victories w-b 92-81)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 105.0 # points given 30.0
+
+	white wins 46.00% of the games, black 40.50%
+	white gets 13.00% more points than black
+	points given per game 27.85
+	both AIs won with same color 54.00% of games
+	percent of boards that the challenger (black) won more games than white 18.00%
+	challenger performance: 45.50
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 110.0 # points given 30.0
+challengers performance: 45.088509316770185
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2973-2576, (victories w-b 93-81)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 110.0 # points given 30.0
+
+	white wins 46.50% of the games, black 40.50%
+	white gets 15.41% more points than black
+	points given per game 27.75
+	both AIs won with same color 52.00% of games
+	percent of boards that the challenger (black) won more games than white 20.00%
+	challenger performance: 45.09
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 115.0 # points given 30.0
+challengers performance: 44.93682588597843
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 3013-2596, (victories w-b 92-82)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 115.0 # points given 30.0
+
+	white wins 46.00% of the games, black 41.00%
+	white gets 16.06% more points than black
+	points given per game 28.05
+	both AIs won with same color 53.00% of games
+	percent of boards that the challenger (black) won more games than white 20.00%
+	challenger performance: 44.94
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 120.0 # points given 30.0
+challengers performance: 49.54283548142532
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2993-2638, (victories w-b 93-84)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 120.0 # points given 30.0
+
+	white wins 46.50% of the games, black 42.00%
+	white gets 13.46% more points than black
+	points given per game 28.16
+	both AIs won with same color 52.00% of games
+	percent of boards that the challenger (black) won more games than white 21.00%
+	challenger performance: 49.54
+##################################################
+
+
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤ START TESTING WITH NEW PARAMETER ¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 0.0
+challengers performance: 43.5
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2850-2850, (victories w-b 87-87)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 0.0
+
+	white wins 43.50% of the games, black 43.50%
+	white gets 0.00% more points than black
+	points given per game 28.50
+	both AIs won with same color 87.00% of games
+	percent of boards that the challenger (black) won more games than white 0.00%
+	challenger performance: 43.50
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 5.0
+challengers performance: 43.5
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2850-2850, (victories w-b 87-87)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 5.0
+
+	white wins 43.50% of the games, black 43.50%
+	white gets 0.00% more points than black
+	points given per game 28.50
+	both AIs won with same color 87.00% of games
+	percent of boards that the challenger (black) won more games than white 0.00%
+	challenger performance: 43.50
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 10.0
+challengers performance: 43.5
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2850-2850, (victories w-b 87-87)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 10.0
+
+	white wins 43.50% of the games, black 43.50%
+	white gets 0.00% more points than black
+	points given per game 28.50
+	both AIs won with same color 87.00% of games
+	percent of boards that the challenger (black) won more games than white 0.00%
+	challenger performance: 43.50
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 15.0
+challengers performance: 43.5
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2850-2850, (victories w-b 87-87)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 15.0
+
+	white wins 43.50% of the games, black 43.50%
+	white gets 0.00% more points than black
+	points given per game 28.50
+	both AIs won with same color 87.00% of games
+	percent of boards that the challenger (black) won more games than white 0.00%
+	challenger performance: 43.50
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 20.0
+challengers performance: 43.5
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2850-2850, (victories w-b 87-87)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 20.0
+
+	white wins 43.50% of the games, black 43.50%
+	white gets 0.00% more points than black
+	points given per game 28.50
+	both AIs won with same color 87.00% of games
+	percent of boards that the challenger (black) won more games than white 0.00%
+	challenger performance: 43.50
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 25.0
+challengers performance: 43.5
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2850-2850, (victories w-b 87-87)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 25.0
+
+	white wins 43.50% of the games, black 43.50%
+	white gets 0.00% more points than black
+	points given per game 28.50
+	both AIs won with same color 87.00% of games
+	percent of boards that the challenger (black) won more games than white 0.00%
+	challenger performance: 43.50
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challengers performance: 43.5
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2850-2850, (victories w-b 87-87)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 43.50% of the games, black 43.50%
+	white gets 0.00% more points than black
+	points given per game 28.50
+	both AIs won with same color 87.00% of games
+	percent of boards that the challenger (black) won more games than white 0.00%
+	challenger performance: 43.50
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 35.0
+challengers performance: 43.5
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2850-2850, (victories w-b 87-87)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 35.0
+
+	white wins 43.50% of the games, black 43.50%
+	white gets 0.00% more points than black
+	points given per game 28.50
+	both AIs won with same color 87.00% of games
+	percent of boards that the challenger (black) won more games than white 0.00%
+	challenger performance: 43.50
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 40.0
+challengers performance: 43.5
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2850-2850, (victories w-b 87-87)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 40.0
+
+	white wins 43.50% of the games, black 43.50%
+	white gets 0.00% more points than black
+	points given per game 28.50
+	both AIs won with same color 87.00% of games
+	percent of boards that the challenger (black) won more games than white 0.00%
+	challenger performance: 43.50
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 45.0
+challengers performance: 43.5
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2850-2850, (victories w-b 87-87)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 45.0
+
+	white wins 43.50% of the games, black 43.50%
+	white gets 0.00% more points than black
+	points given per game 28.50
+	both AIs won with same color 87.00% of games
+	percent of boards that the challenger (black) won more games than white 0.00%
+	challenger performance: 43.50
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 50.0
+challengers performance: 43.5
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2850-2850, (victories w-b 87-87)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 50.0
+
+	white wins 43.50% of the games, black 43.50%
+	white gets 0.00% more points than black
+	points given per game 28.50
+	both AIs won with same color 87.00% of games
+	percent of boards that the challenger (black) won more games than white 0.00%
+	challenger performance: 43.50
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 55.0
+challengers performance: 43.5
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2850-2850, (victories w-b 87-87)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 55.0
+
+	white wins 43.50% of the games, black 43.50%
+	white gets 0.00% more points than black
+	points given per game 28.50
+	both AIs won with same color 87.00% of games
+	percent of boards that the challenger (black) won more games than white 0.00%
+	challenger performance: 43.50
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 60.0
+challengers performance: 43.5
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2850-2850, (victories w-b 87-87)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 60.0
+
+	white wins 43.50% of the games, black 43.50%
+	white gets 0.00% more points than black
+	points given per game 28.50
+	both AIs won with same color 87.00% of games
+	percent of boards that the challenger (black) won more games than white 0.00%
+	challenger performance: 43.50
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 65.0
+challengers performance: 43.5
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2850-2850, (victories w-b 87-87)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 65.0
+
+	white wins 43.50% of the games, black 43.50%
+	white gets 0.00% more points than black
+	points given per game 28.50
+	both AIs won with same color 87.00% of games
+	percent of boards that the challenger (black) won more games than white 0.00%
+	challenger performance: 43.50
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 70.0
+challengers performance: 43.5
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2850-2850, (victories w-b 87-87)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 70.0
+
+	white wins 43.50% of the games, black 43.50%
+	white gets 0.00% more points than black
+	points given per game 28.50
+	both AIs won with same color 87.00% of games
+	percent of boards that the challenger (black) won more games than white 0.00%
+	challenger performance: 43.50
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 75.0
+challengers performance: 43.5
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2850-2850, (victories w-b 87-87)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 75.0
+
+	white wins 43.50% of the games, black 43.50%
+	white gets 0.00% more points than black
+	points given per game 28.50
+	both AIs won with same color 87.00% of games
+	percent of boards that the challenger (black) won more games than white 0.00%
+	challenger performance: 43.50
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 80.0
+challengers performance: 43.5
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2850-2850, (victories w-b 87-87)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 80.0
+
+	white wins 43.50% of the games, black 43.50%
+	white gets 0.00% more points than black
+	points given per game 28.50
+	both AIs won with same color 87.00% of games
+	percent of boards that the challenger (black) won more games than white 0.00%
+	challenger performance: 43.50
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 85.0
+challengers performance: 43.5
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2850-2850, (victories w-b 87-87)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 85.0
+
+	white wins 43.50% of the games, black 43.50%
+	white gets 0.00% more points than black
+	points given per game 28.50
+	both AIs won with same color 87.00% of games
+	percent of boards that the challenger (black) won more games than white 0.00%
+	challenger performance: 43.50
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 90.0
+challengers performance: 43.5
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2850-2850, (victories w-b 87-87)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 90.0
+
+	white wins 43.50% of the games, black 43.50%
+	white gets 0.00% more points than black
+	points given per game 28.50
+	both AIs won with same color 87.00% of games
+	percent of boards that the challenger (black) won more games than white 0.00%
+	challenger performance: 43.50
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 95.0
+challengers performance: 43.5
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2850-2850, (victories w-b 87-87)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 95.0
+
+	white wins 43.50% of the games, black 43.50%
+	white gets 0.00% more points than black
+	points given per game 28.50
+	both AIs won with same color 87.00% of games
+	percent of boards that the challenger (black) won more games than white 0.00%
+	challenger performance: 43.50
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 100.0
+challengers performance: 43.5
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2850-2850, (victories w-b 87-87)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 100.0
+
+	white wins 43.50% of the games, black 43.50%
+	white gets 0.00% more points than black
+	points given per game 28.50
+	both AIs won with same color 87.00% of games
+	percent of boards that the challenger (black) won more games than white 0.00%
+	challenger performance: 43.50
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 105.0
+challengers performance: 43.5
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2850-2850, (victories w-b 87-87)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 105.0
+
+	white wins 43.50% of the games, black 43.50%
+	white gets 0.00% more points than black
+	points given per game 28.50
+	both AIs won with same color 87.00% of games
+	percent of boards that the challenger (black) won more games than white 0.00%
+	challenger performance: 43.50
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 110.0
+challengers performance: 43.5
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2850-2850, (victories w-b 87-87)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 110.0
+
+	white wins 43.50% of the games, black 43.50%
+	white gets 0.00% more points than black
+	points given per game 28.50
+	both AIs won with same color 87.00% of games
+	percent of boards that the challenger (black) won more games than white 0.00%
+	challenger performance: 43.50
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 115.0
+challengers performance: 43.5
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2850-2850, (victories w-b 87-87)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 115.0
+
+	white wins 43.50% of the games, black 43.50%
+	white gets 0.00% more points than black
+	points given per game 28.50
+	both AIs won with same color 87.00% of games
+	percent of boards that the challenger (black) won more games than white 0.00%
+	challenger performance: 43.50
+##################################################
+
+  %%% New gladiators in the pit! %%%
+Default parameters on white: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+versus black with test param triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 120.0
+challengers performance: 43.5
+
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2850-2850, (victories w-b 87-87)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 120.0
+
+	white wins 43.50% of the games, black 43.50%
+	white gets 0.00% more points than black
+	points given per game 28.50
+	both AIs won with same color 87.00% of games
+	percent of boards that the challenger (black) won more games than white 0.00%
+	challenger performance: 43.50
+##################################################
+
+
+The best parameters and corresponding performance:
+
+for parameter 1
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2727-2862, (victories w-b 82-90)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 70.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 41.00% of the games, black 45.00%
+	white gets -4.72% more points than black
+	points given per game 27.95
+	both AIs won with same color 56.00% of games
+	percent of boards that the challenger (black) won more games than white 23.00%
+	challenger performance: 72.72
+##################################################
+
+
+for parameter 2
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2693-2776, (victories w-b 82-84)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 110.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 41.00% of the games, black 42.00%
+	white gets -2.99% more points than black
+	points given per game 27.34
+	both AIs won with same color 58.00% of games
+	percent of boards that the challenger (black) won more games than white 21.00%
+	challenger performance: 65.99
+##################################################
+
+
+for parameter 3
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2638-3239, (victories w-b 80-98)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 5.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+
+	white wins 40.00% of the games, black 49.00%
+	white gets -18.56% more points than black
+	points given per game 29.39
+	both AIs won with same color 62.00% of games
+	percent of boards that the challenger (black) won more games than white 21.00%
+	challenger performance: 88.56
+##################################################
+
+
+for parameter 4
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2583-3100, (victories w-b 77-91)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 5.0 # big basis 0.1 # points given 30.0
+
+	white wins 38.50% of the games, black 45.50%
+	white gets -16.68% more points than black
+	points given per game 28.41
+	both AIs won with same color 60.00% of games
+	percent of boards that the challenger (black) won more games than white 22.00%
+	challenger performance: 84.18
+##################################################
+
+
+for parameter 5
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2653-2919, (victories w-b 80-92)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 15.0 # points given 30.0
+
+	white wins 40.00% of the games, black 46.00%
+	white gets -9.11% more points than black
+	points given per game 27.86
+	both AIs won with same color 68.00% of games
+	percent of boards that the challenger (black) won more games than white 18.00%
+	challenger performance: 73.11
+##################################################
+
+
+for parameter 6
+##################################################
+FINAL RESULT: white (lvl 3) - black (lvl 3) 2850-2850, (victories w-b 87-87)
+the champs params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 30.0
+challenger params: triangle 40.0 # edge 60.0 # corner 50.0 # medium basis 50.0 # big basis 0.1 # points given 0.0
+
+	white wins 43.50% of the games, black 43.50%
+	white gets 0.00% more points than black
+	points given per game 28.50
+	both AIs won with same color 87.00% of games
+	percent of boards that the challenger (black) won more games than white 0.00%
+	challenger performance: 43.50
+##################################################
+
+
+iteration took 16770 seconds
+played 30000 rounds in total, 1.7889087656529516 r/s
+
+Process finished with exit code 0
+

@@ -14,7 +14,17 @@ import static AI.AI.bestParameters;
  */
 public class Coach {
 
-    public AIMatchResult runOneShowdown(int whiteLVL, ParametersAI whiteParam, int blackLVL, ParametersAI blackParam, int howManyBoards, boolean keepRecord) {
+    private boolean keepRecord = false;
+    private double[] executionEstimations = new double[] {
+            250, 12.5, 1.8, 0.10, 0.018, 1, 1
+    }; //how many rounds per second we compute (on my machine) if we iterate two AIs of lvl n (n = 1, 2, 3,..)
+
+
+    public Coach(boolean keepRecord) {
+        this.keepRecord = keepRecord;
+    }
+
+    public AIMatchResult runOneShowdown(int whiteLVL, ParametersAI whiteParam, int blackLVL, ParametersAI blackParam, int howManyBoards) {
         long start = System.currentTimeMillis();
         System.out.println(getEstimationOfProcessLength(2 * howManyBoards, whiteLVL, blackLVL));
         MatchMaker referee = new MatchMaker(whiteLVL, whiteParam, blackLVL, blackParam,false, false);
@@ -54,7 +64,7 @@ public class Coach {
         System.out.println(howLongItTook(start, rounds));
     }
 
-    private static void computeWithAllParameterCombinations(ParameterWriter pw, boolean[] whichParametersToIterate , int howManyBoards, int whiteDifficulty, int blackDifficulty) {
+    private void computeWithAllParameterCombinations(ParameterWriter pw, boolean[] whichParametersToIterate , int howManyBoards, int whiteDifficulty, int blackDifficulty) {
         List<ParametersAI> parameterCombinations = pw.readParameterCombinations();
         int combinations = parameterCombinations.size();
         int paramCount = bestParameters.toArray().length;
@@ -76,7 +86,7 @@ public class Coach {
                     //+ "\n"
             );
 
-            MatchMaker referee = new MatchMaker(whiteDifficulty, bestParameters, blackDifficulty, p, true, false);
+            MatchMaker referee = new MatchMaker(whiteDifficulty, bestParameters, blackDifficulty, p, keepRecord, false);
             AIMatchResult theResult = referee.calculate(howManyBoards);
             System.out.println("challengers performance: " + theResult.challengerPerformance + "\n");
             System.out.println(theResult);
@@ -94,7 +104,7 @@ public class Coach {
 
     }
 
-    private static int countHowManyRoundsToBePlayed(boolean[] whichParametersToIterate, int minWeight, int maxWeight, double frequency, int howManyBoards) {
+    private int countHowManyRoundsToBePlayed(boolean[] whichParametersToIterate, int minWeight, int maxWeight, double frequency, int howManyBoards) {
         int countOfParam = 0;
         for (int i = 0; i < whichParametersToIterate.length; i++) {
             if (whichParametersToIterate[i]) countOfParam++;
@@ -105,10 +115,7 @@ public class Coach {
         return (int) parameterValues * countOfParam * howManyBoards * 2;
     }
 
-    private static String getEstimationOfProcessLength(int rounds, int whiteLVL, int blackLVL) {
-        double[] executionEstimations = new double[] {
-                250, 12.5, 2.7, 0.10, 0.018, 1, 1
-        }; //how many rounds per second we compute (on my machine) if we iterate two AIs of lvl n (n = 1, 2, 3,..)
+    private String getEstimationOfProcessLength(int rounds, int whiteLVL, int blackLVL) {
         double estimation = rounds * 1.0 / 2 / executionEstimations[whiteLVL - 1];
         estimation += rounds * 1.0 / 2 / executionEstimations[blackLVL - 1];
         String s = "Lets play " + rounds + " rounds in total with AI lvl " + whiteLVL + " (w) " + blackLVL + " (b)!\n" +
@@ -116,7 +123,7 @@ public class Coach {
         return s;
     }
 
-    private static String howLongItTook(long start, int rounds) {
+    private String howLongItTook(long start, int rounds) {
         long end = System.currentTimeMillis();
         int seconds = (int) (end - start) / 1000;
         String s = "iteration took " + seconds + " seconds\n";
