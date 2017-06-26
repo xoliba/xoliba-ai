@@ -53,7 +53,13 @@ public class AI {
         return inceptionThreshold;
     }
 
-    public boolean doesWantToSurrender(int[][] b) {
+    public boolean doesWantToSurrender(TurnData data) {
+        if (color == 1 && data.redPoints >= 0.6 * data.scoreLimit)
+            return false;
+        else if (color == -1 && data.bluePoints >= 0.6 * data.scoreLimit)
+            return false;
+
+        int[][] b = data.board;
         int sum = 0;
         for (int i = 1; i < 6; i++) {
             int weight = 1;
@@ -75,8 +81,17 @@ public class AI {
     }
 
     public boolean doesWantToStopPlaying(TurnData data) {
-        //todo hard AI wouldn't agree right away
-        return data.surrender;
+        if (!data.surrender) //if other doesn't want to stop
+            return false;
+        else if (inceptionThreshold < 3) { //if we are easy to win, then we can stop anytime player wants to
+            return true;
+        } else {
+            Board b = new Board(data.board, parameters);
+            if (b.calculatePoints() * color < 0) { //if we would lose this round
+                return false;
+            } else      //if we win then we can stop now
+                return true;
+        }
     }
 
     //todo refactor AI to take turn data as a parameter

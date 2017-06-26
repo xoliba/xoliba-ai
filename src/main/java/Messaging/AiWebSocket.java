@@ -44,7 +44,7 @@ public class AiWebSocket {
 
 		System.out.println("got a start round message! AI color " + data.color + " difficulty " + data.difficulty);
 		ai = new AI(data.color, data.difficulty);
-		data = new TurnData(true, ai.doesWantToSurrender(data.board), data.color);
+		data = new TurnData(true, ai.doesWantToSurrender(data), data.color);
 
 		session.getRemote().sendString(JsonConverter.jsonifyTurnData(data));
 	}
