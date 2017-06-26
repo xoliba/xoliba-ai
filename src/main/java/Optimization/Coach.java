@@ -27,7 +27,7 @@ public class Coach {
     public AIMatchResult runOneShowdown(int whiteLVL, ParametersAI whiteParam, int blackLVL, ParametersAI blackParam, int howManyBoards) {
         long start = System.currentTimeMillis();
         System.out.println(getEstimationOfProcessLength(2 * howManyBoards, whiteLVL, blackLVL));
-        MatchMaker referee = new MatchMaker(whiteLVL, whiteParam, blackLVL, blackParam,false, false);
+        MatchMaker referee = new MatchMaker(whiteLVL, whiteParam, blackLVL, blackParam, keepRecord, false);
         AIMatchResult match = referee.calculate(howManyBoards, keepRecord);
         System.out.println(match);
         System.out.println(howLongItTook(start, 2 * howManyBoards) + "\n");
