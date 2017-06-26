@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< c3cb8db29e01560a59ce4517950754ff227ea30a
 <<<<<<< 0b62a82aeb5278beec02314681b360f52d7e877e
+=======
+<<<<<<< 5c9ae0de1fb8d842c3268e6ff7cac285069851fe
+>>>>>>> Added logging and comments
 <configuration status="WARN">
   <appenders>
     <Console name="Console" target="SYSTEM_OUT">
@@ -32,7 +36,11 @@
     </Console>
   </Appenders>
   <Loggers>
+<<<<<<< c3cb8db29e01560a59ce4517950754ff227ea30a
     <Root level="trace">
+=======
+    <Root level="info">
+>>>>>>> Added logging and comments
       <AppenderRef ref="Console"/>
     </Root>
   </Loggers>
