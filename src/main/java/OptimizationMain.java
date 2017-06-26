@@ -13,8 +13,8 @@ public class OptimizationMain {
 
     public static void main(String[] args) {
         ///*
-        new Coach(true).runOneShowdown(4, bestParameters,
-                4, new ParametersAI(5,40,40,5,5,5),
+        new Coach(true).runOneShowdown(6, bestParameters,
+                6, new ParametersAI(5,40,40,5,5,5),
                 1);
         //*/
         /*

@@ -153,7 +153,6 @@ public class MatchMaker {
         return record;
     }
 
-    //TODO this might be broken, might need more testing
     public RoundRecord playUntilRoundEnded(AI firstAI, AI secondAI, int[][] board, RoundRecord record) {
         int turnsWithoutMoving = 0;
         AI[] ai = new AI[]{firstAI, secondAI};
