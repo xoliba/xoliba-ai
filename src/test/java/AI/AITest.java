@@ -38,9 +38,12 @@ public class AITest {
                 table[i][j] = -1;
             }
         }
-        assertTrue(ai.doesWantToSurrender(table));
+        TurnData td = new TurnData(true, true, table);
+        assertTrue("surrender test:\n" + ai + "\n" + td
+                + "data red points " + td.redPoints + " blue points " + td.bluePoints + " score limit " + td.scoreLimit
+                , ai.doesWantToSurrender(td));
         ai = new AI(-1);
-        assertFalse(ai.doesWantToSurrender(table));
+        assertFalse(ai.doesWantToSurrender(td));
     }
 
     @Test

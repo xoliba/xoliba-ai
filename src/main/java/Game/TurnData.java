@@ -27,6 +27,12 @@ public class TurnData {
             type = "turnData";
         }
         this.surrender = surrender;
+        this.scoreLimit = 50;
+    }
+
+    public TurnData(boolean startRound, boolean surrender, int[][] board) {
+        this(startRound, surrender);
+        this.board = board;
     }
 
     public TurnData(boolean startRound, boolean surrender, int color) {
