@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< 0b62a82aeb5278beec02314681b360f52d7e877e
 <configuration status="WARN">
   <appenders>
     <Console name="Console" target="SYSTEM_OUT">
@@ -23,3 +24,17 @@
     </root>    
   </loggers>
 </configuration>
+=======
+<Configuration status="WARN">
+  <Appenders>
+    <Console name="Console" target="SYSTEM_OUT">
+      <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+    </Console>
+  </Appenders>
+  <Loggers>
+    <Root level="info">
+      <AppenderRef ref="Console"/>
+    </Root>
+  </Loggers>
+</Configuration>
+>>>>>>> Added logging and comments
