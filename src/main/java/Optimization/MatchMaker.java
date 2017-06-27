@@ -101,11 +101,11 @@ public class MatchMaker {
 		return new AIMatchResult(finalResult, 2 * howManyBoards, whiteDifficulty, whiteParameters, blackDifficulty, blackParameters);
     }
 	
-	private static void acquire(Semaphore semaphore) {
+	private void acquire(Semaphore semaphore) {
 		try {
 			semaphore.acquire();
 		} catch (InterruptedException e) {
-			System.out.println("Thread interrupted");
+			logger.trace("Thread interrupted");
 		}
 	}
 
@@ -176,7 +176,7 @@ public class MatchMaker {
             }
             oldResult = result;
         }
-        System.out.print("\tGame stopped: too many rounds.\n");
+        logger.error("Game stopped: too many rounds.");
         return record;
     }
 
@@ -211,40 +211,6 @@ public class MatchMaker {
         return s;
     }
 
-    @Deprecated
-    private int[][][] getBoards() {
-        int[][][] boards = new int[10000][7][7];
-        String line = null;
-
-        try {
-            InputStream in = MatchMaker.class.getResourceAsStream("/boardsJSON.txt");
-            BufferedReader bufferedReader =  new BufferedReader(new InputStreamReader(in));
-
-            int i=0;
-            int row=0;
-            String[] numbers;
-            while(i<10000 && (line = bufferedReader.readLine()) != null) {
-                if(row < 7) {
-                    numbers = line.split(" ");
-                    for(int j=0; j<numbers.length; j++) {
-                        boards[i][row][j] = Integer.parseInt(numbers[j]);
-                    }
-                    row++;
-                } else if(row < 8) {
-                    row++;
-                } else {
-                    row = 0;
-                    i++;
-                }
-            }
-
-            bufferedReader.close();
-        } catch(Exception ex) {
-            ex.printStackTrace();
-        }
-        return boards;
-    }
-
     //from int[][][] to arraylist<int[][]> through json
     private void writeBoards(int[][][] boards) {
         ArrayList<String> bs = new ArrayList<>();
@@ -276,7 +242,7 @@ public class MatchMaker {
 
             bufferedReader.close();
         } catch(Exception ex) {
-            ex.printStackTrace();
+            logger.fatal("Couldnt load boards", ex);
         }
         return p;
     }
