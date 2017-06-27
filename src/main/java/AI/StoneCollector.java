@@ -68,6 +68,15 @@ public class StoneCollector {
                     continue;
                 }
                 
+                //Trying to catch a bug
+                if(j > 6 || j < 0){
+                    System.out.println("problem was j = " + j);
+                    System.out.println("basis1 = " + basis1 + ", basis2 = " + basis2 + ", bottomH = " + bottomH + ", tipH = " + tipH + ", isVertical = " + isVertical);
+                } else if (triangleFloor > 6 || triangleFloor < 0){
+                    System.out.println("problem was triangleFloor = " + triangleFloor);
+                    System.out.println("basis1 = " + basis1 + ", basis2 = " + basis2 + ", bottomH = " + bottomH + ", tipH = " + tipH + ", isVertical = " + isVertical);
+                }
+                
                 if (isVertical) {
                     if(board.board[triangleFloor][j] != 0){
                         board.board[triangleFloor][j] = 0;
