@@ -36,11 +36,15 @@
     </Console>
   </Appenders>
   <Loggers>
+<<<<<<< 72820a4d5e92c6887b446ae3a3f7186a3e8c47bf
 <<<<<<< c3cb8db29e01560a59ce4517950754ff227ea30a
     <Root level="trace">
 =======
     <Root level="info">
 >>>>>>> Added logging and comments
+=======
+    <Root level="trace">
+>>>>>>> Apparently settings.gradle is necessary on some machines?
       <AppenderRef ref="Console"/>
     </Root>
   </Loggers>

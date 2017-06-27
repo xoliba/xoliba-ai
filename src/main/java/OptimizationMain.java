@@ -6,7 +6,6 @@ import AI.*;
 import static AI.AI.bestParameters;
 
 public class OptimizationMain {
-
     public static void main(String[] args) {
         /*
         new Coach(true).runOneShowdown(2, bestParameters,
