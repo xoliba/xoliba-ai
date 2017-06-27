@@ -44,10 +44,10 @@ public class Coach {
 
     private void walkThroughRound(RoundRecord[] records) {
         for (RoundRecord record:records) {
-            logger.info(record.toString());
+            logger.debug(record.toString());
             ArrayList<TurnData> turns = record.getTurns();
             for (int i = 0; i < turns.size(); i++) {
-                logger.info(turns.get(i).toString());
+                logger.debug(turns.get(i).toString());
             }
         }
     }
