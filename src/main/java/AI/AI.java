@@ -2,8 +2,9 @@ package AI;
 
 import Game.*;
 
-import java.lang.reflect.Method;
-import java.util.ArrayList;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+
 import java.util.Random;
 
 //todo AI computes game dynamically forward, remembering relevant situation from previous computation
@@ -23,6 +24,7 @@ public class AI {
 
     public int color;
     private static int[] waitTimes = new int[]{1,3,9,27,81,243}; //lvl 1,2,3,4,5,6+ seconds (3^n sec)
+    private Logger logger = LogManager.getLogger(AI.class);
     private Board board;
     private Random random;
     private int inceptionThreshold; //how many rounds we go deeper: [1,inf[
@@ -101,7 +103,7 @@ public class AI {
         this.color = color;
         if (difficulty > 0 && difficulty < 50)
             this.inceptionThreshold = difficulty;
-        //System.out.println(this + " got a new board:\n" + board);
+        logger.debug(this + " got a new board:\n" + board);
 
         TurnData td = abx.doTheBestMoveForColor(board, inceptionThreshold, color, getMaxWaitSeconds(inceptionThreshold));
         //todo make this more elegant
@@ -110,7 +112,7 @@ public class AI {
         } else {
             td.withoutHit = 0;
         }
-        //System.out.println("AI did a move:\n" + td);
+        logger.debug("AI did a move:\n" + td);
 
         return td;
     }
