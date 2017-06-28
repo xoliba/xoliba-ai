@@ -83,18 +83,20 @@ public class AI {
         return false;
     }
 
+    /**
+     * returns true if opponent wants to resign AND AI would win
+     * @param data turn data from opponent
+     * @return
+     */
     public boolean doesWantToStopPlaying(TurnData data) {
         if (!data.surrender) //if other doesn't want to stop
             return false;
-        else if (inceptionThreshold < 3) { //if we are easy to win, then we can stop anytime player wants to
+
+        Board b = new Board(data.board, parameters);
+        if (b.calculatePoints() * color <= 0) //if we would lose or it would be a draw
+            return false;
+        else      //if we win then we can stop now
             return true;
-        } else {
-            Board b = new Board(data.board, parameters);
-            if (b.calculatePoints() * color < 0) { //if we would lose this round
-                return false;
-            } else      //if we win then we can stop now
-                return true;
-        }
     }
 
     //todo refactor AI to take turn data as a parameter

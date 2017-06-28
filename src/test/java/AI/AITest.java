@@ -60,9 +60,10 @@ public class AITest {
 
     @Test
     public void AIknowsHowToAnswerEndGameRequest() {
-        TurnData td = new TurnData(false, true);
-        assertTrue("easy AI should agree to end game if player asks, AI:\n" + ai + "\n" + td, ai.doesWantToStopPlaying(td));
-        td = new TurnData(false, true, table1);
+        TurnData td = new TurnData(false, true, table1);
+        assertFalse("AI should agree only if it wins, AI:\n" + ai + "\n" + td, ai.doesWantToStopPlaying(td));
+        ai = new AI(-1);
+        assertTrue("AI should agree only if it wins, AI:\n" + ai + "\n" + td, ai.doesWantToStopPlaying(td));
         ai = new AI(1, 4);
         assertFalse("hard AI should agree to end game if player asks, AI:\n" + ai + "\n" + td, ai.doesWantToStopPlaying(td));
     }
