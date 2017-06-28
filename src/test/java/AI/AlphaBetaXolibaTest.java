@@ -1,6 +1,7 @@
 package AI;
 
 import Game.*;
+import Messaging.JsonConverter;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -14,6 +15,9 @@ public class AlphaBetaXolibaTest {
 
     private AlphaBetaXoliba abx;
     private int[][] table, table1, table2, table3, table4;
+    private String b56JSON =
+            "[[-2,0,1,1,1,-1,-2],[1,-1,0,-1,1,0,1],[-1,0,-1,-1,-1,-1,0],[1,1,1,-1,-1,1,-1],[-1,-1,1,0,1,0,0],[0,1,1,1,1,-1,0],[-2,0,-1,-1,1,-1,-2]]";
+
 
     @Before
     public void setUp() {
@@ -54,7 +58,7 @@ public class AlphaBetaXolibaTest {
                 { 1, 0, 0, 0, 0, 0,-1},
                 {-2, 1, 0, 0, 0,-1,-2},
         };
-
+        table4 = JsonConverter.parseTable(b56JSON);
     }
 
     @Test
@@ -65,9 +69,8 @@ public class AlphaBetaXolibaTest {
         assertTrue(abx.doTheBestMoveForColor(b, 1, 0) == null);
 
         TurnData td = abx.doTheBestMoveForColor(b.copy(), 1, 1);
-        System.out.println(td);
         assertTrue(td != null);
-        assertTrue(td.didMove && td.board != null);
+        assertTrue("red ai should be able to do a move\n" + td, td.didMove && td.board != null);
         assertFalse(b + "\nshould not equal\n" + new Board(td.board), b.equals(new Board(td.board)));
 
         td = abx.doTheBestMoveForColor(b.copy(), 1, -1);
@@ -75,7 +78,15 @@ public class AlphaBetaXolibaTest {
         assertTrue(td != null);
         assertTrue(td.didMove && td.board != null);
         assertFalse(b + "\nshould not equal\n" + new Board(td.board), b.equals(new Board(td.board)));
+    }
 
+    @Test
+    public void bestMoveMaxWaitTest() {
+        Board b = new Board(table4);
+        long start = System.currentTimeMillis();
+        TurnData td = abx.doTheBestMoveForColor(b.copy(), 6, 1, 1);
+        long duration = System.currentTimeMillis() - start;
+        assertTrue("if we say that the max wait is one second, the execution should be ready in three seconds! Was " + duration, duration < 3000);
     }
 
     @Test
