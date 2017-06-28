@@ -57,8 +57,12 @@ public class AiWebSocket {
 		System.out.println("got a message @ " + new java.util.Date() + "\ntables received: " + howManyTablesReceived);
 		long s = System.nanoTime();
 
-		if (ai.doesWantToStopPlaying(data)) {
-			data = new TurnData(false, true);
+		if (data.surrender) { //player wants to resign
+			if (ai.doesWantToStopPlaying(data)) { //AI agrees
+				data = new TurnData(false, true);
+			} else {
+				data = new TurnData(false, false);
+			}
 		} else {
 			data = ai.move(data.board, data.color, data.difficulty, data.withoutHit); //lets update the turn data with AIs move
 		}
