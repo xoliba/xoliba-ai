@@ -7,11 +7,11 @@ import static AI.AI.bestParameters;
 
 public class OptimizationMain {
     public static void main(String[] args) {
-        ///*
-        new Coach(true).runOneShowdown(3, bestParameters,
-                3, new ParametersAI(5,40,40,5,5,5),
+        /*
+        new Coach(true).runOneShowdown(2, bestParameters,
+                2, new ParametersAI(100,1,1,1,1,1),
                 1);
-        //*/
+        */
         ///*
         boolean[] testTheseParameters = new boolean[]{
                 true, true, true, true, true, true};

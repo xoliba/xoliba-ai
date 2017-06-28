@@ -1,0 +1,4 @@
+ignore:
+  - "src/main/java/Messaging"
+  - "src/main/java/Optimization" # These classes are not used in normal use.
+  - "src/main/java/OptimizationMain.java"
