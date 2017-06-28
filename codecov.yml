@@ -1,0 +1,3 @@
+ignore:
+  - "src/main/java/Messaging"
+  - "src/main/java/Optimization/ParameterWriter.java"
