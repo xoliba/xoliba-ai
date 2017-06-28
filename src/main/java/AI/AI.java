@@ -5,28 +5,33 @@ import Game.*;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
-import java.util.Random;
-
 //todo AI computes game dynamically forward, remembering relevant situation from previous computation
 //todo AI computes while user thinks next move
 //todo AI should take time of its move and send the best option in the time limit
 public class AI {
-    //the first guess
-    //public static ParametersAI bestParameters = new ParametersAI(7, 1.5, 3, 1, 1, 1);
-    //simplified params
-    //public static ParametersAI bestParameters = new ParametersAI(7, 1.5, 3, 0, 0, 0);
 
+    private ParametersAI[] paramByLVL = new ParametersAI[]{
     //LVL 1 best params atm
-    //public static ParametersAI bestParameters = new ParametersAI(4,50,40,16,20,0.1);
-
+            new ParametersAI(4,50,40,16,20,0.1),
     //LVL 2 best params atm
+            new ParametersAI(40,60,50,50,0.1,30),
+    //LVL 3 best params atm
+            new ParametersAI(),
+    //LVL 4 best params atm
+            new ParametersAI(),
+    //LVL 5 best params atm
+            new ParametersAI(),
+    //LVL 6 best params atm
+            new ParametersAI(),
+    };
+
+    //the default values used everywhere else
     public static ParametersAI bestParameters = new ParametersAI(40,60,50,50,0.1,30);
 
     public int color;
     private static int[] waitTimes = new int[]{1,3,9,27,81,243}; //lvl 1,2,3,4,5,6+ seconds (3^n sec)
     private Logger logger = LogManager.getLogger(AI.class);
     private Board board;
-    private Random random;
     private int inceptionThreshold; //how many rounds we go deeper: [1,inf[
     private AlphaBetaXoliba abx;
     private ParametersAI parameters;
@@ -46,7 +51,6 @@ public class AI {
      */
     public AI(int color, int difficulty, ParametersAI parameters) {
         this.color = color;
-        this.random = new Random();
         this.inceptionThreshold = difficulty;
         this.abx = new AlphaBetaXoliba();
         this.parameters = parameters;
@@ -93,10 +97,7 @@ public class AI {
             return false;
 
         Board b = new Board(data.board, parameters);
-        if (b.calculatePoints() * color <= 0) //if we would lose or it would be a draw
-            return false;
-        else      //if we win then we can stop now
-            return true;
+        return b.calculatePoints() * color > 0; //we will stop only if we would win
     }
 
     //todo refactor AI to take turn data as a parameter
@@ -135,6 +136,11 @@ public class AI {
             i = waitTimes.length - 1;
         }
         return waitTimes[i];
+    }
+
+    public ParametersAI getBestParameters(int lvl) {
+        if (lvl < 1 || lvl > 6) return bestParameters;
+        else return paramByLVL[lvl - 1];
     }
 
     @Override
