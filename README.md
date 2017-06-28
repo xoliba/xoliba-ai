@@ -9,4 +9,4 @@
 
 Xoliba-ai on Xoliba-pelille kehitetty tekoäly. Projekti on tehty Helsingin yliopiston kurssilla Ohjelmistotuotantoprojekti. Sovellus vastaanottaa xoliban pelin Websocket-yhteyksiä ja vastaa niihin omalla siirrollaan. Huomioithan, että muihin yhteyksiin sovellus ei vastaa mitään.
 
-Projektin suurempi selostus on selitetty pelin [frontend-repositoryssä](https://github.com/xoliba/xoliba).
+Koko projektia on käsitelty [frontend-repositoryn](https://github.com/xoliba/xoliba) readmessä.
