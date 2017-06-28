@@ -20,8 +20,9 @@ public class AI {
 
     //LVL 2 best params atm
     public static ParametersAI bestParameters = new ParametersAI(40,60,50,50,0.1,30);
-    public int color;
 
+    public int color;
+    private static int[] waitTimes = new int[]{1,3,9,27,81,243}; //lvl 1,2,3,4,5,6+ seconds (3^n sec)
     private Board board;
     private Random random;
     private int inceptionThreshold; //how many rounds we go deeper: [1,inf[
@@ -102,7 +103,7 @@ public class AI {
             this.inceptionThreshold = difficulty;
         //System.out.println(this + " got a new board:\n" + board);
 
-        TurnData td = abx.doTheBestMoveForColor(board, inceptionThreshold, color);
+        TurnData td = abx.doTheBestMoveForColor(board, inceptionThreshold, color, getMaxWaitSeconds(inceptionThreshold));
         //todo make this more elegant
         if (Board.sameAmountOfStonesOnBoard(board.board, td.board)) {
             td.withoutHit = withoutHit + 1;
@@ -120,6 +121,16 @@ public class AI {
 
     public TurnData move(int[][] b) {
         return move(b, color, inceptionThreshold, 0);
+    }
+
+    public static int getMaxWaitSeconds(int lvl) {
+        int i = 0;
+        if (lvl > 0 && lvl < waitTimes.length) {
+            i = lvl - 1;
+        } else if (lvl >= waitTimes.length) {
+            i = waitTimes.length - 1;
+        }
+        return waitTimes[i];
     }
 
     @Override

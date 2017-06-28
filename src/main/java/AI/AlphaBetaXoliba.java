@@ -2,6 +2,9 @@ package AI;
 
 import Game.*;
 
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+
 import java.util.ArrayList;
 
 /**
@@ -9,10 +12,12 @@ import java.util.ArrayList;
  */
 public class AlphaBetaXoliba {
 
+    private Logger logger = LogManager.getLogger(AlphaBetaXoliba.class);
     private Validator validator;
     private StoneCollector stoneCollector;
     private int inceptionThreshold;
     private ParametersAI params;
+    private long deadline = Long.MAX_VALUE;
 
     public AlphaBetaXoliba() {
         validator = new Validator();
@@ -22,17 +27,31 @@ public class AlphaBetaXoliba {
     }
 
     /**
-     * Decide the best move by using alpha-beta pruning
+     * Calls @doTheBestMoveForColor with max wait = 3600sec = 1h
+     * @param board
+     * @param inceptionThreshold
+     * @param color
+     * @return
+     */
+    protected TurnData doTheBestMoveForColor(Board board, int inceptionThreshold, int color) {
+        return doTheBestMoveForColor(board, inceptionThreshold, color, 3600);
+    }
+
+    /**
+     * Decide the best move by using alpha-beta pruning. Will return current best result if max wait is exceeded (and start looking a whole new branch at root level if deadline is not met yet, which might result method to take more time than the deadline).
      * @param board
      * @param inceptionThreshold how deep should we go? 0 means no moves, 1 that we choose our best move, 2 that we consider also the opponents reaction and so on
      * @param color best move for who?
+     * @param maxWaitSeconds how many seconds we can maximally spend here
      * @return all relevant info wrapped in a TurnData object
      */
-    protected TurnData doTheBestMoveForColor(Board board, int inceptionThreshold, int color) {
+    protected TurnData doTheBestMoveForColor(Board board, int inceptionThreshold, int color, int maxWaitSeconds) {
         if (color != 1 && color != -1) {
-            System.out.println("Cannot do a move for any other color than -1 or 1!");
+            logger.warn("Cannot do a move for any other color than -1 or 1! Was " + color);
             return null;
         }
+        long startTime = System.currentTimeMillis();
+        deadline = startTime + 1000 * maxWaitSeconds;
 
         this.params = board.getWeights();
         this.inceptionThreshold = inceptionThreshold;
@@ -44,7 +63,15 @@ public class AlphaBetaXoliba {
             return td;
         }
 
-        for (Move m: validator.generateAllPossibleMoves(board, color)) { //for every move
+        ArrayList<Move> possibleMoves = validator.generateAllPossibleMoves(board, color);
+        for (int i = 0; i < possibleMoves.size(); i++) {
+            Move m = possibleMoves.get(i);
+            if (System.currentTimeMillis() > deadline) {
+                logger.info("AI exceeded deadline before going through all possible moves at root level!" +
+                        "\n\tmax wait " + maxWaitSeconds + "sec; exceeded by " + ((System.currentTimeMillis() - deadline)) + "ms\n\t" +
+                        "managed to process " + (i*1.0/possibleMoves.size()*1.0) * 100 + "% of possible moves");
+                break;
+            }
             Board b1 = board.copy(); //we generate a board
             b1.swap(m); //where we implement the move
             for (Triangle t:m.triangles) { //and for every triangle that can be formed with that move
@@ -69,6 +96,7 @@ public class AlphaBetaXoliba {
                 }
             }
         }
+        deadline = Long.MAX_VALUE;
         return td;
     }
 
@@ -84,8 +112,11 @@ public class AlphaBetaXoliba {
      */
 
     protected double maxValue(TurnData lastTurn, int inceptionLevel, double redsBest, double bluesBest, int turnSkipped) {
-        //System.out.println("AI maxValue: inceptionLevel " + inceptionLevel + "; redsBest " + redsBest + "; bluesBest" + bluesBest);
         Board board = new Board(lastTurn.board, params);
+        if (System.currentTimeMillis() > deadline) {
+            logger.trace("exceeded deadline at maxValue by " + (System.currentTimeMillis()-deadline) + "ms, with inception level " + inceptionLevel);
+            return board.evaluate(false);
+        }
         if (gameEndedAfter(lastTurn, turnSkipped)) {
             return board.evaluate(true);
         }
@@ -131,6 +162,10 @@ public class AlphaBetaXoliba {
 
     protected double minValue(TurnData lastTurn, int inceptionLevel, double redsBest, double bluesBest, int turnSkipped) {
         Board board = new Board(lastTurn.board, params);
+        if (System.currentTimeMillis() > deadline) {
+            logger.trace("exceeded deadline at minValue by " + (System.currentTimeMillis()-deadline) + "ms, with inception level " + inceptionLevel);
+            return board.evaluate(false);
+        }
         if (gameEndedAfter(lastTurn, turnSkipped)) {
             return board.evaluate(true);
         }
