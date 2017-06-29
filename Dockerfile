@@ -3,7 +3,7 @@ FROM openjdk:8-jdk-alpine
 EXPOSE 4567
 
 RUN apk update
-RUN apk add openssl nodejs-npm
+RUN apk add openssl
 
 #RUN wget https://github.com/xoliba/xoliba/archive/master.zip -O front.zip; unzip front.zip; rm front.zip
 RUN wget https://github.com/xoliba/xoliba-ai/archive/master.zip -O AI.zip; unzip AI.zip; rm AI.zip
