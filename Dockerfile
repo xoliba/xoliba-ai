@@ -1,6 +1,6 @@
 FROM openjdk:8-jdk-alpine
 
-#EXPOSE 4567
+EXPOSE 4567
 
 RUN apk update
 RUN apk add openssl
