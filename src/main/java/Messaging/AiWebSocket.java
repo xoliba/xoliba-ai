@@ -31,6 +31,7 @@ public class AiWebSocket {
 	public void message(Session session, String message) throws IOException {
 		if (JsonConverter.ping(message)) {
 			System.out.println("ping");
+			session.getRemote().sendString("{\"type\":\"pong\"}");
 		} else if (JsonConverter.startRound(message)) {
 			handleStartingRound(session, message);
 		} else {
