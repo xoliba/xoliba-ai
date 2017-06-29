@@ -1,6 +1,7 @@
 package Optimization;
 
 import AI.ParametersAI;
+import AI.AI;
 import Messaging.JsonConverter;
 
 import java.io.BufferedReader;
@@ -22,15 +23,25 @@ public class ParameterWriter {
     private String fileName = "./build/resources/main/parameters.txt";
     private int minWeight, maxWeight;
     private double frequency;
+    private ParametersAI originalParams;
 
     public ParameterWriter(int minWeight, int maxWeight, double frequency) {
+        this(2, minWeight, maxWeight, frequency);
+    }
+
+    public ParameterWriter(int challengerLVL, int minWeight, int maxWeight, double frequency) {
         this.minWeight = minWeight;
         this.maxWeight = maxWeight;
         this.frequency = frequency;
+        this.originalParams = new AI(1).getBestParameters(challengerLVL);
     }
 
     public ParameterWriter() {
         this(0, 50, 2);
+    }
+
+    public ParametersAI getOriginalParams() {
+        return originalParams;
     }
 
     public void writeNewFileWithParameterValues() {
@@ -54,10 +65,10 @@ public class ParameterWriter {
 
     private ArrayList<ParametersAI> generateParameters() {
         ArrayList<ParametersAI> p = new ArrayList<>();
-        int howManyParams = bestParameters.toArray().length;
+        int howManyParams = originalParams.toArray().length;
         for (int i = 0; i < howManyParams; i++) { //for every parameter
             double[] meters = new double[howManyParams];
-            System.arraycopy(bestParameters.toArray(), 0, meters, 0, meters.length);
+            System.arraycopy(originalParams.toArray(), 0, meters, 0, meters.length);
             for (int j = minWeight; j <= maxWeight; j += frequency) {
                 meters[i] = j;
                 p.add(new ParametersAI(meters[0], meters[1], meters[2], meters[3], meters[4], meters[5]));

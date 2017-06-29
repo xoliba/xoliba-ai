@@ -1,6 +1,7 @@
 package Optimization;
 
 import AI.ParametersAI;
+import AI.AI;
 import Game.RoundRecord;
 import Game.TurnData;
 
@@ -56,7 +57,7 @@ public class Coach {
         int rounds = countHowManyRoundsToBePlayed(whichParametersToIterate, minWeight, maxWeight, frequency, howManyBoards);
         logger.info(getEstimationOfProcessLength(rounds, whiteLVL, blackLVL));
 
-        ParameterWriter pw = new ParameterWriter(minWeight, maxWeight, frequency);
+        ParameterWriter pw = new ParameterWriter(blackLVL, minWeight, maxWeight, frequency);
         pw.writeNewFileWithParameterValues();
         logger.trace("generating and writing parameters into a file took " + (System.currentTimeMillis() - start) + " ms\n");
 
@@ -67,12 +68,13 @@ public class Coach {
     private void computeWithAllParameterCombinations(ParameterWriter pw, boolean[] whichParametersToIterate,
                                                      int howManyBoards, int whiteDifficulty, int blackDifficulty) {
         List<ParametersAI> parameterCombinations = pw.readParameterCombinations();
-        //int combinations = parameterCombinations.size();    //Is this more confusing than the original?
-        int paramCount = bestParameters.toArray().length;
+        int combinationsCount = parameterCombinations.size();    //Is this more confusing than the original?
+        ParametersAI originalParams = pw.getOriginalParams();
+        int paramCount = originalParams.toArray().length;
         AIMatchResult[] theBestFinalResults = new AIMatchResult[paramCount];
         int bestIndex = 0;
-        for (int i = 0; i < parameterCombinations.size(); i++) {
-            if (i != 0 && i % (parameterCombinations.size() / paramCount) == 0) {
+        for (int i = 0; i < combinationsCount; i++) {
+            if (i != 0 && i % (combinationsCount / paramCount) == 0) {
                 logger.info("\n¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤ START TESTING WITH NEW PARAMETER ¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤\n");
                 bestIndex++;
             }
@@ -82,12 +84,12 @@ public class Coach {
 
             ParametersAI p = parameterCombinations.get(i);
             logger.info( "  %%% New gladiators in the pit! %%%\n" +
-                            "Default parameters on white: " + bestParameters + "\n" +
+                            "Default parameters on white: " + originalParams + "\n" +
                             "versus black with test param " + p
                     //+ "\n"
             );
 
-            MatchMaker referee = new MatchMaker(whiteDifficulty, bestParameters, blackDifficulty, p, keepRecord, false);
+            MatchMaker referee = new MatchMaker(whiteDifficulty, new AI(1).getBestParameters(whiteDifficulty), blackDifficulty, p, keepRecord, false);
             AIMatchResult theResult = referee.calculate(howManyBoards);
             logger.info("challengers performance: " + theResult.challengerPerformance + "\n");
             logger.info(theResult.toString());
