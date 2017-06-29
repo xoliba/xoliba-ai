@@ -18,7 +18,7 @@ public class AI {
     //LVL 3 best params atm
             new ParametersAI(),
     //LVL 4 best params atm
-            new ParametersAI(),
+            new ParametersAI(40, 50, 10, 30, 40, 30),
     //LVL 5 best params atm
             new ParametersAI(),
     //LVL 6 best params atm

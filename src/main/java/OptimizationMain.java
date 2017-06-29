@@ -7,19 +7,19 @@ import static AI.AI.bestParameters;
 
 public class OptimizationMain {
     public static void main(String[] args) {
-        ///*
-        new Coach(true).runOneShowdown(4, bestParameters,
-                2,
-                //new ParametersAI(100,1,1,1,1,1),
-                bestParameters,
-                50);
-        //*/
         /*
-        boolean[] testTheseParameters = new boolean[]{
-                true, true, true, true, true, true};
-        new Coach(true).iterateWithDifferentParameters(testTheseParameters, 0, 120, 20,
-                50, 2, 2);
+        new Coach(true).runOneShowdown(2, bestParameters,
+                4,
+                //new ParametersAI(100,1,1,1,1,1),
+                new AI(1).getBestParameters(4),
+                2);
         */
+        ///*
+        boolean[] testTheseParameters = new boolean[]{
+                true, true, true, true, true, false};
+        new Coach(true).iterateWithDifferentParameters(testTheseParameters, 1, 61, 30,
+                50, 4, 4);
+        //*/
     }
 
 }
