@@ -26,7 +26,7 @@ public class AI {
     };
 
     //the default values used everywhere else
-    public static ParametersAI bestParameters = new ParametersAI(60, 25, 55, 30, 40, 55);
+    public static ParametersAI bestParameters = new ParametersAI(70, 25, 55, 30, 40, 55);
 
     public int color;
     private static int[] waitTimes = new int[]{1,3,9,45,81,243}; //lvl 1,2,3,4,5,6+ seconds (3^n sec)

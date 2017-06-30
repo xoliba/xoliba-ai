@@ -101,7 +101,7 @@ public class BoardTest {
             assertTrue("if the game ended now, the evaluation should be different", board4.evaluate(false) != board4.evaluate(true));
         }
         assertTrue("if game ended now, it should definitely be in reds favor\n" + board4, board4.evaluate(true) > 0);
-        assertTrue("red has a bigger triangle than blue, so better for red\n" + board4, board4.evaluate() > 0);
+        assertTrue("red has a bigger triangle than blue, so better for red\n" + board4 + "\nweights\n" + board4.getWeights() + "\nsum of stones\n" + board4.sumOfTheStones(false), board4.evaluate() > 0);
 
         //these broke when the machine learning parameter development began...
         //evaluating board can be more complex than these test cases
