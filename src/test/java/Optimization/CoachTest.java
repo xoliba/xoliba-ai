@@ -27,7 +27,7 @@ public class CoachTest {
     @Test
     public void AIsShouldActDifferentlyWithDifferentParameters() {
         AIMatchResult match = new Coach(true).runOneShowdown(2, new ParametersAI(1, 100, 100, 100, 100, 0),
-                2, new ParametersAI(100,1,1,1,1,1),
+                3, new ParametersAI(100,1,1,1,1,1),
                 1);
 
         ArrayList<RoundRecord[]> allRecords = match.theFinalResult.getAllRounds();

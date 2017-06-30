@@ -226,4 +226,35 @@ public class AlphaBetaXoliba {
         }
         return td;
     }
+
+    public TurnData doAGreedyMove(Board board, int color, int withoutHit) {
+        ArrayList<Move> possibleMoves = validator.generateAllPossibleMoves(board.copy(), color);
+        TurnData td = new TurnData(false, false, board.board);
+        int sizeOfBiggestTriangle = 0;
+        int howManyStonesHitWithBiggestTriangle = 0;
+
+        for (Move m:possibleMoves) {
+            Board b1 = board.copy();
+            b1.swap(m);
+            for (Triangle t:m.triangles) {
+                int tSize = t.getSize();
+                if (tSize < sizeOfBiggestTriangle) {
+                    continue;
+                }
+                Board b2 = b1.copy(); //lets make a copy of this situation
+                int howManyStones = b2.howManyStonesOnBoard();
+                stoneCollector.hitStones(b2, t); //lets do the move
+                withoutHit = Board.sameAmountOfStonesOnBoard(b1.board, b2.board) ? withoutHit + 1 : 0;
+                howManyStones -= b2.howManyStonesOnBoard();
+
+                if (howManyStones > howManyStonesHitWithBiggestTriangle) {
+                    sizeOfBiggestTriangle = tSize;
+                    howManyStonesHitWithBiggestTriangle = howManyStones;
+                    td = new TurnData(true, b2, withoutHit);
+                }
+            }
+        }
+        return td;
+
+    }
 }
