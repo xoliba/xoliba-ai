@@ -1,0 +1,23 @@
+-aws must be installed and configured, access key is required, but permissions
+should not matter
+-environment variable AWS_ACCOUNT_ID must correspond to the number in the
+repository url (xxxxxxxxx.dkr.ecr.us-east-2.amazonaws.com/xoliba-docker-repo)
+
+1. run awsUpload.sh to build the docker image and upload it to aws ecr
+
+2. log in to aws, select ecs and xoliba-cluster
+
+3. select task definitions and the service that requires updating
+
+4. select a corresponding task and create a new revision
+
+5. options (probably) don't need to be changed, click create
+
+6. select clusters, xoliba-cluster and service that needs updating
+
+7. click update, bump up task definition and click update service
+
+
+
+
+written after a couple of beers, don't hate
