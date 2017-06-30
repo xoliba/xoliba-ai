@@ -42,11 +42,14 @@ public class AiWebSocket {
 	//we get completely new board, we should decide if we surrender or not
 	private void handleStartingRound(Session session, String message) throws IOException {
 		TurnData data = JsonConverter.parseTurnData(message);
+		long msgId = data.msgId;
 
 		System.out.println("got a start round message! AI color " + data.color + " difficulty " + data.difficulty);
 		ai = new AI(data.color, data.difficulty);
 		data = new TurnData(true, ai.doesWantToSurrender(data), data.color);
 
+		data.msgId = msgId;
+		System.out.println("Message id: " + data.msgId);
 		session.getRemote().sendString(JsonConverter.jsonifyTurnData(data));
 	}
 
@@ -69,6 +72,7 @@ public class AiWebSocket {
 			data = ai.move(data.board, data.color, data.difficulty, data.withoutHit); //lets update the turn data with AIs move
 		}
 		data.msgId = msgId;
+		System.out.println("Message id: " + data.msgId);
 		session.getRemote().sendString(JsonConverter.jsonifyTurnData(data));
 
 		long e = System.nanoTime();
