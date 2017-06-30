@@ -49,7 +49,7 @@ public class RoundRecord {
 
     @Override
     public String toString() {
-        String s = "¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤ ROUND RECORD ¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤\n"
+        String s = "\n¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤ ROUND RECORD ¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤\n"
                 + red + "\n" + blue + "\n";
         s += startingBoard + "\n";
         s += "how many moves " + howManyMoves() + "\n";

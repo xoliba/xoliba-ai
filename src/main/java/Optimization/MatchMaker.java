@@ -69,7 +69,7 @@ public class MatchMaker {
             if (runSingleThread) {
                 RoundResult rr = calculateRoundForBothRoles(boards.get(i));
                 rr.roundNo = j+1;
-                logger.debug(rr + "\n" + rr.endGameMessagesToString());
+                //logger.debug(rr + "\n" + rr.endGameMessagesToString());
                 finalResult.add(rr, keepRecord);
             } else {
                 Thread matchThread = new Thread(() -> {
@@ -81,7 +81,7 @@ public class MatchMaker {
                     acquire(mutex);
                     //results.add(rr);
                     finalResult.add(rr, keepRecord);
-                    logger.debug(rr + "\n" + rr.endGameMessagesToString());
+                    //logger.debug(rr + "\n" + rr.endGameMessagesToString());
                     mutex.release();
                     threadCount.release();
                     finished.release();

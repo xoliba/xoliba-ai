@@ -14,11 +14,11 @@ public class AI {
     //LVL 1 best params atm
             new ParametersAI(4,50,40,16,20,0.1),
     //LVL 2 best params atm
-            new ParametersAI(40,60,50,50,0.1,30),
+            new ParametersAI(),
     //LVL 3 best params atm
             new ParametersAI(),
     //LVL 4 best params atm
-            new ParametersAI(40, 25, 55, 30, 40, 55),
+            new ParametersAI(),
     //LVL 5 best params atm
             new ParametersAI(),
     //LVL 6 best params atm
@@ -26,7 +26,7 @@ public class AI {
     };
 
     //the default values used everywhere else
-    public static ParametersAI bestParameters = new ParametersAI(40,60,50,50,0.1,30);
+    public static ParametersAI bestParameters = new ParametersAI(60, 25, 55, 30, 40, 55);
 
     public int color;
     private static int[] waitTimes = new int[]{1,3,9,45,81,243}; //lvl 1,2,3,4,5,6+ seconds (3^n sec)

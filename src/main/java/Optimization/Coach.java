@@ -26,9 +26,13 @@ public class Coach {
     }
 
     public AIMatchResult runOneShowdown(int whiteLVL, ParametersAI whiteParam, int blackLVL, ParametersAI blackParam, int howManyBoards) {
+        return runOneShowdown(whiteLVL, whiteParam, blackLVL, blackParam, howManyBoards, false);
+    }
+
+        public AIMatchResult runOneShowdown(int whiteLVL, ParametersAI whiteParam, int blackLVL, ParametersAI blackParam, int howManyBoards, boolean runSingleThread) {
         long start = System.currentTimeMillis();
         logger.info(getEstimationOfProcessLength(2 * howManyBoards, whiteLVL, blackLVL));
-        MatchMaker referee = new MatchMaker(whiteLVL, whiteParam, blackLVL, blackParam,false, false);
+        MatchMaker referee = new MatchMaker(whiteLVL, whiteParam, blackLVL, blackParam,false, runSingleThread);
         AIMatchResult match = referee.calculate(howManyBoards, keepRecord);
         logger.info(match.toString());
         logger.info(howLongItTook(start, 2 * howManyBoards) + "\n");
