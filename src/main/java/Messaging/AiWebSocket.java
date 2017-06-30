@@ -73,9 +73,12 @@ public class AiWebSocket {
 		}
 		data.msgId = msgId;
 		System.out.println("Message id: " + data.msgId);
+		long e = System.nanoTime();
+		while (e - s < 1000) {
+			e = System.nanoTime();
+		}
 		session.getRemote().sendString(JsonConverter.jsonifyTurnData(data));
 
-		long e = System.nanoTime();
 		System.out.println("It took AI " + (e - s) / 1e9 + " seconds to compute the move");
 	}
 
