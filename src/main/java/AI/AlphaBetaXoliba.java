@@ -2,6 +2,8 @@ package AI;
 
 import Game.*;
 
+import java.util.Random;
+
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
@@ -17,6 +19,7 @@ public class AlphaBetaXoliba {
     private StoneCollector stoneCollector;
     private int inceptionThreshold;
     private ParametersAI params;
+    private Random random = new Random();
     private long deadline = Long.MAX_VALUE;
 
     public AlphaBetaXoliba() {
@@ -207,5 +210,20 @@ public class AlphaBetaXoliba {
             return true;
         }
         return false;
+    }
+
+    public TurnData doARandomMove(Board board, int color, int withoutHit) {
+        ArrayList<Move> possibleMoves = validator.generateAllPossibleMoves(board.copy(), color);
+        TurnData td = new TurnData(false, false, board.board);
+
+        if (!possibleMoves.isEmpty()) {
+            Board b1 = board.copy();
+            Move m = possibleMoves.get(random.nextInt(possibleMoves.size()));
+            Triangle t = m.triangles.get(random.nextInt(m.triangles.size()));
+            stoneCollector.hitStones(b1, t);
+            withoutHit = Board.sameAmountOfStonesOnBoard(b1.board, board.board) ? withoutHit + 1 : 0;
+            td = new TurnData(true, b1, withoutHit);
+        }
+        return td;
     }
 }

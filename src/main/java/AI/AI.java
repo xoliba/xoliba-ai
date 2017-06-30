@@ -111,7 +111,12 @@ public class AI {
             this.inceptionThreshold = difficulty;
         logger.debug(this + " got a new board:\n" + board);
 
-        TurnData td = abx.doTheBestMoveForColor(board, 2, color, getMaxWaitSeconds(inceptionThreshold));
+        TurnData td;
+        if (inceptionThreshold == 1) {
+            td = abx.doARandomMove(board, color, withoutHit);
+        } else {
+            td = abx.doTheBestMoveForColor(board, 2, color, getMaxWaitSeconds(inceptionThreshold));
+        }
         //todo make this more elegant
         if (Board.sameAmountOfStonesOnBoard(board.board, td.board)) {
             td.withoutHit = withoutHit + 1;
