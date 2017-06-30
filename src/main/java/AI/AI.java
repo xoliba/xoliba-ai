@@ -22,11 +22,11 @@ public class AI {
     //LVL 5 best params atm
             new ParametersAI(40, 40, 40, 20, 20, 40),
     //LVL 6 best params atm
-            new ParametersAI(70, 25, 55, 30, 40, 55)
+            new ParametersAI()
     };
 
     //the default values used everywhere else
-    public static ParametersAI bestParameters = new ParametersAI(70, 25, 55, 30, 40, 55);
+    public static ParametersAI bestParameters = new ParametersAI(70, 25, 55, 30, 40, 10);
 
     public int color;
     private static int[] waitTimes = new int[]{1,5,9,45,81,243}; //lvl 1,2,3,4,5,6+ seconds (3^n sec)

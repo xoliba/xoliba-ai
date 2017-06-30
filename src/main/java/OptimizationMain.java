@@ -8,11 +8,10 @@ import static AI.AI.bestParameters;
 public class OptimizationMain {
     public static void main(String[] args) {
         ///*
-        new Coach(true).runOneShowdown(2, bestParameters,
-                6,
-                bestParameters,
-                //new AI(1).getBestParameters(4),
-                2,
+        new Coach(true).runOneShowdown(6, bestParameters,
+                4,
+                new AI(1).getBestParameters(4),
+                50,
                 false);
         //*/
         /*
