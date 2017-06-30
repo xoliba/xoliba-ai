@@ -22,7 +22,7 @@ public class MatchMakerTest {
             "[[-2,0,1,1,1,-1,-2],[1,-1,0,-1,1,0,1],[-1,0,-1,-1,-1,-1,0],[1,1,1,-1,-1,1,-1],[-1,-1,1,0,1,0,0],[0,1,1,1,1,-1,0],[-2,0,-1,-1,1,-1,-2]]";
 
     public MatchMakerTest() {
-        this.mm = new MatchMaker(2, AI.bestParameters, 1, AI.bestParameters);
+        this.mm = new MatchMaker(3, AI.bestParameters, 2, AI.bestParameters);
     }
 
     @Before
@@ -70,8 +70,8 @@ public class MatchMakerTest {
 
     @Test
     public void playUntilRoundEndedTest() {
-        AI first = new AI(1, 2, new ParametersAI());
-        AI second = new AI(-1, 2, new ParametersAI());
+        AI first = new AI(1, 3, new ParametersAI());
+        AI second = new AI(-1, 3, new ParametersAI());
         Board b = new Board(board);
         System.out.println("testing with board\n" + b);
         RoundRecord record = mm.playUntilRoundEnded(first, second, board, new RoundRecord(b, first, second));
