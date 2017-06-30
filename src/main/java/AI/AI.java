@@ -12,24 +12,24 @@ public class AI {
 
     private ParametersAI[] paramByLVL = new ParametersAI[]{
     //LVL 1 best params atm
-            new ParametersAI(4,50,40,16,20,0.1),
+            new ParametersAI(1,50,40,16,20,0.1),
     //LVL 2 best params atm
-            new ParametersAI(),
+            new ParametersAI(1, 40, 40, 20, 20, 1),
     //LVL 3 best params atm
-            new ParametersAI(),
+            new ParametersAI(15, 40, 40, 20, 20, 1),
     //LVL 4 best params atm
-            new ParametersAI(),
+            new ParametersAI(25, 40, 40, 20, 20, 10),
     //LVL 5 best params atm
-            new ParametersAI(),
+            new ParametersAI(40, 40, 40, 20, 20, 40),
     //LVL 6 best params atm
-            new ParametersAI(),
+            new ParametersAI(70, 25, 55, 30, 40, 55)
     };
 
     //the default values used everywhere else
     public static ParametersAI bestParameters = new ParametersAI(70, 25, 55, 30, 40, 55);
 
     public int color;
-    private static int[] waitTimes = new int[]{1,3,9,45,81,243}; //lvl 1,2,3,4,5,6+ seconds (3^n sec)
+    private static int[] waitTimes = new int[]{1,5,9,45,81,243}; //lvl 1,2,3,4,5,6+ seconds (3^n sec)
     private Logger logger = LogManager.getLogger(AI.class);
     private Board board;
     private int inceptionThreshold; //how many rounds we go deeper: [1,inf[
@@ -41,7 +41,7 @@ public class AI {
     }
 
     public AI(int color, int difficulty) {
-        this(color, difficulty, bestParameters);
+        this(color, difficulty, null);
     }
 
     /**
@@ -50,6 +50,9 @@ public class AI {
      * @param difficulty 1 being the easiest, 3 being still easy to compute (0 does nothing)
      */
     public AI(int color, int difficulty, ParametersAI parameters) {
+        if (parameters == null) {
+            parameters = getBestParameters(difficulty);
+        }
         this.color = color;
         this.inceptionThreshold = difficulty;
         this.abx = new AlphaBetaXoliba();
@@ -108,7 +111,7 @@ public class AI {
             this.inceptionThreshold = difficulty;
         logger.debug(this + " got a new board:\n" + board);
 
-        TurnData td = abx.doTheBestMoveForColor(board, inceptionThreshold, color, getMaxWaitSeconds(inceptionThreshold));
+        TurnData td = abx.doTheBestMoveForColor(board, 2, color, getMaxWaitSeconds(inceptionThreshold));
         //todo make this more elegant
         if (Board.sameAmountOfStonesOnBoard(board.board, td.board)) {
             td.withoutHit = withoutHit + 1;
