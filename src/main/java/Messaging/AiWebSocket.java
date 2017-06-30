@@ -53,6 +53,7 @@ public class AiWebSocket {
 	private void handleNormalTurn(Session session, String message) throws IOException {
 		howManyTablesReceived++;
 		TurnData data = JsonConverter.parseTurnData(message);
+		long msgId = data.msgId;
 		//updateAI(data);
 
 		System.out.println("got a message @ " + new java.util.Date() + "\ntables received: " + howManyTablesReceived);
@@ -67,6 +68,7 @@ public class AiWebSocket {
 		} else {
 			data = ai.move(data.board, data.color, data.difficulty, data.withoutHit); //lets update the turn data with AIs move
 		}
+		data.msgId = msgId;
 		session.getRemote().sendString(JsonConverter.jsonifyTurnData(data));
 
 		long e = System.nanoTime();

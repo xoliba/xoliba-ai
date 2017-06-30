@@ -19,6 +19,7 @@ public class TurnData {
     public int redPoints;
     public int bluePoints;
     public int scoreLimit;  //how many points is needed to win this round
+    public long msgId;
 
     public TurnData(boolean startRound, boolean surrender) {
         if (startRound) {
@@ -54,7 +55,8 @@ public class TurnData {
     }
 
 
-    public TurnData(boolean didMove, Board board, Move move, Triangle triangle, int color, boolean surrender, int difficulty, int withoutHit, int redPoints, int bluePoints, int scoreLimit) {
+    public TurnData(boolean didMove, Board board, Move move, Triangle triangle, int color, boolean surrender,
+                    int difficulty, int withoutHit, int redPoints, int bluePoints, int scoreLimit) {
         this.type = "TurnData";
         this.didMove = didMove;
         this.board = board.board;
