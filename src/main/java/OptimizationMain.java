@@ -16,9 +16,9 @@ public class OptimizationMain {
         */
         ///*
         boolean[] testTheseParameters = new boolean[]{
-                true, false, false, false, false, true};
-        new Coach(true).iterateWithDifferentParameters(testTheseParameters, 1, 61, 10,
-                50, 4, 4);
+                true, true, true, false, false, true};
+        new Coach(true).iterateWithDifferentParameters(testTheseParameters, 1, 101, 10,
+                100, 4, 4);
         //*/
     }
 

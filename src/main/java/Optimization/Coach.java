@@ -129,7 +129,7 @@ public class Coach {
      */
     private String getEstimationOfProcessLength(int rounds, int whiteLVL, int blackLVL) {
         double[] executionEstimations = new double[] {
-                250, 12.5, 2.7, 0.19, 0.018, 1, 1
+                250, 12.5, 2.7, 0.25, 0.018, 1, 1
         }; //how many rounds per second we compute (on my machine) if we iterate two AIs of lvl n (n = 1, 2, 3,..)
         double estimation = rounds * 1.0 / 2 / executionEstimations[whiteLVL - 1];
         estimation += rounds * 1.0 / 2 / executionEstimations[blackLVL - 1];
