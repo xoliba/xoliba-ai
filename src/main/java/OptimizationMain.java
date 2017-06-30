@@ -8,9 +8,9 @@ import static AI.AI.bestParameters;
 public class OptimizationMain {
     public static void main(String[] args) {
         ///*
-        new Coach(true).runOneShowdown(6, bestParameters,
-                4,
-                new AI(1).getBestParameters(4),
+        new Coach(true).runOneShowdown(1, bestParameters,
+                1,
+                new AI(1).getBestParameters(1),
                 50,
                 false);
         //*/
