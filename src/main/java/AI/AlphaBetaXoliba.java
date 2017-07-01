@@ -212,7 +212,7 @@ public class AlphaBetaXoliba {
         return false;
     }
 
-    public TurnData doARandomMove(Board board, int color, int withoutHit) {
+    public TurnData doARandomMove(Board board, int color) {
         ArrayList<Move> possibleMoves = validator.generateAllPossibleMoves(board.copy(), color);
         TurnData td = new TurnData(false, false, board.board);
 
@@ -221,13 +221,12 @@ public class AlphaBetaXoliba {
             Move m = possibleMoves.get(random.nextInt(possibleMoves.size()));
             Triangle t = m.triangles.get(random.nextInt(m.triangles.size()));
             stoneCollector.hitStones(b1, t);
-            withoutHit = Board.sameAmountOfStonesOnBoard(b1.board, board.board) ? withoutHit + 1 : 0;
-            td = new TurnData(true, b1, withoutHit);
+            td = new TurnData(true, b1.copy(), m, t, color);
         }
         return td;
     }
 
-    public TurnData doAGreedyMove(Board board, int color, int withoutHit) {
+    public TurnData doAGreedyMove(Board board, int color) {
         ArrayList<Move> possibleMoves = validator.generateAllPossibleMoves(board.copy(), color);
         TurnData td = new TurnData(false, false, board.board);
         int sizeOfBiggestTriangle = 0;
@@ -244,13 +243,12 @@ public class AlphaBetaXoliba {
                 Board b2 = b1.copy(); //lets make a copy of this situation
                 int howManyStones = b2.howManyStonesOnBoard();
                 stoneCollector.hitStones(b2, t); //lets do the move
-                withoutHit = Board.sameAmountOfStonesOnBoard(b1.board, b2.board) ? withoutHit + 1 : 0;
                 howManyStones -= b2.howManyStonesOnBoard();
 
                 if (howManyStones > howManyStonesHitWithBiggestTriangle) {
                     sizeOfBiggestTriangle = tSize;
                     howManyStonesHitWithBiggestTriangle = howManyStones;
-                    td = new TurnData(true, b2, withoutHit);
+                    td = new TurnData(true, b2.copy(), m, t, color);
                 }
             }
         }

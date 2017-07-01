@@ -7,6 +7,9 @@ import org.eclipse.jetty.websocket.api.annotations.*;
 import java.io.*;
 import java.util.*;
 import java.util.concurrent.*;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+
 
 @WebSocket
 public class AiWebSocket {
@@ -14,6 +17,7 @@ public class AiWebSocket {
 
 	private AI ai;
 	private int howManyTablesReceived = 0;
+	Logger logger = LogManager.getLogger(AiWebSocket.class);
 
 	@OnWebSocketConnect
 	public void connected(Session session) {
@@ -44,7 +48,7 @@ public class AiWebSocket {
 		TurnData data = JsonConverter.parseTurnData(message);
 		long msgId = data.msgId;
 
-		System.out.println("got a start round message! AI color " + data.color + " difficulty " + data.difficulty);
+		logger.debug("got a start round message! AI color " + data.color + " difficulty " + data.difficulty);
 		ai = new AI(data.color, data.difficulty);
 		data = new TurnData(true, ai.doesWantToSurrender(data), data.color);
 
@@ -59,8 +63,8 @@ public class AiWebSocket {
 		long msgId = data.msgId;
 		//updateAI(data);
 
-		System.out.println("got a message @ " + new java.util.Date() + "\ntables received: " + howManyTablesReceived);
-		long s = System.nanoTime();
+		logger.debug("got a message @ " + new java.util.Date() + "\ntables received: " + howManyTablesReceived);
+		long s = System.currentTimeMillis();
 
 		if (data.surrender) { //player wants to resign
 			if (ai.doesWantToStopPlaying(data)) { //AI agrees
@@ -72,14 +76,19 @@ public class AiWebSocket {
 			data = ai.move(data.board, data.color, data.difficulty, data.withoutHit); //lets update the turn data with AIs move
 		}
 		data.msgId = msgId;
-		System.out.println("Message id: " + data.msgId);
-		long e = System.nanoTime();
-		while (e - s < 1000) {
-			e = System.nanoTime();
+		logger.debug("Message id: " + data.msgId);
+		long e = System.currentTimeMillis();
+		if (e - s < 1000) {
+			try	{
+				Thread.sleep(e - s);
+			} catch (Exception ex) {
+				logger.error(ex);
+			}
+			e = System.currentTimeMillis();
 		}
 		session.getRemote().sendString(JsonConverter.jsonifyTurnData(data));
 
-		System.out.println("It took AI " + (e - s) / 1e9 + " seconds to compute the move");
+		logger.info("It took AI " + (e - s) / 1e3 + " seconds to compute the move");
 	}
 
 		/**
