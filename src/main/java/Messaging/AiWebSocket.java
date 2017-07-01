@@ -18,6 +18,7 @@ public class AiWebSocket {
 	private AI ai;
 	private int howManyTablesReceived = 0;
 	Logger logger = LogManager.getLogger(AiWebSocket.class);
+	private long minWaitMillis = 750;
 
 	@OnWebSocketConnect
 	public void connected(Session session) {
@@ -78,9 +79,10 @@ public class AiWebSocket {
 		data.msgId = msgId;
 		logger.debug("Message id: " + data.msgId);
 		long e = System.currentTimeMillis();
-		if (e - s < 1000) {
+		logger.info("websocket took time " + (e - s) + "ms");
+		if (e - s < minWaitMillis) {
 			try	{
-				Thread.sleep(e - s);
+				Thread.sleep(s + minWaitMillis - e);
 			} catch (Exception ex) {
 				logger.error(ex);
 			}
