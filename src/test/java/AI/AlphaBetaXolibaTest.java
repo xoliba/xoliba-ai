@@ -158,4 +158,24 @@ public class AlphaBetaXolibaTest {
         assertTrue("the move with game ending should always be better for blue when the biggest triangle is bigger", maxVal1 < maxVal2);
     }
 
+    @Test
+    public void randomMoveTest() {
+        Board b4 = new Board(table4);
+        TurnData d1 = abx.doARandomMove(b4.copy(), 1);
+        TurnData d2 = abx.doARandomMove(b4.copy(), -1);
+        assertTrue(!b4.equals(new Board(d1.board)) && !b4.equals(new Board(d2.board)));
+        assertTrue(!d1.equals(d2));
+        assertTrue(d1.didMove && d2.didMove);
+    }
+
+    @Test
+    public void greedyMoveTest() {
+        Board b4 = new Board(table4);
+        TurnData d1 = abx.doAGreedyMove(b4.copy(), 1);
+        assertTrue(d1.didMove);
+        assertTrue("Red should do a greedy (big, a lot hitting) triangle\n" + b4 + "\n" + d1
+                ,d1.board[4][3] == 1);
+
+    }
+
 }

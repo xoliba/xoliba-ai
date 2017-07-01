@@ -113,9 +113,9 @@ public class AI {
 
         TurnData td;
         if (inceptionThreshold == 1) {
-            td = abx.doARandomMove(board, color, withoutHit);
+            td = abx.doARandomMove(board, color);
         } else if (inceptionThreshold == 2) {
-            td = abx.doAGreedyMove(board, color, withoutHit);
+            td = abx.doAGreedyMove(board, color);
         } else {
             td = abx.doTheBestMoveForColor(board, 2, color, getMaxWaitSeconds(inceptionThreshold));
         }
