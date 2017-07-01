@@ -79,7 +79,6 @@ public class AiWebSocket {
 		data.msgId = msgId;
 		logger.debug("Message id: " + data.msgId);
 		long e = System.currentTimeMillis();
-		logger.info("websocket took time " + (e - s) + "ms");
 		if (e - s < minWaitMillis) {
 			try	{
 				Thread.sleep(s + minWaitMillis - e);
