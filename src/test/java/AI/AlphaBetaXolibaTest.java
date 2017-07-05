@@ -14,7 +14,7 @@ import static org.mockito.Mockito.*;
 public class AlphaBetaXolibaTest {
 
     private AlphaBetaXoliba abx;
-    private int[][] table, table1, table2, table3, table4;
+    private int[][] table, table1, table2, table3, table4, table5;
     private String b56JSON =
             "[[-2,0,1,1,1,-1,-2],[1,-1,0,-1,1,0,1],[-1,0,-1,-1,-1,-1,0],[1,1,1,-1,-1,1,-1],[-1,-1,1,0,1,0,0],[0,1,1,1,1,-1,0],[-2,0,-1,-1,1,-1,-2]]";
 
@@ -59,6 +59,15 @@ public class AlphaBetaXolibaTest {
                 {-2, 1, 0, 0, 0,-1,-2},
         };
         table4 = JsonConverter.parseTable(b56JSON);
+        table5  = new int[][]{
+                {-2,-1, 0, 0, 0,-1,-2},
+                {-1, 0, 0, 0, 0, 0, 1},
+                { 0,-1, 0, 0, 0, 0, 0},
+                { 0, 1, 0, 0, 1, 0, 0},
+                { 0, 0, 0, 0, 0, 0, 0},
+                { 0, 0, 1, 0, 0, 0, 1},
+                {-2, 0, 0, 0, 1, 0,-2},
+        };
     }
 
     @Test
@@ -176,6 +185,11 @@ public class AlphaBetaXolibaTest {
         assertTrue("Red should do a greedy (big, a lot hitting) triangle\n" + b4 + "\n" + d1
                 ,d1.board[4][3] == 1);
 
+        Board b5 = new Board(table5);
+        d1 = abx.doAGreedyMove(b5.copy(), 1);
+        assertTrue(d1.didMove);
+        assertFalse("AI should always do a move if it's possible, even though it wouldn't hit any stones!\n" + d1,
+                b5.equals(new Board(d1.board)));
     }
 
 }

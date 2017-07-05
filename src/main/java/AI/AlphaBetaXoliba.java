@@ -245,7 +245,7 @@ public class AlphaBetaXoliba {
                 stoneCollector.hitStones(b2, t); //lets do the move
                 howManyStones -= b2.howManyStonesOnBoard();
 
-                if (howManyStones > howManyStonesHitWithBiggestTriangle) {
+                if (howManyStones >= howManyStonesHitWithBiggestTriangle) {
                     sizeOfBiggestTriangle = tSize;
                     howManyStonesHitWithBiggestTriangle = howManyStones;
                     td = new TurnData(true, b2.copy(), m, t, color);
